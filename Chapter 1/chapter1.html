@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 — Introduction and Basic Concepts | Heat Transfer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Cairo:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&family=Amiri&display=swap" rel="stylesheet">
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js" async></script>
+<script>try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.setAttribute('data-eye','on');}}catch(e){}</script>
+<style>
+:root{--navy:#0B2447;--royal:#1B4F8A;--sky:#2E86C1;--azure:#5DADE2;--mist:#D6EAF8;--pearl:#EBF5FB;--white:#FFFFFF;--ink:#1A1A2E;--graphite:#2C3E50;--slate:#5D6D7E;--gold:#D4AC0D;--amber:#F0B429;--mint:#1ABC9C;--mint-light:#D5F5E3;--coral:#E74C3C;--coral-light:#FADBD8;--shadow:0 4px 20px rgba(11,36,71,0.10);--shadow-lg:0 8px 40px rgba(11,36,71,0.16);--radius:14px;--radius-sm:8px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+*{max-width:100%;}
+html,body{overflow-x:hidden;}
+html{scroll-behavior:smooth;}
+body{font-family:'Cairo','Source Serif 4',serif;font-size:17px;line-height:1.85;color:var(--ink);background:linear-gradient(160deg,#f0f6ff 0%,#e8f1fb 50%,#f5f9ff 100%);min-height:100vh;}
+.content-wrapper{max-width:960px;margin:0 auto;padding:0 24px;}
+.toc-wrapper{max-width:900px;margin:0 auto;padding:0 24px;}
+
+/* ===== HEADER ===== */
+.hero-header{background:linear-gradient(135deg,var(--navy) 0%,var(--royal) 60%,var(--sky) 100%);padding:60px 40px 50px;text-align:center;position:relative;overflow:hidden;}
+.hero-header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");z-index:0;}
+.hero-header>*{position:relative;z-index:1;}
+.header-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:999px;padding:6px 20px;font-family:'Cairo',sans-serif;font-size:0.78rem;font-weight:600;color:#fff;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;}
+.hero-header h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.18);margin-bottom:14px;line-height:1.25;}
+.hero-header h1 .ar-sub{font-size:0.65em;opacity:0.85;display:block;font-family:'Cairo',sans-serif;font-weight:600;margin-top:6px;}
+.hero-subtitle{font-family:'Source Serif 4',serif;font-size:1.1rem;color:rgba(255,255,255,0.85);direction:ltr;max-width:650px;margin:0 auto 22px;line-height:1.7;}
+.meta-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+.meta-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:999px;padding:5px 16px;font-family:'Cairo',sans-serif;font-size:0.8rem;color:#fff;direction:ltr;}
+
+/* ===== PRAYER ===== */
+.dua-wrapper{max-width:960px;margin:28px auto 0;padding:0 24px;}
+.dua-card{background:var(--white);border:1.5px solid #e8b84b;border-radius:var(--radius);box-shadow:0 2px 12px rgba(168,120,42,0.10);overflow:hidden;}
+.dua-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:linear-gradient(135deg,#7a5800,#b8860b);color:#fff;border:none;cursor:pointer;font-family:'Cairo',sans-serif;font-size:0.95rem;font-weight:600;text-align:right;direction:rtl;transition:background .2s;}
+.dua-toggle:hover{background:linear-gradient(135deg,#8a6800,#c8960b);}
+.dua-toggle .arrow{transition:transform .3s ease;display:inline-block;margin-right:8px;font-size:0.75em;}
+.dua-toggle[aria-expanded="true"] .arrow{transform:rotate(180deg);}
+.dua-content{display:none;padding:28px 24px;background:linear-gradient(135deg,#fffbea,#fff9f0);}
+.dua-content p{font-family:'Amiri',serif;font-size:17px;line-height:2.1;color:#5a3e00;border-right:3px solid #e8b84b;padding-right:14px;margin-bottom:14px;text-align:right;}
+.dua-content p:last-child{margin-bottom:0;}
+
+/* ===== TOC ===== */
+.toc-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-top:30px;}
+.toc-header{background:linear-gradient(90deg,var(--royal),var(--sky));padding:16px 24px;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;}
+.toc-body{padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.toc-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--radius-sm);text-decoration:none;color:var(--ink);font-family:'Cairo',sans-serif;font-size:0.88rem;font-weight:600;transition:background .2s,transform .15s;}
+.toc-item:hover{background:var(--pearl);transform:translateX(-3px);}
+.toc-num{flex:0 0 26px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;background:var(--sky);color:#fff;border-radius:50%;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:500;}
+
+/* ===== SECTIONS ===== */
+.section{margin-top:10px;margin-bottom:10px;}
+.section-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:3px solid var(--mist);}
+.section-icon{flex:0 0 52px;width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--royal),var(--sky));border-radius:var(--radius);font-size:1.5rem;color:#fff;}
+.section-title-group{flex:1;}
+.section-title{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:4px;}
+.section-subtitle{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--slate);font-weight:400;}
+.section-divider{border:none;height:2px;background:linear-gradient(90deg,transparent,var(--sky),transparent);margin:50px 0;}
+
+/* ===== DEFINITION BOX ===== */
+.def-box{background:linear-gradient(135deg,var(--mist),var(--pearl));border-right:5px solid var(--sky);border-radius:var(--radius-sm);padding:20px 24px;margin:20px 0;}
+.def-box .def-title{font-family:'Playfair Display',serif;font-weight:700;color:var(--navy);font-size:1.05rem;margin-bottom:8px;}
+.def-box .def-en{font-family:'Source Serif 4',serif;font-size:1rem;color:var(--graphite);direction:ltr;text-align:left;font-style:italic;margin-bottom:10px;line-height:1.7;}
+.def-box p{margin-bottom:8px;}
+
+/* ===== FORMULA BOX ===== */
+.formula-box{background:var(--navy);color:#fff;border-radius:var(--radius);padding:22px 24px;margin:20px 0;text-align:center;overflow-x:auto;}
+.formula-box .formula-label{font-family:'Cairo',sans-serif;font-size:0.82rem;font-weight:600;color:var(--azure);margin-bottom:10px;display:block;}
+.formula-box .MathJax{color:#fff !important;}
+
+/* ===== NOTE BOX ===== */
+.note-box{background:#fffbea;border-right:5px solid var(--amber);border-radius:var(--radius-sm);padding:18px 22px;margin:20px 0;font-size:0.95rem;}
+.note-box .note-title{font-family:'Cairo',sans-serif;font-weight:700;color:#8B6914;margin-bottom:6px;font-size:0.9rem;}
+
+/* ===== IMPORTANT BOX ===== */
+.important-box{background:linear-gradient(135deg,var(--mint-light),#e8f8f0);border-right:5px solid var(--mint);border-radius:var(--radius-sm);padding:18px 22px;margin:20px 0;}
+.important-box .imp-title{font-family:'Cairo',sans-serif;font-weight:700;color:#148B6E;margin-bottom:6px;font-size:0.9rem;}
+
+/* ===== WARNING BOX ===== */
+.warning-box{background:var(--coral-light);border-right:5px solid var(--coral);border-radius:var(--radius-sm);padding:18px 22px;margin:20px 0;}
+.warning-box .warn-title{font-family:'Cairo',sans-serif;font-weight:700;color:#C0392B;margin-bottom:6px;font-size:0.9rem;}
+
+/* ===== EXAMPLE CARD ===== */
+.example-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:28px 0;}
+.example-header{background:linear-gradient(135deg,var(--sky),var(--azure));padding:14px 22px;font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:#fff;}
+.example-body{padding:24px;}
+.example-question{background:var(--pearl);border-radius:var(--radius-sm);padding:18px 22px;margin-bottom:20px;direction:ltr;text-align:left;font-family:'Source Serif 4',serif;font-size:0.95rem;line-height:1.75;color:var(--graphite);}
+.given-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin:16px 0;}
+.given-item{background:var(--pearl);border-radius:var(--radius-sm);padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:0.85rem;direction:ltr;text-align:center;color:var(--navy);}
+.solution-step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step-num{flex:0 0 30px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;background:var(--sky);color:#fff;border-radius:50%;font-family:'JetBrains Mono',monospace;font-size:0.75rem;font-weight:500;margin-top:2px;}
+.step-content{flex:1;}
+.answer-badge{display:inline-block;background:linear-gradient(135deg,var(--mint),#27ae94);color:#fff;border-radius:var(--radius-sm);padding:10px 22px;font-family:'JetBrains Mono',monospace;font-size:0.95rem;font-weight:500;margin-top:10px;}
+.eq-scroll{overflow-x:auto;padding:4px 0;}
+.discussion-box{background:var(--pearl);border-radius:var(--radius-sm);padding:16px 20px;margin-top:16px;border-right:4px solid var(--azure);}
+.discussion-box .disc-title{font-family:'Cairo',sans-serif;font-weight:700;color:var(--royal);font-size:0.9rem;margin-bottom:6px;}
+
+/* ===== EXAMPLE-FIGURE SIDE BY SIDE ===== */
+.example-flex{display:flex;gap:24px;align-items:flex-start;}
+.example-flex .example-text{flex:1;min-width:0;}
+.example-flex .example-fig{flex:0 0 280px;max-width:320px;}
+.example-flex .example-fig img{width:100%;height:auto;border-radius:var(--radius-sm);box-shadow:var(--shadow);}
+
+/* ===== TABLES ===== */
+.table-scroll{overflow-x:auto;margin:20px 0;position:relative;}
+.table-scroll .scroll-hint{display:none;text-align:center;font-size:0.75rem;color:var(--slate);padding:4px;font-family:'Cairo',sans-serif;}
+.styled-table{width:100%;border-collapse:collapse;border-radius:var(--radius-sm);overflow:hidden;font-size:0.9rem;}
+.styled-table thead th{background:var(--royal);color:#fff;padding:12px 16px;font-family:'Cairo',sans-serif;font-weight:600;text-align:center;white-space:nowrap;}
+.styled-table tbody td{padding:10px 16px;border-bottom:1px solid var(--mist);font-family:'JetBrains Mono',monospace;font-size:0.85rem;text-align:center;color:var(--navy);}
+.styled-table tbody td.text-cell{font-family:'Cairo',sans-serif;text-align:right;font-size:0.88rem;}
+.styled-table tbody tr:nth-child(even){background:var(--pearl);}
+
+/* ===== FIGURES ===== */
+.figure-container{margin:20px 0;text-align:center;}
+.figure-container img{max-width:100%;height:auto;border-radius:var(--radius-sm);box-shadow:var(--shadow);}
+.figure-container figcaption{font-family:'Cairo',sans-serif;font-size:0.82rem;color:var(--slate);margin-top:8px;}
+.figure-sm img{max-width:360px;}
+.figure-md img{max-width:520px;}
+.figure-lg img{max-width:700px;}
+
+/* ===== Q-SECTION ===== */
+.q-section{border:2px solid var(--royal);border-radius:var(--radius);overflow:hidden;margin:28px 0;}
+.q-section-header{background:linear-gradient(135deg,var(--navy),var(--royal));padding:16px 22px;font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:#fff;}
+.q-item{border-bottom:1px solid var(--mist);padding:20px 24px;}
+.q-item:last-child{border-bottom:none;}
+.q-text{direction:ltr;text-align:left;font-family:'Source Serif 4',serif;font-size:0.95rem;color:var(--graphite);line-height:1.75;margin-bottom:12px;}
+.q-toggle-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:var(--royal);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer;font-family:'Cairo',sans-serif;font-size:0.82rem;font-weight:600;transition:background .2s;}
+.q-toggle-btn:hover{background:var(--sky);}
+.q-toggle-btn .q-arrow{transition:transform .3s;display:inline-block;}
+.q-solution{display:none;margin-top:16px;padding:18px 20px;background:var(--pearl);border-radius:var(--radius-sm);direction:ltr;text-align:left;}
+
+/* ===== INLINE LTR ===== */
+.ltr{direction:ltr;text-align:left;}
+.ltr-inline{direction:ltr;display:inline;unicode-bidi:isolate;}
+.mono{font-family:'JetBrains Mono',monospace;font-size:0.9em;}
+.term{font-family:'JetBrains Mono',monospace;font-weight:500;color:var(--royal);font-size:0.92em;}
+
+/* ===== BULLET LISTS ===== */
+.content-list{list-style:none;padding:0;margin:12px 0;}
+.content-list li{position:relative;padding-right:24px;margin-bottom:10px;line-height:1.8;}
+.content-list li::before{content:'';position:absolute;right:6px;top:10px;width:8px;height:8px;background:var(--sky);border-radius:50%;}
+.sub-list{list-style:none;padding:0;margin:6px 20px 6px 0;}
+.sub-list li{position:relative;padding-right:20px;margin-bottom:6px;}
+.sub-list li::before{content:'–';position:absolute;right:4px;top:0;color:var(--slate);font-weight:700;}
+
+/* ===== FOOTER ===== */
+.site-footer{background:var(--navy);color:#fff;text-align:center;border-radius:var(--radius);margin-top:40px;padding:36px 28px;}
+.site-footer h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:10px;}
+.site-footer p{opacity:0.7;font-size:0.9rem;margin-bottom:16px;}
+.footer-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+.footer-tag{background:rgba(255,255,255,0.10);border-radius:999px;padding:4px 14px;font-size:0.78rem;color:#fff;font-family:'Cairo',sans-serif;}
+
+/* ===== CLOSING DUA ===== */
+.closing-dua{max-width:960px;margin:24px auto 40px;padding:0 24px;}
+.closing-dua-card{background:linear-gradient(135deg,#0B2447,#1B4F8A);border-top:4px solid #D4AC0D;border-radius:var(--radius);box-shadow:0 8px 32px rgba(11,36,71,0.18);padding:32px 28px;text-align:center;}
+.closing-dua-card p{font-family:'Amiri',serif;font-size:19px;line-height:2.2;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.2);}
+
+/* ===== HOME LINK ===== */
+.home-link{position:fixed;top:14px;right:14px;z-index:10001;background:rgba(255,255,255,0.93);color:var(--navy);border:1px solid rgba(11,36,71,0.28);border-radius:999px;padding:6px 16px;font-family:'Cairo',sans-serif;font-size:0.82rem;font-weight:600;text-decoration:none;box-shadow:0 2px 10px rgba(11,36,71,0.18);backdrop-filter:blur(6px);transition:background .2s;direction:ltr;}
+.home-link:hover{background:var(--pearl);}
+
+/* ===== EYE PROTECTION ===== */
+.eye-toggle{position:fixed;top:14px;left:14px;z-index:10000;direction:ltr;display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 12px;border-radius:999px;cursor:pointer;margin:0;font-family:'Cairo',sans-serif;font-weight:600;font-size:0.82rem;line-height:1.4;background:rgba(255,255,255,0.93);color:#0B2447;border:1px solid rgba(11,36,71,0.28);box-shadow:0 2px 10px rgba(11,36,71,0.18);backdrop-filter:blur(6px);transition:background .2s,border-color .2s,color .2s;}
+.eye-toggle:focus-visible{outline:2px solid #F0B429;outline-offset:2px;}
+.eye-sw{position:relative;flex:0 0 30px;width:30px;height:16px;border-radius:999px;background:#A9B4C0;transition:background .2s;}
+.eye-sw::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .2s;}
+.eye-st{min-width:2.3em;text-align:left;font-family:'JetBrains Mono',monospace;font-size:0.76rem;font-weight:500;}
+.eye-toggle[aria-pressed="true"]{background:#F8EFD6;border-color:#C9A25A;color:#5A3E00;}
+.eye-toggle[aria-pressed="true"] .eye-sw{background:#C8902E;}
+.eye-toggle[aria-pressed="true"] .eye-sw::after{transform:translateX(14px);}
+.eye-overlay{display:none;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+.hero-header{padding:40px 24px 36px;}
+.hero-header h1{font-size:clamp(1.6rem,4.5vw,2.4rem);}
+.section-title{font-size:1.4rem;}
+.example-flex{flex-direction:column;}
+.example-flex .example-fig{flex:none;max-width:100%;margin:0 auto;}
+.toc-body{grid-template-columns:1fr;}
+.given-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:650px){
+.content-wrapper,.toc-wrapper,.dua-wrapper,.closing-dua{padding:0 14px;}
+.section-icon{width:42px;height:42px;font-size:1.2rem;}
+.section-title{font-size:1.25rem;}
+}
+@media(max-width:600px){
+.toc-body{grid-template-columns:1fr;}
+.given-grid{grid-template-columns:1fr;}
+.table-scroll .scroll-hint{display:block;}
+.hero-header{padding:32px 16px 28px;}
+.meta-pills{gap:6px;}
+.meta-pill{font-size:0.72rem;padding:4px 10px;}
+}
+@media(max-width:420px){
+.eye-toggle{padding:5px 10px 5px 9px;gap:6px;font-size:0.74rem;}
+.eye-lbl{display:none;}
+}
+@media(max-width:380px){
+body{font-size:15px;}
+.section-title{font-size:1.1rem;}
+.formula-box{padding:16px 14px;}
+.example-body{padding:16px;}
+}
+
+/* ===== EYE PROTECTION ON ===== */
+@media screen{
+html[data-eye="on"]{--pearl:#EAF1F5;--mist:#D5E4EE;--white:#F8F8F5;--sky:#3A84B3;--azure:#69A8CF;--amber:#E2AD3C;--gold:#C8A21C;--mint:#27AD93;--mint-light:#D6EADC;--coral:#D9544A;--coral-light:#F0DCD6;--slate:#556576;--shadow:0 4px 20px rgba(50,44,32,0.10);--shadow-lg:0 8px 40px rgba(50,44,32,0.14);--eye-paper:#F8F8F5;}
+html[data-eye="on"] body{background:linear-gradient(160deg,#F0F1F0 0%,#ECEDEC 50%,#F1F2F1 100%);}
+html[data-eye="on"] img{filter:brightness(0.97) saturate(0.96);}
+html[data-eye="on"] .toc-card,
+html[data-eye="on"] .example-card,
+html[data-eye="on"] .dua-card,
+html[data-eye="on"] .example-body,
+html[data-eye="on"] .q-item,
+html[data-eye="on"] .styled-table,
+html[data-eye="on"] .def-box,
+html[data-eye="on"] .discussion-box,
+html[data-eye="on"] .example-question,
+html[data-eye="on"] .given-item{background:var(--eye-paper);}
+html[data-eye="on"] .note-box{background:#F6F0DF;}
+html[data-eye="on"] .dua-content{background:linear-gradient(135deg,#F6F1E0,#F7F2E6);}
+html[data-eye="on"] .formula-box .MathJax{color:#F4F4F2 !important;}
+}
+@supports(mix-blend-mode:multiply){
+html[data-eye="on"] .eye-overlay{display:block;position:fixed;inset:0;z-index:9990;pointer-events:none;background:rgba(255,225,170,0.22);mix-blend-mode:multiply;}
+}
+@media print{.eye-toggle,.eye-overlay,.home-link{display:none !important;}}
+</style>
+</head>
+<body>
+
+<!-- Eye Protection Toggle -->
+<button type="button" class="eye-toggle" id="eyeToggle" aria-pressed="false" title="Eye Protection: softer brightness and less blue light for long study sessions">
+<span class="eye-ico" aria-hidden="true">👁</span>
+<span class="eye-lbl">Eye Protection</span>
+<span class="eye-sw" aria-hidden="true"></span>
+<span class="eye-st">OFF</span>
+</button>
+<div class="eye-overlay" aria-hidden="true"></div>
+<a class="home-link" href="../index.html">&larr; Back to Home</a>
+
+<!-- Header -->
+<header class="hero-header">
+<span class="header-badge">HEAT TRANSFER · CHAPTER 1</span>
+<h1>Introduction and Basic Concepts<span class="ar-sub">مقدمة والمفاهيم الأساسية</span></h1>
+<p class="hero-subtitle">Thermodynamics, Heat Transfer Mechanisms, Energy Balance, Conduction, Convection, and Radiation</p>
+<div class="meta-pills">
+<span class="meta-pill">📘 Chapter 1</span>
+<span class="meta-pill">🔥 Conduction · Convection · Radiation</span>
+<span class="meta-pill">⚡ Energy Balance & First Law</span>
+<span class="meta-pill">📐 Fourier · Newton · Stefan–Boltzmann</span>
+</div>
+</header>
+
+<!-- Opening Dua -->
+<div class="dua-wrapper">
+<div class="dua-card">
+<button type="button" class="dua-toggle" id="duaToggle" aria-expanded="false" aria-controls="duaContent">
+<span>📖 دعاء</span>
+<span class="arrow" aria-hidden="true">▼</span>
+</button>
+<div class="dua-content" id="duaContent">
+<p>اللَّهُمَّ لا سَهْلَ إِلاَّ ما جَعَلْتَهُ سَهْلاً، وأنْتَ تَجْعَلُ الحَزْنَ إِذَا شِئْتَ سَهْلاً.</p>
+<p>رَبِّ اشْرَحْ لِي صَدْرِي * وَيَسِّرْ لِي أَمْرِي * وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي * يَفْقَهُوا قَوْلِي.</p>
+<p>اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا.</p>
+<p>اللهم إني أسألك فهم النبيين، وحفظ المرسلين والملائكة المقربين، اللهم اجعل ألسنتنا عامرة بذكرك، وقلوبنا بخشيتك، وأسرارنا بطاعتك، إنك على كل شيء قدير.</p>
+<p>يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين.</p>
+<p>اللهم يا جامع الناس ليوم لا ريب فيه، اجمع علي ضالتي.</p>
+<p>اللهم إني استودعتك ما قرأت وما حفظت وما تعلمت، فرده عند حاجتي إليه، إنك على كل شيء قدير، وحسبنا الله ونعم الوكيل.</p>
+<p>أستغفر الله، أستغفر الله، أستغفر الله.</p>
+</div>
+</div>
+</div>
+
+<!-- Table of Contents -->
+<div class="toc-wrapper">
+<div class="toc-card">
+<div class="toc-header">📑 Table of Contents — جدول المحتويات</div>
+<div class="toc-body">
+<a href="#sec1" class="toc-item"><span class="toc-num">1</span>Thermodynamics vs. Heat Transfer</a>
+<a href="#sec2" class="toc-item"><span class="toc-num">2</span>Heat and the Driving Force</a>
+<a href="#sec3" class="toc-item"><span class="toc-num">3</span>Thermodynamic Laws</a>
+<a href="#sec4" class="toc-item"><span class="toc-num">4</span>Basic Mechanisms of Heat Transfer</a>
+<a href="#sec5" class="toc-item"><span class="toc-num">5</span>Applications & Real Systems</a>
+<a href="#sec6" class="toc-item"><span class="toc-num">6</span>Historical Background</a>
+<a href="#sec7" class="toc-item"><span class="toc-num">7</span>Engineering Heat Transfer & Modeling</a>
+<a href="#sec8" class="toc-item"><span class="toc-num">8</span>Energy, Internal Energy & Enthalpy</a>
+<a href="#sec9" class="toc-item"><span class="toc-num">9</span>Specific Heats & Properties</a>
+<a href="#sec10" class="toc-item"><span class="toc-num">10</span>Energy Transfer & First Law</a>
+<a href="#sec11" class="toc-item"><span class="toc-num">11</span>Conduction — Fourier's Law</a>
+<a href="#sec12" class="toc-item"><span class="toc-num">12</span>Thermal Conductivity & Diffusivity</a>
+<a href="#sec13" class="toc-item"><span class="toc-num">13</span>Convection — Newton's Law of Cooling</a>
+<a href="#sec14" class="toc-item"><span class="toc-num">14</span>Radiation — Stefan–Boltzmann Law</a>
+<a href="#sec15" class="toc-item"><span class="toc-num">15</span>Simultaneous Heat Transfer Mechanisms</a>
+<a href="#sec16" class="toc-item"><span class="toc-num">16</span>Prevention through Design (PtD)</a>
+<a href="#sec17" class="toc-item"><span class="toc-num">17</span>Problem-Solving Technique</a>
+</div>
+</div>
+</div>
+
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="content-wrapper">
+
+<!-- ===================== SECTION 1 ===================== -->
+<section class="section" id="sec1">
+<div class="section-header">
+<div class="section-icon">🔄</div>
+<div class="section-title-group">
+<h2 class="section-title">Thermodynamics vs. Heat Transfer</h2>
+<span class="section-subtitle">COMPARISON · ENERGY QUANTITIES vs. RATES</span>
+</div>
+</div>
+
+<div class="def-box">
+<div class="def-title">Thermodynamics</div>
+<div class="def-en">Thermodynamics determines the amount of heat transfer required when a system changes from one equilibrium state to another. It does not determine how long the process takes.</div>
+<p>يهتم علم <span class="term">Thermodynamics</span> بتحديد كمية الطاقة المنتقلة وحفظ الطاقة (<span class="term">Conservation of Energy</span>)، لكنه لا يحدد الزمن الذي تستغرقه عملية الانتقال.</p>
+</div>
+
+<div class="def-box">
+<div class="def-title">Heat Transfer</div>
+<div class="def-en">Heat Transfer studies the rate of heat transfer — how fast heating/cooling occurs, how long a process takes, and how temperature changes with time.</div>
+<p>يدرس علم <span class="term">Heat Transfer</span> معدل انتقال الحرارة، ويُعبَّر عنه رياضيًا بالمعادلة:</p>
+</div>
+
+<div class="formula-box">
+<span class="formula-label">Heat Transfer Rate</span>
+\[\dot{Q} = \frac{dQ}{dt}\]
+</div>
+
+<p>وبالتالي يمكن لعلم <span class="term">Heat Transfer</span> تحديد:</p>
+<ul class="content-list">
+<li>مدى سرعة التسخين أو التبريد (<span class="term">how fast heating/cooling occurs</span>).</li>
+<li>الزمن الذي تستغرقه العملية (<span class="term">how long a process takes</span>).</li>
+<li>كيف تتغير درجة الحرارة مع الزمن (<span class="term">how temperature changes with time</span>).</li>
+</ul>
+
+<div class="note-box">
+<div class="note-title">💡 مثال توضيحي</div>
+<p>يمكن لعلم <span class="term">Thermodynamics</span> تحديد كمية الحرارة المفقودة عندما يبرد كوب قهوة ساخن من \(90^\circ C\) إلى \(80^\circ C\)، لكن علم <span class="term">Heat Transfer</span> هو الذي يحدد <strong>كم من الوقت</strong> يستغرق هذا التبريد.</p>
+</div>
+
+<div class="important-box">
+<div class="imp-title">⚡ العلاقة الجوهرية</div>
+<p><strong><span class="term">Thermodynamics</span></strong> → <em>How much energy?</em> (كم من الطاقة؟)</p>
+<p><strong><span class="term">Heat Transfer</span></strong> → <em>How fast is the energy transferred?</em> (ما مدى سرعة انتقال الطاقة؟)</p>
+<p>يتعامل <span class="term">Thermodynamics</span> أساسًا مع حالات الاتزان (<span class="term">equilibrium states</span>)، بينما <span class="term">Heat Transfer</span> ظاهرة لا اتزانية (<span class="term">nonequilibrium phenomenon</span>) لأن انتقال الحرارة يتطلب وجود فرق في درجة الحرارة.</p>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 2 ===================== -->
+<section class="section" id="sec2">
+<div class="section-header">
+<div class="section-icon">🌡️</div>
+<div class="section-title-group">
+<h2 class="section-title">Heat and the Driving Force for Heat Transfer</h2>
+<span class="section-subtitle">TEMPERATURE DIFFERENCE · TEMPERATURE GRADIENT</span>
+</div>
+</div>
+
+<div class="def-box">
+<div class="def-title">Heat</div>
+<div class="def-en">Heat is the form of energy that can be transferred from one system to another as a result of a temperature difference.</div>
+<p>الحرارة هي شكل من أشكال الطاقة ينتقل دائمًا تلقائيًا من المنطقة ذات <span class="term">higher temperature</span> إلى المنطقة ذات <span class="term">lower temperature</span>، ويتوقف الانتقال عندما يصل النظامان إلى <span class="term">thermal equilibrium</span> (نفس درجة الحرارة).</p>
+</div>
+
+<div class="formula-box">
+<span class="formula-label">Basic Requirement for Net Heat Transfer</span>
+\[\boxed{\Delta T \neq 0 \quad \text{is required for net heat transfer}}\]
+</div>
+
+<p>فرق درجة الحرارة (<span class="term">Temperature Difference</span>) هو القوة الدافعة (<span class="term">Driving Force</span>) لانتقال الحرارة، وذلك بالتشابه مع:</p>
+<ul class="content-list">
+<li><span class="term">Voltage Difference</span> → القوة الدافعة للتيار الكهربائي.</li>
+<li><span class="term">Pressure Difference</span> → القوة الدافعة لسريان المائع.</li>
+</ul>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.2rem;margin:24px 0 12px;">Temperature Gradient</h3>
+<p>يعتمد معدل انتقال الحرارة على الـ<span class="term">Temperature Gradient</span>:</p>
+<div class="formula-box">
+<span class="formula-label">Temperature Gradient</span>
+\[\text{Temperature Gradient} = \frac{\Delta T}{\Delta x}\]
+</div>
+<p>كلما زاد <span class="term">Temperature Gradient</span>، زاد معدل انتقال الحرارة في ذلك الاتجاه.</p>
+
+<figure class="figure-container figure-md">
+<img src="images/figure-1-02.jpg" alt="Figure 1-2: Temperature gradient illustration">
+<figcaption>Figure 1–2: توضيح Temperature Gradient وعلاقته بمعدل انتقال الحرارة</figcaption>
+</figure>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 3 ===================== -->
+<section class="section" id="sec3">
+<div class="section-header">
+<div class="section-icon">⚖️</div>
+<div class="section-title-group">
+<h2 class="section-title">Thermodynamic Laws in Heat Transfer</h2>
+<span class="section-subtitle">FIRST LAW · SECOND LAW</span>
+</div>
+</div>
+
+<div class="def-box">
+<div class="def-title">First Law of Thermodynamics</div>
+<div class="def-en">Energy is conserved: The rate of energy transfer into a system must equal the rate of increase of the system's energy, accounting for other energy transfers as applicable.</div>
+<p>يوفر <span class="term">First Law</span> إطار توازن الطاقة (<span class="term">Energy-Balance Framework</span>) الذي يُستخدم في تحليل <span class="term">Heat Transfer</span>.</p>
+</div>
+
+<div class="def-box">
+<div class="def-title">Second Law of Thermodynamics</div>
+<div class="def-en">Heat transfer occurs in the direction of decreasing temperature. No spontaneous net heat transfer occurs from a colder body to a hotter body.</div>
+</div>
+
+<div class="formula-box">
+<span class="formula-label">Direction of Spontaneous Heat Transfer</span>
+\[\boxed{T_{\text{hot}} \rightarrow T_{\text{cold}}}\]
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 4 ===================== -->
+<section class="section" id="sec4">
+<div class="section-header">
+<div class="section-icon">🔥</div>
+<div class="section-title-group">
+<h2 class="section-title">Basic Mechanisms of Heat Transfer</h2>
+<span class="section-subtitle">CONDUCTION · CONVECTION · RADIATION</span>
+</div>
+</div>
+
+<p>توجد ثلاثة أنماط (<span class="term">modes</span>) أساسية لانتقال الحرارة، وجميعها تتطلب وجود <span class="term">Temperature Difference</span>، وتنقل الطاقة من <span class="term">high-temperature medium</span> إلى <span class="term">low-temperature medium</span>:</p>
+
+<div class="def-box">
+<div class="def-title">A. Conduction — التوصيل</div>
+<div class="def-en">Conduction is the transfer of energy from the more energetic particles of a substance to adjacent less energetic particles as a result of interactions between the particles.</div>
+<p>يحدث <span class="term">Conduction</span> عبر تفاعلات بين الجسيمات (<span class="term">particle-to-particle interactions</span>) ولا يتطلب حركة إجمالية للمادة (<span class="term">bulk motion</span>). وهو مهم في المواد الصلبة (<span class="term">solids</span>) لكنه يحدث أيضًا في السوائل والغازات.</p>
+</div>
+
+<div class="def-box">
+<div class="def-title">B. Convection — الحمل</div>
+<div class="def-en">Convection is the mode of heat transfer between a solid surface and an adjacent liquid or gas that is in motion, involving the combined effects of conduction and fluid motion.</div>
+<p>يتطلب <span class="term">Convection</span> وجود مائع متحرك (<span class="term">moving fluid</span>) ويجمع بين <span class="term">Conduction</span> بالقرب من السطح وحركة المائع (<span class="term">fluid motion</span>) التي تنقل الطاقة.</p>
+</div>
+
+<div class="def-box">
+<div class="def-title">C. Radiation — الإشعاع</div>
+<div class="def-en">Radiation is the energy emitted by matter in the form of electromagnetic waves (or photons) as a result of changes in the electronic configurations of atoms or molecules.</div>
+<p>ينتقل <span class="term">Radiation</span> عبر الموجات الكهرومغناطيسية (<span class="term">electromagnetic waves</span>) أو الفوتونات (<span class="term">photons</span>)، وعلى عكس <span class="term">Conduction</span> و<span class="term">Convection</span>، لا يحتاج إلى وسط مادي (<span class="term">material medium</span>).</p>
+</div>
+
+<figure class="figure-container figure-md">
+<img src="images/figure-1-09.png" alt="Figure 1-9: Three modes of heat transfer">
+<figcaption>Figure 1–9: الأنماط الثلاثة الأساسية لانتقال الحرارة</figcaption>
+</figure>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 5 ===================== -->
+<section class="section" id="sec5">
+<div class="section-header">
+<div class="section-icon">🏗️</div>
+<div class="section-title-group">
+<h2 class="section-title">Heat Transfer in Real Systems & Applications</h2>
+<span class="section-subtitle">SIMULTANEOUS MECHANISMS · ENGINEERING APPLICATIONS</span>
+</div>
+</div>
+
+<p>في الأنظمة العملية، يمكن أن تعمل الآليات الثلاث في وقت واحد. فمثلاً، الحرارة المغادرة لسطح مُسخَّن قد تشمل:</p>
+<ul class="content-list">
+<li><span class="term">Conduction</span> عبر جدار صلب.</li>
+<li><span class="term">Convection</span> بين الجدار والهواء المحيط.</li>
+<li><span class="term">Radiation</span> من الجدار إلى الأجسام المحيطة.</li>
+</ul>
+<p>لذلك، مسائل <span class="term">Heat Transfer</span> الحقيقية غالبًا تحتاج تحليلًا لأكثر من نمط واحد.</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.2rem;margin:24px 0 12px;">Application Areas of Heat Transfer</h3>
+<p>يدخل <span class="term">Heat Transfer</span> في العديد من الأنظمة الهندسية والعمليات اليومية:</p>
+<ul class="content-list">
+<li>جسم الإنسان: يفقد حرارة باستمرار إلى المحيط، والراحة الحرارية (<span class="term">Thermal Comfort</span>) تعتمد بشدة على معدل فقد الحرارة.</li>
+<li>أنظمة التدفئة والتكييف (<span class="term">HVAC</span>).</li>
+<li>الثلاجات والمجمدات (<span class="term">Refrigerators & Freezers</span>).</li>
+<li>سخانات المياه (<span class="term">Water Heaters</span>).</li>
+<li>الأجهزة الإلكترونية والحواسيب (<span class="term">Computers & Electronic Equipment</span>).</li>
+<li>مشعات السيارات (<span class="term">Car Radiators</span>).</li>
+<li>المجمعات الشمسية (<span class="term">Solar Collectors</span>).</li>
+<li>محطات توليد الطاقة (<span class="term">Power Plants</span>).</li>
+<li>المركبات الفضائية (<span class="term">Spacecraft</span>).</li>
+</ul>
+
+<div class="note-box">
+<div class="note-title">🏠 المباني الموفرة للطاقة</div>
+<p>يُستخدم تحليل <span class="term">Heat Transfer</span> لتقليل فقد الحرارة في الشتاء واكتساب الحرارة في الصيف، وتحديد السمك الأمثل للعزل (<span class="term">insulation thickness</span>) للجدران والأسطح والأنابيب وسخانات المياه. تصميم العزل ليس حراريًا فقط؛ بل يأخذ في الاعتبار الجوانب الاقتصادية أيضًا لأن زيادة سمك العزل لها تكلفة.</p>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.2rem;margin:24px 0 12px;">Core Heat-Transfer Laws</h3>
+<div class="table-scroll">
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+<table class="styled-table">
+<thead><tr><th>Mode</th><th>Fundamental Relation</th></tr></thead>
+<tbody>
+<tr><td>Conduction</td><td>Fourier's Law of Heat Conduction</td></tr>
+<tr><td>Convection</td><td>Newton's Law of Cooling</td></tr>
+<tr><td>Radiation</td><td>Stefan–Boltzmann Law of Radiation</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 6 ===================== -->
+<section class="section" id="sec6">
+<div class="section-header">
+<div class="section-icon">📜</div>
+<div class="section-title-group">
+<h2 class="section-title">Historical Understanding of Heat</h2>
+<span class="section-subtitle">KINETIC THEORY · CALORIC THEORY · RUMFORD & JOULE</span>
+</div>
+</div>
+
+<div class="def-box">
+<div class="def-title">Kinetic Theory</div>
+<div class="def-en">Heat is the energy associated with the random motion of atoms and molecules. Higher temperature → greater molecular activity and higher molecular kinetic energy.</div>
+<p>بحلول منتصف القرن التاسع عشر، قدمت <span class="term">Kinetic Theory</span> التفسير الفيزيائي الصحيح للحرارة: تُعامل الجزيئات كجسيمات في حركة مستمرة تمتلك <span class="term">kinetic energy</span>.</p>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Caloric Theory — مفهوم تاريخي</h3>
+<p>قبل قبول التفسير الحركي، كانت النظرية السائدة هي <span class="term">Caloric Theory</span> التي اقترحها <strong>Antoine Lavoisier</strong> عام 1789:</p>
+<ul class="content-list">
+<li>اعتبرت الحرارة مائعًا غير مرئي عديم الكتلة واللون والرائحة يسمى <span class="term">Caloric</span>.</li>
+<li><span class="term">Caloric</span> ينتقل من الأجسام الأدفأ إلى الأبرد.</li>
+<li>إضافة <span class="term">Caloric</span> → ارتفاع درجة الحرارة. إزالته → انخفاض درجة الحرارة.</li>
+</ul>
+<p>رُفضت هذه النظرية لأنها لم تستطع تفسير <strong>التوليد المستمر للحرارة بالاحتكاك</strong>.</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Rumford and Joule</h3>
+<p><strong>Benjamin Thompson (Count Rumford)</strong> أثبت عام 1798 أن الحرارة يمكن توليدها باستمرار عبر الاحتكاك — مما يتناقض مع فكرة أن الحرارة مادة محفوظة.</p>
+<p><strong>James P. Joule</strong> أجرى تجارب دقيقة نُشرت عام 1843 أثبتت <span class="term">Mechanical Equivalence of Heat</span>: يمكن تحويل الطاقة الميكانيكية/الكهربائية إلى مقدار مكافئ من الطاقة الحرارية. أسهم عمله في تأسيس <span class="term">First Law of Thermodynamics</span>، ووحدة الطاقة <span class="term">Joule (J)</span> سُميت تكريمًا له.</p>
+
+<div class="note-box">
+<div class="note-title">📌 ملاحظة تاريخية</div>
+<p><span class="term">Caloric Theory</span> عفا عليها الزمن علميًا، لكن تطورها التاريخي أسهم في بناء علمي <span class="term">Thermodynamics</span> و<span class="term">Heat Transfer</span>.</p>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 7 ===================== -->
+<section class="section" id="sec7">
+<div class="section-header">
+<div class="section-icon">⚙️</div>
+<div class="section-title-group">
+<h2 class="section-title">Engineering Heat Transfer & Modeling</h2>
+<span class="section-subtitle">RATING · SIZING · EXPERIMENTAL · ANALYTICAL · MATHEMATICAL MODELING</span>
+</div>
+</div>
+
+<p>يُستخدم تحليل <span class="term">Heat Transfer</span> بشكل أساسي في تصميم معدات مثل: <span class="term">Heat Exchangers</span>، <span class="term">Boilers</span>، <span class="term">Condensers</span>، <span class="term">Radiators</span>، <span class="term">Furnaces</span>، <span class="term">Refrigerators</span>، و<span class="term">Solar Collectors</span>.</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Rating vs. Sizing Problems</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;">
+<div class="def-box" style="margin:0;">
+<div class="def-title">Rating Problem</div>
+<p>تحديد معدل انتقال الحرارة لنظام <strong>موجود</strong> عندما يكون فرق درجة الحرارة محددًا.</p>
+</div>
+<div class="def-box" style="margin:0;">
+<div class="def-title">Sizing Problem</div>
+<p>تحديد الحجم المطلوب لنظام لنقل مقدار/معدل محدد من الحرارة عند فرق درجة حرارة معين.</p>
+</div>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Experimental vs. Analytical Approach</h3>
+<div class="table-scroll">
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+<table class="styled-table">
+<thead><tr><th>المعيار</th><th>Experimental Approach</th><th>Analytical Approach</th></tr></thead>
+<tbody>
+<tr><td class="text-cell">الطريقة</td><td>اختبار وقياس على النظام الفعلي</td><td>تحليل ونماذج رياضية/عددية</td></tr>
+<tr><td class="text-cell">المميزات</td><td>تتعامل مع النظام الحقيقي مباشرة</td><td>أسرع وأقل تكلفة، تُطبَّق قبل وجود النظام</td></tr>
+<tr><td class="text-cell">العيوب</td><td>مكلفة، تستغرق وقتًا، قد تكون غير عملية</td><td>تعتمد على دقة الافتراضات والنموذج</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="important-box">
+<div class="imp-title">⚡ Best Engineering Practice</div>
+<div class="eq-scroll">\[\boxed{\text{Analysis} \rightarrow \text{reduce possible choices} \rightarrow \text{Experimental verification}}\]</div>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Mathematical Modeling Procedure</h3>
+<p><strong>Step 1 — Formulate the Problem:</strong></p>
+<ul class="content-list">
+<li>تحديد جميع المتغيرات المؤثرة بشكل كبير.</li>
+<li>وضع افتراضات وتقريبات معقولة.</li>
+<li>تحديد العلاقة المتبادلة بين المتغيرات.</li>
+<li>تطبيق القوانين الفيزيائية المناسبة وصياغة المشكلة رياضيًا.</li>
+</ul>
+<p><strong>Step 2 — Solve and Interpret:</strong></p>
+<ul class="content-list">
+<li>حل النموذج الرياضي بالطريقة المناسبة.</li>
+<li>تفسير النتائج في سياق المشكلة الفيزيائية الأصلية.</li>
+</ul>
+
+<div class="note-box">
+<div class="note-title">💡 المبدأ الجوهري في النمذجة</div>
+<div class="eq-scroll">\[\boxed{\text{The simplest model that gives adequate results}}\]</div>
+<p>النموذج المعقد جدًا ليس بالضرورة أفضل إذا كان صعبًا أو مكلفًا حله دون ضرورة.</p>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Importance of Assumptions</h3>
+<p>دقة النتيجة التحليلية تعتمد مباشرة على صلاحية الافتراضات المستخدمة:</p>
+<ul class="content-list">
+<li>نموذج بسيط وواقعي يمكن أن يعطي نتائج دقيقة كافية للأغراض الهندسية.</li>
+<li>نموذج غير واقعي ينتج نتائج غير دقيقة أو مرفوضة.</li>
+<li>إذا تعارضت النتيجة مع السلوك الفيزيائي، يُحسَّن النموذج بإزالة الافتراضات المشكوك فيها.</li>
+</ul>
+
+<div class="formula-box">
+<span class="formula-label">More Realistic Model</span>
+\[\boxed{\text{More realistic model} \Rightarrow \text{usually more complexity}}\]
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Examples of Appropriate Simplification</h3>
+<p>يمكن تقريب حبة بطاطس أو قطعة لحم مستديرة على أنها <span class="term">spherical solid</span> بخصائص تقترب من خصائص الماء. هذا النموذج بسيط لكنه قد يكون دقيقًا بما يكفي لأغراض عملية كثيرة.</p>
+<figure class="figure-container figure-sm">
+<img src="images/figure-1-07.png" alt="Figure 1-7: Baking potato approximation">
+<figcaption>Figure 1–7: تقريب حبة البطاطس كجسم كروي</figcaption>
+</figure>
+
+<p>عند تحديد حجم سخان مبنى: تُحسب خسائر الحرارة تحت أسوأ الظروف المتوقعة، ثم يُختار فرن قادر على تعويضها. قد يُختار فرن أكبر قليلًا كهامش أمان أو للتوسع المستقبلي.</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Designing for Actual Operating Conditions</h3>
+<p>يجب اختيار معدات <span class="term">Heat Transfer</span> بناءً على ظروف التشغيل الفعلية/المتوقعة وليس أداء الحالة الجديدة المثالية.</p>
+<div class="note-box">
+<div class="note-title">🔧 مثال: Heat Exchanger Fouling</div>
+<p>عند تعامل <span class="term">Heat Exchanger</span> مع ماء عسر:</p>
+<div class="eq-scroll">\[\text{Calcium deposits} \rightarrow \text{Fouling} \rightarrow \text{Reduced heat-transfer performance}\]</div>
+<p>لذلك يجب تصميم/اختيار الـ<span class="term">Heat Exchanger</span> مع الأخذ بعين الاعتبار <span class="term">Fouling</span> المتوقع بمرور الوقت.</p>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 8 ===================== -->
+<section class="section" id="sec8">
+<div class="section-header">
+<div class="section-icon">⚡</div>
+<div class="section-title-group">
+<h2 class="section-title">Energy, Internal Energy & Enthalpy</h2>
+<span class="section-subtitle">TOTAL ENERGY · INTERNAL ENERGY · SENSIBLE · LATENT · ENTHALPY</span>
+</div>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Forms of Energy</h3>
+<p>يمكن أن توجد الطاقة بأشكال متعددة: <span class="term">Thermal</span>، <span class="term">Mechanical</span>، <span class="term">Kinetic</span>، <span class="term">Potential</span>، <span class="term">Electrical</span>، <span class="term">Magnetic</span>، <span class="term">Chemical</span>، <span class="term">Nuclear</span>.</p>
+<p>مجموع جميع الأشكال هو الطاقة الكلية للنظام:</p>
+<div class="formula-box">
+<span class="formula-label">Total Energy</span>
+\[E = \text{Total energy} \qquad e = \frac{E}{m}\]
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Internal Energy</h3>
+<div class="def-box">
+<div class="def-title">Internal Energy</div>
+<div class="def-en">The sum of all microscopic forms of energy — energy associated with the molecular structure and molecular activity of a system.</div>
+</div>
+<div class="formula-box">
+<span class="formula-label">Internal Energy</span>
+\[U = \text{Internal energy} \qquad u = \frac{U}{m}\]
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:20px 0 10px;">Sensible Energy</h3>
+<p>الجزء من <span class="term">Internal Energy</span> المرتبط بـ<span class="term">kinetic energy of molecules</span> يسمى <span class="term">Sensible Energy (Sensible Heat)</span>. كلما ارتفعت درجة الحرارة، زادت سرعة/نشاط الجزيئات، وزادت <span class="term">Internal Energy</span>:</p>
+<div class="formula-box">
+<span class="formula-label">Temperature–Energy Relationship</span>
+\[T\uparrow \;\Rightarrow\; \text{molecular kinetic energy}\uparrow \;\Rightarrow\; U\uparrow\]
+</div>
+<p>تتضمن <span class="term">Internal Energy</span> أيضًا الطاقة المرتبطة بالقوى بين الجزيئات (<span class="term">intermolecular forces</span>).</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:20px 0 10px;">Latent Energy</h3>
+<p>القوى بين الجزيئات تكون أقوى في المواد الصلبة وأضعف في الغازات. عند إضافة طاقة كافية للتغلب على هذه القوى، يحدث تغير في الطور (<span class="term">phase change</span>). الطاقة الداخلية المرتبطة بطور النظام تسمى <span class="term">Latent Energy (Latent Heat)</span>.</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:20px 0 10px;">Chemical and Nuclear Energy</h3>
+<ul class="content-list">
+<li><span class="term">Chemical (Bond) Energy</span>: الطاقة المرتبطة بالروابط بين الذرات داخل الجزيئات. تُمتص أو تُطلق أثناء التفاعلات الكيميائية.</li>
+<li><span class="term">Nuclear Energy</span>: الطاقة المرتبطة بالروابط داخل نواة الذرة. تُمتص أو تُطلق أثناء التفاعلات النووية.</li>
+</ul>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Enthalpy</h3>
+<div class="def-box">
+<div class="def-title">Enthalpy</div>
+<div class="def-en">For flowing fluids, the combination \(u + Pv\) occurs frequently, so it is defined as enthalpy: \(h = u + Pv\)</div>
+<p>حيث \(u\) هي <span class="term">internal energy per unit mass</span>، و \(Pv\) هي <span class="term">flow energy (flow work)</span> اللازمة لدفع المائع والحفاظ على السريان. تُعتبر \(h\) ملائمة لتمثيل <span class="term">microscopic energy</span> لمائع متدفق.</p>
+</div>
+<div class="formula-box">
+<span class="formula-label">Enthalpy Definition</span>
+\[\boxed{h = u + Pv}\]
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Energy Units</h3>
+<div class="table-scroll">
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+<table class="styled-table">
+<thead><tr><th>النظام</th><th>الوحدة</th><th>التعريف / التحويل</th></tr></thead>
+<tbody>
+<tr><td>SI</td><td>Joule (J)</td><td>\(1\,\text{kJ} = 1000\,\text{J}\)</td></tr>
+<tr><td>English</td><td>Btu</td><td>الطاقة اللازمة لرفع حرارة 1 lbm ماء عند \(60^\circ F\) بمقدار \(1^\circ F\)</td></tr>
+<tr><td>Conversion</td><td>—</td><td>\(1\,\text{Btu} = 1.055056\,\text{kJ}\)</td></tr>
+<tr><td>Calorie</td><td>cal</td><td>\(1\,\text{cal} = 4.1868\,\text{J}\)</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="important-box">
+<div class="imp-title">⚡ سلسلة المفاهيم</div>
+<div class="eq-scroll">\[\boxed{\text{Energy forms} \rightarrow \text{Internal energy} \rightarrow \text{Temperature / molecular activity} \rightarrow \text{Temperature difference} \rightarrow \text{Heat transfer}}\]</div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 9 ===================== -->
+<section class="section" id="sec9">
+<div class="section-header">
+<div class="section-icon">🧪</div>
+<div class="section-title-group">
+<h2 class="section-title">Specific Heats & Properties</h2>
+<span class="section-subtitle">IDEAL GAS · cv · cp · INCOMPRESSIBLE SUBSTANCES</span>
+</div>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:0 0 10px;">Ideal Gas Relation</h3>
+<div class="formula-box">
+<span class="formula-label">Ideal Gas Law</span>
+\[Pv = RT \qquad \text{or} \qquad P = \rho RT\]
+</div>
+<p>حيث \(P\) الضغط المطلق، \(v\) الحجم النوعي، \(T\) درجة الحرارة المطلقة، \(\rho\) الكثافة، و \(R\) ثابت الغاز. الغازات الحقيقية تقترب من سلوك <span class="term">Ideal Gas</span> عند الكثافة المنخفضة (ضغط منخفض ودرجة حرارة عالية). الغازات الكثيفة مثل البخار قرب التشبع أو بخار المبردات لا تُقرَّب كغازات مثالية.</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Specific Heat</h3>
+<div class="def-box">
+<div class="def-title">Specific Heat</div>
+<div class="def-en">Specific heat is the energy required to raise the temperature of a unit mass of a substance by one degree in a specified way.</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;">
+<div class="formula-box" style="margin:0;">
+<span class="formula-label">Constant Volume — \(c_v\)</span>
+\[c_v\]
+<p style="font-size:0.82rem;color:var(--azure);margin-top:8px;">الطاقة اللازمة لرفع حرارة وحدة الكتلة درجة واحدة عند ثبات الحجم</p>
+</div>
+<div class="formula-box" style="margin:0;">
+<span class="formula-label">Constant Pressure — \(c_p\)</span>
+\[c_p\]
+<p style="font-size:0.82rem;color:var(--azure);margin-top:8px;">الطاقة اللازمة لرفع حرارة وحدة الكتلة درجة واحدة عند ثبات الضغط</p>
+</div>
+</div>
+
+<p>بشكل عام: \(c_p > c_v\) لأن عند ثبات الضغط تتمدد المادة ويُستهلك جزء من الطاقة في شغل التمدد.</p>
+
+<div class="formula-box">
+<span class="formula-label">For an Ideal Gas</span>
+\[c_p = c_v + R\]
+</div>
+<p>الوحدات الشائعة: <span class="mono">kJ/(kg·K)</span> أو <span class="mono">kJ/(kg·°C)</span>، وهما متكافئتان عدديًا لأن \(\Delta T(K) = \Delta T(^\circ C)\).</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Specific Heat Dependence</h3>
+<ul class="content-list">
+<li>بشكل عام، تعتمد <span class="term">Specific Heats</span> على درجة الحرارة والضغط.</li>
+<li>لـ<span class="term">Ideal Gas</span>: تعتمد على درجة الحرارة فقط.</li>
+<li>عند الضغط المنخفض، الغازات الحقيقية تقترب من السلوك المثالي.</li>
+</ul>
+
+<div class="formula-box">
+<span class="formula-label">Changes for an Ideal Gas</span>
+\[du = c_v\,dT \qquad dh = c_p\,dT\]
+\[\Delta u = c_{v,avg}\,\Delta T \qquad \Delta h = c_{p,avg}\,\Delta T\]
+\[\Delta U = m\,c_{v,avg}\,\Delta T \qquad \Delta H = m\,c_{p,avg}\,\Delta T\]
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Incompressible Substances</h3>
+<div class="def-box">
+<div class="def-title">Incompressible Substance</div>
+<div class="def-en">A substance whose specific volume (or density) does not appreciably change with temperature or pressure.</div>
+<p>المواد الصلبة والسوائل يمكن تقريبها عادةً على أنها <span class="term">incompressible</span>. وفي هذه الحالة:</p>
+</div>
+
+<div class="formula-box">
+<span class="formula-label">Incompressible Substance</span>
+\[c_p \approx c_v = c \qquad \Rightarrow \qquad \Delta U = m\,c_{avg}\,\Delta T\]
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 10 ===================== -->
+<section class="section" id="sec10">
+<div class="section-header">
+<div class="section-icon">🔋</div>
+<div class="section-title-group">
+<h2 class="section-title">Energy Transfer & First Law of Thermodynamics</h2>
+<span class="section-subtitle">HEAT · WORK · ENERGY BALANCE · CLOSED SYSTEMS · STEADY-FLOW · SURFACE</span>
+</div>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:0 0 10px;">Energy Transfer Mechanisms</h3>
+<p>يمكن للطاقة أن تعبر حدود النظام بآليتين أساسيتين:</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;">
+<div class="def-box" style="margin:0;">
+<div class="def-title">Heat Transfer \(Q\)</div>
+<p>تفاعل طاقي ناتج عن فرق في درجة الحرارة.</p>
+</div>
+<div class="def-box" style="margin:0;">
+<div class="def-title">Work \(W\)</div>
+<p>أي تفاعل طاقي ليس مدفوعًا بفرق درجة الحرارة (مثل مكبس متحرك، عمود دوار، تيار كهربائي).</p>
+</div>
+</div>
+
+<div class="formula-box">
+<span class="formula-label">Power & Unit Conversions</span>
+\[\dot{W} = \frac{dW}{dt} \qquad 1\,W = 1\,J/s \qquad 1\,hp = 746\,W\]
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Heat Transfer Rate & Heat Flux</h3>
+<div class="formula-box">
+<span class="formula-label">Heat Transfer Rate</span>
+\[\dot{Q} = \frac{dQ}{dt} \quad (W) \qquad Q = \int_0^{\Delta t} \dot{Q}\,dt \qquad \text{If } \dot{Q} = \text{const}: \; Q = \dot{Q}\,\Delta t\]
+</div>
+
+<div class="def-box">
+<div class="def-title">Heat Flux</div>
+<div class="def-en">Heat flux is the heat-transfer rate per unit area normal to the direction of heat transfer.</div>
+</div>
+<div class="formula-box">
+<span class="formula-label">Heat Flux</span>
+\[\dot{q} = \frac{\dot{Q}}{A} \qquad (W/m^2)\]
+</div>
+<p><span class="term">Heat Flux</span> يمكن أن يتغير مع الزمن والموقع على السطح.</p>
+
+<!-- EXAMPLE 1-1 -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–1: Heating of a Copper Ball</div>
+<div class="example-body">
+<div class="example-question">
+A 10-cm-diameter copper ball is to be heated from 100°C to an average temperature of 150°C in 30 minutes. Taking the average density and specific heat of copper in this temperature range to be ρ = 8950 kg/m³ and c<sub>p</sub> = 0.395 kJ/kg·°C, respectively, determine (a) the total amount of heat transfer to the copper ball, (b) the average rate of heat transfer to the ball, and (c) the average heat flux.
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Given</h4>
+<div class="given-grid">
+<div class="given-item">\(D = 0.1\,m\)</div>
+<div class="given-item">\(T_1 = 100°C\)</div>
+<div class="given-item">\(T_2 = 150°C\)</div>
+<div class="given-item">\(\Delta t = 30\,min = 1800\,s\)</div>
+<div class="given-item">\(\rho = 8950\,kg/m^3\)</div>
+<div class="given-item">\(c_p = 0.395\,kJ/(kg \cdot °C)\)</div>
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+
+<div class="solution-step">
+<div class="step-num">1</div>
+<div class="step-content">
+<p><strong>Mass of the copper ball:</strong></p>
+<div class="eq-scroll">\[m = \rho V = \rho \frac{\pi}{6}D^3 = (8950)\frac{\pi}{6}(0.1)^3 = 4.686\,kg\]</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">2</div>
+<div class="step-content">
+<p><strong>(a) Total heat transfer:</strong></p>
+<div class="eq-scroll">\[Q = \Delta U = m\,c_{avg}(T_2 - T_1) = (4.686)(0.395)(150 - 100)\]</div>
+<div class="answer-badge">\(Q = 92.6\,kJ\)</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">3</div>
+<div class="step-content">
+<p><strong>(b) Average rate of heat transfer:</strong></p>
+<div class="eq-scroll">\[\dot{Q}_{avg} = \frac{Q}{\Delta t} = \frac{92.6\,kJ}{1800\,s} = 0.0514\,kJ/s\]</div>
+<div class="answer-badge">\(\dot{Q}_{avg} = 51.4\,W\)</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">4</div>
+<div class="step-content">
+<p><strong>(c) Average heat flux:</strong></p>
+<div class="eq-scroll">\[\dot{q}_{avg} = \frac{\dot{Q}_{avg}}{A} = \frac{\dot{Q}_{avg}}{\pi D^2} = \frac{51.4}{\pi(0.1)^2}\]</div>
+<div class="answer-badge">\(\dot{q}_{avg} = 1636\,W/m^2\)</div>
+</div>
+</div>
+
+<div class="discussion-box">
+<div class="disc-title">💬 Discussion</div>
+<p><span class="term">Heat Flux</span> قد يتغير مع الموقع على السطح. القيمة المحسوبة هي المتوسط على كامل سطح الكرة.</p>
+</div>
+</div>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">First Law of Thermodynamics — Energy Balance</h3>
+<div class="def-box">
+<div class="def-title">Conservation of Energy Principle</div>
+<div class="def-en">Energy can neither be created nor destroyed during a process; it can only change forms. The net change in the total energy of the system during a process equals the difference between the total energy entering and the total energy leaving the system.</div>
+</div>
+
+<div class="formula-box">
+<span class="formula-label">General Energy Balance</span>
+\[E_{in} - E_{out} = \Delta E_{system} \quad (J)\]
+\[\dot{E}_{in} - \dot{E}_{out} = \frac{dE_{system}}{dt} \quad (W)\]
+</div>
+
+<p>عندما تكون العملية مستقرة (<span class="term">steady</span>)، تكون \(\Delta E_{system} = 0\):</p>
+<div class="formula-box">
+<span class="formula-label">Steady-State</span>
+\[\dot{E}_{in} = \dot{E}_{out}\]
+</div>
+
+<figure class="figure-container figure-sm">
+<img src="images/figure-1-19.png" alt="Figure 1-19: Surface energy balance">
+<figcaption>Figure 1–19: توازن الطاقة على السطح</figcaption>
+</figure>
+
+<p>في تحليل <span class="term">Heat Transfer</span> حيث نهتم فقط بأشكال الطاقة القابلة للانتقال بسبب فرق الحرارة:</p>
+<div class="formula-box">
+<span class="formula-label">Heat Balance</span>
+\[Q_{in} - Q_{out} + E_{gen} = \Delta E_{thermal,\,system} \quad (J)\]
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Energy Balance for Closed Systems</h3>
+<p>لنظام مغلق ساكن (<span class="term">stationary closed system</span>):</p>
+<div class="formula-box">
+<span class="formula-label">Closed System</span>
+\[E_{in} - E_{out} = \Delta U = m\,c_v\,\Delta T \quad (J)\]
+</div>
+<p>وعندما لا يوجد شغل عبر الحدود:</p>
+<div class="formula-box">
+<span class="formula-label">Closed System — No Work</span>
+\[Q = m\,c_v\,\Delta T \quad (J)\]
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Energy Balance for Steady-Flow Systems</h3>
+<p>في <span class="term">Steady-Flow Systems</span> مثل سخانات المياه ومشعات السيارات:</p>
+<div class="formula-box">
+<span class="formula-label">Mass Flow Rate</span>
+\[\dot{m} = \rho V A_c \quad (kg/s)\]
+</div>
+
+<figure class="figure-container figure-sm">
+<img src="images/figure-1-17.png" alt="Figure 1-17: Mass flow rate">
+<figcaption>Figure 1–17: معدل التدفق الكتلي عند مقطع الأنبوب</figcaption>
+</figure>
+
+<p>عند إهمال التغيرات في الطاقة الحركية والكامنة وعدم وجود شغل:</p>
+<div class="formula-box">
+<span class="formula-label">Steady-Flow Energy Balance</span>
+\[\dot{Q} = \dot{m}\,\Delta h = \dot{m}\,c_p\,\Delta T \quad (kJ/s)\]
+</div>
+
+<figure class="figure-container figure-sm">
+<img src="images/figure-1-18.png" alt="Figure 1-18: Control volume energy balance">
+<figcaption>Figure 1–18: توازن الطاقة في Control Volume مستقر</figcaption>
+</figure>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Surface Energy Balance</h3>
+<p>السطح لا يحتوي حجمًا أو كتلة، وبالتالي لا يخزن طاقة. لذلك:</p>
+<div class="formula-box">
+<span class="formula-label">Surface Energy Balance</span>
+\[\dot{E}_{in} = \dot{E}_{out}\]
+</div>
+<p>مثال: على السطح الخارجي لجدار منزل:</p>
+<div class="eq-scroll">\[\dot{Q}_1 = \dot{Q}_2 + \dot{Q}_3\]</div>
+<p>حيث \(\dot{Q}_1\) = <span class="term">conduction</span> عبر الجدار، \(\dot{Q}_2\) = <span class="term">convection</span> إلى الهواء الخارجي، \(\dot{Q}_3\) = <span class="term">net radiation</span> إلى المحيط.</p>
+
+<!-- EXAMPLE 1-2 -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–2: Cooling of Stainless Steel Sheets</div>
+<div class="example-body">
+<div class="example-flex">
+<div class="example-text">
+<div class="example-question">
+A heated continuous AISI 304 stainless steel sheet is being conveyed at a constant speed of 1 cm/s into a chamber to be cooled. The stainless steel sheet is 5 mm thick and 2 m wide, and it enters and exits the chamber at 500 K and 300 K, respectively. Determine the rate of heat loss from the stainless steel sheet inside the chamber.
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Given</h4>
+<div class="given-grid">
+<div class="given-item">\(V = 0.01\,m/s\)</div>
+<div class="given-item">\(t = 0.005\,m\)</div>
+<div class="given-item">\(w = 2\,m\)</div>
+<div class="given-item">\(T_{in} = 500\,K\)</div>
+<div class="given-item">\(T_{out} = 300\,K\)</div>
+<div class="given-item">\(\rho = 7900\,kg/m^3\)</div>
+<div class="given-item">\(c_p = 515\,J/(kg \cdot K)\)</div>
+</div>
+</div>
+<div class="example-fig">
+<img src="images/figure-1-20.png" alt="Figure 1-20: Stainless steel sheet cooling">
+</div>
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+<p>الشريحة تُعامل كـ<span class="term">steady-flow control volume</span>. يتم تقييم \(c_p\) عند \(T_{avg} = (500+300)/2 = 400\,K\).</p>
+
+<div class="solution-step">
+<div class="step-num">1</div>
+<div class="step-content">
+<p><strong>Mass flow rate:</strong></p>
+<div class="eq-scroll">\[\dot{m} = \rho V w t = (7900)(0.01)(2)(0.005) = 0.79\,kg/s\]</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">2</div>
+<div class="step-content">
+<p><strong>Rate of heat loss:</strong></p>
+<div class="eq-scroll">\[\dot{Q}_{loss} = \dot{m}\,c_p(T_{in} - T_{out}) = (0.79)(515)(500-300) = 81{,}370\,J/s\]</div>
+<div class="answer-badge">\(\dot{Q}_{loss} = 81.4\,kW\)</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 11 ===================== -->
+<section class="section" id="sec11">
+<div class="section-header">
+<div class="section-icon">🧱</div>
+<div class="section-title-group">
+<h2 class="section-title">Conduction — Fourier's Law</h2>
+<span class="section-subtitle">MECHANISM · FACTORS · FOURIER'S LAW · HEAT TRANSFER AREA</span>
+</div>
+</div>
+
+<div class="def-box">
+<div class="def-title">Conduction</div>
+<div class="def-en">Conduction is the transfer of energy from the more energetic particles of a substance to adjacent less energetic particles as a result of interactions between the particles.</div>
+<p>يمكن أن يحدث في <span class="term">Solids</span>، <span class="term">Liquids</span>، و<span class="term">Gases</span>.</p>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Mechanism of Conduction</h3>
+<ul class="content-list">
+<li>في <span class="term">Gases & Liquids</span>: يحدث بسبب <span class="term">collisions and diffusion of molecules</span> أثناء الحركة العشوائية.</li>
+<li>في <span class="term">Solids</span>: يحدث بسبب <span class="term">molecular lattice vibrations</span> بالإضافة إلى نقل الطاقة بواسطة <span class="term">free electrons</span>.</li>
+</ul>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Factors Affecting the Rate of Conduction</h3>
+<p>معدل <span class="term">Heat Conduction</span> يعتمد على:</p>
+<ul class="content-list">
+<li><span class="term">Temperature Difference \(\Delta T\)</span> عبر المادة: كلما زاد، زاد المعدل.</li>
+<li><span class="term">Heat Transfer Area \(A\)</span>: كلما زادت المساحة، زاد المعدل.</li>
+<li><span class="term">Thickness \(L\)</span>: كلما زاد السمك، قل المعدل.</li>
+<li><span class="term">Thermal Conductivity \(k\)</span>: كلما زادت، زادت قدرة المادة على توصيل الحرارة.</li>
+</ul>
+
+<div class="formula-box">
+<span class="formula-label">Proportionality</span>
+\[\dot{Q}_{cond} \propto \frac{A(\Delta T)}{L}\]
+</div>
+
+<figure class="figure-container figure-md">
+<img src="images/figure-1-23.png" alt="Figure 1-23: Conduction through a plane wall">
+<figcaption>Figure 1–23: العوامل المؤثرة في معدل التوصيل الحراري</figcaption>
+</figure>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Fourier's Law of Heat Conduction</h3>
+<p>لـ<span class="term">steady heat conduction</span> خلال <span class="term">plane layer</span>:</p>
+
+<div class="formula-box">
+<span class="formula-label">Fourier's Law</span>
+\[\dot{Q}_{cond} = kA\frac{T_1 - T_2}{\Delta x} \qquad \text{or} \qquad \dot{Q}_{cond} = -kA\frac{dT}{dx} \quad (W)\]
+</div>
+
+<p>حيث:</p>
+<ul class="content-list">
+<li>\(k\): <span class="term">Thermal Conductivity</span> (الموصلية الحرارية).</li>
+<li>\(A\): <span class="term">Heat Transfer Area</span> (المساحة العمودية على اتجاه انتقال الحرارة).</li>
+<li>\(T_1, T_2\): درجات الحرارة على الجانبين.</li>
+<li>\(\Delta x\): السمك.</li>
+<li>\(\dfrac{dT}{dx}\): <span class="term">Temperature Gradient</span> — ميل منحنى \(T\text{-}x\).</li>
+</ul>
+
+<p>إذا كانت درجة الحرارة تقل مع زيادة \(x\)، فإن \(\frac{dT}{dx} < 0\). الإشارة السالبة (<span class="term">negative sign</span>) في <span class="term">Fourier's Law</span> تضمن أن <span class="term">heat transfer</span> في اتجاه \(+x\) يكون موجبًا.</p>
+
+<div class="important-box">
+<div class="imp-title">⚡ قاعدة أساسية</div>
+<p><span class="term">Heat conduction occurs in the direction of decreasing temperature.</span></p>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Heat Transfer Area</h3>
+<p>مساحة <span class="term">Heat Transfer Area \(A\)</span> تكون دائمًا <strong>عمودية</strong> على اتجاه انتقال الحرارة. إذا كان لدينا جدار أبعاده \(5\,m \times 3\,m \times 0.25\,m\)، فإن:</p>
+<div class="eq-scroll">\[A = (5)(3) = 15\,m^2\]</div>
+<p>السمك لا يدخل في حساب \(A\).</p>
+
+<figure class="figure-container figure-sm">
+<img src="images/figure-1-26.png" alt="Figure 1-26: Heat transfer area">
+<figcaption>Figure 1–26: مساحة انتقال الحرارة عمودية على اتجاه الانتقال</figcaption>
+</figure>
+
+<!-- EXAMPLE 1-5 -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–5: The Cost of Heat Loss through a Roof</div>
+<div class="example-body">
+<div class="example-flex">
+<div class="example-text">
+<div class="example-question">
+The roof of an electrically heated home is 6 m long, 8 m wide, and 0.25 m thick, and is made of a flat layer of concrete whose thermal conductivity is k = 0.8 W/m·K. The temperatures of the inner and the outer surfaces of the roof one night are measured to be 15°C and 4°C, respectively, for a period of 10 hours. Determine (a) the rate of heat loss through the roof that night and (b) the cost of that heat loss to the home owner if the cost of electricity is $0.08/kWh.
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Given</h4>
+<div class="given-grid">
+<div class="given-item">\(L = 0.25\,m\)</div>
+<div class="given-item">\(W = 8\,m,\; H = 6\,m\)</div>
+<div class="given-item">\(k = 0.8\,W/m{\cdot}K\)</div>
+<div class="given-item">\(T_1 = 15°C\)</div>
+<div class="given-item">\(T_2 = 4°C\)</div>
+<div class="given-item">\(\Delta t = 10\,h\)</div>
+</div>
+</div>
+<div class="example-fig">
+<img src="images/figure-1-27.png" alt="Figure 1-27: Roof heat loss">
+</div>
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+
+<div class="solution-step">
+<div class="step-num">1</div>
+<div class="step-content">
+<p><strong>Roof area:</strong></p>
+<div class="eq-scroll">\[A = (6)(8) = 48\,m^2\]</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">2</div>
+<div class="step-content">
+<p><strong>(a) Rate of heat loss:</strong></p>
+<div class="eq-scroll">\[\dot{Q} = kA\frac{T_1 - T_2}{L} = (0.8)(48)\frac{(15-4)}{0.25} = 1690\,W\]</div>
+<div class="answer-badge">\(\dot{Q} = 1.69\,kW\)</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">3</div>
+<div class="step-content">
+<p><strong>(b) Cost of heat loss:</strong></p>
+<div class="eq-scroll">\[Q = \dot{Q}\,\Delta t = (1.69\,kW)(10\,h) = 16.9\,kWh\]</div>
+<div class="eq-scroll">\[\text{Cost} = (16.9)(0.08) = \$1.35\]</div>
+<div class="answer-badge">Cost = $1.35</div>
+</div>
+</div>
+
+<div class="discussion-box">
+<div class="disc-title">💬 Discussion</div>
+<p>تكلفة فقد الحرارة عبر السقف خلال تلك الليلة تساوي تقريبًا \(\$1.35\). التكلفة الكلية للتدفئة ستكون أكبر لأن خسائر الحرارة عبر الجدران لم تُحسب.</p>
+</div>
+</div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 12 ===================== -->
+<section class="section" id="sec12">
+<div class="section-header">
+<div class="section-icon">🔬</div>
+<div class="section-title-group">
+<h2 class="section-title">Thermal Conductivity & Thermal Diffusivity</h2>
+<span class="section-subtitle">k VALUES · VARIATION · GASES · LIQUIDS · SOLIDS · α = k/ρcp</span>
+</div>
+</div>
+
+<div class="def-box">
+<div class="def-title">Thermal Conductivity</div>
+<div class="def-en">Thermal conductivity \(k\) is a measure of a material's ability to conduct heat. It is the rate of heat transfer through a unit thickness of the material, per unit area, per unit temperature difference.</div>
+<p>\(k\) عالية → المادة موصلة جيدة للحرارة. \(k\) منخفضة → المادة عازلة (<span class="term">insulator</span>).</p>
+</div>
+
+<div class="note-box">
+<div class="note-title">💡 الفرق المهم</div>
+<p>\(c_p\) → قدرة المادة على <span class="term">store thermal energy</span>.</p>
+<p>\(k\) → قدرة المادة على <span class="term">conduct heat</span>.</p>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Typical Thermal Conductivity Values</h3>
+<div class="table-scroll">
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+<table class="styled-table">
+<thead><tr><th>Material</th><th>\(k\) (W/m·K)</th></tr></thead>
+<tbody>
+<tr><td>Diamond</td><td>2300</td></tr>
+<tr><td>Silver</td><td>429</td></tr>
+<tr><td>Copper</td><td>401</td></tr>
+<tr><td>Aluminum</td><td>237</td></tr>
+<tr><td>Iron</td><td>80.2</td></tr>
+<tr><td>Glass</td><td>0.78</td></tr>
+<tr><td>Water</td><td>0.607</td></tr>
+<tr><td>Wood</td><td>0.17</td></tr>
+<tr><td>Glass Fiber</td><td>0.043</td></tr>
+<tr><td>Air</td><td>0.026</td></tr>
+</tbody>
+</table>
+</div>
+
+<figure class="figure-container figure-md">
+<img src="images/figure-1-24.png" alt="Figure 1-24: Range of thermal conductivity">
+<figcaption>Figure 1–24: مدى قيم Thermal Conductivity لمختلف المواد</figcaption>
+</figure>
+
+<p>بشكل عام:</p>
+<div class="eq-scroll">\[\text{Pure metals/crystals} > \text{metal alloys} > \text{nonmetallic solids} > \text{liquids} > \text{gases}\]</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Thermal Conductivity of Gases</h3>
+<p>طبقًا لـ<span class="term">Kinetic Theory</span>:</p>
+<div class="formula-box">
+<span class="formula-label">Gas Thermal Conductivity</span>
+\[k \propto \sqrt{\frac{T}{M}}\]
+</div>
+<p>حيث \(T\) درجة الحرارة الثرموديناميكية و\(M\) الكتلة المولية. إذن: زيادة \(T\) → زيادة \(k\)، وزيادة \(M\) → انخفاض \(k\). مثال: عند \(1000\,K\): \(k_{He} = 0.343\,W/m{\cdot}K\) بينما \(k_{air} = 0.0667\,W/m{\cdot}K\) لأن الكتلة المولية للهيليوم أقل بكثير.</p>
+<p><span class="term">Thermal Conductivity</span> للغازات تكون تقريبًا مستقلة عن الضغط عبر مدى واسع من الضغوط العملية.</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Thermal Conductivity of Liquids</h3>
+<ul class="content-list">
+<li>\(k\) لا تتأثر كثيرًا بالضغط إلا بالقرب من <span class="term">Thermodynamic Critical Point</span>.</li>
+<li>معظم السوائل: زيادة درجة الحرارة → انخفاض \(k\). الماء استثناء ملحوظ.</li>
+<li>زيادة الكتلة المولية → انخفاض \(k\).</li>
+<li><span class="term">Liquid Metals</span> مثل الزئبق والصوديوم لها \(k\) مرتفعة وتصلح للتطبيقات ذات معدل انتقال حرارة عالٍ.</li>
+</ul>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Thermal Conductivity of Solids</h3>
+<p>في المواد الصلبة، <span class="term">Conduction</span> ينتج من مكونين:</p>
+<div class="formula-box">
+<span class="formula-label">Solid Thermal Conductivity Components</span>
+\[k = k_{lattice} + k_{electronic}\]
+</div>
+<ul class="content-list">
+<li><span class="term">Lattice Vibrational Component</span>: ناتج عن اهتزازات الجزيئات في الشبكة البلورية.</li>
+<li><span class="term">Electronic Component</span>: ناتج عن نقل الطاقة بواسطة الإلكترونات الحرة — المساهم الرئيسي في <span class="term">Pure Metals</span>.</li>
+</ul>
+<p><span class="term">Diamond</span> له أعلى <span class="term">Thermal Conductivity</span> تقريبًا عند درجة حرارة الغرفة بسبب بنيته البلورية المنتظمة للغاية.</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Thermal Conductivity of Alloys</h3>
+<div class="warning-box">
+<div class="warn-title">⚠️ ملاحظة مهمة</div>
+<p><span class="term">Thermal Conductivity</span> للسبيكة (<span class="term">alloy</span>) عادةً تكون <strong>أقل بكثير</strong> من قيمة أي من المعادن النقية المكونة لها. حتى كمية صغيرة من الذرات الغريبة تعرقل انتقال الطاقة داخل الشبكة المعدنية.</p>
+</div>
+
+<div class="table-scroll">
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+<table class="styled-table">
+<thead><tr><th>Material</th><th>\(k\) at 300 K (W/m·K)</th></tr></thead>
+<tbody>
+<tr><td>Copper</td><td>401</td></tr>
+<tr><td>Nickel</td><td>91</td></tr>
+<tr><td>Constantan (55% Cu, 45% Ni)</td><td>23</td></tr>
+<tr><td>Aluminum</td><td>237</td></tr>
+<tr><td>Commercial Bronze (90% Cu, 10% Al)</td><td>52</td></tr>
+<tr><td>Iron</td><td>83</td></tr>
+<tr><td>Chromium</td><td>95</td></tr>
+<tr><td>Steel (1% Cr)</td><td>62</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Effect of Temperature on \(k\)</h3>
+<p>يختلف \(k\) مع درجة الحرارة. من الشائع تقييمه عند <span class="term">Average Temperature</span> ثم معاملته كثابت:</p>
+<div class="formula-box">
+<span class="formula-label">Average Temperature Approach</span>
+\[k = k(T_{avg})\]
+</div>
+<p>عند درجات قريبة من <span class="term">absolute zero</span>، بعض المواد الصلبة تُظهر زيادات هائلة في \(k\) (مثل النحاس: \(k_{max} \approx 20{,}000\,W/m{\cdot}K\) عند \(20\,K\)).</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Isotropic vs. Anisotropic Materials</h3>
+<p>عادةً نفترض أن المادة <span class="term">isotropic</span> (خواصها منتظمة في جميع الاتجاهات). لكن مواد مثل <span class="term">laminated composites</span> و<span class="term">wood</span> قد تكون <span class="term">anisotropic</span>:</p>
+<div class="eq-scroll">\[k_{\text{across grain}} \neq k_{\text{parallel to grain}}\]</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Thermal Diffusivity</h3>
+<div class="def-box">
+<div class="def-title">Thermal Diffusivity</div>
+<div class="def-en">Thermal diffusivity \(\alpha\) represents how fast heat propagates through a material. It is the ratio of the rate of heat conduction to the rate of heat storage.</div>
+</div>
+
+<div class="formula-box">
+<span class="formula-label">Thermal Diffusivity</span>
+\[\alpha = \frac{k}{\rho c_p} \quad (m^2/s)\]
+</div>
+
+<ul class="content-list">
+<li>\(k\) → قدرة المادة على <span class="term">conduct heat</span>.</li>
+<li>\(\rho c_p\) → قدرة المادة على <span class="term">store energy per unit volume</span>.</li>
+<li><strong>High \(\alpha\)</strong> → الحرارة تنتشر بسرعة.</li>
+<li><strong>Small \(\alpha\)</strong> → معظم الحرارة تُمتص/تُخزن ويمر جزء صغير منها.</li>
+</ul>
+
+<div class="table-scroll">
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+<table class="styled-table">
+<thead><tr><th>Material</th><th>\(\alpha\) (×10⁻⁶ m²/s) at 20°C</th></tr></thead>
+<tbody>
+<tr><td>Silver</td><td>149</td></tr>
+<tr><td>Gold</td><td>127</td></tr>
+<tr><td>Copper</td><td>113</td></tr>
+<tr><td>Aluminum</td><td>97.5</td></tr>
+<tr><td>Iron</td><td>22.8</td></tr>
+<tr><td>Concrete</td><td>0.75</td></tr>
+<tr><td>Water</td><td>0.14</td></tr>
+<tr><td>Beef</td><td>0.14</td></tr>
+<tr><td>Wood (Oak)</td><td>0.13</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-box">
+<div class="note-title">🥩 ملاحظة</div>
+<p><span class="term">Beef</span> و<span class="term">Water</span> لهما تقريبًا نفس <span class="term">Thermal Diffusivity</span> لأن اللحم ومعظم الخضراوات والفواكه الطازجة تتكون أساسًا من الماء.</p>
+</div>
+
+<!-- EXAMPLE 1-6 -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–6: Measuring the Thermal Conductivity of a Material</div>
+<div class="example-body">
+<div class="example-flex">
+<div class="example-text">
+<div class="example-question">
+A common way of measuring the thermal conductivity of a material is to sandwich an electric thermofoil heater between two identical samples of the material. The lateral surfaces of the samples are well insulated to ensure one-dimensional heat transfer. Two thermocouples are embedded into each sample a distance L apart. In a certain experiment, cylindrical samples of diameter 5 cm and length 10 cm are used. The two thermocouples in each sample are placed 3 cm apart. After initial transients, the electric heater is observed to draw 0.4 A at 110 V, and both differential thermometers read a temperature difference of 15°C. Determine the thermal conductivity of the sample.
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Given</h4>
+<div class="given-grid">
+<div class="given-item">\(D = 0.05\,m\)</div>
+<div class="given-item">\(L = 0.03\,m\)</div>
+<div class="given-item">\(V = 110\,V\)</div>
+<div class="given-item">\(I = 0.4\,A\)</div>
+<div class="given-item">\(\Delta T = 15°C\)</div>
+</div>
+</div>
+<div class="example-fig">
+<img src="images/figure-1-32.png" alt="Figure 1-32: Measuring thermal conductivity">
+</div>
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+
+<div class="solution-step">
+<div class="step-num">1</div>
+<div class="step-content">
+<p><strong>Electrical power:</strong></p>
+<div class="eq-scroll">\[\dot{W}_e = VI = (110)(0.4) = 44\,W\]</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">2</div>
+<div class="step-content">
+<p><strong>Heat through each sample (thermal symmetry):</strong></p>
+<div class="eq-scroll">\[\dot{Q} = \frac{1}{2}\dot{W}_e = \frac{44}{2} = 22\,W\]</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">3</div>
+<div class="step-content">
+<p><strong>Cross-sectional area:</strong></p>
+<div class="eq-scroll">\[A = \frac{\pi D^2}{4} = \frac{\pi(0.05)^2}{4} = 0.001963\,m^2\]</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">4</div>
+<div class="step-content">
+<p><strong>Thermal conductivity from Fourier's law:</strong></p>
+<div class="eq-scroll">\[k = \frac{\dot{Q}\,L}{A\,\Delta T} = \frac{(22)(0.03)}{(0.001963)(15)}\]</div>
+<div class="answer-badge">\(k = 22.4\,W/m{\cdot}K\)</div>
+</div>
+</div>
+
+<div class="discussion-box">
+<div class="disc-title">💬 Discussion</div>
+<p>استخدام عينتين متماثلتين يسمح بالتحقق من القياسات، ويحقق <span class="term">Thermal Symmetry</span>، ويقلل <span class="term">Experimental Error</span>.</p>
+</div>
+</div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 13 ===================== -->
+<section class="section" id="sec13">
+<div class="section-header">
+<div class="section-icon">💨</div>
+<div class="section-title-group">
+<h2 class="section-title">Convection — Newton's Law of Cooling</h2>
+<span class="section-subtitle">MECHANISM · FORCED · NATURAL · NEWTON'S LAW · h COEFFICIENT</span>
+</div>
+</div>
+
+<div class="def-box">
+<div class="def-title">Convection</div>
+<div class="def-en">Convection is the mode of energy transfer between a solid surface and an adjacent moving liquid or gas, involving the combined effects of conduction and fluid motion.</div>
+<p>كلما زادت حركة المائع (<span class="term">fluid motion</span>)، زاد <span class="term">Convection Heat Transfer</span>. في غياب الحركة الإجمالية للمائع (<span class="term">bulk fluid motion</span>)، يكون الانتقال بواسطة <span class="term">Pure Conduction</span> فقط.</p>
+</div>
+
+<div class="formula-box">
+<span class="formula-label">Convection = Conduction + Fluid Motion</span>
+\[\boxed{\text{Convection} = \text{Conduction} + \text{Fluid Motion}}\]
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">How Convection Occurs</h3>
+<p>عند تبريد كتلة ساخنة (<span class="term">hot block</span>) بواسطة هواء بارد:</p>
+<ul class="content-list">
+<li>تنتقل الحرارة أولاً من السطح الصلب إلى طبقة الهواء المجاورة بواسطة <span class="term">Conduction</span>.</li>
+<li>ثم تُحمل الحرارة بعيدًا عن السطح بواسطة حركة المائع (<span class="term">fluid motion</span>).</li>
+<li>الهواء الساخن القريب من السطح يُستبدل بهواء أبرد، فيستمر <span class="term">Heat Transfer</span>.</li>
+</ul>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Types of Convection</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;">
+<div class="def-box" style="margin:0;">
+<div class="def-title">1. Forced Convection</div>
+<p>يحدث عندما يُجبر المائع على الحركة بواسطة وسيلة خارجية مثل <span class="term">fan</span> أو <span class="term">pump</span> أو <span class="term">wind</span>.</p>
+</div>
+<div class="def-box" style="margin:0;">
+<div class="def-title">2. Natural (Free) Convection</div>
+<p>يحدث عندما تنشأ حركة المائع بسبب <span class="term">buoyancy forces</span> الناتجة عن اختلاف الكثافة بسبب تغيرات درجة الحرارة.</p>
+</div>
+</div>
+
+<p>عمليات تغير الطور (<span class="term">Phase Change</span>) تُعتبر أيضًا <span class="term">Convection</span> بسبب حركة المائع المصاحبة: فقاعات البخار ترتفع أثناء <span class="term">Boiling</span>، وقطرات السائل تسقط أثناء <span class="term">Condensation</span>.</p>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Newton's Law of Cooling</h3>
+<div class="formula-box">
+<span class="formula-label">Newton's Law of Cooling — Eq. (1–24)</span>
+\[\boxed{\dot{Q}_{conv} = h\,A_s\,(T_s - T_\infty)} \quad (W)\]
+</div>
+
+<p>حيث:</p>
+<ul class="content-list">
+<li>\(h\): <span class="term">Convection Heat Transfer Coefficient</span> \((W/m^2{\cdot}K)\)</li>
+<li>\(A_s\): مساحة السطح التي يحدث عبرها <span class="term">Convection</span>.</li>
+<li>\(T_s\): درجة حرارة السطح.</li>
+<li>\(T_\infty\): درجة حرارة المائع بعيدًا عن السطح بما يكفي.</li>
+</ul>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ ملاحظة مهمة</div>
+<p>\(h\) <strong>ليس خاصية للمائع</strong>. هو معامل يُحدَّد تجريبيًا ويعتمد على: <span class="term">surface geometry</span>، طبيعة حركة المائع، خصائص المائع، و<span class="term">bulk fluid velocity</span>.</p>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Typical Values of \(h\)</h3>
+<div class="table-scroll">
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+<table class="styled-table">
+<thead><tr><th>Type of Convection</th><th>\(h\) (W/m²·K)</th></tr></thead>
+<tbody>
+<tr><td>Free convection of gases</td><td>2 – 25</td></tr>
+<tr><td>Free convection of liquids</td><td>10 – 1,000</td></tr>
+<tr><td>Forced convection of gases</td><td>25 – 250</td></tr>
+<tr><td>Forced convection of liquids</td><td>50 – 20,000</td></tr>
+<tr><td>Boiling and condensation</td><td>2,500 – 100,000</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- EXAMPLE 1-8 -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–8: Convection Heat Transfer from an Electrically Heated Wire</div>
+<div class="example-body">
+<div class="example-question">
+An electrically heated wire of diameter 0.003 m and length 2 m is maintained at 152°C in a room whose air temperature is 15°C. The wire is under steady operation. The voltage drop and electric current through the wire are measured to be 60 V and 1.5 A, respectively. Disregarding any heat transfer by radiation, determine the convection heat transfer coefficient for heat transfer between the outer surface of the wire and the air in the room.
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Given</h4>
+<div class="given-grid">
+<div class="given-item">\(D = 0.003\,m\)</div>
+<div class="given-item">\(L = 2\,m\)</div>
+<div class="given-item">\(T_s = 152°C\)</div>
+<div class="given-item">\(T_\infty = 15°C\)</div>
+<div class="given-item">\(V = 60\,V\)</div>
+<div class="given-item">\(I = 1.5\,A\)</div>
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+
+<div class="solution-step">
+<div class="step-num">1</div>
+<div class="step-content">
+<p><strong>Heat generated by resistance heating:</strong></p>
+<div class="eq-scroll">\[\dot{Q} = VI = (60)(1.5) = 90\,W\]</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">2</div>
+<div class="step-content">
+<p><strong>Surface area of the wire:</strong></p>
+<div class="eq-scroll">\[A_s = \pi D L = \pi(0.003)(2) = 0.01885\,m^2\]</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">3</div>
+<div class="step-content">
+<p><strong>Convection coefficient from Newton's law:</strong></p>
+<div class="eq-scroll">\[h = \frac{\dot{Q}_{conv}}{A_s(T_s - T_\infty)} = \frac{90}{(0.01885)(152 - 15)}\]</div>
+<div class="answer-badge">\(h = 34.9\,W/m^2{\cdot}K\)</div>
+</div>
+</div>
+
+<div class="discussion-box">
+<div class="disc-title">💬 Discussion</div>
+<p>هذا الإعداد البسيط يمكن استخدامه لتحديد <span class="term">average heat transfer coefficients</span> لأسطح مختلفة. ويمكن تقليل تأثير <span class="term">Radiation</span> بجعل الأسطح المحيطة عند درجة حرارة قريبة من درجة حرارة السلك.</p>
+</div>
+</div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 14 ===================== -->
+<section class="section" id="sec14">
+<div class="section-header">
+<div class="section-icon">☀️</div>
+<div class="section-title-group">
+<h2 class="section-title">Radiation — Stefan–Boltzmann Law</h2>
+<span class="section-subtitle">THERMAL RADIATION · BLACKBODY · EMISSIVITY · ABSORPTIVITY · NET RADIATION</span>
+</div>
+</div>
+
+<div class="def-box">
+<div class="def-title">Thermal Radiation</div>
+<div class="def-en">Radiation is the energy emitted by matter in the form of electromagnetic waves (or photons) as a result of changes in the electronic configurations of atoms or molecules. Unlike conduction and convection, radiation does not require an intervening medium.</div>
+<p>في <span class="term">Heat Transfer</span> نهتم بـ<span class="term">Thermal Radiation</span> — الإشعاع الصادر من الأجسام بسبب درجة حرارتها. كل جسم عند درجة حرارة أعلى من <span class="term">absolute zero</span> يصدر <span class="term">Thermal Radiation</span>. وهذا هو سبب وصول طاقة الشمس إلى الأرض عبر الفضاء.</p>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Stefan–Boltzmann Law</h3>
+<p>أقصى معدل إشعاع يمكن أن ينبعث من سطح عند درجة حرارة ثرموديناميكية \(T_s\):</p>
+<div class="formula-box">
+<span class="formula-label">Blackbody Radiation — Eq. (1–25)</span>
+\[\dot{Q}_{emit,max} = \sigma\,A_s\,T_s^4 \quad (W)\]
+</div>
+<p>حيث \(\sigma = 5.670 \times 10^{-8}\,W/m^2{\cdot}K^4\) هو <span class="term">Stefan–Boltzmann Constant</span>.</p>
+
+<div class="def-box">
+<div class="def-title">Blackbody</div>
+<div class="def-en">An idealized surface that emits radiation at the maximum possible rate. A blackbody has emissivity ε = 1 and absorptivity α = 1 — it is a perfect emitter and perfect absorber.</div>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Emissivity and Real Surfaces</h3>
+<p>الأسطح الحقيقية تصدر إشعاعًا أقل من <span class="term">Blackbody</span> عند نفس درجة الحرارة:</p>
+<div class="formula-box">
+<span class="formula-label">Real Surface Emission — Eq. (1–26)</span>
+\[\dot{Q}_{emit} = \varepsilon\,\sigma\,A_s\,T_s^4 \quad (W) \qquad 0 \leq \varepsilon \leq 1\]
+</div>
+
+<figure class="figure-container figure-sm">
+<img src="images/figure-1-38.png" alt="Figure 1-38: Blackbody radiation">
+<figcaption>Figure 1–38: مقارنة الإشعاع من سطح حقيقي و Blackbody</figcaption>
+</figure>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Absorptivity</h3>
+<div class="def-box">
+<div class="def-title">Absorptivity</div>
+<div class="def-en">Absorptivity α is the fraction of the radiation energy incident on a surface that is absorbed by the surface. For opaque surfaces, the non-absorbed portion is reflected.</div>
+</div>
+<div class="formula-box">
+<span class="formula-label">Radiation Absorbed — Eq. (1–27)</span>
+\[\dot{Q}_{absorbed} = \alpha\,\dot{Q}_{incident} \quad (W) \qquad 0 \leq \alpha \leq 1\]
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Kirchhoff's Law of Radiation</h3>
+<p>عند درجة حرارة وطول موجي معينين:</p>
+<div class="formula-box">
+<span class="formula-label">Kirchhoff's Law</span>
+\[\boxed{\varepsilon = \alpha}\]
+</div>
+<p>في كثير من التطبيقات العملية، عندما تكون درجة حرارة السطح ودرجة حرارة مصدر الإشعاع من نفس الرتبة:</p>
+<div class="eq-scroll">\[\text{average absorptivity} \approx \text{average emissivity}\]</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Table of Emissivities at 300 K</h3>
+<div class="table-scroll">
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+<table class="styled-table">
+<thead><tr><th>Material</th><th>Emissivity ε</th></tr></thead>
+<tbody>
+<tr><td>Aluminum foil</td><td>0.07</td></tr>
+<tr><td>Anodized aluminum</td><td>0.82</td></tr>
+<tr><td>Polished copper</td><td>0.03</td></tr>
+<tr><td>Polished silver</td><td>0.02</td></tr>
+<tr><td>Black paint</td><td>0.98</td></tr>
+<tr><td>White paint</td><td>0.90</td></tr>
+<tr><td>Human skin</td><td>0.95</td></tr>
+<tr><td>Red brick</td><td>0.93 – 0.96</td></tr>
+<tr><td>Water</td><td>0.96</td></tr>
+<tr><td>Wood</td><td>0.82 – 0.92</td></tr>
+<tr><td>Soil</td><td>0.93 – 0.96</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Net Radiation with Large Surrounding Surface</h3>
+<p>عندما يكون سطح ذو <span class="term">emissivity</span> \(\varepsilon\) محاطًا بالكامل بسطح أكبر بكثير عند \(T_{surr}\):</p>
+<div class="formula-box">
+<span class="formula-label">Net Radiation Heat Transfer — Eq. (1–28)</span>
+\[\boxed{\dot{Q}_{rad} = \varepsilon\,\sigma\,A_s\,(T_s^4 - T_{surr}^4)} \quad (W)\]
+</div>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ تنبيه مهم</div>
+<p>في حسابات <span class="term">Radiation</span> يجب دائمًا استخدام <span class="term">Thermodynamic (Absolute) Temperatures</span> بوحدة الكلفن \((K)\).</p>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Combined Convection + Radiation</h3>
+<p><span class="term">Radiation</span> يحدث بالتوازي مع <span class="term">Convection</span> على سطح محاط بغاز:</p>
+<div class="formula-box">
+<span class="formula-label">Total = Convection + Radiation</span>
+\[\dot{Q}_{total} = h_{conv}\,A_s(T_s - T_\infty) + \varepsilon\,\sigma\,A_s(T_s^4 - T_{surr}^4)\]
+</div>
+
+<p>للتبسيط، نعرّف <span class="term">Combined Heat Transfer Coefficient</span>:</p>
+<div class="formula-box">
+<span class="formula-label">Combined Coefficient — Eq. (1–29)</span>
+\[h_{combined} = h_{conv} + h_{rad}\]
+\[h_{rad} = \varepsilon\,\sigma\,(T_s + T_{surr})(T_s^2 + T_{surr}^2)\]
+</div>
+
+<div class="note-box">
+<div class="note-title">📌 الأهمية النسبية</div>
+<p><span class="term">Radiation</span> عادةً تكون مهمة مقارنة بـ<span class="term">Conduction</span> و<span class="term">Natural Convection</span>، لكنها غالبًا مهملة مقارنة بـ<span class="term">Forced Convection</span> خاصة عند <span class="term">low emissivities</span> و<span class="term">low to moderate temperatures</span>.</p>
+</div>
+
+<!-- EXAMPLE 1-9 -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–9: Radiation Effect on Thermal Comfort</div>
+<div class="example-body">
+<div class="example-flex">
+<div class="example-text">
+<div class="example-question">
+Consider a person standing in a room maintained at 22°C at all times. The inner surfaces of the walls, floors, and the ceiling of the house are observed to be at an average temperature of 10°C in winter and 25°C in summer. Determine the rate of radiation heat transfer between this person and the surrounding surfaces if the exposed surface area and the average outer surface temperature of the person are 1.4 m² and 30°C, respectively. Take ε = 0.95.
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Given</h4>
+<div class="given-grid">
+<div class="given-item">\(T_s = 30°C = 303\,K\)</div>
+<div class="given-item">\(A_s = 1.4\,m^2\)</div>
+<div class="given-item">\(\varepsilon = 0.95\)</div>
+<div class="given-item">\(T_{surr,w} = 10°C = 283\,K\)</div>
+<div class="given-item">\(T_{surr,s} = 25°C = 298\,K\)</div>
+</div>
+</div>
+<div class="example-fig">
+<img src="images/figure-1-41.png" alt="Figure 1-41: Radiation thermal comfort">
+</div>
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+
+<div class="solution-step">
+<div class="step-num">1</div>
+<div class="step-content">
+<p><strong>Winter:</strong></p>
+<div class="eq-scroll">\[\dot{Q}_{rad} = (0.95)(5.67 \times 10^{-8})(1.4)\left[(303)^4 - (283)^4\right]\]</div>
+<div class="answer-badge">\(\dot{Q}_{rad,winter} = 152\,W\)</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">2</div>
+<div class="step-content">
+<p><strong>Summer:</strong></p>
+<div class="eq-scroll">\[\dot{Q}_{rad} = (0.95)(5.67 \times 10^{-8})(1.4)\left[(303)^4 - (298)^4\right]\]</div>
+<div class="answer-badge">\(\dot{Q}_{rad,summer} = 40.9\,W\)</div>
+</div>
+</div>
+
+<div class="discussion-box">
+<div class="disc-title">💬 Discussion</div>
+<p>معدل فقد الحرارة بالإشعاع في الشتاء يقارب <strong>أربعة أضعاف</strong> الصيف، وهذا يفسر شعورنا بالبرد في الشتاء حتى لو كان <span class="term">Thermostat</span> عند نفس الإعداد.</p>
+</div>
+</div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 15 ===================== -->
+<section class="section" id="sec15">
+<div class="section-header">
+<div class="section-icon">🔗</div>
+<div class="section-title-group">
+<h2 class="section-title">Simultaneous Heat Transfer Mechanisms</h2>
+<span class="section-subtitle">COMBINED MODES · MEDIUM DEPENDENCE · PRACTICAL EXAMPLES</span>
+</div>
+</div>
+
+<p>ليس بالضرورة أن تعمل الآليات الثلاث معًا داخل نفس الوسط. الآلية المسيطرة تعتمد على طبيعة الوسط:</p>
+
+<div class="table-scroll">
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+<table class="styled-table">
+<thead><tr><th>Medium / Condition</th><th>Heat-Transfer Mechanisms</th></tr></thead>
+<tbody>
+<tr><td>Opaque Solid</td><td>Conduction only</td></tr>
+<tr><td>Semitransparent Solid</td><td>Conduction + Radiation</td></tr>
+<tr><td>Still Fluid (no bulk motion)</td><td>Conduction + Radiation</td></tr>
+<tr><td>Flowing Fluid</td><td>Convection + Radiation</td></tr>
+<tr><td>Vacuum</td><td>Radiation only</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>مثال: صخرة باردة في بيئة أدفأ:</p>
+<ul class="content-list">
+<li><span class="term">Convection</span> ينقل الحرارة من الهواء إلى السطح.</li>
+<li><span class="term">Radiation</span> ينقل الحرارة من الشمس أو الأسطح المحيطة إلى السطح.</li>
+<li><span class="term">Conduction</span> ينقل هذه الحرارة من السطح إلى الداخل.</li>
+</ul>
+
+<figure class="figure-container figure-md">
+<img src="images/figure-1-42.png" alt="Figure 1-42: Simultaneous heat transfer mechanisms">
+<figcaption>Figure 1–42: الآليات المتزامنة لانتقال الحرارة</figcaption>
+</figure>
+
+<div class="note-box">
+<div class="note-title">📌 ملاحظات عن الإشعاع عبر الأوساط</div>
+<ul class="content-list" style="margin:0;">
+<li>الغازات عمليًا <span class="term">transparent</span> للإشعاع في معظم الحالات (بعض الغازات مثل <span class="term">Ozone</span> تمتص <span class="term">UV radiation</span> بشدة).</li>
+<li>السوائل عادةً <span class="term">strong absorbers of radiation</span>.</li>
+<li>في <span class="term">Vacuum</span>: <span class="term">Radiation only</span> لأن <span class="term">Conduction</span> و<span class="term">Convection</span> يحتاجان إلى وسط مادي.</li>
+</ul>
+</div>
+
+<!-- EXAMPLE 1-10 -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–10: Heat Loss from a Person</div>
+<div class="example-body">
+<div class="example-flex">
+<div class="example-text">
+<div class="example-question">
+Consider a person standing in a breezy room at 20°C. Determine the total rate of heat transfer from this person if the exposed surface area and the average outer surface temperature of the person are 1.6 m² and 29°C, respectively, and the convection heat transfer coefficient is 6 W/m²·K. Take ε = 0.95 and T<sub>surr</sub> = T<sub>∞</sub> = 20°C.
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Given</h4>
+<div class="given-grid">
+<div class="given-item">\(T_s = 29°C = 302\,K\)</div>
+<div class="given-item">\(T_\infty = T_{surr} = 20°C = 293\,K\)</div>
+<div class="given-item">\(A_s = 1.6\,m^2\)</div>
+<div class="given-item">\(h = 6\,W/m^2{\cdot}K\)</div>
+<div class="given-item">\(\varepsilon = 0.95\)</div>
+</div>
+</div>
+<div class="example-fig">
+<img src="images/figure-1-43.png" alt="Figure 1-43: Heat loss from a person">
+</div>
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+
+<div class="solution-step">
+<div class="step-num">1</div>
+<div class="step-content">
+<p><strong>Convection:</strong></p>
+<div class="eq-scroll">\[\dot{Q}_{conv} = h\,A_s(T_s - T_\infty) = (6)(1.6)(29-20) = 86.4\,W\]</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">2</div>
+<div class="step-content">
+<p><strong>Radiation:</strong></p>
+<div class="eq-scroll">\[\dot{Q}_{rad} = \varepsilon\,\sigma\,A_s(T_s^4 - T_{surr}^4) = (0.95)(5.67 \times 10^{-8})(1.6)[(302)^4 - (293)^4]\]</div>
+<div class="eq-scroll">\[\dot{Q}_{rad} = 81.7\,W\]</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">3</div>
+<div class="step-content">
+<p><strong>Total heat transfer:</strong></p>
+<div class="eq-scroll">\[\dot{Q}_{total} = \dot{Q}_{conv} + \dot{Q}_{rad} = 86.4 + 81.7\]</div>
+<div class="answer-badge">\(\dot{Q}_{total} \approx 168\,W\)</div>
+</div>
+</div>
+
+<div class="discussion-box">
+<div class="disc-title">💬 Discussion</div>
+<p>الملابس تعمل كحاجز ضد انتقال الحرارة. <span class="term">Heat conduction through the feet</span> مُهمل لصغره. <span class="term">Heat transfer by perspiration</span> غير محسوب هنا رغم أنه النمط المسيطر في البيئات الحارة.</p>
+</div>
+</div>
+</div>
+
+<!-- EXAMPLE 1-11 -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–11: Heat Transfer between Two Isothermal Plates</div>
+<div class="example-body">
+<div class="example-flex">
+<div class="example-text">
+<div class="example-question">
+Consider steady heat transfer between two large parallel plates at constant temperatures of T₁ = 300 K and T₂ = 200 K that are L = 1 cm apart. Assuming the surfaces to be black (ε = 1), determine the rate of heat transfer between the plates per unit surface area assuming the gap is (a) filled with atmospheric air, (b) evacuated, (c) filled with urethane insulation, and (d) filled with superinsulation (k = 0.00002 W/m·K).
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Given</h4>
+<div class="given-grid">
+<div class="given-item">\(T_1 = 300\,K\)</div>
+<div class="given-item">\(T_2 = 200\,K\)</div>
+<div class="given-item">\(L = 0.01\,m\)</div>
+<div class="given-item">\(\varepsilon = 1\)</div>
+<div class="given-item">\(k_{air} = 0.0219\)</div>
+<div class="given-item">\(k_{urethane} = 0.026\)</div>
+</div>
+</div>
+<div class="example-fig">
+<img src="images/figure-1-44.png" alt="Figure 1-44: Parallel plates heat transfer">
+</div>
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+
+<div class="solution-step">
+<div class="step-num">a</div>
+<div class="step-content">
+<p><strong>Air — Conduction + Radiation:</strong></p>
+<div class="eq-scroll">\[\dot{Q}_{cond} = k_{air}A\frac{T_1 - T_2}{L} = (0.0219)(1)\frac{100}{0.01} = 219\,W\]</div>
+<div class="eq-scroll">\[\dot{Q}_{rad} = \sigma A(T_1^4 - T_2^4) = (5.67 \times 10^{-8})(1)[(300)^4 - (200)^4] = 369\,W\]</div>
+<div class="answer-badge">\(\dot{Q}_{total} = 219 + 369 = 588\,W\)</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">b</div>
+<div class="step-content">
+<p><strong>Vacuum — Radiation only:</strong></p>
+<div class="answer-badge">\(\dot{Q}_{total} = \dot{Q}_{rad} = 369\,W\)</div>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">c</div>
+<div class="step-content">
+<p><strong>Urethane insulation — blocks direct radiation:</strong></p>
+<div class="eq-scroll">\[\dot{Q}_{total} = k A\frac{\Delta T}{L} = (0.026)(1)\frac{100}{0.01} = 260\,W\]</div>
+<p>رغم أن \(k_{urethane} > k_{air}\)، إلا أن <span class="term">Heat Transfer</span> أقل لأن العزل يمنع <span class="term">Radiation</span>.</p>
+</div>
+</div>
+
+<div class="solution-step">
+<div class="step-num">d</div>
+<div class="step-content">
+<p><strong>Superinsulation:</strong></p>
+<div class="eq-scroll">\[\dot{Q}_{total} = (0.00002)(1)\frac{100}{0.01} = 0.2\,W\]</div>
+<div class="answer-badge">\(\dot{Q}_{total} = 0.2\,W \; \approx \; \frac{1}{1845} \text{ of vacuum}\)</div>
+</div>
+</div>
+
+<figure class="figure-container figure-sm" style="margin-top:16px;">
+<img src="images/figure-1-45.png" alt="Figure 1-45: Comparison of insulation types">
+<figcaption>Figure 1–45: مقارنة فعالية أنواع العزل المختلفة</figcaption>
+</figure>
+</div>
+</div>
+
+<!-- EXAMPLE 1-13 -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–13: Heating of a Plate by Solar Energy</div>
+<div class="example-body">
+<div class="example-flex">
+<div class="example-text">
+<div class="example-question">
+A thin metal plate is insulated on the back and exposed to solar radiation at the front surface. The exposed surface has an absorptivity of 0.6 for solar radiation. If solar radiation is incident at a rate of 700 W/m² and the surrounding air temperature is 25°C, determine the surface temperature of the plate when the heat loss by convection and radiation equals the solar energy absorbed. Assume the combined convection and radiation heat transfer coefficient to be 50 W/m²·K.
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Given</h4>
+<div class="given-grid">
+<div class="given-item">\(\alpha = 0.6\)</div>
+<div class="given-item">\(\dot{q}_{solar} = 700\,W/m^2\)</div>
+<div class="given-item">\(T_\infty = 25°C\)</div>
+<div class="given-item">\(h_{combined} = 50\,W/m^2{\cdot}K\)</div>
+</div>
+</div>
+<div class="example-fig">
+<img src="images/figure-1-47.png" alt="Figure 1-47: Solar heated plate">
+</div>
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+<p>عند <span class="term">steady operation</span>: الطاقة الممتصة = الطاقة المفقودة:</p>
+<div class="eq-scroll">\[\alpha\,\dot{q}_{solar} = h_{combined}(T_s - T_\infty)\]</div>
+
+<div class="solution-step">
+<div class="step-num">1</div>
+<div class="step-content">
+<p><strong>Solving for \(T_s\):</strong></p>
+<div class="eq-scroll">\[T_s = T_\infty + \frac{\alpha\,\dot{q}_{solar}}{h_{combined}} = 25 + \frac{(0.6)(700)}{50} = 25 + 8.4\]</div>
+<div class="answer-badge">\(T_s = 33.4°C\)</div>
+</div>
+</div>
+
+<div class="discussion-box">
+<div class="disc-title">💬 Discussion</div>
+<p>خسائر الحرارة تمنع درجة حرارة اللوح من الارتفاع فوق \(33.4°C\). استخدام <span class="term">Combined Heat Transfer Coefficient</span> يُسهّل الحسابات عندما تكون قيمته معروفة بدقة معقولة.</p>
+</div>
+</div>
+</div>
+
+<!-- EXAMPLE 1-12: Microwave vs Conventional -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–12: Heat Transfer in Conventional and Microwave Ovens</div>
+<div class="example-body">
+<div class="example-question">
+Discuss the heat transfer mechanisms associated with the cooking of a chicken in microwave and conventional ovens, and explain why cooking in a microwave oven is more efficient.
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+<p><strong>Microwave Oven:</strong></p>
+<ul class="content-list">
+<li>الطهي يتم بامتصاص <span class="term">electromagnetic radiation</span> من الـ<span class="term">Magnetron</span> (ليس <span class="term">Thermal Radiation</span> بل تحويل طاقة كهربائية إلى إشعاع كهرومغناطيسي).</li>
+<li>إشعاع <span class="term">Microwave</span>: ينعكس عن الأسطح المعدنية، يمر عبر الزجاج والسيراميك والبلاستيك، ويُمتص من الطعام (خاصة جزيئات الماء والسكر والدهن).</li>
+<li>الحرارة تنتقل داخل الدجاج بواسطة <span class="term">Conduction</span>، وجزء يُفقد إلى هواء الفرن بـ<span class="term">Convection</span>.</li>
+</ul>
+
+<p><strong>Conventional Oven:</strong></p>
+<ul class="content-list">
+<li>يُسخَّن الهواء أولاً (تسخين مسبق <span class="term">preheating</span> قد يستغرق دقائق).</li>
+<li>تنتقل الحرارة من الهواء إلى سطح الدجاج بواسطة <span class="term">Natural Convection</span> (أو <span class="term">Forced Convection</span> في الأفران الحديثة بمروحة).</li>
+<li>ثم <span class="term">Conduction</span> من الأجزاء الخارجية إلى الداخلية.</li>
+</ul>
+
+<div class="important-box">
+<div class="imp-title">⚡ لماذا Microwave أكثر كفاءة؟</div>
+<p>فرن <span class="term">Microwave</span> يستبدل عملية <span class="term">Convection</span> البطيئة بـ<span class="term">instantaneous radiation</span>، فينقل الطاقة فورًا دون تسخين مسبق، ويطهو أسرع، ويستهلك طاقة أقل.</p>
+</div>
+</div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 16 ===================== -->
+<section class="section" id="sec16">
+<div class="section-header">
+<div class="section-icon">🛡️</div>
+<div class="section-title-group">
+<h2 class="section-title">Prevention through Design (PtD)</h2>
+<span class="section-subtitle">THERMAL BURN · FIRE HAZARD · THERMAL FAILURE · SAFETY</span>
+</div>
+</div>
+
+<div class="def-box">
+<div class="def-title">Prevention through Design (PtD)</div>
+<div class="def-en">Prevention through Design (PtD) is the integration of prevention and risk reduction considerations into the design of equipment, tools, processes, and work facilities.</div>
+<p>الهدف هو منع أو تقليل: الإصابات المرتبطة بالعمل، الأمراض، الأعطال، والأضرار. الحل الهندسي لا يكفي أن يحقق المعادلات الفيزيائية فقط، بل يجب أيضًا أن يحقق معايير <span class="term">PtD</span> الخاصة بالسلامة.</p>
+</div>
+
+<figure class="figure-container figure-sm">
+<img src="images/figure-1-50.png" alt="Figure 1-50: PtD workflow">
+<figcaption>Figure 1–50: سير عمل PtD في حل مسائل Heat Transfer</figcaption>
+</figure>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Thermal Burn</h3>
+<p>يحدث <span class="term">Thermal Burn</span> عند تعرض أنسجة الجلد لدرجات حرارة أعلى من <span class="term">physiological temperature</span>. شدة الإصابة تعتمد على: درجة الحرارة، مدة التعرض (<span class="term">duration of exposure</span>)، ومعدل انتقال الحرارة إلى الجلد.</p>
+<ul class="content-list">
+<li>فوق \(43°C\): بداية الألم عند التعرض المستمر.</li>
+<li>عند \(\sim 48°C\): احتمال حرق من الدرجة الأولى.</li>
+<li>فوق \(70°C\): ضرر فوري محتمل.</li>
+</ul>
+
+<div class="table-scroll">
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+<table class="styled-table">
+<thead><tr><th>Mode</th><th>كيف يحدث الحرق</th></tr></thead>
+<tbody>
+<tr><td>Conduction</td><td class="text-cell">ملامسة سطح صلب ساخن</td></tr>
+<tr><td>Convection</td><td class="text-cell">تعرض لسائل أو غاز ساخن (Scalding)</td></tr>
+<tr><td>Radiation</td><td class="text-cell">تعرض لمصدر إشعاع عالي الطاقة مثل Laser</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Fire Hazard Prevention</h3>
+<div class="def-box">
+<div class="def-title">Flash Point</div>
+<div class="def-en">The lowest temperature at which a liquid can vaporize to form an ignitable mixture with air. Lower flash point means higher fire hazard.</div>
+</div>
+<ul class="content-list">
+<li><span class="term">Flash Point</span> ≥ 37.8°C → <span class="term">Combustible Liquid</span></li>
+<li><span class="term">Flash Point</span> < 37.8°C → <span class="term">Flammable Liquid</span></li>
+</ul>
+
+<div class="def-box">
+<div class="def-title">Autoignition Temperature (AIT)</div>
+<div class="def-en">The minimum temperature at which a substance spontaneously ignites without an ignition source. Autoignition occurs when the rate of heat release from exothermic oxidation exceeds the rate of heat loss to surroundings.</div>
+</div>
+
+<!-- EXAMPLE 1-14 -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–14: Fire Hazard Prevention of Oil Leakage on Hot Engine Surface</div>
+<div class="example-body">
+<div class="example-flex">
+<div class="example-text">
+<div class="example-question">
+Oil leakage on a hot engine surface can lead to fire hazards. Some engine oils have an autoignition temperature of approximately 250°C. The engine surface has an emissivity of 0.3, and its inner surface is subjected to 5 kW/m² of heat flux. The environment is at 40°C with h = 15 W/m²·K. To prevent fire hazard, the surface temperature should be kept below 200°C. Determine whether oil leakage drops are at risk of autoignition. If risk exists, discuss a prevention measure.
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Given</h4>
+<div class="given-grid">
+<div class="given-item">\(\varepsilon = 0.3\)</div>
+<div class="given-item">\(\dot{q}_0 = 5000\,W/m^2\)</div>
+<div class="given-item">\(T_\infty = T_{surr} = 313\,K\)</div>
+<div class="given-item">\(h = 15\,W/m^2{\cdot}K\)</div>
+</div>
+</div>
+<div class="example-fig">
+<img src="images/figure-1-49.png" alt="Figure 1-49: Engine surface fire hazard">
+</div>
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+<p>عند <span class="term">steady operation</span>:</p>
+<div class="eq-scroll">\[\dot{q}_0 = h(T_o - T_\infty) + \varepsilon\,\sigma(T_o^4 - T_{surr}^4)\]</div>
+<div class="eq-scroll">\[5000 = 15(T_o - 313) + (0.3)(5.67 \times 10^{-8})(T_o^4 - 313^4)\]</div>
+<p>هذه معادلة <span class="term">implicit nonlinear</span> تُحل عدديًا (مثلاً باستخدام <span class="term">EES</span>):</p>
+<div class="answer-badge">\(T_o = 552\,K = 279°C\)</div>
+
+<div class="warning-box" style="margin-top:16px;">
+<div class="warn-title">⚠️ النتيجة</div>
+<p>\(279°C > 200°C\) → <strong>يوجد خطر اشتعال ذاتي</strong>. إحدى وسائل <span class="term">PtD</span> المقترحة: <strong>عزل السطح الخارجي للمحرك</strong> لخفض درجة حرارة السطح وتقليل خطر الحريق.</p>
+</div>
+</div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== SECTION 17 ===================== -->
+<section class="section" id="sec17">
+<div class="section-header">
+<div class="section-icon">📋</div>
+<div class="section-title-group">
+<h2 class="section-title">Problem-Solving Technique</h2>
+<span class="section-subtitle">SYSTEMATIC APPROACH · SOFTWARE · SIGNIFICANT DIGITS</span>
+</div>
+</div>
+
+<p>حل المسائل الهندسية المعقدة يحتاج إلى <span class="term">systematic approach</span> يحول المشكلة الكبيرة إلى سلسلة من المشكلات الأبسط:</p>
+
+<div class="def-box">
+<div class="def-title">Step 1: Problem Statement</div>
+<p>اكتب باختصار المشكلة والمعطيات والمطلوب. الهدف: التأكد من فهم المشكلة قبل بدء الحل.</p>
+</div>
+
+<div class="def-box">
+<div class="def-title">Step 2: Schematic</div>
+<p>ارسم رسمًا واقعيًا للنظام يُظهر الأبعاد، تفاعلات الطاقة والكتلة، وأهم سمات النظام.</p>
+</div>
+
+<div class="def-box">
+<div class="def-title">Step 3: Assumptions and Approximations</div>
+<p>حدد الافتراضات اللازمة للتبسيط. يجب أن تكون معقولة ومبررة. إذا كانت هناك كمية مفقودة، يمكن افتراض قيمة مناسبة مع توضيح تأثيرها.</p>
+</div>
+
+<div class="def-box">
+<div class="def-title">Step 4: Physical Laws</div>
+<p>طبّق القوانين الفيزيائية المناسبة (حفظ الطاقة، قوانين انتقال الحرارة، إلخ).</p>
+</div>
+
+<div class="def-box">
+<div class="def-title">Step 5: Properties</div>
+<p>حدد الخصائص الفيزيائية اللازمة من الجداول أو العلاقات المناسبة.</p>
+</div>
+
+<div class="def-box">
+<div class="def-title">Step 6: Calculations</div>
+<p>عوّض القيم المعروفة واحسب المجاهيل. انتبه بشدة للوحدات (<span class="term">Units</span>) وتوافقها.</p>
+</div>
+
+<div class="def-box">
+<div class="def-title">Step 7: Reasoning, Verification, and Discussion</div>
+<p>تحقق أن النتيجة معقولة ومنطقية، وراجع صحة الافتراضات، وناقش أهمية النتائج وحدودها.</p>
+</div>
+
+<div class="note-box">
+<div class="note-title">💡 ملاحظة مهمة</div>
+<p>معظم صعوبات حل المسائل ليست بسبب نقص المعرفة، وإنما بسبب <strong>عدم التنظيم</strong>. اتبع هذه الخطوات حتى تتطور طريقة شخصية منظمة وفعالة.</p>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Engineering Software Packages</h3>
+<p>البرامج الهندسية توفر قدرة حسابية كبيرة لكنها <strong>أدوات</strong> وليست بديلاً عن الأساسيات الهندسية. المهندس يجب أن يمتلك:</p>
+<ul class="content-list">
+<li>فهم الأساسيات (<span class="term">Understanding of Fundamentals</span>).</li>
+<li>الحدس الفيزيائي (<span class="term">Physical Intuition</span>).</li>
+<li>القدرة على تفسير البيانات (<span class="term">Ability to Interpret Data</span>).</li>
+<li>الحكم الهندسي السليم (<span class="term">Sound Engineering Judgment</span>).</li>
+</ul>
+
+<div class="formula-box">
+<span class="formula-label">Core Principle</span>
+\[\boxed{\text{Software solves the equations you formulate; it does not formulate the physics for you.}}\]
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Engineering Equation Solver (EES)</h3>
+<p><span class="term">EES</span> هو برنامج لحل أنظمة المعادلات الخطية وغير الخطية والتفاضلية، ويحتوي على مكتبة كبيرة من <span class="term">thermophysical property functions</span>. المستخدم يجب أن يفهم المشكلة الفيزيائية، يحدد القوانين، يصيغ المعادلات، ثم يدخلها إلى <span class="term">EES</span> لحلها.</p>
+
+<!-- EXAMPLE 1-15 -->
+<div class="example-card">
+<div class="example-header">📝 Example 1–15: Solving a System of Equations with EES</div>
+<div class="example-body">
+<div class="example-question">
+The difference of two numbers is 4, and the sum of the squares of these two numbers is equal to the sum of the numbers plus 20. Determine these two numbers.
+</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Given</h4>
+<div class="eq-scroll">\[x - y = 4 \qquad x^2 + y^2 = x + y + 20\]</div>
+
+<h4 style="font-family:'Cairo',sans-serif;font-weight:700;color:var(--navy);margin:14px 0 8px;">Solution</h4>
+<p>هاتان معادلتان غير خطيتين بمجهولين. بعد الحل باستخدام <span class="term">EES</span>:</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;">
+<div class="answer-badge">\(x = 5\)</div>
+<div class="answer-badge">\(y = 1\)</div>
+</div>
+
+<div class="discussion-box" style="margin-top:16px;">
+<div class="disc-title">💬 Discussion</div>
+<p>المستخدم قام بعملية <span class="term">Formulation</span>، و<span class="term">EES</span> تولى الحل الرياضي. يسمح <span class="term">EES</span> بالتركيز على فيزياء المشكلة بدلاً من التفاصيل الرياضية.</p>
+</div>
+</div>
+</div>
+
+<h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Significant Digits</h3>
+<p>البيانات المعطاة في المسائل الهندسية غالبًا لا تكون معروفة بأكثر من حوالي <strong>three significant digits</strong>. لذلك لا يمكن أن تكون النتيجة أدق من البيانات المستخدمة.</p>
+
+<div class="note-box">
+<div class="note-title">📌 مثال</div>
+<p>عند \(V = 3.75\,L\) و \(\rho = 0.845\,kg/L\):</p>
+<div class="eq-scroll">\[m = \rho V = (0.845)(3.75) = 3.16875\,kg\]</div>
+<p>لكن النتيجة الصحيحة: \(m = 3.17\,kg\) (ثلاثة أرقام معنوية فقط).</p>
+</div>
+
+<div class="important-box">
+<div class="imp-title">⚡ القواعد العملية</div>
+<ul class="content-list" style="margin:0;">
+<li>احتفظ بأرقام إضافية أثناء الحسابات الوسيطة لتجنب أخطاء التقريب.</li>
+<li>قم بالتقريب في النتيجة النهائية فقط.</li>
+<li>دقة النتيجة النهائية يجب أن تعكس دقة البيانات المعطاة.</li>
+<li>المعيار الهندسي المقبول عند عدم معرفة عدد الأرقام المعنوية: <strong>3 significant digits</strong>.</li>
+</ul>
+</div>
+</section>
+
+<!-- ===== CHAPTER TAKEAWAYS ===== -->
+<hr class="section-divider">
+<section class="section" style="margin-bottom:20px;">
+<div class="section-header">
+<div class="section-icon">📌</div>
+<div class="section-title-group">
+<h2 class="section-title">Chapter Takeaways — خلاصة الفصل</h2>
+<span class="section-subtitle">KEY CONCEPTS · SUMMARY</span>
+</div>
+</div>
+
+<div class="important-box">
+<div class="imp-title">⚡ النقاط الجوهرية</div>
+<ul class="content-list" style="margin:0;">
+<li><span class="term">Heat Transfer</span> = انتقال طاقة ناتج عن فرق درجة الحرارة.</li>
+<li>اتجاه الانتقال التلقائي: \(T_{high} \rightarrow T_{low}\).</li>
+<li>فرق درجة الحرارة هو القوة الدافعة. كلما زاد <span class="term">Temperature Gradient</span> عمومًا، زاد معدل انتقال الحرارة.</li>
+<li><span class="term">Thermodynamics</span> يحدد كم من الحرارة تنتقل؛ <span class="term">Heat Transfer</span> يحدد مدى السرعة.</li>
+<li><span class="term">Heat Transfer</span> ظاهرة لا اتزانية (<span class="term">nonequilibrium phenomenon</span>).</li>
+<li>ثلاث آليات أساسية: <span class="term">Conduction + Convection + Radiation</span>.</li>
+<li>في الأنظمة الهندسية الحقيقية، غالبًا تعمل آليات متعددة في وقت واحد.</li>
+<li>تحليل <span class="term">Heat Transfer</span> ضروري للأداء الحراري والتصميم الاقتصادي (مثل العزل).</li>
+</ul>
+</div>
+
+<div class="formula-box">
+<span class="formula-label">سلسلة التحليل الهندسي</span>
+\[\boxed{\text{Physical phenomenon} \rightarrow \text{Assumptions} \rightarrow \text{Mathematical model} \rightarrow \text{Solution} \rightarrow \text{Physical interpretation}}\]
+</div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<div class="content-wrapper">
+<footer class="site-footer">
+<h3>Chapter 1 — Introduction and Basic Concepts</h3>
+<p>Heat Transfer · مقدمة والمفاهيم الأساسية</p>
+<div class="footer-tags">
+<span class="footer-tag">Conduction</span>
+<span class="footer-tag">Convection</span>
+<span class="footer-tag">Radiation</span>
+<span class="footer-tag">Fourier's Law</span>
+<span class="footer-tag">Newton's Law</span>
+<span class="footer-tag">Stefan–Boltzmann</span>
+<span class="footer-tag">Energy Balance</span>
+<span class="footer-tag">Thermal Conductivity</span>
+<span class="footer-tag">Thermal Diffusivity</span>
+<span class="footer-tag">PtD</span>
+</div>
+</footer>
+</div>
+
+<!-- ===== CLOSING DUA ===== -->
+<div class="closing-dua">
+<div class="closing-dua-card">
+<p>🤲 ولا تنسوا الصلاة على النبي صلى الله عليه وسلم، والدعاء لإخوانكم في فلسطين وغزة وفي جميع بقاع الأرض، وأن ينصر الله المسلمين المستضعفين. 🤲</p>
+</div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// Dua Toggle
+(function(){
+  var btn = document.getElementById('duaToggle');
+  var content = document.getElementById('duaContent');
+  if(!btn || !content) return;
+  btn.addEventListener('click', function(){
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    content.style.display = expanded ? 'none' : 'block';
+  });
+})();
+
+// TOC Smooth Scroll
+document.querySelectorAll('.toc-item').forEach(function(link){
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    var target = document.querySelector(this.getAttribute('href'));
+    if(target){
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+
+// Solution Toggle for Q-sections
+function toggleSolution(btn){
+  var solution = btn.nextElementSibling;
+  if(!solution) return;
+  var isVisible = solution.style.display === 'block';
+  solution.style.display = isVisible ? 'none' : 'block';
+  var arrow = btn.querySelector('.q-arrow');
+  if(arrow) arrow.style.transform = isVisible ? '' : 'rotate(180deg)';
+  btn.innerHTML = isVisible ? 'عرض الحل الكامل <span class="q-arrow">▼</span>' : 'إخفاء الحل <span class="q-arrow" style="transform:rotate(180deg)">▼</span>';
+}
+
+// Eye Protection Toggle
+(function(){
+  var KEY='eyeProtection', root=document.documentElement, btn=document.getElementById('eyeToggle');
+  if(!btn) return;
+  var st=btn.querySelector('.eye-st');
+  function render(on){ btn.setAttribute('aria-pressed', on?'true':'false'); st.textContent = on?'ON':'OFF'; }
+  render(root.getAttribute('data-eye')==='on');
+  btn.addEventListener('click', function(){
+    var on = root.getAttribute('data-eye') !== 'on';
+    if(on){ root.setAttribute('data-eye','on'); } else { root.removeAttribute('data-eye'); }
+    render(on);
+    try{ localStorage.setItem(KEY, on?'on':'off'); }catch(e){}
+  });
+})();
+</script>
+
+</body>
+</html>

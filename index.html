@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heat Transfer | Course Home</title>
+<meta name="description" content="Course home for Heat Transfer: chapter navigation and status.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <h1 id="course-title">Heat Transfer</h1>
+    <p class="hero-sub" id="course-subtitle"></p>
+    <a class="btn btn-primary" id="start-link" href="#chapters" hidden></a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="chapters-section" id="chapters" aria-labelledby="chapters-heading">
+    <div class="section-head">
+      <h2 id="chapters-heading">Chapters</h2>
+      <p class="section-note" id="chapters-note"></p>
+    </div>
+    <ol class="chapters" id="chapter-list"></ol>
+    <noscript><p class="section-note">Turn on JavaScript to see the chapter list.</p></noscript>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Heat Transfer course notes. Equations and fonts load from the internet, so open chapters while online.</p>
+</footer>
+
+<script src="assets/js/chapters.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
