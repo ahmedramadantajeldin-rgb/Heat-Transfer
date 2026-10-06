@@ -364,3 +364,50 @@ html[data-eye="on"] .eye-overlay{display:block;position:fixed;inset:0;z-index:99
   .solution-collapse{grid-template-rows:1fr !important;opacity:1 !important;visibility:visible !important;transition:none !important;}
   .solution-collapse-inner{overflow:visible !important;}
 }
+
+/* ===== ACADEMIC TABLES (visual restyle only) ===== */
+.styled-table{
+  width:100%;border-collapse:collapse;border-spacing:0;
+  border-radius:0;overflow:visible;
+  background:var(--white);
+  border-top:2px solid var(--navy);border-bottom:2px solid var(--navy);
+  font-family:'Source Serif 4',Georgia,'Cairo',serif;
+  font-size:0.95rem;line-height:1.55;color:var(--ink);
+  font-variant-numeric:lining-nums tabular-nums;
+}
+.styled-table thead th{
+  background:rgba(11,36,71,0.045);color:var(--navy);
+  padding:11px 18px 10px;
+  font-family:'Source Serif 4',Georgia,'Cairo',serif;font-weight:600;font-size:0.9rem;
+  text-align:center;white-space:nowrap;
+  border-bottom:1px solid var(--navy);
+}
+.styled-table thead th:first-child{text-align:start;}
+.styled-table tbody td{
+  padding:9px 18px;
+  border-bottom:1px solid rgba(11,36,71,0.13);
+  font-family:inherit;font-size:0.93rem;text-align:center;color:var(--ink);
+}
+.styled-table tbody td:first-child{text-align:start;color:var(--navy);}
+.styled-table tbody td.text-cell{font-family:'Cairo','Source Serif 4',Georgia,serif;font-size:0.9rem;text-align:start;}
+.styled-table tbody tr:nth-child(even){background:rgba(11,36,71,0.028);}
+.styled-table tbody tr:last-child td{border-bottom:none;}
+/* wide, text-based tables (3 columns, or Arabic text cells): start-aligned columns */
+.styled-table:has(th:nth-child(3)) thead th,
+.styled-table:has(th:nth-child(3)) tbody td,
+.styled-table:has(td.text-cell) thead th,
+.styled-table:has(td.text-cell) tbody td{text-align:start;}
+/* compact two-column reference tables: centred on the page, like a printed table */
+.styled-table:not(:has(th:nth-child(3))){width:auto;min-width:min(100%,400px);max-width:100%;margin-inline:auto;}
+.styled-table:not(:has(th:nth-child(3))) thead th,
+.styled-table:not(:has(th:nth-child(3))) tbody td{padding-inline:28px;}
+/* centred data cells read left-to-right, so numeric ranges like "2 – 25" display in the written order inside the RTL page */
+.styled-table:not(:has(th:nth-child(3))):not(:has(td.text-cell)) thead th:not(:first-child),
+.styled-table:not(:has(th:nth-child(3))):not(:has(td.text-cell)) tbody td:not(:first-child){direction:ltr;}
+@media(max-width:600px){
+  .styled-table{font-size:0.88rem;}
+  .styled-table thead th{padding:9px 12px 8px;font-size:0.84rem;}
+  .styled-table tbody td{padding:8px 12px;font-size:0.88rem;}
+  .styled-table:not(:has(th:nth-child(3))) thead th,
+  .styled-table:not(:has(th:nth-child(3))) tbody td{padding-inline:14px;}
+}

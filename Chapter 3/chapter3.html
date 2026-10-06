@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 3 — Steady Heat Conduction</title>
+<title>Chapter 3 — Steady Heat Conduction | Heat Transfer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Cairo:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&family=Amiri&display=swap" rel="stylesheet">
@@ -11,11 +11,845 @@
 window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']},startup:{pageReady:function(){return MathJax.startup.defaultPageReady();}}};
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js" async></script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="chapter3.css">
+<style>
+:root{
+--navy:#0B2447;--royal:#1B4F8A;--sky:#2E86C1;--azure:#5DADE2;--mist:#D6EAF8;--pearl:#EBF5FB;--white:#FFFFFF;--ink:#1A1A2E;--graphite:#2C3E50;--slate:#5D6D7E;--gold:#D4AC0D;--amber:#F0B429;--mint:#1ABC9C;--mint-light:#D5F5E3;--coral:#E74C3C;--coral-light:#FADBD8;--shadow:0 4px 20px rgba(11,36,71,0.10);--shadow-lg:0 8px 40px rgba(11,36,71,0.16);--radius:14px;--radius-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+*{max-width:100%;}
+html,body{overflow-x:hidden;}
+html{scroll-behavior:smooth;}
+body{
+font-family:'Cairo','Source Serif 4',serif;
+font-size:17px;line-height:1.85;
+color:var(--ink);
+background:linear-gradient(160deg,#f0f6ff 0%,#e8f1fb 50%,#f5f9ff 100%);
+min-height:100vh;
+}
+
+/* ===== HEADER ===== */
+.lecture-header{
+background:linear-gradient(135deg,var(--navy) 0%,var(--royal) 60%,var(--sky) 100%);
+padding:60px 40px 50px;
+text-align:center;
+color:var(--white);
+position:relative;
+overflow:hidden;
+}
+.lecture-header::before{
+content:'';position:absolute;inset:0;
+background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+z-index:0;
+}
+.lecture-header>*{position:relative;z-index:1;}
+.header-badge{
+display:inline-block;
+background:rgba(255,255,255,0.15);
+border:1px solid rgba(255,255,255,0.25);
+border-radius:999px;
+padding:6px 20px;
+font-family:'Cairo',sans-serif;
+font-size:0.82rem;
+font-weight:600;
+letter-spacing:2px;
+text-transform:uppercase;
+margin-bottom:18px;
+color:rgba(255,255,255,0.9);
+}
+.lecture-header h1{
+font-family:'Playfair Display',serif;
+font-weight:800;
+font-size:clamp(2rem,5vw,3.2rem);
+text-shadow:0 2px 8px rgba(0,0,0,0.2);
+line-height:1.3;
+margin-bottom:14px;
+}
+.lecture-header h1 .ar-sub{
+font-family:'Cairo',sans-serif;
+font-size:0.65em;
+opacity:0.85;
+font-weight:600;
+display:block;
+}
+.header-subtitle{
+font-family:'Source Serif 4',serif;
+font-size:1.1rem;
+opacity:0.85;
+direction:ltr;
+max-width:650px;
+margin:0 auto 20px;
+}
+.meta-pills{
+display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+}
+.meta-pill{
+display:inline-flex;align-items:center;gap:6px;
+background:rgba(255,255,255,0.13);
+border:1px solid rgba(255,255,255,0.22);
+border-radius:999px;
+padding:5px 14px;
+font-size:0.82rem;
+font-family:'Cairo',sans-serif;
+color:rgba(255,255,255,0.92);
+}
+
+/* ===== CONTENT WRAPPER ===== */
+.content-wrapper{max-width:960px;margin:0 auto;padding:0 24px;}
+.toc-wrapper{max-width:900px;margin:0 auto;padding:0 24px;}
+
+/* ===== DUA SECTION ===== */
+.dua-wrapper{max-width:960px;margin:28px auto 0;padding:0 24px;}
+.dua-card{
+background:var(--white);
+border:1.5px solid #e8b84b;
+border-radius:var(--radius);
+box-shadow:0 2px 12px rgba(168,120,42,0.10);
+overflow:hidden;
+}
+.dua-toggle{
+width:100%;
+display:flex;align-items:center;justify-content:space-between;
+padding:14px 20px;
+background:linear-gradient(135deg,#7a5800,#b8860b);
+color:var(--white);
+border:none;
+cursor:pointer;
+font-family:'Cairo',sans-serif;
+font-size:0.95rem;
+font-weight:600;
+text-align:right;
+direction:rtl;
+}
+.dua-toggle:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+.dua-toggle .arrow{
+display:inline-block;
+transition:transform 0.3s ease;
+margin-right:auto;margin-left:8px;
+font-size:0.8rem;
+}
+.dua-toggle[aria-expanded="true"] .arrow{transform:rotate(180deg);}
+.dua-content{
+display:none;
+padding:24px 20px;
+background:linear-gradient(135deg,#fffbea,#fff9f0);
+}
+.dua-content p{
+font-family:'Amiri',serif;
+font-size:17px;
+line-height:2.1;
+color:#5a3e00;
+border-right:3px solid #e8b84b;
+padding-right:14px;
+margin-bottom:10px;
+}
+.dua-content p:last-child{margin-bottom:0;}
+
+/* ===== TOC ===== */
+.toc-card{
+background:var(--white);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+overflow:hidden;
+margin:30px 0;
+}
+.toc-header{
+background:linear-gradient(90deg,var(--royal),var(--sky));
+padding:16px 24px;
+}
+.toc-header h2{
+font-family:'Playfair Display',serif;
+font-size:1.2rem;
+font-weight:700;
+color:var(--white);
+margin:0;
+}
+.toc-body{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+padding:18px;
+}
+.toc-item{
+display:flex;align-items:center;gap:10px;
+text-decoration:none;
+color:var(--ink);
+padding:8px 12px;
+border-radius:var(--radius-sm);
+transition:background 0.2s;
+font-size:0.92rem;
+font-family:'Cairo',sans-serif;
+}
+.toc-item:hover{background:var(--pearl);}
+.toc-num{
+flex:0 0 26px;width:26px;height:26px;
+display:flex;align-items:center;justify-content:center;
+background:var(--royal);
+color:var(--white);
+border-radius:50%;
+font-family:'JetBrains Mono',monospace;
+font-size:0.72rem;
+font-weight:500;
+}
+
+/* ===== SECTIONS ===== */
+.section{margin:36px 0;}
+.section-header{
+display:flex;align-items:flex-start;gap:16px;
+margin-bottom:24px;
+padding-bottom:16px;
+border-bottom:3px solid var(--mist);
+}
+.section-icon{
+flex:0 0 52px;width:52px;height:52px;
+display:flex;align-items:center;justify-content:center;
+background:linear-gradient(135deg,var(--royal),var(--sky));
+border-radius:var(--radius);
+font-size:1.5rem;
+color:var(--white);
+}
+.section-titles h2{
+font-family:'Playfair Display',serif;
+font-size:1.75rem;
+font-weight:700;
+color:var(--navy);
+margin:0 0 2px;
+}
+.section-titles .section-sub{
+font-family:'JetBrains Mono',monospace;
+font-size:0.8rem;
+color:var(--slate);
+}
+.section-divider{
+border:none;
+height:2px;
+background:linear-gradient(90deg,transparent,var(--sky),transparent);
+margin:50px 0;
+}
+
+/* ===== BOXES ===== */
+.def-box{
+background:linear-gradient(135deg,var(--mist),var(--pearl));
+border-right:5px solid var(--sky);
+border-radius:var(--radius);
+padding:20px 24px;
+margin:20px 0;
+}
+.def-box .box-title{
+font-family:'Playfair Display',serif;
+font-weight:700;
+color:var(--navy);
+font-size:1.05rem;
+margin-bottom:8px;
+display:flex;align-items:center;gap:8px;
+}
+.formula-box{
+background:var(--navy);
+color:var(--white);
+border-radius:var(--radius);
+padding:22px 26px;
+margin:20px 0;
+text-align:center;
+overflow-x:auto;
+}
+.formula-box .box-label{
+font-family:'JetBrains Mono',monospace;
+font-size:0.78rem;
+color:var(--azure);
+margin-bottom:8px;
+letter-spacing:1px;
+text-transform:uppercase;
+}
+.formula-box .mjx-chtml{color:var(--white) !important;}
+.note-box{
+background:#fffbea;
+border-right:5px solid var(--amber);
+border-radius:var(--radius);
+padding:18px 22px;
+margin:20px 0;
+}
+.note-box .note-title{
+font-family:'Cairo',sans-serif;
+font-weight:700;
+color:#8B6914;
+font-size:0.95rem;
+margin-bottom:6px;
+display:flex;align-items:center;gap:8px;
+}
+.insight-box{
+background:var(--mint-light);
+border-right:5px solid var(--mint);
+border-radius:var(--radius);
+padding:18px 22px;
+margin:20px 0;
+}
+.insight-box .insight-title{
+font-family:'Cairo',sans-serif;
+font-weight:700;
+color:#148F77;
+font-size:0.95rem;
+margin-bottom:6px;
+display:flex;align-items:center;gap:8px;
+}
+.warning-box{
+background:var(--coral-light);
+border-right:5px solid var(--coral);
+border-radius:var(--radius);
+padding:18px 22px;
+margin:20px 0;
+}
+.warning-box .warn-title{
+font-family:'Cairo',sans-serif;
+font-weight:700;
+color:#C0392B;
+font-size:0.95rem;
+margin-bottom:6px;
+display:flex;align-items:center;gap:8px;
+}
+
+/* ===== EXAMPLE CARDS ===== */
+.example-card{
+background:var(--white);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+overflow:hidden;
+margin:28px 0;
+}
+.example-header{
+background:linear-gradient(135deg,var(--sky),var(--azure));
+padding:16px 24px;
+color:var(--white);
+}
+.example-header h3{
+font-family:'Playfair Display',serif;
+font-weight:700;
+font-size:1.1rem;
+margin:0;
+}
+.example-body{padding:24px;}
+.problem-statement{
+background:var(--pearl);
+border-radius:var(--radius-sm);
+padding:18px 20px;
+margin-bottom:20px;
+direction:ltr;
+text-align:left;
+font-family:'Source Serif 4',serif;
+font-size:0.95rem;
+line-height:1.8;
+color:var(--graphite);
+}
+.given-section{
+margin:16px 0;
+direction:ltr;
+text-align:left;
+}
+.given-section h4{
+font-family:'Playfair Display',serif;
+color:var(--royal);
+font-size:1rem;
+margin-bottom:8px;
+}
+.given-grid{
+display:flex;flex-wrap:wrap;gap:8px 24px;
+font-family:'JetBrains Mono',monospace;
+font-size:0.88rem;
+color:var(--graphite);
+direction:ltr;
+}
+.solution-steps{direction:ltr;text-align:left;}
+.solution-steps h4{
+font-family:'Playfair Display',serif;
+color:var(--royal);
+font-size:1rem;
+margin:16px 0 10px;
+}
+.step{
+display:flex;gap:12px;
+margin:12px 0;
+}
+.step-num{
+flex:0 0 28px;width:28px;height:28px;
+background:var(--royal);
+color:var(--white);
+border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+font-family:'JetBrains Mono',monospace;
+font-size:0.75rem;
+font-weight:500;
+margin-top:2px;
+}
+.step-content{flex:1;direction:ltr;text-align:left;}
+.final-answer{
+background:var(--mint-light);
+border:2px solid var(--mint);
+border-radius:var(--radius-sm);
+padding:14px 18px;
+margin-top:16px;
+text-align:center;
+}
+.final-answer .answer-label{
+font-family:'Cairo',sans-serif;
+font-weight:700;
+color:#148F77;
+font-size:0.85rem;
+margin-bottom:4px;
+}
+.discussion-box{
+background:var(--pearl);
+border-radius:var(--radius-sm);
+padding:16px 18px;
+margin-top:16px;
+}
+.discussion-box h4{
+font-family:'Cairo',sans-serif;
+font-weight:700;
+color:var(--royal);
+margin-bottom:6px;
+font-size:0.95rem;
+}
+
+/* ===== TABLES ===== */
+.table-wrapper{
+overflow-x:auto;
+margin:20px 0;
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+}
+.table-wrapper table{
+width:100%;
+border-collapse:collapse;
+font-size:0.9rem;
+direction:ltr;
+text-align:center;
+min-width:500px;
+}
+.table-wrapper th{
+background:var(--royal);
+color:var(--white);
+font-family:'Cairo',sans-serif;
+font-weight:600;
+padding:12px 14px;
+}
+.table-wrapper td{
+padding:10px 14px;
+font-family:'JetBrains Mono',monospace;
+font-size:0.85rem;
+color:var(--navy);
+border-bottom:1px solid var(--mist);
+}
+.table-wrapper tr:nth-child(even) td{background:var(--pearl);}
+.table-wrapper .td-label{
+font-family:'Cairo',sans-serif;
+text-align:right;
+color:var(--navy);
+font-weight:600;
+}
+.scroll-hint{
+display:none;
+text-align:center;
+font-size:0.78rem;
+color:var(--slate);
+margin-top:6px;
+font-family:'Cairo',sans-serif;
+}
+
+/* ===== Q-SECTION (Collapsible Solutions) ===== */
+.q-section{
+border:2px solid var(--royal);
+border-radius:var(--radius);
+overflow:hidden;
+margin:28px 0;
+}
+.q-section-header{
+background:linear-gradient(135deg,var(--navy),var(--royal));
+padding:16px 24px;
+color:var(--white);
+}
+.q-section-header h3{
+font-family:'Playfair Display',serif;
+font-weight:700;
+font-size:1.1rem;
+margin:0;
+}
+.q-item{
+border-bottom:1px solid var(--mist);
+padding:20px 24px;
+}
+.q-item:last-child{border-bottom:none;}
+.q-toggle{
+display:inline-flex;align-items:center;gap:8px;
+background:var(--royal);
+color:var(--white);
+border:none;
+border-radius:var(--radius-sm);
+padding:8px 16px;
+cursor:pointer;
+font-family:'Cairo',sans-serif;
+font-size:0.85rem;
+font-weight:600;
+margin-top:10px;
+transition:background 0.2s;
+}
+.q-toggle:hover{background:var(--navy);}
+.q-toggle:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+.q-answer{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed var(--mist);}
+
+/* ===== FIGURE ===== */
+.fig-container{
+margin:20px 0;
+text-align:center;
+}
+.fig-container img{
+max-width:100%;
+height:auto;
+border-radius:var(--radius-sm);
+box-shadow:var(--shadow);
+}
+.fig-container.fig-medium img{max-width:600px;}
+.fig-container.fig-small img{max-width:420px;}
+.fig-caption{
+font-family:'Cairo',sans-serif;
+font-size:0.82rem;
+color:var(--slate);
+margin-top:8px;
+}
+.fig-side{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+align-items:start;
+margin:20px 0;
+}
+.fig-side img{
+max-width:100%;
+height:auto;
+border-radius:var(--radius-sm);
+box-shadow:var(--shadow);
+}
+
+/* ===== EQUATION SCROLL ===== */
+.equation-scroll{
+overflow-x:auto;
+margin:16px 0;
+padding:4px 0;
+}
+
+/* ===== KEY RELATIONS TABLE ===== */
+.key-table{
+width:100%;
+border-collapse:collapse;
+direction:ltr;
+font-size:0.88rem;
+}
+.key-table th{
+background:var(--navy);
+color:var(--white);
+padding:10px 14px;
+font-family:'Cairo',sans-serif;
+}
+.key-table td{
+padding:10px 14px;
+border-bottom:1px solid var(--mist);
+vertical-align:top;
+}
+.key-table tr:nth-child(even) td{background:var(--pearl);}
+
+/* ===== ANALOGY TABLE ===== */
+.analogy-box{
+background:var(--white);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+overflow:hidden;
+margin:20px 0;
+}
+
+/* ===== FOOTER ===== */
+.lecture-footer{
+background:var(--navy);
+color:var(--white);
+text-align:center;
+border-radius:var(--radius);
+margin:40px auto 0;
+max-width:960px;
+padding:36px 30px;
+}
+.lecture-footer h3{
+font-family:'Playfair Display',serif;
+font-size:1.2rem;
+font-weight:700;
+margin-bottom:8px;
+}
+.lecture-footer p{opacity:0.7;font-size:0.9rem;margin-bottom:16px;}
+.footer-tags{
+display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+}
+.footer-tag{
+background:rgba(255,255,255,0.10);
+border-radius:999px;
+padding:5px 14px;
+font-size:0.78rem;
+font-family:'Cairo',sans-serif;
+color:rgba(255,255,255,0.85);
+}
+
+/* ===== CLOSING PRAYER ===== */
+.closing-prayer{
+max-width:960px;
+margin:24px auto 40px;
+padding:0 24px;
+}
+.closing-prayer-card{
+background:linear-gradient(135deg,#0B2447,#1B4F8A);
+border-top:4px solid #D4AC0D;
+border-radius:var(--radius);
+box-shadow:0 8px 32px rgba(11,36,71,0.18);
+padding:30px 28px;
+text-align:center;
+}
+.closing-prayer-card p{
+font-family:'Amiri',serif;
+font-size:19px;
+line-height:2.2;
+color:var(--white);
+text-shadow:0 1px 4px rgba(0,0,0,0.2);
+margin:0;
+}
+
+/* ===== HOME LINK ===== */
+.home-link{position:fixed;top:14px;right:14px;z-index:10001;background:rgba(255,255,255,0.93);color:var(--navy);border:1px solid rgba(11,36,71,0.28);border-radius:999px;padding:6px 16px;font-family:'Cairo',sans-serif;font-size:0.82rem;font-weight:600;text-decoration:none;box-shadow:0 2px 10px rgba(11,36,71,0.18);backdrop-filter:blur(6px);transition:background .2s;direction:ltr;}
+.home-link:hover{background:var(--pearl);}
+
+/* ===== EYE PROTECTION ===== */
+.eye-toggle{position:fixed;top:14px;left:14px;z-index:10000;direction:ltr;display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 12px;border-radius:999px;cursor:pointer;margin:0;font-family:'Cairo',sans-serif;font-weight:600;font-size:0.82rem;line-height:1.4;background:rgba(255,255,255,0.93);color:#0B2447;border:1px solid rgba(11,36,71,0.28);box-shadow:0 2px 10px rgba(11,36,71,0.18);backdrop-filter:blur(6px);transition:background .2s,border-color .2s,color .2s;}
+.eye-toggle:focus-visible{outline:2px solid #F0B429;outline-offset:2px;}
+.eye-sw{position:relative;flex:0 0 30px;width:30px;height:16px;border-radius:999px;background:#A9B4C0;transition:background .2s;}
+.eye-sw::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .2s;}
+.eye-st{min-width:2.3em;text-align:left;font-family:'JetBrains Mono',monospace;font-size:0.76rem;font-weight:500;}
+.eye-toggle[aria-pressed="true"]{background:#F8EFD6;border-color:#C9A25A;color:#5A3E00;}
+.eye-toggle[aria-pressed="true"] .eye-sw{background:#C8902E;}
+.eye-toggle[aria-pressed="true"] .eye-sw::after{transform:translateX(14px);}
+.eye-overlay{display:none;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+.lecture-header{padding:40px 24px 36px;}
+.lecture-header h1{font-size:clamp(1.6rem,5vw,2.4rem);}
+.section-titles h2{font-size:1.4rem;}
+.fig-side{grid-template-columns:1fr;}
+.example-body{padding:18px;}
+.problem-statement{padding:14px 16px;}
+}
+@media(max-width:650px){
+.toc-body{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+body{font-size:15.5px;}
+.lecture-header{padding:32px 16px 28px;}
+.content-wrapper,.toc-wrapper,.dua-wrapper,.closing-prayer{padding:0 14px;}
+.section-header{flex-direction:column;gap:10px;}
+.section-icon{width:40px;height:40px;font-size:1.2rem;}
+.section-titles h2{font-size:1.25rem;}
+.formula-box{padding:16px 14px;}
+.scroll-hint{display:block;}
+.meta-pills{gap:6px;}
+.meta-pill{font-size:0.74rem;padding:4px 10px;}
+}
+@media(max-width:420px){
+.eye-toggle{padding:5px 10px 5px 9px;gap:6px;font-size:0.74rem;}
+.eye-lbl{display:none;}
+}
+@media(max-width:380px){
+.lecture-header h1{font-size:1.4rem;}
+.section-titles h2{font-size:1.1rem;}
+body{font-size:14.5px;}
+}
+
+/* ===== EYE PROTECTION ON ===== */
+@media screen{
+html[data-eye="on"]{--pearl:#EAF1F5;--mist:#D5E4EE;--white:#F8F8F5;--sky:#3A84B3;--azure:#69A8CF;--amber:#E2AD3C;--gold:#C8A21C;--mint:#27AD93;--mint-light:#D6EADC;--coral:#D9544A;--coral-light:#F0DCD6;--slate:#556576;--shadow:0 4px 20px rgba(50,44,32,0.10);--shadow-lg:0 8px 40px rgba(50,44,32,0.14);--eye-paper:#F8F8F5;}
+html[data-eye="on"] body{background:linear-gradient(160deg,#F0F1F0 0%,#ECEDEC 50%,#F1F2F1 100%);}
+html[data-eye="on"] img{filter:brightness(0.97) saturate(0.96);}
+html[data-eye="on"] .toc-card,
+html[data-eye="on"] .example-card,
+html[data-eye="on"] .analogy-box,
+html[data-eye="on"] .dua-card,
+html[data-eye="on"] .table-wrapper table,
+html[data-eye="on"] .q-item{background:var(--eye-paper);}
+html[data-eye="on"] .problem-statement{background:#E8ECEE;}
+html[data-eye="on"] .note-box{background:#F6F0DF;}
+html[data-eye="on"] .dua-content{background:linear-gradient(135deg,#F6F1E0,#F7F2E6);}
+html[data-eye="on"] .def-box{background:linear-gradient(135deg,#D8E2EA,#E2EAF0);}
+html[data-eye="on"] .insight-box{background:#D6EADC;}
+html[data-eye="on"] .discussion-box{background:#E8ECEE;}
+html[data-eye="on"] .final-answer{background:#D6EADC;}
+html[data-eye="on"] .formula-box .mjx-chtml{color:#F4F4F2 !important;}
+@supports(mix-blend-mode:multiply){
+html[data-eye="on"] .eye-overlay{display:block;position:fixed;inset:0;z-index:9990;pointer-events:none;background:rgba(255,225,170,0.22);mix-blend-mode:multiply;}
+}
+}
+@media print{.eye-toggle,.eye-overlay,.home-link{display:none !important;}}
+
+/* ===== BACK TO HOME ===== */
+.home-link{position:fixed;top:14px;right:14px;z-index:10000;direction:ltr;display:inline-flex;align-items:center;gap:6px;padding:6px 14px 6px 10px;border-radius:999px;margin:0;font-family:'Cairo',sans-serif;font-weight:600;font-size:0.82rem;line-height:1.4;text-decoration:none;background:rgba(255,255,255,0.93);color:#0B2447;border:1px solid rgba(11,36,71,0.28);box-shadow:0 2px 10px rgba(11,36,71,0.18);backdrop-filter:blur(6px);transition:background .2s,border-color .2s,color .2s;}
+.home-link:hover{background:#fff;border-color:#C2410C;color:#9A3412;}
+.home-link:focus-visible{outline:2px solid #F0B429;outline-offset:2px;}
+.home-ico{flex:0 0 auto;}
+@media(max-width:420px){ .home-link{padding:5px 10px 5px 8px;font-size:0.74rem;} }
+@media(max-width:520px){ .lecture-header{padding-top:68px;} }  /* keep the fixed pills clear of the header badge */
+
+/* ===== LTR helpers ===== */
+.ltr{direction:ltr;text-align:left;}
+.term{font-family:'JetBrains Mono',monospace;font-size:0.92em;color:var(--royal);font-weight:500;}
+.en{direction:ltr;display:inline;unicode-bidi:isolate;}
+/* ===== CH3: SOLUTION TOGGLE (added) ===== */
+.sol-toggle-row{display:flex;justify-content:center;margin:6px 0 2px;}
+.sol-toggle{display:inline-flex;align-items:center;gap:8px;font-family:'Cairo',sans-serif;font-size:0.88rem;font-weight:600;line-height:1.6;color:var(--royal);background:var(--pearl);border:1.5px solid var(--azure);border-radius:999px;padding:6px 20px;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .15s;}
+.sol-toggle:hover,.sol-toggle[aria-expanded="true"]{background:var(--royal);border-color:var(--royal);color:var(--white);}
+.sol-toggle:active{transform:scale(.97);}
+.sol-toggle:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+.sol-arrow{display:inline-block;font-size:0.72rem;}
+.sol-wrap{display:grid;grid-template-rows:0fr;opacity:0;visibility:hidden;transition:grid-template-rows .45s ease,opacity .3s ease,visibility 0s linear .45s;}
+.sol-wrap.is-open{grid-template-rows:1fr;opacity:1;visibility:visible;transition:grid-template-rows .45s ease,opacity .4s ease .05s,visibility 0s;}
+.sol-inner{min-height:0;overflow:hidden;transform:translateY(-8px);transition:transform .45s ease;}
+.sol-wrap.is-open .sol-inner{transform:none;}
+.sol-wrap.is-settled .sol-inner{overflow:visible;}
+
+/* ===== TASK COMPLETION SYSTEM ===== */
+.task-check{
+  flex:0 0 auto;margin-right:auto;margin-left:0;
+  display:inline-flex;align-items:center;gap:8px;
+  background:none;border:2px solid var(--mist);
+  border-radius:999px;padding:6px 16px 6px 10px;
+  cursor:pointer;font-family:'Cairo',sans-serif;
+  font-size:0.82rem;font-weight:600;
+  color:var(--slate);transition:all .25s ease;
+}
+.task-check:hover{border-color:var(--sky);color:var(--sky);transform:scale(1.05);}
+.task-check:active{transform:scale(0.96);}
+.task-check .check-svg{transition:all .3s ease;}
+.task-check .check-path{opacity:0;transition:opacity .3s ease;}
+.task-check.completed{border-color:var(--mint);color:var(--mint);background:var(--mint-light);}
+.task-check.completed .check-path{opacity:1;}
+.task-check.completed .check-svg{color:var(--mint);}
+.task-label{white-space:nowrap;}
+.task-num{font-family:'JetBrains Mono',monospace;font-weight:500;}
+
+/* Motivational message */
+.task-msg{
+  position:absolute;top:100%;right:0;
+  background:var(--navy);color:#fff;
+  padding:8px 16px;border-radius:var(--radius-sm);
+  font-family:'Cairo',sans-serif;font-size:0.85rem;
+  font-weight:600;white-space:nowrap;
+  opacity:0;transform:translateY(-8px);
+  animation:msgPop .4s ease forwards;
+  pointer-events:none;z-index:100;
+  box-shadow:var(--shadow);
+}
+@keyframes msgPop{
+  0%{opacity:0;transform:translateY(-8px);}
+  100%{opacity:1;transform:translateY(4px);}
+}
+@keyframes msgFade{
+  0%{opacity:1;transform:translateY(4px);}
+  100%{opacity:0;transform:translateY(-8px);}
+}
+
+/* Section completed state */
+.section.task-done{position:relative;}
+.section.task-done::after{
+  content:'';position:absolute;top:0;right:-24px;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--mint),var(--mint-light));
+  border-radius:4px;
+}
+
+/* Progress bar */
+.task-progress-wrapper{
+  max-width:960px;margin:20px auto 0;padding:0 24px;
+  display:flex;align-items:center;gap:14px;
+}
+.task-progress-bar{
+  flex:1;height:8px;background:var(--mist);
+  border-radius:999px;overflow:hidden;
+}
+.task-progress-fill{
+  height:100%;width:0%;border-radius:999px;
+  background:linear-gradient(90deg,var(--sky),var(--mint));
+  transition:width .5s ease;
+}
+.task-progress-text{
+  flex:0 0 auto;font-family:'JetBrains Mono',monospace;
+  font-size:0.82rem;color:var(--slate);font-weight:500;
+  white-space:nowrap;
+}
+
+/* Chapter complete banner */
+.chapter-complete-banner{
+  max-width:960px;margin:24px auto;
+  padding:0 24px;
+}
+.banner-content{
+  background:linear-gradient(135deg,var(--mint),#27ae94);
+  border-radius:var(--radius);padding:32px;
+  text-align:center;color:#fff;
+  box-shadow:var(--shadow-lg);
+  animation:bannerIn .6s ease;
+}
+.banner-emoji{font-size:3rem;display:block;margin-bottom:12px;}
+.banner-content h2{
+  font-family:'Playfair Display',serif;font-size:1.8rem;
+  font-weight:700;margin-bottom:8px;
+}
+.banner-content p{
+  font-family:'Cairo',sans-serif;font-size:1.1rem;
+  opacity:0.9;
+}
+@keyframes bannerIn{
+  0%{opacity:0;transform:scale(0.9);}
+  100%{opacity:1;transform:scale(1);}
+}
+
+/* Confetti canvas */
+#confettiCanvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:99999;
+}
+
+/* Section header needs relative for message positioning */
+.section-header{position:relative;}
+
+@media(prefers-reduced-motion:reduce){.sol-wrap,.sol-wrap.is-open,.sol-inner{transition:none;}}
+@media print{.sol-toggle-row{display:none !important;}.sol-wrap{display:block !important;opacity:1 !important;visibility:visible !important;}.sol-inner{overflow:visible !important;transform:none !important;}}
+
+/* ===== CH3: NUMERIC TABLES — academic reference style (added) ===== */
+.analogy-box.num-table-box{box-shadow:none;border:1px solid #D5DFEA;border-radius:6px;padding:18px 22px 10px;}
+.num-table-box .table-wrapper{box-shadow:none;border-radius:0;margin:0;}
+.num-table-box .table-wrapper{direction:ltr;}
+.num-table-box .scroll-hint{direction:rtl;}
+.table-wrapper table.num-table{width:auto;min-width:480px;margin:0 auto;border-collapse:collapse;font-size:0.88rem;line-height:1.5;color:var(--navy);font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1;}
+.table-wrapper table.num-table th{background:transparent;color:var(--navy);font-family:'Source Serif 4','Cairo',Georgia,serif;font-weight:600;font-size:0.9rem;letter-spacing:0.01em;text-align:center;padding:9px 28px;border:0;}
+.table-wrapper table.num-table thead tr:first-child th{border-top:2px solid var(--navy);}
+.table-wrapper table.num-table thead tr:last-child th{background:#F2F6FA;border-bottom:1.5px solid var(--navy);}
+.table-wrapper table.num-table thead tr:first-child:not(:last-child) th{background:transparent;text-align:left;font-size:0.92rem;padding:10px 28px 8px;border-bottom:1px solid #CBD7E3;}
+.table-wrapper table.num-table td{padding:8px 28px;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:400;color:var(--ink);text-align:center;background:transparent;border-bottom:1px solid #E3EAF2;}
+.table-wrapper table.num-table td.td-label{font-family:'Source Serif 4','Cairo',Georgia,serif;font-size:0.92rem;font-weight:500;color:var(--navy);text-align:left;}
+.table-wrapper table.num-table tbody tr:nth-child(even) td{background:rgba(27,79,138,0.03);}
+.table-wrapper table.num-table tbody tr:hover td{background:rgba(27,79,138,0.07);}
+.table-wrapper table.num-table tbody tr:last-child td{border-bottom:2px solid var(--navy);}
+/* column alignment: labels left, plain numbers right (digits & separators line up), ranges centered */
+.table-wrapper table.num-table.nt-fluid thead tr:last-child th:first-child,
+.table-wrapper table.num-table.nt-metal thead tr:last-child th:first-child{text-align:left;}
+.table-wrapper table.num-table.nt-fluid thead tr:last-child th:nth-child(2),
+.table-wrapper table.num-table.nt-fluid td:nth-child(2),
+.table-wrapper table.num-table.nt-metal thead tr:last-child th:nth-child(4),
+.table-wrapper table.num-table.nt-metal td:nth-child(4){text-align:right;}
+@media(max-width:600px){.table-wrapper table.num-table th,.table-wrapper table.num-table td{padding-left:16px;padding-right:16px;}}
+@media print{.table-wrapper table.num-table tbody tr:hover td{background:transparent;}}
+</style>
 <script>
 try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.setAttribute('data-eye','on');}}catch(e){}
 </script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 
@@ -52,7 +886,7 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
   <div class="task-progress-bar">
     <div class="task-progress-fill" id="progressFill"></div>
   </div>
-  <div class="task-progress-text" id="progressText">0 / 14 Tasks</div>
+  <div class="task-progress-text" id="progressText">0 / 13 Tasks</div>
 </div>
 
 <!-- Chapter Complete Banner (hidden by default) -->
@@ -63,7 +897,6 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
     <p>خلصت Chapter 3! عاش عليك! 🎉</p>
   </div>
 </div>
-
 
 <!-- ===== DUA SECTION ===== -->
 <div class="dua-wrapper">
@@ -103,7 +936,6 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <a class="toc-item" href="#sec11"><span class="toc-num">11</span>Fin Effectiveness &amp; Efficiency</a>
 <a class="toc-item" href="#sec12"><span class="toc-num">12</span>Fin Design &amp; Heat Sinks</a>
 <a class="toc-item" href="#sec13"><span class="toc-num">13</span>Heat Transfer: Walls &amp; Roofs</a>
-<a class="toc-item" href="#sec14"><span class="toc-num">14</span>Solved Examples (3-1 → 3-13)</a>
 </div>
 </div>
 </div>
@@ -289,6 +1121,52 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 \[ \text{Heat-transfer rate} = \frac{\text{Temperature driving potential}}{\text{Thermal resistance}} \]
 </div>
 
+
+
+<!-- ===== EXAMPLE 3-1 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–1: Heat Loss through a Wall</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 3-m-high, 5-m-wide, and 0.3-m-thick wall whose thermal conductivity is <em>k</em> = 0.9 W/m·K. On a certain day, the temperatures of the inner and the outer surfaces of the wall are measured to be 16°C and 2°C, respectively. Determine the rate of heat loss through the wall on that day.
+</div>
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-1"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-1"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(H = 3\;m\)</span>
+<span>\(W = 5\;m\)</span>
+<span>\(L = 0.3\;m\)</span>
+<span>\(k = 0.9\;W/m\cdot K\)</span>
+<span>\(T_1 = 16°C\)</span>
+<span>\(T_2 = 2°C\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Wall area: \(A = (3)(5) = 15\;m^2\)
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Using Eq. 3-3:
+\[ \dot{Q} = kA\frac{T_1 - T_2}{L} = (0.9)(15)\frac{(16 - 2)}{0.3} \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Using thermal resistance:
+\[ R_{wall} = \frac{L}{kA} = \frac{0.3}{(0.9)(15)} = 0.02222\;°C/W \]
+\[ \dot{Q} = \frac{\Delta T}{R_{wall}} = \frac{14}{0.02222} \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} = 630\;W \]
+</div>
+</div></div>
+</div>
+</div>
+
+
 </section>
 <hr class="section-divider">
 
@@ -442,6 +1320,63 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 \[ T_1 = T_{\infty1} - \dot{Q} \cdot R_{conv,1} \tag{3-20} \]
 </div>
 
+
+
+<!-- ===== EXAMPLE 3-2 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–2: Heat Loss through a Single-Pane Window</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 0.8-m-high and 1.5-m-wide glass window with a thickness of 8 mm and a thermal conductivity of <em>k</em> = 0.78 W/m·K. Determine the steady rate of heat transfer through this glass window and the temperature of its inner surface for a day during which the room is maintained at 20°C while the temperature of the outdoors is −10°C. Take the heat transfer coefficients on the inner and outer surfaces of the window to be <em>h</em><sub>1</sub> = 10 W/m²·K and <em>h</em><sub>2</sub> = 40 W/m²·K, which includes the effects of radiation.
+</div>
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-2"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-2"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A = 0.8 \times 1.5 = 1.2\;m^2\)</span>
+<span>\(L = 0.008\;m\)</span>
+<span>\(k = 0.78\;W/m\cdot K\)</span>
+<span>\(T_{\infty1} = 20°C\)</span>
+<span>\(T_{\infty2} = -10°C\)</span>
+<span>\(h_1 = 10\;W/m^2\cdot K\)</span>
+<span>\(h_2 = 40\;W/m^2\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Individual Resistances:
+\[ R_i = \frac{1}{h_1 A} = \frac{1}{(10)(1.2)} = 0.08333\;°C/W \]
+\[ R_{glass} = \frac{L}{kA} = \frac{0.008}{(0.78)(1.2)} = 0.00855\;°C/W \]
+\[ R_o = \frac{1}{h_2 A} = \frac{1}{(40)(1.2)} = 0.02083\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Total Resistance:
+\[ R_{total} = 0.08333 + 0.00855 + 0.02083 = 0.1127\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Heat-transfer rate:
+\[ \dot{Q} = \frac{20 - (-10)}{0.1127} = 266\;W \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Inner surface temperature:
+\[ T_1 = T_{\infty1} - \dot{Q}\,R_{conv,1} = 20 - (266)(0.08333) = -2.2°C \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} = 266\;W \qquad T_1 = -2.2°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>رغم أن درجة حرارة الغرفة 20°C، فإن السطح الداخلي للزجاج عند −2.2°C تقريبًا! هذا قد يسبب <span class="term">fog formation</span> أو حتى <span class="term">frost</span> عند ارتفاع <span class="term">humidity</span> داخل الغرفة.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
 </section>
 <hr class="section-divider">
 
@@ -489,6 +1424,60 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <div class="warn-title">⚠️ Limitation</div>
 <p>الـ<span class="term">Thermal Resistance Concept</span> أداة قوية وسهلة، لكنها تعتمد على أن \(\dot{Q} = \text{constant}\). لذلك تُستخدم فقط للأنظمة ذات <span class="term">steady heat transfer</span> وبدون <span class="term">internal heat generation</span>.</p>
 </div>
+
+
+
+<!-- ===== EXAMPLE 3-3 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–3: Heat Loss through Double-Pane Windows</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 0.8-m-high and 1.5-m-wide double-pane window consisting of two 4-mm-thick layers of glass (<em>k</em> = 0.78 W/m·K) separated by a 10-mm-wide stagnant air space (<em>k</em> = 0.026 W/m·K). Determine the steady rate of heat transfer through this double-pane window and the temperature of its inner surface for the same conditions as Example 3-2.
+</div>
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-3"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-3"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A = 1.2\;m^2\)</span>
+<span>\(L_1 = L_3 = 0.004\;m\)</span>
+<span>\(L_2 = 0.01\;m\)</span>
+<span>\(k_{glass} = 0.78\;W/m\cdot K\)</span>
+<span>\(k_{air} = 0.026\;W/m\cdot K\)</span>
+<span>\(h_1 = 10,\;h_2 = 40\;W/m^2\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Individual Resistances:
+\[ R_i = 0.08333\;°C/W \quad R_o = 0.02083\;°C/W \]
+\[ R_{glass} = \frac{0.004}{(0.78)(1.2)} = 0.00427\;°C/W \quad (\text{each layer}) \]
+\[ R_{air} = \frac{0.01}{(0.026)(1.2)} = 0.3205\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Total Resistance:
+\[ R_{total} = 0.08333 + 0.00427 + 0.3205 + 0.00427 + 0.02083 = 0.4332\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\(\dot{Q} = 30/0.4332 = 69.2\;W\) — approximately <strong>one-fourth</strong> of single-pane!
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\(T_1 = 20 - (69.2)(0.08333) = 14.2°C\)
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} = 69.2\;W \qquad T_1 = 14.2°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>مقارنةً بـ<span class="term">single-pane window</span>: \(T_1\) ارتفعت من −2.2°C إلى 14.2°C. الـ<span class="term">stagnant air layer</span> تمتلك مقاومة حرارية كبيرة (\(R_{air}\) هي المهيمنة). النوافذ المزدوجة تقلل <span class="term">fogging</span>، وفقدان الحرارة شتاءً، واكتساب الحرارة صيفًا، وبالتالي تقلل تكاليف التكييف.</p>
+</div>
+</div></div>
+</div>
+</div>
+
 
 </section>
 <hr class="section-divider">
@@ -555,9 +1544,9 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <li><strong><span class="term">Soft Metallic Foil</span></strong> (tin, silver, copper, nickel, aluminum) — يقلل \(R_c\) بعامل يصل إلى 7.</li>
 </ol>
 
-<div class="analogy-box">
+<div class="analogy-box num-table-box">
 <div class="table-wrapper">
-<table>
+<table class="num-table nt-fluid">
 <thead><tr><th colspan="2">Table 3–1: Thermal Contact Conductance (Aluminum, 10 μm roughness, 1 atm)</th></tr>
 <tr><th>Fluid at Interface</th><th>\(h_c\) (W/m²·K)</th></tr></thead>
 <tbody>
@@ -572,9 +1561,9 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 </div>
 </div>
 
-<div class="analogy-box">
+<div class="analogy-box num-table-box">
 <div class="table-wrapper">
-<table>
+<table class="num-table nt-metal">
 <thead><tr><th colspan="4">Table 3–2: Thermal Contact Conductance of Metal Surfaces</th></tr>
 <tr><th>Material Pair / Condition</th><th>Roughness (μm)</th><th>Pressure (MPa)</th><th>\(h_c\) (W/m²·K)</th></tr></thead>
 <tbody>
@@ -595,6 +1584,99 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <div class="insight-title">💡 Trend</div>
 <p>\(h_c\) يكون أعلى (و\(R_c\) أقل) عند: <strong>soft metals + smooth surfaces + high pressure</strong>.</p>
 </div>
+
+
+
+<!-- ===== EXAMPLE 3-4 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–4: Equivalent Thickness for Contact Resistance</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+The thermal contact conductance at the interface of two 1-cm-thick aluminum plates is measured to be 11,000 W/m²·K. Determine the thickness of the aluminum plate whose thermal resistance is equal to the thermal resistance of the interface between the plates.
+</div>
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-4"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-4"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(h_c = 11{,}000\;W/m^2\cdot K\)</span>
+<span>\(k_{Al} = 237\;W/m\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ R_c = \frac{1}{h_c} = \frac{1}{11{,}000} = 0.909 \times 10^{-4}\;m^2\cdot K/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Setting \(R = L/k = R_c\):
+\[ L = k\,R_c = (237)(0.909 \times 10^{-4}) = 0.0215\;m \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ L = 0.0215\;m = 2.15\;cm \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>الـ<span class="term">interface</span> بين اللوحين لها نفس <span class="term">thermal resistance</span> تقريبًا لطبقة <span class="term">aluminum</span> سمكها 2.15 cm — أكبر من مجموع مقاومتي اللوحين نفسيهما.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-5 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–5: Contact Resistance of Transistors</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Four identical power transistors with aluminum casing are attached on one side of a 1-cm-thick 20 cm × 20 cm copper plate (<em>k</em> = 386 W/m·K) by screws that exert an average pressure of 6 MPa. Each transistor base area is 8 cm², placed at the center of a 10 cm × 10 cm quarter section. Interface roughness ≈ 1.5 μm. All heat must dissipate to the ambient at 20°C through the back surface (<em>h</em> = 25 W/m²·K). If case temperature must not exceed 70°C, determine the maximum power each transistor can dissipate and the temperature jump at the case-plate interface.
+</div>
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-5"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-5"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(L_{plate} = 0.01\;m\)</span>
+<span>\(k_{Cu} = 386\;W/m\cdot K\)</span>
+<span>\(A_c = 8 \times 10^{-4}\;m^2\)</span>
+<span>\(A = 0.01\;m^2\)</span>
+<span>\(h_c = 42{,}000\;W/m^2\cdot K\)</span>
+<span>\(h_o = 25\;W/m^2\cdot K\)</span>
+<span>\(T_{case} = 70°C,\;T_\infty = 20°C\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ R_{interface} = \frac{1}{h_c A_c} = \frac{1}{(42{,}000)(8 \times 10^{-4})} = 0.0298\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_{plate} = \frac{L}{kA} = \frac{0.01}{(386)(0.01)} = 0.0026\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\[ R_{conv} = \frac{1}{h_o A} = \frac{1}{(25)(0.01)} = 4.0\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ R_{total} = 0.0298 + 0.0026 + 4.0 = 4.0324\;°C/W \]
+\[ \dot{Q} = \frac{70 - 20}{4.0324} = 12.4\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+\[ \Delta T_{interface} = \dot{Q}\,R_{interface} = (12.4)(0.0298) = 0.37°C \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ P_{max} = 12.4\;W/\text{transistor} \qquad \Delta T_{interface} = 0.37°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>الـ<span class="term">temperature jump</span> صغير جدًا. حتى لو تم إزالة <span class="term">contact resistance</span> تمامًا، لن تنخفض درجة حرارة التشغيل إلا بأقل من 0.4°C. الـ<span class="term">convection resistance</span> هي المهيمنة.</p>
+</div>
+</div></div>
+</div>
+</div>
+
 
 </section>
 <hr class="section-divider">
@@ -657,6 +1739,67 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <p>أي <span class="term">plane parallel</span> لمحور \(x\) تكون <span class="term">adiabatic</span>.</p>
 </div>
 <p>الافتراضان يؤديان إلى قيم مختلفة قليلًا لـ\(R_{total}\) و\(\dot{Q}\). القيمة الفعلية تقع بينهما. عندما يكون <span class="term">heat transfer predominant</span> في اتجاه واحد، كلاهما يعطي نتائج مقبولة.</p>
+
+
+
+<!-- ===== EXAMPLE 3-6 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–6: Heat Loss through a Composite Wall</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 3-m-high and 5-m-wide wall consists of long 16 cm × 22 cm cross section horizontal bricks (<em>k</em> = 0.72 W/m·K) separated by 3-cm-thick plaster layers (<em>k</em> = 0.22 W/m·K). There are also 2-cm-thick plaster layers on each side of the brick and a 3-cm-thick rigid foam (<em>k</em> = 0.026 W/m·K) on the inner side. Indoor and outdoor temperatures are 20°C and −10°C with <em>h</em><sub>1</sub> = 10 and <em>h</em><sub>2</sub> = 25 W/m²·K. Assuming 1-D heat transfer and disregarding radiation, determine the rate of heat transfer through the wall.
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-21.png" alt="Figure 3-21: Composite wall cross section">
+<div class="fig-caption">Figure 3–21: Composite wall — representative section and resistance network</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-6"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-6"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{wall} = 15\;m^2\)</span>
+<span>\(k_{brick} = 0.72\)</span>
+<span>\(k_{plaster} = 0.22\)</span>
+<span>\(k_{foam} = 0.026\;W/m\cdot K\)</span>
+<span>Representative section: \(A = 0.25\;m^2\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<p style="direction:ltr;text-align:left;">The construction repeats every 25 cm vertically. Taking a representative section (\(A = 0.25\;m^2\)):</p>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Individual Resistances:
+\[ R_i = \frac{1}{(10)(0.25)} = 0.40\;°C/W \qquad R_1(foam) = \frac{0.03}{(0.026)(0.25)} = 4.62\;°C/W \]
+\[ R_2 = R_6(plaster,side) = \frac{0.02}{(0.22)(0.25)} = 0.36\;°C/W \]
+\[ R_3 = R_5(plaster,center) = \frac{0.16}{(0.22)(0.015)} = 48.48\;°C/W \]
+\[ R_4(brick) = \frac{0.16}{(0.72)(0.22)} = 1.01\;°C/W \qquad R_o = \frac{1}{(25)(0.25)} = 0.16\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Parallel middle section (\(R_3\), \(R_4\), \(R_5\) in parallel):
+\[ \frac{1}{R_{mid}} = \frac{1}{48.48} + \frac{1}{1.01} + \frac{1}{48.48} = 1.03\;W/°C \quad \Rightarrow \quad R_{mid} = 0.97\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Total: \(R_{total} = 0.40 + 4.62 + 0.36 + 0.97 + 0.36 + 0.16 = 6.87\;°C/W\)
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Per section: \(\dot{Q} = 30/6.87 = 4.37\;W\). Per unit area: \(17.5\;W/m^2\).
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q}_{total} = (17.5)(15) = 263\;W \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>النتيجة <span class="term">approximate</span>. الأسلوب البديل (<span class="term">adiabatic planes</span>) يعطي \(R_{total} = 6.97\;°C/W\) — قريبة جدًا. كلا الأسلوبين يعطي نتائج مقبولة لهذه الهندسة.</p>
+</div>
+</div></div>
+</div>
+</div>
+
 
 </section>
 <hr class="section-divider">
@@ -739,6 +1882,119 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <div class="fig-caption">Figure 3–25: Temperature distribution and resistance network</div>
 </div>
 
+
+
+<!-- ===== EXAMPLE 3-7 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–7: Spherical Tank (Iced Water)</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A spherical tank (internal diameter 3 m, 2-cm-thick stainless steel, <em>k</em> = 15 W/m·K) contains iced water at 0°C in a room at 22°C. The outer surface is black. Given <em>h</em><sub>1</sub> = 80, <em>h</em><sub>2</sub> = 10 W/m²·K. Determine: (1) rate of heat transfer to the iced water; (2) amount of ice melted during 24 h.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-28.png" alt="Figure 3-28: Spherical tank">
+<div class="fig-caption">Figure 3–28: Spherical tank with resistance network</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-7"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-7"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 1.50\;m,\;r_2 = 1.52\;m\)</span>
+<span>\(A_1 = 28.3\;m^2,\;A_2 = 29.0\;m^2\)</span>
+<span>\(T_{\infty1} = 0°C,\;T_{\infty2} = 22°C\)</span>
+<span>\(h_{rad} = 5.34\;W/m^2\cdot K\) (assuming \(T_2 \approx 5°C\))</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ R_i = \frac{1}{(80)(28.3)} = 0.000442\;°C/W \]
+\[ R_1 = \frac{1.52 - 1.50}{4\pi(15)(1.50)(1.52)} = 0.0000478\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_o = \frac{1}{(10)(29.0)} = 0.00345\;°C/W \qquad R_{rad} = \frac{1}{(5.34)(29.0)} = 0.00646\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\(R_o\) and \(R_{rad}\) are in parallel:
+\[ \frac{1}{R_{eq}} = \frac{1}{0.00345} + \frac{1}{0.00646} = 444.7 \quad \Rightarrow \quad R_{eq} = 0.00225\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ R_{total} = 0.000442 + 0.0000478 + 0.00225 = 0.00274\;°C/W \]
+\[ \dot{Q} = \frac{22 - 0}{0.00274} \approx 8029\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+Verify: \(T_2 = 22 - (8029)(0.00225) \approx 4°C\) ← close to assumed 5°C ✓
+</div></div>
+<div class="step"><div class="step-num">6</div><div class="step-content">
+In 24 h: \(Q = (8.029)(24 \times 3600) = 693{,}700\;kJ\)
+\[ m = \frac{Q}{h_{if}} = \frac{693{,}700}{333.7} \approx 2079\;kg \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} \approx 8029\;W \qquad m \approx 2079\;kg \approx 2\;\text{metric tons/day} \]
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-8 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–8: Insulated Cast-Iron Pipe</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Steam at 320°C flows through a cast-iron pipe (<em>k</em> = 80 W/m·K) with <em>D</em><sub>1</sub> = 5 cm, <em>D</em><sub>2</sub> = 5.5 cm, covered with 3-cm-thick glass wool insulation (<em>k</em> = 0.05 W/m·K). Surroundings at 5°C. Combined external <em>h</em><sub>2</sub> = 18, internal <em>h</em><sub>1</sub> = 60 W/m²·K. Determine: (1) heat loss per unit length; (2) temperature drops across pipe and insulation.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-29.png" alt="Figure 3-29: Insulated pipe">
+<div class="fig-caption">Figure 3–29: Insulated cast-iron pipe — resistance network</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-8"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-8"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 0.025\;m\)</span>
+<span>\(r_2 = 0.0275\;m\)</span>
+<span>\(r_3 = 0.0575\;m\)</span>
+<span>\(L = 1\;m\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\(A_1 = 2\pi(0.025)(1) = 0.157\;m^2\), \(A_3 = 2\pi(0.0575)(1) = 0.361\;m^2\)
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_i = \frac{1}{(60)(0.157)} = 0.106\;°C/W \qquad R_{pipe} = \frac{\ln(2.75/2.5)}{2\pi(80)} = 0.000189\;°C/W \]
+\[ R_{ins} = \frac{\ln(5.75/2.75)}{2\pi(0.05)} = 2.35\;°C/W \qquad R_o = \frac{1}{(18)(0.361)} = 0.154\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\[ R_{total} \approx 0.106 + 0.000189 + 2.35 + 0.154 \approx 2.61\;°C/W \]
+\[ \dot{Q} = \frac{320 - 5}{2.61} \approx 121\;W/m \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ \Delta T_{pipe} = (121)(0.000189) \approx 0.023°C \qquad \Delta T_{ins} = (121)(2.35) \approx 284°C \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} \approx 121\;W/m \qquad \Delta T_{pipe} \approx 0.02°C \qquad \Delta T_{ins} \approx 284°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>\(R_{pipe} \ll R_{ins}\): الأنبوب تقريبًا <span class="term">isothermal</span>. معظم الـ<span class="term">temperature drop</span> يحدث عبر <span class="term">insulation</span> التي تتحكم أساسًا في <span class="term">total thermal resistance</span> وبالتالي <span class="term">heat loss</span>.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
 </section>
 <hr class="section-divider">
 
@@ -814,6 +2070,58 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <img src="images/figure-3-32.png" alt="Figure 3-32: Electric wire with insulation">
 <div class="fig-caption">Figure 3–32: Electric wire with plastic insulation — critical radius effect</div>
 </div>
+
+
+
+<!-- ===== EXAMPLE 3-9 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–9: Electric Wire with Plastic Insulation</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+An electric wire (diameter 3 mm, length 5 m) is covered with a 2-mm-thick plastic layer (<em>k</em> = 0.15 W/m·K). Current <em>I</em> = 10 A, voltage drop <em>V</em> = 8 V. Ambient at 30°C, <em>h</em> = 12 W/m²·K. Determine: (1) the interface temperature; (2) the effect of doubling the cover thickness.
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-9"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-9"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 1.5\;mm\)</span>
+<span>\(r_2 = 3.5\;mm\)</span>
+<span>\(\dot{Q} = VI = (8)(10) = 80\;W\)</span>
+<span>\(k = 0.15\;W/m\cdot K\)</span>
+<span>\(h = 12\;W/m^2\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\(A_2 = 2\pi(0.0035)(5) = 0.110\;m^2\)
+\[ R_{conv} = \frac{1}{(12)(0.110)} = 0.758\;°C/W \qquad R_{plastic} = \frac{\ln(3.5/1.5)}{2\pi(5)(0.15)} = 0.180\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_{total} = 0.758 + 0.180 = 0.938\;°C/W \]
+\[ T_1 = 30 + (80)(0.938) \approx 105°C \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Critical radius: \(r_{cr} = k/h = 0.15/12 = 12.5\;mm\). Since \(r_2 = 3.5\;mm < r_{cr}\), the wire is below critical radius.
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Doubling cover to 4 mm: \(T_1 \approx 90.6°C\). At \(r_2 = r_{cr} = 12.5\;mm\): \(T_{1,min} \approx 83°C\).
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ T_1 \approx 105°C \quad \text{(original)} \qquad T_1 \approx 90.6°C \quad \text{(doubled cover)} \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>بما أن \(r_2 < r_{cr}\)، فإن إضافة <span class="term">insulation</span> تزيد <span class="term">heat transfer</span> وتخفض درجة الحرارة — مفيد لسلامة الأسلاك الكهربائية! عند \(r_2 = r_{cr}\) تصل درجة الحرارة إلى أدنى مستوى (83°C تقريبًا).</p>
+</div>
+</div></div>
+</div>
+</div>
+
 
 </section>
 <hr class="section-divider">
@@ -894,6 +2202,67 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <div class="fig-caption">Figure 3–46: Heat transfer from a finned surface — fins + unfinned area</div>
 </div>
 
+
+
+<!-- ===== EXAMPLE 3-12 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–12: Fins of Variable Cross Section (Parabolic Pin Fin)</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Aluminum pin fins with a parabolic profile and blunt tips are attached to a plane wall at <em>T<sub>b</sub></em> = 200°C. Each fin has <em>L</em> = 20 mm and <em>D</em> = 5 mm. Exposed to air at 25°C with <em>h</em> = 50 W/m²·K and <em>k</em> = 240 W/m·K. Determine: (1) fin efficiency; (2) heat transfer rate; (3) fin effectiveness.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-49.png" alt="Figure 3-49: Parabolic pin fin">
+<div class="fig-caption">Figure 3–49: Parabolic pin fin with blunt tip</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-12"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-12"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(L = 0.020\;m\)</span>
+<span>\(D = 0.005\;m\)</span>
+<span>\(T_b = 200°C\)</span>
+<span>\(T_\infty = 25°C\)</span>
+<span>\(h = 50\;W/m^2\cdot K\)</span>
+<span>\(k = 240\;W/m\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+For parabolic pin fin (Table 3-3): \(mL = \sqrt{\dfrac{4h}{kD}} \cdot L = \sqrt{\dfrac{4(50)}{(240)(0.005)}} \cdot 0.020\)
+<br>Wait — the correct form: \(mL = L\sqrt{\dfrac{4h}{kD}} = 0.020\sqrt{\dfrac{200}{1.2}} = 0.020 \times 12.91 = 0.2582\)
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Fin surface area: \(A_{fin} = 2.106 \times 10^{-4}\;m^2\)
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Using modified Bessel functions (Table 3-3):
+\[ \eta_{fin} = \frac{3}{2(0.2582)} \cdot \frac{I_1(0.3443)}{I_0(0.3443)} = 5.81 \times \frac{0.1716}{1.0350} = 0.963 \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ \dot{Q}_{fin} = \eta_{fin}\,h\,A_{fin}(T_b - T_\infty) = (0.963)(50)(2.106 \times 10^{-4})(175) = 1.77\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{hA_b(T_b - T_\infty)} = \frac{1.77}{(50)(\pi(0.005)^2/4)(175)} \approx 10.3 \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \eta_{fin} = 0.963 \qquad \dot{Q}_{fin} = 1.77\;W \qquad \varepsilon_{fin} \approx 10.3 \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>الـ<span class="term">pin fin</span> يحقق تقريبًا <strong>10-fold increase</strong> في <span class="term">heat transfer</span> مقارنةً بالـ<span class="term">base area</span> وحدها. باستخدام <span class="term">EES</span> بدون <span class="term">interpolation</span>: \(\eta_{fin} = 0.9855\) (أعلى بحوالي 2%).</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
 </section>
 <hr class="section-divider">
 
@@ -924,9 +2293,9 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 \[ \frac{\dot{Q}_{fin}}{\dot{Q}_{long\;fin}} = \tanh(mL) \tag{3-83} \]
 </div>
 
-<div class="analogy-box">
+<div class="analogy-box num-table-box">
 <div class="table-wrapper">
-<table>
+<table class="num-table nt-tanh">
 <thead><tr><th>\(mL\)</th><th>\(\tanh(mL)\)</th><th>% of Maximum</th></tr></thead>
 <tbody>
 <tr><td>0.1</td><td>0.100</td><td>10.0%</td></tr>
@@ -981,6 +2350,149 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Bioheat Transfer</h3>
 <p>هو دراسة انتقال الحرارة داخل <span class="term">human body</span> أو بينه وبين البيئة الخارجية. يشمل عدة آليات في الوقت نفسه: <span class="term">Conduction</span>، <span class="term">Convection</span>، <span class="term">Radiation</span>، <span class="term">Evaporation</span>، <span class="term">Phase Change</span>، <span class="term">Metabolic Heat Generation</span> (الحرارة الناتجة من هضم الطعام والعمل والتمارين)، و<span class="term">Perfusion</span> (تبادل الطاقة الحرارية بين الدم المتدفق والأنسجة المحيطة).</p>
 <p>قدم <span class="en">Harry Pennes</span> (1948) نموذجًا بسيطًا لكنه دقيق نسبيًا، أظهر وجود فرق حرارة حوالي 3–4°C بين الجلد والأنسجة الداخلية.</p>
+
+
+
+<!-- ===== EXAMPLE 3-10 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–10: Maximum Power Dissipation of a Transistor</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A power transistor has a maximum power rating of 10 W, and its case-to-ambient thermal resistance is <em>R</em><sub>case-ambient</sub> = 20°C/W. If the case temperature is not to exceed 85°C, determine the maximum power at which the transistor can be operated safely in an environment at 25°C.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-48.png" alt="Figure 3-48: Transistor thermal model">
+<div class="fig-caption">Figure 3–48: Transistor thermal resistance model</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-10"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-10"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(T_c = 85°C\)</span>
+<span>\(T_\infty = 25°C\)</span>
+<span>\(R_{case-ambient} = 20\;°C/W\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ \dot{Q} = \frac{T_c - T_\infty}{R_{case-ambient}} = \frac{85 - 25}{20} = \frac{60}{20} \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q}_{max} = 3\;W \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>يجب ألا يعمل الـ<span class="term">transistor</span> عند <span class="term">power level</span> أعلى من 3 W — أقل بكثير من التصنيف الأقصى (10 W). يمكن تشغيله عند طاقة أعلى بإضافة <span class="term">heat sink</span> لتقليل <span class="term">thermal resistance</span> أو استخدام <span class="term">fan</span> لزيادة \(h\).</p>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-11 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–11: Selecting a Heat Sink for a Transistor</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 60-W power transistor is to be cooled by attaching it to one of the commercially available heat sinks listed in Table 3–6. Select a heat sink that keeps the case temperature from exceeding 90°C when the ambient air is at 30°C.
+</div>
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-11"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-11"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(\dot{Q} = 60\;W\)</span>
+<span>\(T_c = 90°C\)</span>
+<span>\(T_\infty = 30°C\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Required thermal resistance:
+\[ R = \frac{\Delta T}{\dot{Q}} = \frac{90 - 30}{60} = 1.0\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+The heat sink must have \(R < 1.0\;°C/W\). From Table 3–6:
+<br><strong>HS 5030</strong> has \(R = 0.9\;°C/W\) in vertical position ✓
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+<p style="direction:ltr;text-align:center;">Select <strong>HS 5030</strong> (R = 0.9°C/W, vertical position)</p>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-13 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–13: Preventing Circuit Board Overheating</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 15 cm × 20 cm integrated circuit board is cooled by attaching 4-cm-long aluminum pin fins (square cross section 2 mm × 2 mm, <em>k</em> = 237 W/m·K). Surrounding air at 25°C with <em>h</em> = 20 W/m²·K. Board surface must not exceed 85°C. Design a finned surface with overall effectiveness of 3 and determine the appropriate number of fins.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-50.png" alt="Figure 3-50: Circuit board with fins">
+<div class="fig-caption">Figure 3–50: Circuit board with pin fins</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-13"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-13"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{board} = 0.03\;m^2\)</span>
+<span>\(L = 0.04\;m\)</span>
+<span>\(a = 0.002\;m\) (square side)</span>
+<span>\(k = 237\;W/m\cdot K\)</span>
+<span>\(h = 20\;W/m^2\cdot K\)</span>
+<span>\(T_b = 85°C,\;T_\infty = 25°C\)</span>
+<span>\(\varepsilon_{fin,overall} = 3\) (required)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Fin parameter:
+\[ m = \sqrt{\frac{4h}{ka}} = \sqrt{\frac{4(20)}{(237)(0.002)}} = 12.99\;m^{-1} \]
+\[ mL = (12.99)(0.04) = 0.5196 \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Fin efficiency:
+\[ \eta_{fin} = \frac{\tanh(0.5196)}{0.5196} = 0.919 \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Areas per fin: \(A_{one\;fin} = 4(0.002)(0.04) = 3.2 \times 10^{-4}\;m^2\)
+<br>Base area covered per fin: \((0.002)^2 = 4 \times 10^{-6}\;m^2\)
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Heat transfer without fins: \(\dot{Q}_{no\;fin} = (20)(0.03)(60) = 36\;W\)
+<br>With \(n\) fins: \(\dot{Q}_{total} = 36 + 0.3481\,n\)
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+From \(\varepsilon_{fin,overall} = 3\):
+\[ 3 = \frac{36 + 0.3481\,n}{36} \quad \Rightarrow \quad 72 = 0.3481\,n \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ n_{fin} \approx 207 \;\text{fins} \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>لتحقيق <span class="term">overall fin effectiveness</span> = 3 والحفاظ على سطح الـ<span class="term">circuit board</span> عند \(T_b \leq 85°C\)، نحتاج إلى الأقل 207 <span class="term">fin</span>. يمكن تقليل العدد باستخدام مادة مختلفة أو هندسة مختلفة للـ<span class="term">fins</span>.</p>
+</div>
+</div></div>
+</div>
+</div>
+
 
 </section>
 <hr class="section-divider">
@@ -1081,701 +2593,7 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 </section>
 <hr class="section-divider">
 
-<!-- ==================== SECTION 14: SOLVED EXAMPLES ==================== -->
-<section class="section" id="sec14">
-<div class="section-header">
-<div class="section-icon">📝</div>
-<div class="section-titles">
-<h2>Solved Examples</h2>
-<span class="section-sub">Examples 3-1 through 3-13</span>
-</div>
-<button class="task-check" data-task="sec14" aria-label="Mark as completed" title="أكمل المهمة">
-  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  <span class="task-label">Task <span class="task-num">14</span></span>
-</button>
-</div>
 
-<!-- ===== EXAMPLE 3-1 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–1: Heat Loss through a Wall</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-Consider a 3-m-high, 5-m-wide, and 0.3-m-thick wall whose thermal conductivity is <em>k</em> = 0.9 W/m·K. On a certain day, the temperatures of the inner and the outer surfaces of the wall are measured to be 16°C and 2°C, respectively. Determine the rate of heat loss through the wall on that day.
-</div>
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-1"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-1"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(H = 3\;m\)</span>
-<span>\(W = 5\;m\)</span>
-<span>\(L = 0.3\;m\)</span>
-<span>\(k = 0.9\;W/m\cdot K\)</span>
-<span>\(T_1 = 16°C\)</span>
-<span>\(T_2 = 2°C\)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-Wall area: \(A = (3)(5) = 15\;m^2\)
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-Using Eq. 3-3:
-\[ \dot{Q} = kA\frac{T_1 - T_2}{L} = (0.9)(15)\frac{(16 - 2)}{0.3} \]
-</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-content">
-Using thermal resistance:
-\[ R_{wall} = \frac{L}{kA} = \frac{0.3}{(0.9)(15)} = 0.02222\;°C/W \]
-\[ \dot{Q} = \frac{\Delta T}{R_{wall}} = \frac{14}{0.02222} \]
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ \dot{Q} = 630\;W \]
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-2 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–2: Heat Loss through a Single-Pane Window</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-Consider a 0.8-m-high and 1.5-m-wide glass window with a thickness of 8 mm and a thermal conductivity of <em>k</em> = 0.78 W/m·K. Determine the steady rate of heat transfer through this glass window and the temperature of its inner surface for a day during which the room is maintained at 20°C while the temperature of the outdoors is −10°C. Take the heat transfer coefficients on the inner and outer surfaces of the window to be <em>h</em><sub>1</sub> = 10 W/m²·K and <em>h</em><sub>2</sub> = 40 W/m²·K, which includes the effects of radiation.
-</div>
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-2"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-2"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(A = 0.8 \times 1.5 = 1.2\;m^2\)</span>
-<span>\(L = 0.008\;m\)</span>
-<span>\(k = 0.78\;W/m\cdot K\)</span>
-<span>\(T_{\infty1} = 20°C\)</span>
-<span>\(T_{\infty2} = -10°C\)</span>
-<span>\(h_1 = 10\;W/m^2\cdot K\)</span>
-<span>\(h_2 = 40\;W/m^2\cdot K\)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-Individual Resistances:
-\[ R_i = \frac{1}{h_1 A} = \frac{1}{(10)(1.2)} = 0.08333\;°C/W \]
-\[ R_{glass} = \frac{L}{kA} = \frac{0.008}{(0.78)(1.2)} = 0.00855\;°C/W \]
-\[ R_o = \frac{1}{h_2 A} = \frac{1}{(40)(1.2)} = 0.02083\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-Total Resistance:
-\[ R_{total} = 0.08333 + 0.00855 + 0.02083 = 0.1127\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-content">
-Heat-transfer rate:
-\[ \dot{Q} = \frac{20 - (-10)}{0.1127} = 266\;W \]
-</div></div>
-<div class="step"><div class="step-num">4</div><div class="step-content">
-Inner surface temperature:
-\[ T_1 = T_{\infty1} - \dot{Q}\,R_{conv,1} = 20 - (266)(0.08333) = -2.2°C \]
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ \dot{Q} = 266\;W \qquad T_1 = -2.2°C \]
-</div>
-<div class="discussion-box">
-<h4>💬 Discussion</h4>
-<p>رغم أن درجة حرارة الغرفة 20°C، فإن السطح الداخلي للزجاج عند −2.2°C تقريبًا! هذا قد يسبب <span class="term">fog formation</span> أو حتى <span class="term">frost</span> عند ارتفاع <span class="term">humidity</span> داخل الغرفة.</p>
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-3 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–3: Heat Loss through Double-Pane Windows</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-Consider a 0.8-m-high and 1.5-m-wide double-pane window consisting of two 4-mm-thick layers of glass (<em>k</em> = 0.78 W/m·K) separated by a 10-mm-wide stagnant air space (<em>k</em> = 0.026 W/m·K). Determine the steady rate of heat transfer through this double-pane window and the temperature of its inner surface for the same conditions as Example 3-2.
-</div>
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-3"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-3"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(A = 1.2\;m^2\)</span>
-<span>\(L_1 = L_3 = 0.004\;m\)</span>
-<span>\(L_2 = 0.01\;m\)</span>
-<span>\(k_{glass} = 0.78\;W/m\cdot K\)</span>
-<span>\(k_{air} = 0.026\;W/m\cdot K\)</span>
-<span>\(h_1 = 10,\;h_2 = 40\;W/m^2\cdot K\)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-Individual Resistances:
-\[ R_i = 0.08333\;°C/W \quad R_o = 0.02083\;°C/W \]
-\[ R_{glass} = \frac{0.004}{(0.78)(1.2)} = 0.00427\;°C/W \quad (\text{each layer}) \]
-\[ R_{air} = \frac{0.01}{(0.026)(1.2)} = 0.3205\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-Total Resistance:
-\[ R_{total} = 0.08333 + 0.00427 + 0.3205 + 0.00427 + 0.02083 = 0.4332\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-content">
-\(\dot{Q} = 30/0.4332 = 69.2\;W\) — approximately <strong>one-fourth</strong> of single-pane!
-</div></div>
-<div class="step"><div class="step-num">4</div><div class="step-content">
-\(T_1 = 20 - (69.2)(0.08333) = 14.2°C\)
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ \dot{Q} = 69.2\;W \qquad T_1 = 14.2°C \]
-</div>
-<div class="discussion-box">
-<h4>💬 Discussion</h4>
-<p>مقارنةً بـ<span class="term">single-pane window</span>: \(T_1\) ارتفعت من −2.2°C إلى 14.2°C. الـ<span class="term">stagnant air layer</span> تمتلك مقاومة حرارية كبيرة (\(R_{air}\) هي المهيمنة). النوافذ المزدوجة تقلل <span class="term">fogging</span>، وفقدان الحرارة شتاءً، واكتساب الحرارة صيفًا، وبالتالي تقلل تكاليف التكييف.</p>
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-4 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–4: Equivalent Thickness for Contact Resistance</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-The thermal contact conductance at the interface of two 1-cm-thick aluminum plates is measured to be 11,000 W/m²·K. Determine the thickness of the aluminum plate whose thermal resistance is equal to the thermal resistance of the interface between the plates.
-</div>
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-4"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-4"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(h_c = 11{,}000\;W/m^2\cdot K\)</span>
-<span>\(k_{Al} = 237\;W/m\cdot K\)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-\[ R_c = \frac{1}{h_c} = \frac{1}{11{,}000} = 0.909 \times 10^{-4}\;m^2\cdot K/W \]
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-Setting \(R = L/k = R_c\):
-\[ L = k\,R_c = (237)(0.909 \times 10^{-4}) = 0.0215\;m \]
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ L = 0.0215\;m = 2.15\;cm \]
-</div>
-<div class="discussion-box">
-<h4>💬 Discussion</h4>
-<p>الـ<span class="term">interface</span> بين اللوحين لها نفس <span class="term">thermal resistance</span> تقريبًا لطبقة <span class="term">aluminum</span> سمكها 2.15 cm — أكبر من مجموع مقاومتي اللوحين نفسيهما.</p>
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-5 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–5: Contact Resistance of Transistors</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-Four identical power transistors with aluminum casing are attached on one side of a 1-cm-thick 20 cm × 20 cm copper plate (<em>k</em> = 386 W/m·K) by screws that exert an average pressure of 6 MPa. Each transistor base area is 8 cm², placed at the center of a 10 cm × 10 cm quarter section. Interface roughness ≈ 1.5 μm. All heat must dissipate to the ambient at 20°C through the back surface (<em>h</em> = 25 W/m²·K). If case temperature must not exceed 70°C, determine the maximum power each transistor can dissipate and the temperature jump at the case-plate interface.
-</div>
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-5"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-5"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(L_{plate} = 0.01\;m\)</span>
-<span>\(k_{Cu} = 386\;W/m\cdot K\)</span>
-<span>\(A_c = 8 \times 10^{-4}\;m^2\)</span>
-<span>\(A = 0.01\;m^2\)</span>
-<span>\(h_c = 42{,}000\;W/m^2\cdot K\)</span>
-<span>\(h_o = 25\;W/m^2\cdot K\)</span>
-<span>\(T_{case} = 70°C,\;T_\infty = 20°C\)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-\[ R_{interface} = \frac{1}{h_c A_c} = \frac{1}{(42{,}000)(8 \times 10^{-4})} = 0.0298\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-\[ R_{plate} = \frac{L}{kA} = \frac{0.01}{(386)(0.01)} = 0.0026\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-content">
-\[ R_{conv} = \frac{1}{h_o A} = \frac{1}{(25)(0.01)} = 4.0\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">4</div><div class="step-content">
-\[ R_{total} = 0.0298 + 0.0026 + 4.0 = 4.0324\;°C/W \]
-\[ \dot{Q} = \frac{70 - 20}{4.0324} = 12.4\;W \]
-</div></div>
-<div class="step"><div class="step-num">5</div><div class="step-content">
-\[ \Delta T_{interface} = \dot{Q}\,R_{interface} = (12.4)(0.0298) = 0.37°C \]
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ P_{max} = 12.4\;W/\text{transistor} \qquad \Delta T_{interface} = 0.37°C \]
-</div>
-<div class="discussion-box">
-<h4>💬 Discussion</h4>
-<p>الـ<span class="term">temperature jump</span> صغير جدًا. حتى لو تم إزالة <span class="term">contact resistance</span> تمامًا، لن تنخفض درجة حرارة التشغيل إلا بأقل من 0.4°C. الـ<span class="term">convection resistance</span> هي المهيمنة.</p>
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-6 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–6: Heat Loss through a Composite Wall</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-A 3-m-high and 5-m-wide wall consists of long 16 cm × 22 cm cross section horizontal bricks (<em>k</em> = 0.72 W/m·K) separated by 3-cm-thick plaster layers (<em>k</em> = 0.22 W/m·K). There are also 2-cm-thick plaster layers on each side of the brick and a 3-cm-thick rigid foam (<em>k</em> = 0.026 W/m·K) on the inner side. Indoor and outdoor temperatures are 20°C and −10°C with <em>h</em><sub>1</sub> = 10 and <em>h</em><sub>2</sub> = 25 W/m²·K. Assuming 1-D heat transfer and disregarding radiation, determine the rate of heat transfer through the wall.
-</div>
-
-<div class="fig-container fig-medium">
-<img src="images/figure-3-21.png" alt="Figure 3-21: Composite wall cross section">
-<div class="fig-caption">Figure 3–21: Composite wall — representative section and resistance network</div>
-</div>
-
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-6"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-6"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(A_{wall} = 15\;m^2\)</span>
-<span>\(k_{brick} = 0.72\)</span>
-<span>\(k_{plaster} = 0.22\)</span>
-<span>\(k_{foam} = 0.026\;W/m\cdot K\)</span>
-<span>Representative section: \(A = 0.25\;m^2\)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<p style="direction:ltr;text-align:left;">The construction repeats every 25 cm vertically. Taking a representative section (\(A = 0.25\;m^2\)):</p>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-Individual Resistances:
-\[ R_i = \frac{1}{(10)(0.25)} = 0.40\;°C/W \qquad R_1(foam) = \frac{0.03}{(0.026)(0.25)} = 4.62\;°C/W \]
-\[ R_2 = R_6(plaster,side) = \frac{0.02}{(0.22)(0.25)} = 0.36\;°C/W \]
-\[ R_3 = R_5(plaster,center) = \frac{0.16}{(0.22)(0.015)} = 48.48\;°C/W \]
-\[ R_4(brick) = \frac{0.16}{(0.72)(0.22)} = 1.01\;°C/W \qquad R_o = \frac{1}{(25)(0.25)} = 0.16\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-Parallel middle section (\(R_3\), \(R_4\), \(R_5\) in parallel):
-\[ \frac{1}{R_{mid}} = \frac{1}{48.48} + \frac{1}{1.01} + \frac{1}{48.48} = 1.03\;W/°C \quad \Rightarrow \quad R_{mid} = 0.97\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-content">
-Total: \(R_{total} = 0.40 + 4.62 + 0.36 + 0.97 + 0.36 + 0.16 = 6.87\;°C/W\)
-</div></div>
-<div class="step"><div class="step-num">4</div><div class="step-content">
-Per section: \(\dot{Q} = 30/6.87 = 4.37\;W\). Per unit area: \(17.5\;W/m^2\).
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ \dot{Q}_{total} = (17.5)(15) = 263\;W \]
-</div>
-<div class="discussion-box">
-<h4>💬 Discussion</h4>
-<p>النتيجة <span class="term">approximate</span>. الأسلوب البديل (<span class="term">adiabatic planes</span>) يعطي \(R_{total} = 6.97\;°C/W\) — قريبة جدًا. كلا الأسلوبين يعطي نتائج مقبولة لهذه الهندسة.</p>
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-7 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–7: Spherical Tank (Iced Water)</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-A spherical tank (internal diameter 3 m, 2-cm-thick stainless steel, <em>k</em> = 15 W/m·K) contains iced water at 0°C in a room at 22°C. The outer surface is black. Given <em>h</em><sub>1</sub> = 80, <em>h</em><sub>2</sub> = 10 W/m²·K. Determine: (1) rate of heat transfer to the iced water; (2) amount of ice melted during 24 h.
-</div>
-
-<div class="fig-container fig-small">
-<img src="images/figure-3-28.png" alt="Figure 3-28: Spherical tank">
-<div class="fig-caption">Figure 3–28: Spherical tank with resistance network</div>
-</div>
-
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-7"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-7"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(r_1 = 1.50\;m,\;r_2 = 1.52\;m\)</span>
-<span>\(A_1 = 28.3\;m^2,\;A_2 = 29.0\;m^2\)</span>
-<span>\(T_{\infty1} = 0°C,\;T_{\infty2} = 22°C\)</span>
-<span>\(h_{rad} = 5.34\;W/m^2\cdot K\) (assuming \(T_2 \approx 5°C\))</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-\[ R_i = \frac{1}{(80)(28.3)} = 0.000442\;°C/W \]
-\[ R_1 = \frac{1.52 - 1.50}{4\pi(15)(1.50)(1.52)} = 0.0000478\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-\[ R_o = \frac{1}{(10)(29.0)} = 0.00345\;°C/W \qquad R_{rad} = \frac{1}{(5.34)(29.0)} = 0.00646\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-content">
-\(R_o\) and \(R_{rad}\) are in parallel:
-\[ \frac{1}{R_{eq}} = \frac{1}{0.00345} + \frac{1}{0.00646} = 444.7 \quad \Rightarrow \quad R_{eq} = 0.00225\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">4</div><div class="step-content">
-\[ R_{total} = 0.000442 + 0.0000478 + 0.00225 = 0.00274\;°C/W \]
-\[ \dot{Q} = \frac{22 - 0}{0.00274} \approx 8029\;W \]
-</div></div>
-<div class="step"><div class="step-num">5</div><div class="step-content">
-Verify: \(T_2 = 22 - (8029)(0.00225) \approx 4°C\) ← close to assumed 5°C ✓
-</div></div>
-<div class="step"><div class="step-num">6</div><div class="step-content">
-In 24 h: \(Q = (8.029)(24 \times 3600) = 693{,}700\;kJ\)
-\[ m = \frac{Q}{h_{if}} = \frac{693{,}700}{333.7} \approx 2079\;kg \]
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ \dot{Q} \approx 8029\;W \qquad m \approx 2079\;kg \approx 2\;\text{metric tons/day} \]
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-8 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–8: Insulated Cast-Iron Pipe</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-Steam at 320°C flows through a cast-iron pipe (<em>k</em> = 80 W/m·K) with <em>D</em><sub>1</sub> = 5 cm, <em>D</em><sub>2</sub> = 5.5 cm, covered with 3-cm-thick glass wool insulation (<em>k</em> = 0.05 W/m·K). Surroundings at 5°C. Combined external <em>h</em><sub>2</sub> = 18, internal <em>h</em><sub>1</sub> = 60 W/m²·K. Determine: (1) heat loss per unit length; (2) temperature drops across pipe and insulation.
-</div>
-
-<div class="fig-container fig-small">
-<img src="images/figure-3-29.png" alt="Figure 3-29: Insulated pipe">
-<div class="fig-caption">Figure 3–29: Insulated cast-iron pipe — resistance network</div>
-</div>
-
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-8"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-8"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(r_1 = 0.025\;m\)</span>
-<span>\(r_2 = 0.0275\;m\)</span>
-<span>\(r_3 = 0.0575\;m\)</span>
-<span>\(L = 1\;m\)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-\(A_1 = 2\pi(0.025)(1) = 0.157\;m^2\), \(A_3 = 2\pi(0.0575)(1) = 0.361\;m^2\)
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-\[ R_i = \frac{1}{(60)(0.157)} = 0.106\;°C/W \qquad R_{pipe} = \frac{\ln(2.75/2.5)}{2\pi(80)} = 0.000189\;°C/W \]
-\[ R_{ins} = \frac{\ln(5.75/2.75)}{2\pi(0.05)} = 2.35\;°C/W \qquad R_o = \frac{1}{(18)(0.361)} = 0.154\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-content">
-\[ R_{total} \approx 0.106 + 0.000189 + 2.35 + 0.154 \approx 2.61\;°C/W \]
-\[ \dot{Q} = \frac{320 - 5}{2.61} \approx 121\;W/m \]
-</div></div>
-<div class="step"><div class="step-num">4</div><div class="step-content">
-\[ \Delta T_{pipe} = (121)(0.000189) \approx 0.023°C \qquad \Delta T_{ins} = (121)(2.35) \approx 284°C \]
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ \dot{Q} \approx 121\;W/m \qquad \Delta T_{pipe} \approx 0.02°C \qquad \Delta T_{ins} \approx 284°C \]
-</div>
-<div class="discussion-box">
-<h4>💬 Discussion</h4>
-<p>\(R_{pipe} \ll R_{ins}\): الأنبوب تقريبًا <span class="term">isothermal</span>. معظم الـ<span class="term">temperature drop</span> يحدث عبر <span class="term">insulation</span> التي تتحكم أساسًا في <span class="term">total thermal resistance</span> وبالتالي <span class="term">heat loss</span>.</p>
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-9 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–9: Electric Wire with Plastic Insulation</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-An electric wire (diameter 3 mm, length 5 m) is covered with a 2-mm-thick plastic layer (<em>k</em> = 0.15 W/m·K). Current <em>I</em> = 10 A, voltage drop <em>V</em> = 8 V. Ambient at 30°C, <em>h</em> = 12 W/m²·K. Determine: (1) the interface temperature; (2) the effect of doubling the cover thickness.
-</div>
-
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-9"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-9"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(r_1 = 1.5\;mm\)</span>
-<span>\(r_2 = 3.5\;mm\)</span>
-<span>\(\dot{Q} = VI = (8)(10) = 80\;W\)</span>
-<span>\(k = 0.15\;W/m\cdot K\)</span>
-<span>\(h = 12\;W/m^2\cdot K\)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-\(A_2 = 2\pi(0.0035)(5) = 0.110\;m^2\)
-\[ R_{conv} = \frac{1}{(12)(0.110)} = 0.758\;°C/W \qquad R_{plastic} = \frac{\ln(3.5/1.5)}{2\pi(5)(0.15)} = 0.180\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-\[ R_{total} = 0.758 + 0.180 = 0.938\;°C/W \]
-\[ T_1 = 30 + (80)(0.938) \approx 105°C \]
-</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-content">
-Critical radius: \(r_{cr} = k/h = 0.15/12 = 12.5\;mm\). Since \(r_2 = 3.5\;mm < r_{cr}\), the wire is below critical radius.
-</div></div>
-<div class="step"><div class="step-num">4</div><div class="step-content">
-Doubling cover to 4 mm: \(T_1 \approx 90.6°C\). At \(r_2 = r_{cr} = 12.5\;mm\): \(T_{1,min} \approx 83°C\).
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ T_1 \approx 105°C \quad \text{(original)} \qquad T_1 \approx 90.6°C \quad \text{(doubled cover)} \]
-</div>
-<div class="discussion-box">
-<h4>💬 Discussion</h4>
-<p>بما أن \(r_2 < r_{cr}\)، فإن إضافة <span class="term">insulation</span> تزيد <span class="term">heat transfer</span> وتخفض درجة الحرارة — مفيد لسلامة الأسلاك الكهربائية! عند \(r_2 = r_{cr}\) تصل درجة الحرارة إلى أدنى مستوى (83°C تقريبًا).</p>
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-10 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–10: Maximum Power Dissipation of a Transistor</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-A power transistor has a maximum power rating of 10 W, and its case-to-ambient thermal resistance is <em>R</em><sub>case-ambient</sub> = 20°C/W. If the case temperature is not to exceed 85°C, determine the maximum power at which the transistor can be operated safely in an environment at 25°C.
-</div>
-
-<div class="fig-container fig-small">
-<img src="images/figure-3-48.png" alt="Figure 3-48: Transistor thermal model">
-<div class="fig-caption">Figure 3–48: Transistor thermal resistance model</div>
-</div>
-
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-10"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-10"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(T_c = 85°C\)</span>
-<span>\(T_\infty = 25°C\)</span>
-<span>\(R_{case-ambient} = 20\;°C/W\)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-\[ \dot{Q} = \frac{T_c - T_\infty}{R_{case-ambient}} = \frac{85 - 25}{20} = \frac{60}{20} \]
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ \dot{Q}_{max} = 3\;W \]
-</div>
-<div class="discussion-box">
-<h4>💬 Discussion</h4>
-<p>يجب ألا يعمل الـ<span class="term">transistor</span> عند <span class="term">power level</span> أعلى من 3 W — أقل بكثير من التصنيف الأقصى (10 W). يمكن تشغيله عند طاقة أعلى بإضافة <span class="term">heat sink</span> لتقليل <span class="term">thermal resistance</span> أو استخدام <span class="term">fan</span> لزيادة \(h\).</p>
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-11 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–11: Selecting a Heat Sink for a Transistor</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-A 60-W power transistor is to be cooled by attaching it to one of the commercially available heat sinks listed in Table 3–6. Select a heat sink that keeps the case temperature from exceeding 90°C when the ambient air is at 30°C.
-</div>
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-11"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-11"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(\dot{Q} = 60\;W\)</span>
-<span>\(T_c = 90°C\)</span>
-<span>\(T_\infty = 30°C\)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-Required thermal resistance:
-\[ R = \frac{\Delta T}{\dot{Q}} = \frac{90 - 30}{60} = 1.0\;°C/W \]
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-The heat sink must have \(R < 1.0\;°C/W\). From Table 3–6:
-<br><strong>HS 5030</strong> has \(R = 0.9\;°C/W\) in vertical position ✓
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-<p style="direction:ltr;text-align:center;">Select <strong>HS 5030</strong> (R = 0.9°C/W, vertical position)</p>
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-12 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–12: Fins of Variable Cross Section (Parabolic Pin Fin)</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-Aluminum pin fins with a parabolic profile and blunt tips are attached to a plane wall at <em>T<sub>b</sub></em> = 200°C. Each fin has <em>L</em> = 20 mm and <em>D</em> = 5 mm. Exposed to air at 25°C with <em>h</em> = 50 W/m²·K and <em>k</em> = 240 W/m·K. Determine: (1) fin efficiency; (2) heat transfer rate; (3) fin effectiveness.
-</div>
-
-<div class="fig-container fig-small">
-<img src="images/figure-3-49.png" alt="Figure 3-49: Parabolic pin fin">
-<div class="fig-caption">Figure 3–49: Parabolic pin fin with blunt tip</div>
-</div>
-
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-12"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-12"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(L = 0.020\;m\)</span>
-<span>\(D = 0.005\;m\)</span>
-<span>\(T_b = 200°C\)</span>
-<span>\(T_\infty = 25°C\)</span>
-<span>\(h = 50\;W/m^2\cdot K\)</span>
-<span>\(k = 240\;W/m\cdot K\)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-For parabolic pin fin (Table 3-3): \(mL = \sqrt{\dfrac{4h}{kD}} \cdot L = \sqrt{\dfrac{4(50)}{(240)(0.005)}} \cdot 0.020\)
-<br>Wait — the correct form: \(mL = L\sqrt{\dfrac{4h}{kD}} = 0.020\sqrt{\dfrac{200}{1.2}} = 0.020 \times 12.91 = 0.2582\)
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-Fin surface area: \(A_{fin} = 2.106 \times 10^{-4}\;m^2\)
-</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-content">
-Using modified Bessel functions (Table 3-3):
-\[ \eta_{fin} = \frac{3}{2(0.2582)} \cdot \frac{I_1(0.3443)}{I_0(0.3443)} = 5.81 \times \frac{0.1716}{1.0350} = 0.963 \]
-</div></div>
-<div class="step"><div class="step-num">4</div><div class="step-content">
-\[ \dot{Q}_{fin} = \eta_{fin}\,h\,A_{fin}(T_b - T_\infty) = (0.963)(50)(2.106 \times 10^{-4})(175) = 1.77\;W \]
-</div></div>
-<div class="step"><div class="step-num">5</div><div class="step-content">
-\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{hA_b(T_b - T_\infty)} = \frac{1.77}{(50)(\pi(0.005)^2/4)(175)} \approx 10.3 \]
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ \eta_{fin} = 0.963 \qquad \dot{Q}_{fin} = 1.77\;W \qquad \varepsilon_{fin} \approx 10.3 \]
-</div>
-<div class="discussion-box">
-<h4>💬 Discussion</h4>
-<p>الـ<span class="term">pin fin</span> يحقق تقريبًا <strong>10-fold increase</strong> في <span class="term">heat transfer</span> مقارنةً بالـ<span class="term">base area</span> وحدها. باستخدام <span class="term">EES</span> بدون <span class="term">interpolation</span>: \(\eta_{fin} = 0.9855\) (أعلى بحوالي 2%).</p>
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- ===== EXAMPLE 3-13 ===== -->
-<div class="example-card">
-<div class="example-header"><h3>Example 3–13: Preventing Circuit Board Overheating</h3></div>
-<div class="example-body">
-<div class="problem-statement">
-A 15 cm × 20 cm integrated circuit board is cooled by attaching 4-cm-long aluminum pin fins (square cross section 2 mm × 2 mm, <em>k</em> = 237 W/m·K). Surrounding air at 25°C with <em>h</em> = 20 W/m²·K. Board surface must not exceed 85°C. Design a finned surface with overall effectiveness of 3 and determine the appropriate number of fins.
-</div>
-
-<div class="fig-container fig-small">
-<img src="images/figure-3-50.png" alt="Figure 3-50: Circuit board with fins">
-<div class="fig-caption">Figure 3–50: Circuit board with pin fins</div>
-</div>
-
-<div class="solution-toggle-row">
-<button type="button" class="solution-toggle" aria-expanded="false" aria-controls="sol-3-13"><span class="st-text">إظهار الحل</span><span class="st-arrow" aria-hidden="true">▼</span></button>
-</div>
-<div class="solution-collapse" id="sol-3-13"><div class="solution-collapse-inner">
-<div class="given-section">
-<h4>Given</h4>
-<div class="given-grid">
-<span>\(A_{board} = 0.03\;m^2\)</span>
-<span>\(L = 0.04\;m\)</span>
-<span>\(a = 0.002\;m\) (square side)</span>
-<span>\(k = 237\;W/m\cdot K\)</span>
-<span>\(h = 20\;W/m^2\cdot K\)</span>
-<span>\(T_b = 85°C,\;T_\infty = 25°C\)</span>
-<span>\(\varepsilon_{fin,overall} = 3\) (required)</span>
-</div>
-</div>
-<div class="solution-steps">
-<h4>Solution</h4>
-<div class="step"><div class="step-num">1</div><div class="step-content">
-Fin parameter:
-\[ m = \sqrt{\frac{4h}{ka}} = \sqrt{\frac{4(20)}{(237)(0.002)}} = 12.99\;m^{-1} \]
-\[ mL = (12.99)(0.04) = 0.5196 \]
-</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-content">
-Fin efficiency:
-\[ \eta_{fin} = \frac{\tanh(0.5196)}{0.5196} = 0.919 \]
-</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-content">
-Areas per fin: \(A_{one\;fin} = 4(0.002)(0.04) = 3.2 \times 10^{-4}\;m^2\)
-<br>Base area covered per fin: \((0.002)^2 = 4 \times 10^{-6}\;m^2\)
-</div></div>
-<div class="step"><div class="step-num">4</div><div class="step-content">
-Heat transfer without fins: \(\dot{Q}_{no\;fin} = (20)(0.03)(60) = 36\;W\)
-<br>With \(n\) fins: \(\dot{Q}_{total} = 36 + 0.3481\,n\)
-</div></div>
-<div class="step"><div class="step-num">5</div><div class="step-content">
-From \(\varepsilon_{fin,overall} = 3\):
-\[ 3 = \frac{36 + 0.3481\,n}{36} \quad \Rightarrow \quad 72 = 0.3481\,n \]
-</div></div>
-</div>
-<div class="final-answer">
-<div class="answer-label">✅ Final Answer</div>
-\[ n_{fin} \approx 207 \;\text{fins} \]
-</div>
-<div class="discussion-box">
-<h4>💬 Discussion</h4>
-<p>لتحقيق <span class="term">overall fin effectiveness</span> = 3 والحفاظ على سطح الـ<span class="term">circuit board</span> عند \(T_b \leq 85°C\)، نحتاج إلى الأقل 207 <span class="term">fin</span>. يمكن تقليل العدد باستخدام مادة مختلفة أو هندسة مختلفة للـ<span class="term">fins</span>.</p>
-</div>
-</div></div>
-</div>
-</div>
-
-</section>
-<hr class="section-divider">
 
 <!-- ==================== KEY RELATIONS SUMMARY ==================== -->
 <section class="section">
@@ -1852,6 +2670,7 @@ From \(\varepsilon_{fin,overall} = 3\):
 </div>
 </footer>
 
+<!-- ===== CH3 PROGRESS (added) ===== -->
 <!-- ===== CLOSING PRAYER ===== -->
 <div class="closing-prayer">
 <div class="closing-prayer-card">
@@ -1860,7 +2679,286 @@ From \(\varepsilon_{fin,overall} = 3\):
 </div>
 
 <!-- ===== JAVASCRIPT ===== -->
-<script src="chapter3.js"></script>
+<script>
+// Dua toggle
+(function(){
+var btn=document.getElementById('duaToggle');
+var content=document.getElementById('duaContent');
+if(!btn||!content) return;
+btn.addEventListener('click',function(){
+var expanded=btn.getAttribute('aria-expanded')==='true';
+btn.setAttribute('aria-expanded',expanded?'false':'true');
+content.style.display=expanded?'none':'block';
+});
+})();
+
+// Solution toggles
+function toggleSolution(btn){
+var answer=btn.nextElementSibling;
+if(!answer) return;
+var visible=answer.style.display==='block';
+answer.style.display=visible?'none':'block';
+btn.textContent=visible?'عرض الحل الكامل ▼':'إخفاء الحل ▲';
+}
+
+// Smooth scroll for TOC
+document.querySelectorAll('.toc-item').forEach(function(a){
+a.addEventListener('click',function(e){
+e.preventDefault();
+var target=document.querySelector(a.getAttribute('href'));
+if(target){
+target.scrollIntoView({behavior:'smooth',block:'start'});
+}
+});
+});
+
+// Eye protection toggle
+(function(){
+var KEY='eyeProtection',root=document.documentElement,btn=document.getElementById('eyeToggle');
+if(!btn) return;
+var st=btn.querySelector('.eye-st');
+function render(on){btn.setAttribute('aria-pressed',on?'true':'false');st.textContent=on?'ON':'OFF';}
+render(root.getAttribute('data-eye')==='on');
+btn.addEventListener('click',function(){
+var on=root.getAttribute('data-eye')!=='on';
+if(on){root.setAttribute('data-eye','on');}else{root.removeAttribute('data-eye');}
+render(on);
+try{localStorage.setItem(KEY,on?'on':'off');}catch(e){}
+});
+})();
+</script>
+
+<!-- ===== CH3: SOLUTIONS + TASKS (added) ===== -->
+<script>
+(function(){
+var reduce=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+/* ---------- Show / hide solution (independent per problem) ---------- */
+[].forEach.call(document.querySelectorAll('.sol-toggle'),function(btn){
+var wrap=document.getElementById(btn.getAttribute('aria-controls'));
+if(!wrap) return;
+var arrow=btn.querySelector('.sol-arrow'),label=btn.querySelector('.sol-label'),t;
+wrap.setAttribute('aria-hidden','true');
+btn.addEventListener('click',function(){
+var open=btn.getAttribute('aria-expanded')!=='true';
+btn.setAttribute('aria-expanded',open?'true':'false');
+arrow.textContent=open?'\u25B2':'\u25BC';
+label.textContent=open?'\u0625\u062E\u0641\u0627\u0621 \u0627\u0644\u062D\u0644':'\u0625\u0638\u0647\u0627\u0631 \u0627\u0644\u062D\u0644';
+wrap.setAttribute('aria-hidden',open?'false':'true');
+clearTimeout(t);
+if(open){
+wrap.classList.add('is-open');
+t=setTimeout(function(){if(wrap.classList.contains('is-open'))wrap.classList.add('is-settled');},reduce?0:520);
+}else{
+wrap.classList.remove('is-settled');
+wrap.classList.remove('is-open');
+}
+});
+});
+})();
+
+// ===== TASK COMPLETION SYSTEM =====
+(function(){
+  var STORAGE_KEY = 'ch3_tasks';
+  var TOTAL_TASKS = 13;
+  var messages = [
+    'استمر! 🔥', 'عاش! كمل كده 👏', 'أحسنت! 💪',
+    'مهمة خلصت، واحدة كمان! 🚀', 'جامد جدًا! ⭐', 'Keep going! 🔥',
+    'ممتاز! 🌟', 'يلا نكمل! 💥', 'برافو عليك! 🎯'
+  ];
+
+  // Load saved state
+  function loadState(){
+    try{
+      var s = localStorage.getItem(STORAGE_KEY);
+      return s ? JSON.parse(s) : {};
+    } catch(e){ return {}; }
+  }
+  function saveState(state){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
+  }
+
+  // Update progress bar
+  function updateProgress(state){
+    var count = Object.keys(state).filter(function(k){ return state[k]; }).length;
+    var fill = document.getElementById('progressFill');
+    var text = document.getElementById('progressText');
+    if(fill) fill.style.width = (count / TOTAL_TASKS * 100) + '%';
+    if(text) text.textContent = count + ' / ' + TOTAL_TASKS + ' Tasks';
+    return count;
+  }
+
+  // Mini confetti burst
+  function miniConfetti(x, y){
+    var canvas = document.getElementById('confettiCanvas');
+    if(!canvas){
+      canvas = document.createElement('canvas');
+      canvas.id = 'confettiCanvas';
+      document.body.appendChild(canvas);
+    }
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var ctx = canvas.getContext('2d');
+    var colors = ['#1ABC9C','#2E86C1','#F0B429','#E74C3C','#9B59B6','#FF6B6B','#48C9B0'];
+    var particles = [];
+    for(var i = 0; i < 35; i++){
+      particles.push({
+        x: x, y: y,
+        vx: (Math.random() - 0.5) * 12,
+        vy: (Math.random() - 0.7) * 12,
+        w: Math.random() * 8 + 4,
+        h: Math.random() * 6 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 15,
+        gravity: 0.3,
+        life: 1
+      });
+    }
+    var frame;
+    function animate(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      var alive = false;
+      particles.forEach(function(p){
+        if(p.life <= 0) return;
+        alive = true;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.rotation += p.rotSpeed;
+        p.life -= 0.018;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.globalAlpha = Math.max(0, p.life);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+      });
+      if(alive) frame = requestAnimationFrame(animate);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    animate();
+  }
+
+  // Big confetti for chapter completion
+  function bigConfetti(){
+    var canvas = document.getElementById('confettiCanvas');
+    if(!canvas){
+      canvas = document.createElement('canvas');
+      canvas.id = 'confettiCanvas';
+      document.body.appendChild(canvas);
+    }
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var ctx = canvas.getContext('2d');
+    var colors = ['#1ABC9C','#2E86C1','#F0B429','#E74C3C','#9B59B6','#FF6B6B','#48C9B0','#FFD700','#FF69B4'];
+    var particles = [];
+    for(var i = 0; i < 120; i++){
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: -20 - Math.random() * 200,
+        vx: (Math.random() - 0.5) * 6,
+        vy: Math.random() * 3 + 2,
+        w: Math.random() * 10 + 5,
+        h: Math.random() * 8 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 10,
+        gravity: 0.08,
+        life: 1
+      });
+    }
+    function animate(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      var alive = false;
+      particles.forEach(function(p){
+        if(p.life <= 0) return;
+        alive = true;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.rotation += p.rotSpeed;
+        p.life -= 0.006;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.globalAlpha = Math.max(0, p.life);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+      });
+      if(alive) requestAnimationFrame(animate);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    animate();
+  }
+
+  // Show motivational message
+  function showMessage(btn){
+    var old = btn.parentNode.querySelector('.task-msg');
+    if(old) old.remove();
+    var msg = document.createElement('span');
+    msg.className = 'task-msg';
+    msg.textContent = messages[Math.floor(Math.random() * messages.length)];
+    btn.parentNode.appendChild(msg);
+    setTimeout(function(){
+      msg.style.animation = 'msgFade .4s ease forwards';
+      setTimeout(function(){ msg.remove(); }, 400);
+    }, 2000);
+  }
+
+  // Init
+  var state = loadState();
+  var buttons = document.querySelectorAll('.task-check');
+  buttons.forEach(function(btn){
+    var taskId = btn.getAttribute('data-task');
+    var section = document.getElementById(taskId);
+    // Restore saved state
+    if(state[taskId]){
+      btn.classList.add('completed');
+      if(section) section.classList.add('task-done');
+    }
+    btn.addEventListener('click', function(){
+      var isCompleted = btn.classList.contains('completed');
+      if(isCompleted){
+        // Uncomplete
+        btn.classList.remove('completed');
+        if(section) section.classList.remove('task-done');
+        state[taskId] = false;
+      } else {
+        // Complete
+        btn.classList.add('completed');
+        if(section) section.classList.add('task-done');
+        state[taskId] = true;
+        // Confetti
+        var rect = btn.getBoundingClientRect();
+        miniConfetti(rect.left + rect.width/2, rect.top + rect.height/2);
+        // Message
+        showMessage(btn);
+      }
+      saveState(state);
+      var count = updateProgress(state);
+      // Chapter complete?
+      if(count >= TOTAL_TASKS){
+        var banner = document.getElementById('chapterBanner');
+        if(banner) banner.style.display = 'block';
+        setTimeout(bigConfetti, 300);
+      } else {
+        var banner = document.getElementById('chapterBanner');
+        if(banner) banner.style.display = 'none';
+      }
+    });
+  });
+  updateProgress(state);
+  // Check if already all complete on load
+  var initialCount = Object.keys(state).filter(function(k){ return state[k]; }).length;
+  if(initialCount >= TOTAL_TASKS){
+    var banner = document.getElementById('chapterBanner');
+    if(banner) banner.style.display = 'block';
+  }
+})();
+</script>
 
 </body>
 </html>
