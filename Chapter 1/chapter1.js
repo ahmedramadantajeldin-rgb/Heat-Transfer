@@ -248,3 +248,32 @@ function toggleSolution(btn){
     if(banner) banner.style.display = 'block';
   }
 })();
+
+// ===== SOLUTION SHOW / HIDE (self-test mode) =====
+(function(){
+  var SHOW_TEXT = 'إظهار الحل', HIDE_TEXT = 'إخفاء الحل';
+  document.querySelectorAll('.solution-toggle').forEach(function(btn){
+    var panels = (btn.getAttribute('aria-controls') || '').split(' ').map(function(id){
+      return document.getElementById(id);
+    }).filter(Boolean);
+    var label = btn.querySelector('.st-text');
+    if(!panels.length || !label) return;
+    var timer;
+    btn.addEventListener('click', function(){
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      clearTimeout(timer);
+      if(isOpen){
+        panels.forEach(function(p){ p.classList.remove('is-open', 'is-settled'); });
+        btn.setAttribute('aria-expanded', 'false');
+        label.textContent = SHOW_TEXT;
+      } else {
+        panels.forEach(function(p){ p.classList.add('is-open'); });
+        btn.setAttribute('aria-expanded', 'true');
+        label.textContent = HIDE_TEXT;
+        timer = setTimeout(function(){
+          panels.forEach(function(p){ p.classList.add('is-settled'); });
+        }, 450);
+      }
+    });
+  });
+})();

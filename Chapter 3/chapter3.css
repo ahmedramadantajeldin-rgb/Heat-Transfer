@@ -787,3 +787,39 @@ html[data-eye="on"] .eye-overlay{display:block;position:fixed;inset:0;z-index:99
 
 /* Section header needs relative for message positioning */
 .section-header{position:relative;}
+
+/* ===== SOLUTION SHOW / HIDE (self-test mode) ===== */
+.solution-toggle-row{margin:18px 0 6px;}
+.solution-toggle{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--pearl);color:var(--royal);
+  border:2px solid var(--sky);border-radius:999px;
+  padding:8px 20px;cursor:pointer;
+  font-family:'Cairo',sans-serif;font-size:0.92rem;font-weight:700;
+  transition:background .25s ease,color .25s ease,box-shadow .25s ease,transform .15s ease;
+}
+.solution-toggle:hover{background:var(--sky);color:var(--white);box-shadow:0 4px 14px rgba(46,134,193,0.25);}
+.solution-toggle:active{transform:scale(0.97);}
+.solution-toggle:focus-visible{outline:3px solid var(--azure);outline-offset:3px;}
+.solution-toggle[aria-expanded="true"]{background:var(--sky);color:var(--white);}
+.solution-toggle .st-arrow{display:inline-block;font-size:0.8em;line-height:1;transition:transform .35s ease;}
+.solution-toggle[aria-expanded="true"] .st-arrow{transform:rotate(180deg);}
+.solution-collapse{
+  display:grid;grid-template-rows:0fr;opacity:0;visibility:hidden;
+  transition:grid-template-rows .4s ease,opacity .3s ease,visibility 0s linear .4s;
+}
+.solution-collapse.is-open{
+  grid-template-rows:1fr;opacity:1;visibility:visible;
+  transition:grid-template-rows .4s ease,opacity .35s ease .05s,visibility 0s;
+}
+.solution-collapse-inner{min-height:0;overflow:hidden;}
+.solution-collapse.is-settled .solution-collapse-inner{overflow:visible;}
+@media(prefers-reduced-motion:reduce){
+  .solution-collapse,.solution-collapse.is-open,.solution-toggle .st-arrow{transition:none;}
+}
+/* Printing keeps every solution visible, exactly as before */
+@media print{
+  .solution-toggle-row{display:none !important;}
+  .solution-collapse{grid-template-rows:1fr !important;opacity:1 !important;visibility:visible !important;transition:none !important;}
+  .solution-collapse-inner{overflow:visible !important;}
+}
