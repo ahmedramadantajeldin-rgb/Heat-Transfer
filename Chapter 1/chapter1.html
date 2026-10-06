@@ -43,6 +43,23 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},opt
 </div>
 </header>
 
+<!-- Task Progress -->
+<div class="task-progress-wrapper">
+  <div class="task-progress-bar">
+    <div class="task-progress-fill" id="progressFill"></div>
+  </div>
+  <div class="task-progress-text" id="progressText">0 / 17 Tasks</div>
+</div>
+
+<!-- Chapter Complete Banner (hidden by default) -->
+<div class="chapter-complete-banner" id="chapterBanner" style="display:none;">
+  <div class="banner-content">
+    <span class="banner-emoji">🏆</span>
+    <h2>Chapter 1 Completed!</h2>
+    <p>خلصت Chapter 1! عاش عليك! 🎉</p>
+  </div>
+</div>
+
 <!-- Opening Dua -->
 <div class="dua-wrapper">
 <div class="dua-card">
@@ -101,6 +118,10 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},opt
 <h2 class="section-title">Thermodynamics vs. Heat Transfer</h2>
 <span class="section-subtitle">COMPARISON · ENERGY QUANTITIES vs. RATES</span>
 </div>
+<button class="task-check" data-task="sec1" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">1</span></span>
+</button>
 </div>
 
 <div class="def-box">
@@ -150,6 +171,10 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},opt
 <h2 class="section-title">Heat and the Driving Force for Heat Transfer</h2>
 <span class="section-subtitle">TEMPERATURE DIFFERENCE · TEMPERATURE GRADIENT</span>
 </div>
+<button class="task-check" data-task="sec2" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">2</span></span>
+</button>
 </div>
 
 <div class="def-box">
@@ -193,6 +218,10 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},opt
 <h2 class="section-title">Thermodynamic Laws in Heat Transfer</h2>
 <span class="section-subtitle">FIRST LAW · SECOND LAW</span>
 </div>
+<button class="task-check" data-task="sec3" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">3</span></span>
+</button>
 </div>
 
 <div class="def-box">
@@ -222,6 +251,10 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},opt
 <h2 class="section-title">Basic Mechanisms of Heat Transfer</h2>
 <span class="section-subtitle">CONDUCTION · CONVECTION · RADIATION</span>
 </div>
+<button class="task-check" data-task="sec4" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">4</span></span>
+</button>
 </div>
 
 <p>توجد ثلاثة أنماط (<span class="term">modes</span>) أساسية لانتقال الحرارة، وجميعها تتطلب وجود <span class="term">Temperature Difference</span>، وتنقل الطاقة من <span class="term">high-temperature medium</span> إلى <span class="term">low-temperature medium</span>:</p>
@@ -260,6 +293,10 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},opt
 <h2 class="section-title">Heat Transfer in Real Systems & Applications</h2>
 <span class="section-subtitle">SIMULTANEOUS MECHANISMS · ENGINEERING APPLICATIONS</span>
 </div>
+<button class="task-check" data-task="sec5" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">5</span></span>
+</button>
 </div>
 
 <p>في الأنظمة العملية، يمكن أن تعمل الآليات الثلاث في وقت واحد. فمثلاً، الحرارة المغادرة لسطح مُسخَّن قد تشمل:</p>
@@ -313,6 +350,10 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},opt
 <h2 class="section-title">Historical Understanding of Heat</h2>
 <span class="section-subtitle">KINETIC THEORY · CALORIC THEORY · RUMFORD & JOULE</span>
 </div>
+<button class="task-check" data-task="sec6" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">6</span></span>
+</button>
 </div>
 
 <div class="def-box">
@@ -350,6 +391,10 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},opt
 <h2 class="section-title">Engineering Heat Transfer & Modeling</h2>
 <span class="section-subtitle">RATING · SIZING · EXPERIMENTAL · ANALYTICAL · MATHEMATICAL MODELING</span>
 </div>
+<button class="task-check" data-task="sec7" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">7</span></span>
+</button>
 </div>
 
 <p>يُستخدم تحليل <span class="term">Heat Transfer</span> بشكل أساسي في تصميم معدات مثل: <span class="term">Heat Exchangers</span>، <span class="term">Boilers</span>، <span class="term">Condensers</span>، <span class="term">Radiators</span>، <span class="term">Furnaces</span>، <span class="term">Refrigerators</span>، و<span class="term">Solar Collectors</span>.</p>
@@ -446,6 +491,10 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},opt
 <h2 class="section-title">Energy, Internal Energy & Enthalpy</h2>
 <span class="section-subtitle">TOTAL ENERGY · INTERNAL ENERGY · SENSIBLE · LATENT · ENTHALPY</span>
 </div>
+<button class="task-check" data-task="sec8" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">8</span></span>
+</button>
 </div>
 
 <h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:24px 0 10px;">Forms of Energy</h3>
@@ -524,6 +573,10 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},opt
 <h2 class="section-title">Specific Heats & Properties</h2>
 <span class="section-subtitle">IDEAL GAS · cv · cp · INCOMPRESSIBLE SUBSTANCES</span>
 </div>
+<button class="task-check" data-task="sec9" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">9</span></span>
+</button>
 </div>
 
 <h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:0 0 10px;">Ideal Gas Relation</h3>
@@ -597,6 +650,10 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},opt
 <h2 class="section-title">Energy Transfer & First Law of Thermodynamics</h2>
 <span class="section-subtitle">HEAT · WORK · ENERGY BALANCE · CLOSED SYSTEMS · STEADY-FLOW · SURFACE</span>
 </div>
+<button class="task-check" data-task="sec10" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">10</span></span>
+</button>
 </div>
 
 <h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin:0 0 10px;">Energy Transfer Mechanisms</h3>
@@ -828,6 +885,10 @@ A heated continuous AISI 304 stainless steel sheet is being conveyed at a consta
 <h2 class="section-title">Conduction — Fourier's Law</h2>
 <span class="section-subtitle">MECHANISM · FACTORS · FOURIER'S LAW · HEAT TRANSFER AREA</span>
 </div>
+<button class="task-check" data-task="sec11" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">11</span></span>
+</button>
 </div>
 
 <div class="def-box">
@@ -967,6 +1028,10 @@ The roof of an electrically heated home is 6 m long, 8 m wide, and 0.25 m thick,
 <h2 class="section-title">Thermal Conductivity & Thermal Diffusivity</h2>
 <span class="section-subtitle">k VALUES · VARIATION · GASES · LIQUIDS · SOLIDS · α = k/ρcp</span>
 </div>
+<button class="task-check" data-task="sec12" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">12</span></span>
+</button>
 </div>
 
 <div class="def-box">
@@ -1191,6 +1256,10 @@ A common way of measuring the thermal conductivity of a material is to sandwich 
 <h2 class="section-title">Convection — Newton's Law of Cooling</h2>
 <span class="section-subtitle">MECHANISM · FORCED · NATURAL · NEWTON'S LAW · h COEFFICIENT</span>
 </div>
+<button class="task-check" data-task="sec13" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">13</span></span>
+</button>
 </div>
 
 <div class="def-box">
@@ -1323,6 +1392,10 @@ An electrically heated wire of diameter 0.003 m and length 2 m is maintained at 
 <h2 class="section-title">Radiation — Stefan–Boltzmann Law</h2>
 <span class="section-subtitle">THERMAL RADIATION · BLACKBODY · EMISSIVITY · ABSORPTIVITY · NET RADIATION</span>
 </div>
+<button class="task-check" data-task="sec14" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">14</span></span>
+</button>
 </div>
 
 <div class="def-box">
@@ -1489,6 +1562,10 @@ Consider a person standing in a room maintained at 22°C at all times. The inner
 <h2 class="section-title">Simultaneous Heat Transfer Mechanisms</h2>
 <span class="section-subtitle">COMBINED MODES · MEDIUM DEPENDENCE · PRACTICAL EXAMPLES</span>
 </div>
+<button class="task-check" data-task="sec15" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">15</span></span>
+</button>
 </div>
 
 <p>ليس بالضرورة أن تعمل الآليات الثلاث معًا داخل نفس الوسط. الآلية المسيطرة تعتمد على طبيعة الوسط:</p>
@@ -1741,6 +1818,10 @@ Discuss the heat transfer mechanisms associated with the cooking of a chicken in
 <h2 class="section-title">Prevention through Design (PtD)</h2>
 <span class="section-subtitle">THERMAL BURN · FIRE HAZARD · THERMAL FAILURE · SAFETY</span>
 </div>
+<button class="task-check" data-task="sec16" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">16</span></span>
+</button>
 </div>
 
 <div class="def-box">
@@ -1837,6 +1918,10 @@ Oil leakage on a hot engine surface can lead to fire hazards. Some engine oils h
 <h2 class="section-title">Problem-Solving Technique</h2>
 <span class="section-subtitle">SYSTEMATIC APPROACH · SOFTWARE · SIGNIFICANT DIGITS</span>
 </div>
+<button class="task-check" data-task="sec17" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">17</span></span>
+</button>
 </div>
 
 <p>حل المسائل الهندسية المعقدة يحتاج إلى <span class="term">systematic approach</span> يحول المشكلة الكبيرة إلى سلسلة من المشكلات الأبسط:</p>

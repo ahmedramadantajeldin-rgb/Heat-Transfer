@@ -47,6 +47,24 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 </div>
 </header>
 
+<!-- Task Progress -->
+<div class="task-progress-wrapper">
+  <div class="task-progress-bar">
+    <div class="task-progress-fill" id="progressFill"></div>
+  </div>
+  <div class="task-progress-text" id="progressText">0 / 14 Tasks</div>
+</div>
+
+<!-- Chapter Complete Banner (hidden by default) -->
+<div class="chapter-complete-banner" id="chapterBanner" style="display:none;">
+  <div class="banner-content">
+    <span class="banner-emoji">🏆</span>
+    <h2>Chapter 3 Completed!</h2>
+    <p>خلصت Chapter 3! عاش عليك! 🎉</p>
+  </div>
+</div>
+
+
 <!-- ===== DUA SECTION ===== -->
 <div class="dua-wrapper">
 <div class="dua-card">
@@ -100,6 +118,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>One-Dimensional Steady Conduction</h2>
 <span class="section-sub">§ 3-1 — Physical Model</span>
 </div>
+<button class="task-check" data-task="sec1" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">1</span></span>
+</button>
 </div>
 
 <p>في حالة <span class="term">Steady Heat Conduction</span> خلال <span class="term">Plane Wall</span> — مثل جدار منزل في الشتاء — الحرارة تنتقل باستمرار من الداخل إلى الخارج بسبب وجود <span class="term">Temperature Difference</span> بين السطحين.</p>
@@ -154,6 +176,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Fourier's Law for a Plane Wall</h2>
 <span class="section-sub">§ 3-1 — Heat Conduction Equation</span>
 </div>
+<button class="task-check" data-task="sec2" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">2</span></span>
+</button>
 </div>
 
 <p>لـ<span class="term">Plane Wall</span> بسمك \(L\)، ومعامل توصيل حراري متوسط \(k\)، ومساحة \(A\)، ودرجات حرارة سطحية \(T_1\) و\(T_2\)، مع <span class="term">one-dimensional steady heat conduction</span>:</p>
@@ -210,6 +236,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Thermal Resistance Concept</h2>
 <span class="section-sub">§ 3-1 — Electrical Analogy</span>
 </div>
+<button class="task-check" data-task="sec3" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">3</span></span>
+</button>
 </div>
 
 <p>يمكن إعادة ترتيب المعادلة 3-3 لتأخذ شكل <span class="term">Thermal Resistance</span>:</p>
@@ -270,6 +300,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Convection &amp; Radiation Resistance</h2>
 <span class="section-sub">§ 3-1 — Surface Thermal Resistances</span>
 </div>
+<button class="task-check" data-task="sec4" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">4</span></span>
+</button>
 </div>
 
 <h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:0 0 12px;">Convection Resistance</h3>
@@ -335,6 +369,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Thermal Resistance Network</h2>
 <span class="section-sub">§ 3-1 — Plane Wall with Convection on Both Sides</span>
 </div>
+<button class="task-check" data-task="sec5" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">5</span></span>
+</button>
 </div>
 
 <p>لـ<span class="term">Plane Wall</span> بسمك \(L\) ومساحة \(A\) ومعامل توصيل \(k\)، بين موائع عند \(T_{\infty1}\) و\(T_{\infty2}\) مع معاملات حمل \(h_1\) و\(h_2\)، حيث \(T_{\infty2} < T_{\infty1}\):</p>
@@ -415,6 +453,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Multilayer Plane Walls</h2>
 <span class="section-sub">§ 3-1 — Composite Wall Systems</span>
 </div>
+<button class="task-check" data-task="sec6" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">6</span></span>
+</button>
 </div>
 
 <p>في التطبيقات العملية، قد يتكون الجدار من عدة طبقات من مواد مختلفة. كل طبقة تضيف <span class="term">conduction resistance</span> جديدة <strong>in series</strong>.</p>
@@ -459,6 +501,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Thermal Contact Resistance</h2>
 <span class="section-sub">§ 3-2 — Imperfect Contact Between Solids</span>
 </div>
+<button class="task-check" data-task="sec7" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">7</span></span>
+</button>
 </div>
 
 <p>في تحليل <span class="term">multilayer solids</span>، افترضنا وجود <span class="term">perfect contact</span> بين الطبقات. لكن في الواقع، حتى الأسطح التي تبدو ملساء تكون <span class="term">microscopically rough</span> وتحتوي على <span class="term">peaks</span> و<span class="term">valleys</span>.</p>
@@ -561,6 +607,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Generalized Thermal Resistance Networks</h2>
 <span class="section-sub">§ 3-3 — Parallel &amp; Series-Parallel Arrangements</span>
 </div>
+<button class="task-check" data-task="sec8" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">8</span></span>
+</button>
 </div>
 
 <p>يمكن استخدام <span class="term">Thermal Resistance Concept</span> أيضًا في <span class="term">steady heat transfer</span> الذي يحتوي على <span class="term">parallel layers</span> و<span class="term">series-parallel arrangements</span>.</p>
@@ -619,6 +669,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Heat Conduction in Cylinders &amp; Spheres</h2>
 <span class="section-sub">§ 3-4 — Multilayered Cylindrical &amp; Spherical Systems</span>
 </div>
+<button class="task-check" data-task="sec9" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">9</span></span>
+</button>
 </div>
 
 <p>عند انتقال الحرارة خلال <span class="term">multilayered cylindrical</span> أو <span class="term">spherical systems</span> في حالة <span class="term">steady-state</span>، يمكن التعامل مع كل طبقة كـ<span class="term">thermal resistance</span> مستقلة. المثال الأساسي هو <span class="term">hot-water pipe</span> حيث يحدث فقدان حرارة باستمرار.</p>
@@ -696,6 +750,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Critical Radius of Insulation</h2>
 <span class="section-sub">§ 3-5 — Opposing Effects of Insulation</span>
 </div>
+<button class="task-check" data-task="sec10" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">10</span></span>
+</button>
 </div>
 
 <p>في <span class="term">Plane Wall</span>، إضافة <span class="term">insulation</span> دائمًا تقلل <span class="term">heat transfer</span> لأن المساحة لا تتغير. لكن في <span class="term">cylinders</span> و<span class="term">spheres</span> يحدث تأثيران متعاكسان:</p>
@@ -768,6 +826,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Fin Effectiveness &amp; Efficiency</h2>
 <span class="section-sub">§ 3-6 — Extended Surfaces</span>
 </div>
+<button class="task-check" data-task="sec11" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">11</span></span>
+</button>
 </div>
 
 <div class="def-box">
@@ -843,6 +905,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Fin Design &amp; Heat Sinks</h2>
 <span class="section-sub">§ 3-6 — Proper Length, Heat Sinks, Bioheat</span>
 </div>
+<button class="task-check" data-task="sec12" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">12</span></span>
+</button>
 </div>
 
 <h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:0 0 12px;">Proper Length of a Fin</h3>
@@ -927,6 +993,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Heat Transfer through Walls &amp; Roofs</h2>
 <span class="section-sub">§ 3-7 — Building Envelope Heat Transfer</span>
 </div>
+<button class="task-check" data-task="sec13" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">13</span></span>
+</button>
 </div>
 
 <p>تحت ظروف <span class="term">Steady Conditions</span>، معدل انتقال الحرارة خلال أي جزء من <span class="term">building wall or roof</span>:</p>
@@ -1019,6 +1089,10 @@ try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.se
 <h2>Solved Examples</h2>
 <span class="section-sub">Examples 3-1 through 3-13</span>
 </div>
+<button class="task-check" data-task="sec14" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">14</span></span>
+</button>
 </div>
 
 <!-- ===== EXAMPLE 3-1 ===== -->

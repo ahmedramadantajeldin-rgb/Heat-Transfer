@@ -224,3 +224,107 @@ html[data-eye="on"] .eye-overlay{display:block;position:fixed;inset:0;z-index:99
 .home-ico{flex:0 0 auto;}
 @media(max-width:420px){ .home-link{padding:5px 10px 5px 8px;font-size:0.74rem;} }
 @media(max-width:520px){ .hero-header{padding-top:68px;} }  /* keep the fixed pills clear of the header badge */
+
+/* ===== TASK COMPLETION SYSTEM ===== */
+.task-check{
+  flex:0 0 auto;margin-right:auto;margin-left:0;
+  display:inline-flex;align-items:center;gap:8px;
+  background:none;border:2px solid var(--mist);
+  border-radius:999px;padding:6px 16px 6px 10px;
+  cursor:pointer;font-family:'Cairo',sans-serif;
+  font-size:0.82rem;font-weight:600;
+  color:var(--slate);transition:all .25s ease;
+}
+.task-check:hover{border-color:var(--sky);color:var(--sky);transform:scale(1.05);}
+.task-check:active{transform:scale(0.96);}
+.task-check .check-svg{transition:all .3s ease;}
+.task-check .check-path{opacity:0;transition:opacity .3s ease;}
+.task-check.completed{border-color:var(--mint);color:var(--mint);background:var(--mint-light);}
+.task-check.completed .check-path{opacity:1;}
+.task-check.completed .check-svg{color:var(--mint);}
+.task-label{white-space:nowrap;}
+.task-num{font-family:'JetBrains Mono',monospace;font-weight:500;}
+
+/* Motivational message */
+.task-msg{
+  position:absolute;top:100%;right:0;
+  background:var(--navy);color:#fff;
+  padding:8px 16px;border-radius:var(--radius-sm);
+  font-family:'Cairo',sans-serif;font-size:0.85rem;
+  font-weight:600;white-space:nowrap;
+  opacity:0;transform:translateY(-8px);
+  animation:msgPop .4s ease forwards;
+  pointer-events:none;z-index:100;
+  box-shadow:var(--shadow);
+}
+@keyframes msgPop{
+  0%{opacity:0;transform:translateY(-8px);}
+  100%{opacity:1;transform:translateY(4px);}
+}
+@keyframes msgFade{
+  0%{opacity:1;transform:translateY(4px);}
+  100%{opacity:0;transform:translateY(-8px);}
+}
+
+/* Section completed state */
+.section.task-done{position:relative;}
+.section.task-done::after{
+  content:'';position:absolute;top:0;right:-24px;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--mint),var(--mint-light));
+  border-radius:4px;
+}
+
+/* Progress bar */
+.task-progress-wrapper{
+  max-width:960px;margin:20px auto 0;padding:0 24px;
+  display:flex;align-items:center;gap:14px;
+}
+.task-progress-bar{
+  flex:1;height:8px;background:var(--mist);
+  border-radius:999px;overflow:hidden;
+}
+.task-progress-fill{
+  height:100%;width:0%;border-radius:999px;
+  background:linear-gradient(90deg,var(--sky),var(--mint));
+  transition:width .5s ease;
+}
+.task-progress-text{
+  flex:0 0 auto;font-family:'JetBrains Mono',monospace;
+  font-size:0.82rem;color:var(--slate);font-weight:500;
+  white-space:nowrap;
+}
+
+/* Chapter complete banner */
+.chapter-complete-banner{
+  max-width:960px;margin:24px auto;
+  padding:0 24px;
+}
+.banner-content{
+  background:linear-gradient(135deg,var(--mint),#27ae94);
+  border-radius:var(--radius);padding:32px;
+  text-align:center;color:#fff;
+  box-shadow:var(--shadow-lg);
+  animation:bannerIn .6s ease;
+}
+.banner-emoji{font-size:3rem;display:block;margin-bottom:12px;}
+.banner-content h2{
+  font-family:'Playfair Display',serif;font-size:1.8rem;
+  font-weight:700;margin-bottom:8px;
+}
+.banner-content p{
+  font-family:'Cairo',sans-serif;font-size:1.1rem;
+  opacity:0.9;
+}
+@keyframes bannerIn{
+  0%{opacity:0;transform:scale(0.9);}
+  100%{opacity:1;transform:scale(1);}
+}
+
+/* Confetti canvas */
+#confettiCanvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:99999;
+}
+
+/* Section header needs relative for message positioning */
+.section-header{position:relative;}
