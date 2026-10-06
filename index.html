@@ -1,40 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Heat Transfer | Course Home</title>
-<meta name="description" content="Course home for Heat Transfer: chapter navigation and status.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heat Transfer | Course Home</title>
+  <meta name="description" content="Heat Transfer course notes, organized by chapter: conduction, convection, radiation, and energy balance.">
+  <meta name="theme-color" content="#1A1411">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
-<header class="hero">
-  <div class="hero-inner">
-    <h1 id="course-title">Heat Transfer</h1>
-    <p class="hero-sub" id="course-subtitle"></p>
-    <a class="btn btn-primary" id="start-link" href="#chapters" hidden></a>
-  </div>
-</header>
+  <a class="skip-link" href="#chapters">Skip to chapters</a>
 
-<main id="main">
-  <section class="chapters-section" id="chapters" aria-labelledby="chapters-heading">
-    <div class="section-head">
-      <h2 id="chapters-heading">Chapters</h2>
-      <p class="section-note" id="chapters-note"></p>
+  <header class="hero" id="top">
+    <svg class="hero-field" id="heat-field" viewBox="0 0 1400 800" preserveAspectRatio="xMaxYMax slice" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="heat-core">
+          <stop offset="0" stop-color="#F8B431" stop-opacity="0.55"/>
+          <stop offset="0.45" stop-color="#E8641C" stop-opacity="0.22"/>
+          <stop offset="1" stop-color="#9B2417" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="1150" cy="700" r="330" fill="url(#heat-core)"/>
+    </svg>
+
+    <div class="hero-inner">
+      <h1>Heat Transfer</h1>
+      <p class="hero-lead">Course notes on how thermal energy moves, built around conduction, convection, and radiation.</p>
+      <p class="hero-note">Chapters are published as they are completed.</p>
+      <div class="hero-actions">
+        <a class="btn btn-flame" id="hero-start" href="#chapters" hidden>Open Chapter 1</a>
+        <a class="btn btn-ghost" href="#chapters">Browse chapters</a>
+      </div>
     </div>
-    <ol class="chapters" id="chapter-list"></ol>
-    <noscript><p class="section-note">Turn on JavaScript to see the chapter list.</p></noscript>
-  </section>
-</main>
+  </header>
 
-<footer class="site-footer">
-  <p>Heat Transfer course notes. Equations and fonts load from the internet, so open chapters while online.</p>
-</footer>
+  <main id="main">
+    <section class="chapters" id="chapters" aria-labelledby="chapters-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="chapters-title">Chapters</h2>
+          <p>Open a chapter to start studying. New chapters are added here as they become available.</p>
+        </div>
 
-<script src="assets/js/chapters.js"></script>
-<script src="assets/js/main.js"></script>
+        <!-- Cards are generated from assets/js/chapters.js -->
+        <ul class="chapter-grid" id="chapter-grid"></ul>
+
+        <noscript>
+          <p class="noscript-note">JavaScript is turned off, so the chapter cards can't load.
+            <a href="Chapter%201/chapter1.html">Open Chapter 1</a> or <a href="Chapter%203/chapter3.html">Chapter 3</a> directly.</p>
+        </noscript>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <p class="footer-title">Heat Transfer</p>
+        <p class="footer-text">New chapters appear here as they become available.</p>
+      </div>
+      <a class="footer-top" href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/chapters.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/heat-field.js"></script>
 </body>
 </html>

@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 3 — Steady Heat Conduction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Cairo:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&family=Amiri&display=swap" rel="stylesheet">
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']},startup:{pageReady:function(){return MathJax.startup.defaultPageReady();}}};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js" async></script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="chapter3.css">
+<script>
+try{if(localStorage.getItem('eyeProtection')==='on'){document.documentElement.setAttribute('data-eye','on');}}catch(e){}
+</script>
+</head>
+<body>
+
+<!-- Back to Home -->
+<a class="home-link" href="../index.html" aria-label="Back to Home">
+<svg class="home-ico" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M12.5 4.5 7 10l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span class="home-lbl">Back to Home</span>
+</a>
+
+<!-- Eye Protection Toggle -->
+<button type="button" class="eye-toggle" id="eyeToggle" aria-pressed="false" title="Eye Protection: softer brightness and less blue light for long study sessions">
+<span class="eye-ico" aria-hidden="true">👁</span>
+<span class="eye-lbl">Eye Protection</span>
+<span class="eye-sw" aria-hidden="true"></span>
+<span class="eye-st">OFF</span>
+</button>
+<div class="eye-overlay" aria-hidden="true"></div>
+
+<!-- Header -->
+<header class="lecture-header">
+<div class="header-badge">Heat Transfer · Chapter 3</div>
+<h1>Steady Heat Conduction<br><span class="ar-sub">التوصيل الحراري في الحالة المستقرة</span></h1>
+<p class="header-subtitle">Thermal Resistance Networks, Cylinders &amp; Spheres, Critical Radius of Insulation, Fins, and Building Heat Transfer</p>
+<div class="meta-pills">
+<span class="meta-pill">📘 Chapter 3</span>
+<span class="meta-pill">🔥 Conduction &amp; Resistance</span>
+<span class="meta-pill">🏗️ Walls, Cylinders, Fins</span>
+<span class="meta-pill">📐 13 Solved Examples</span>
+</div>
+</header>
+
+<!-- ===== DUA SECTION ===== -->
+<div class="dua-wrapper">
+<div class="dua-card">
+<button class="dua-toggle" id="duaToggle" aria-expanded="false" aria-controls="duaContent">
+<span>📖 دعاء</span>
+<span class="arrow" aria-hidden="true">▼</span>
+</button>
+<div class="dua-content" id="duaContent">
+<p>اللَّهُمَّ لا سَهْلَ إِلاَّ ما جَعَلْتَهُ سَهْلاً، وأنْتَ تَجْعَلُ الحَزْنَ إِذَا شِئْتَ سَهْلاً.</p>
+<p>رَبِّ اشْرَحْ لِي صَدْرِي * وَيَسِّرْ لِي أَمْرِي * وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي * يَفْقَهُوا قَوْلِي.</p>
+<p>اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا.</p>
+<p>اللهم إني أسألك فهم النبيين، وحفظ المرسلين والملائكة المقربين، اللهم اجعل ألسنتنا عامرة بذكرك، وقلوبنا بخشيتك، وأسرارنا بطاعتك، إنك على كل شيء قدير.</p>
+<p>يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين.</p>
+<p>اللهم يا جامع الناس ليوم لا ريب فيه، اجمع علي ضالتي.</p>
+<p>اللهم إني استودعتك ما قرأت وما حفظت وما تعلمت، فرده عند حاجتي إليه، إنك على كل شيء قدير، وحسبنا الله ونعم الوكيل.</p>
+<p>أستغفر الله، أستغفر الله، أستغفر الله.</p>
+</div>
+</div>
+</div>
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<div class="toc-wrapper">
+<div class="toc-card">
+<div class="toc-header"><h2>📑 Table of Contents</h2></div>
+<div class="toc-body">
+<a class="toc-item" href="#sec1"><span class="toc-num">1</span>One-Dimensional Steady Conduction</a>
+<a class="toc-item" href="#sec2"><span class="toc-num">2</span>Fourier's Law &amp; Plane Walls</a>
+<a class="toc-item" href="#sec3"><span class="toc-num">3</span>Thermal Resistance Concept</a>
+<a class="toc-item" href="#sec4"><span class="toc-num">4</span>Convection &amp; Radiation Resistance</a>
+<a class="toc-item" href="#sec5"><span class="toc-num">5</span>Thermal Resistance Network</a>
+<a class="toc-item" href="#sec6"><span class="toc-num">6</span>Multilayer Plane Walls</a>
+<a class="toc-item" href="#sec7"><span class="toc-num">7</span>Thermal Contact Resistance</a>
+<a class="toc-item" href="#sec8"><span class="toc-num">8</span>Generalized Resistance Networks</a>
+<a class="toc-item" href="#sec9"><span class="toc-num">9</span>Cylinders &amp; Spheres</a>
+<a class="toc-item" href="#sec10"><span class="toc-num">10</span>Critical Radius of Insulation</a>
+<a class="toc-item" href="#sec11"><span class="toc-num">11</span>Fin Effectiveness &amp; Efficiency</a>
+<a class="toc-item" href="#sec12"><span class="toc-num">12</span>Fin Design &amp; Heat Sinks</a>
+<a class="toc-item" href="#sec13"><span class="toc-num">13</span>Heat Transfer: Walls &amp; Roofs</a>
+<a class="toc-item" href="#sec14"><span class="toc-num">14</span>Solved Examples (3-1 → 3-13)</a>
+</div>
+</div>
+</div>
+
+<main class="content-wrapper">
+
+<!-- ==================== SECTION 1 ==================== -->
+<section class="section" id="sec1">
+<div class="section-header">
+<div class="section-icon">🧱</div>
+<div class="section-titles">
+<h2>One-Dimensional Steady Conduction</h2>
+<span class="section-sub">§ 3-1 — Physical Model</span>
+</div>
+</div>
+
+<p>في حالة <span class="term">Steady Heat Conduction</span> خلال <span class="term">Plane Wall</span> — مثل جدار منزل في الشتاء — الحرارة تنتقل باستمرار من الداخل إلى الخارج بسبب وجود <span class="term">Temperature Difference</span> بين السطحين.</p>
+
+<div class="def-box">
+<div class="box-title">📌 One-Dimensional Heat Transfer</div>
+<p><span class="en">Heat transfer in a certain direction is driven by the temperature gradient in that direction.</span></p>
+<p>إذا لم يوجد تغير في درجة الحرارة في اتجاه معين ← لا يوجد <span class="term">significant heat transfer</span> في هذا الاتجاه. أسطح الجدار الداخلية والخارجية تكون تقريبًا <span class="term">isothermal</span>، أي أن درجة الحرارة عند أعلى/أسفل ويمين/يسار السطح تقريبًا متساوية. لذلك:</p>
+<ul>
+<li>لا يوجد <span class="term">significant heat transfer</span> من <span class="en">top</span> إلى <span class="en">bottom</span>.</li>
+<li>لا يوجد <span class="term">significant heat transfer</span> من <span class="en">left</span> إلى <span class="en">right</span>.</li>
+<li>يوجد <span class="term">significant heat transfer</span> من <span class="en">inner surface → outer surface</span>.</li>
+</ul>
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-1.png" alt="Figure 3-1: Heat transfer through a plane wall">
+<div class="fig-caption">Figure 3–1: Heat transfer through a plane wall — one-dimensional model</div>
+</div>
+
+<p>لأن سمك الجدار صغير مقارنةً بأبعاده الأخرى، يكون <span class="term">Temperature Gradient</span> في اتجاه السمك كبيرًا. إذا ظلت درجات حرارة الهواء داخل وخارج المنزل ثابتة، يمكن تمثيل انتقال الحرارة على أنه:</p>
+<ul>
+<li><strong><span class="term">Steady</span>:</strong> درجة الحرارة عند أي نقطة لا تتغير مع الزمن.</li>
+<li><strong><span class="term">One-dimensional</span>:</strong> درجة الحرارة تعتمد على اتجاه واحد فقط.</li>
+</ul>
+
+<div class="formula-box">
+<div class="box-label">Temperature Distribution</div>
+\[ T = T(x) \]
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Energy Balance</div>
+<p>بما أن <span class="term">heat transfer</span> هو الـ<span class="term">energy interaction</span> الوحيد ولا يوجد <span class="term">heat generation</span>:</p>
+<div class="equation-scroll">\[ \dot{Q}_{in} - \dot{Q}_{out} = \frac{dE_{wall}}{dt} \tag{3-1} \]</div>
+<p>في <span class="term">Steady Operation</span>: &nbsp; \(\dfrac{dE_{wall}}{dt} = 0\) &nbsp; إذًا: &nbsp; \(\dot{Q}_{in} = \dot{Q}_{out}\)</p>
+</div>
+
+<div class="formula-box">
+<div class="box-label">Key Result</div>
+\[ \dot{Q}_{cond,wall} = \text{constant} \]
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 2 ==================== -->
+<section class="section" id="sec2">
+<div class="section-header">
+<div class="section-icon">📐</div>
+<div class="section-titles">
+<h2>Fourier's Law for a Plane Wall</h2>
+<span class="section-sub">§ 3-1 — Heat Conduction Equation</span>
+</div>
+</div>
+
+<p>لـ<span class="term">Plane Wall</span> بسمك \(L\)، ومعامل توصيل حراري متوسط \(k\)، ومساحة \(A\)، ودرجات حرارة سطحية \(T_1\) و\(T_2\)، مع <span class="term">one-dimensional steady heat conduction</span>:</p>
+
+<div class="formula-box">
+<div class="box-label">Fourier's Law of Heat Conduction — Eq. 3-2</div>
+\[ \dot{Q}_{cond,wall} = -kA\frac{dT}{dx} \qquad (W) \tag{3-2} \]
+</div>
+
+<p>حيث إن \(\dot{Q}_{cond,wall}\) و\(A\) ثابتان، فإن \(\dfrac{dT}{dx} = \text{constant}\)، وهذا يعني أن درجة الحرارة تتغير <strong>خطيًا</strong> مع \(x\):</p>
+
+<div class="insight-box">
+<div class="insight-title">💡 Physical Insight</div>
+<p><span class="en">Under steady conditions, the temperature distribution in a plane wall is a straight line.</span></p>
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-2.png" alt="Figure 3-2: Linear temperature profile in a plane wall">
+<div class="fig-caption">Figure 3–2: Linear temperature distribution in a plane wall under steady conditions</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Derivation</h3>
+<p>نبدأ من <span class="term">Fourier's Law</span> ونفصل المتغيرات ونكامل:</p>
+<div class="equation-scroll">
+\[ \int_{x=0}^{x=L} \dot{Q}_{cond,wall}\,dx = -\int_{T_1}^{T_2} kA\,dT \]
+</div>
+<div class="equation-scroll">
+\[ \dot{Q}_{cond,wall} \cdot L = kA(T_1 - T_2) \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Heat Transfer Through a Plane Wall — Eq. 3-3</div>
+\[ \dot{Q}_{cond,wall} = kA\frac{T_1 - T_2}{L} \qquad (W) \tag{3-3} \]
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Physical Meaning</div>
+<p>معدل <span class="term">Heat Conduction</span> خلال <span class="term">Plane Wall</span>:</p>
+<ul>
+<li><strong>يتناسب طرديًا مع:</strong> <span class="term">thermal conductivity</span> \(k\)، مساحة الجدار \(A\)، وفرق درجات الحرارة \((T_1 - T_2)\).</li>
+<li><strong>يتناسب عكسيًا مع:</strong> سمك الجدار \(L\).</li>
+</ul>
+<p>إذا كان \(\dot{Q}_{cond,wall}\) معلومًا، يمكن تحديد \(T(x)\) عند أي موضع \(x\) باستبدال \(T_2 \to T\) و\(L \to x\) في المعادلة 3-3.</p>
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 3 ==================== -->
+<section class="section" id="sec3">
+<div class="section-header">
+<div class="section-icon">⚡</div>
+<div class="section-titles">
+<h2>Thermal Resistance Concept</h2>
+<span class="section-sub">§ 3-1 — Electrical Analogy</span>
+</div>
+</div>
+
+<p>يمكن إعادة ترتيب المعادلة 3-3 لتأخذ شكل <span class="term">Thermal Resistance</span>:</p>
+
+<div class="formula-box">
+<div class="box-label">Conduction Resistance — Eq. 3-4, 3-5</div>
+\[ \dot{Q}_{cond,wall} = \frac{T_1 - T_2}{R_{wall}} \qquad (W) \tag{3-4} \]
+\[ R_{wall} = \frac{L}{kA} \qquad (K/W) \tag{3-5} \]
+</div>
+
+<div class="def-box">
+<div class="box-title">📌 Thermal Resistance</div>
+<p><span class="en">Thermal resistance is the ratio of the driving potential \(\Delta T\) to the corresponding heat-transfer rate \(\dot{Q}\):</span></p>
+\[ R_{wall} = \frac{\Delta T}{\dot{Q}_{cond,wall}} \]
+<p>وتعتمد <span class="term">Thermal Resistance</span> للوسط على <span class="term">Geometry</span> و<span class="term">Thermal Properties</span>.</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Thermal–Electrical Analogy</h3>
+<p>هناك <span class="term">Analogy</span> بين انتقال الحرارة وتدفق التيار الكهربائي:</p>
+
+<div class="formula-box">
+<div class="box-label">Electrical Analogy — Eq. 3-6</div>
+\[ I = \frac{V_1 - V_2}{R_e} \tag{3-6} \]
+</div>
+
+<div class="analogy-box">
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Heat Transfer</th><th>Electrical System</th></tr></thead>
+<tbody>
+<tr><td>Heat-transfer rate \(\dot{Q}\)</td><td>Electric current \(I\)</td></tr>
+<tr><td>Thermal resistance \(R\)</td><td>Electrical resistance \(R_e\)</td></tr>
+<tr><td>Temperature difference \(\Delta T\)</td><td>Voltage difference \(\Delta V\)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-3.png" alt="Figure 3-3: Thermal-electrical analogy">
+<div class="fig-caption">Figure 3–3: Thermal–electrical analogy</div>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Core Concept</div>
+<p>الفكرة الأساسية: يمكن التعامل مع <span class="term">Heat Transfer</span> باستخدام <span class="term">Thermal Resistance Network</span> بطريقة مشابهة للدوائر الكهربائية:</p>
+\[ \text{Heat-transfer rate} = \frac{\text{Temperature driving potential}}{\text{Thermal resistance}} \]
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 4 ==================== -->
+<section class="section" id="sec4">
+<div class="section-header">
+<div class="section-icon">🌡️</div>
+<div class="section-titles">
+<h2>Convection &amp; Radiation Resistance</h2>
+<span class="section-sub">§ 3-1 — Surface Thermal Resistances</span>
+</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:0 0 12px;">Convection Resistance</h3>
+<p>باستخدام <span class="term">Newton's Law of Cooling</span>: \(\dot{Q}_{conv} = hA_s(T_s - T_\infty)\)، يمكن إعادة كتابتها:</p>
+
+<div class="formula-box">
+<div class="box-label">Convection Resistance — Eq. 3-7, 3-8</div>
+\[ \dot{Q}_{conv} = \frac{T_s - T_\infty}{R_{conv}} \qquad (W) \tag{3-7} \]
+\[ R_{conv} = \frac{1}{hA_s} \qquad (K/W) \tag{3-8} \]
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-4.png" alt="Figure 3-4: Convection resistance">
+<div class="fig-caption">Figure 3–4: Convection resistance at a surface</div>
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Effect of Large \(h\)</div>
+<p>إذا \(h \to \infty\) فإن \(R_{conv} \to 0\) وبالتالي \(T_s \approx T_\infty\). هذا يعني أن السطح لا يقدم تقريبًا أي مقاومة أمام <span class="term">Convection</span>. هذه الحالة يتم الاقتراب منها عمليًا عند أسطح <span class="term">Boiling</span> و<span class="term">Condensation</span>.</p>
+<p>المعادلة ليست مقتصرة على <span class="term">plane surfaces</span>؛ يمكن استخدامها لأسطح بأي شكل بشرط أن يكون \(h = \text{constant and uniform}\).</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Radiation Resistance</h3>
+<p>عندما يكون الجدار محاطًا بغاز، قد تكون تأثيرات <span class="term">Radiation</span> مهمة. لسطح بـ<span class="term">emissivity</span> \(\varepsilon\) ومساحة \(A_s\):</p>
+
+<div class="formula-box">
+<div class="box-label">Radiation Resistance — Eq. 3-9, 3-10</div>
+\[ \dot{Q}_{rad} = \varepsilon\sigma A_s(T_s^4 - T_{surr}^4) = h_{rad}A_s(T_s - T_{surr}) = \frac{T_s - T_{surr}}{R_{rad}} \tag{3-9} \]
+\[ R_{rad} = \frac{1}{h_{rad}A_s} \qquad (K/W) \tag{3-10} \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Radiation Heat-Transfer Coefficient — Eq. 3-11</div>
+\[ h_{rad} = \varepsilon\sigma(T_s^2 + T_{surr}^2)(T_s + T_{surr}) \qquad (W/m^2\cdot K) \tag{3-11} \]
+</div>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ Important</div>
+<p>عند حساب \(h_{rad}\)، يجب أن تكون \(T_s\) و\(T_{surr}\) <strong>بوحدة Kelvin</strong>. كما أن \(h_{rad}\) يعتمد بشكل كبير على درجة الحرارة، بخلاف \(h_{conv}\).</p>
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-5.png" alt="Figure 3-5: Combined convection and radiation">
+<div class="fig-caption">Figure 3–5: Combined convection and radiation at a surface</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Combined Heat-Transfer Coefficient</h3>
+<p>الـ<span class="term">Convection</span> و<span class="term">Radiation Resistances</span> تكونان <strong>parallel</strong>. عندما \(T_{surr} \approx T_\infty\):</p>
+
+<div class="formula-box">
+<div class="box-label">Combined Coefficient — Eq. 3-12</div>
+\[ h_{combined} = h_{conv} + h_{rad} \qquad (W/m^2\cdot K) \tag{3-12} \]
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 5 ==================== -->
+<section class="section" id="sec5">
+<div class="section-header">
+<div class="section-icon">🔗</div>
+<div class="section-titles">
+<h2>Thermal Resistance Network</h2>
+<span class="section-sub">§ 3-1 — Plane Wall with Convection on Both Sides</span>
+</div>
+</div>
+
+<p>لـ<span class="term">Plane Wall</span> بسمك \(L\) ومساحة \(A\) ومعامل توصيل \(k\)، بين موائع عند \(T_{\infty1}\) و\(T_{\infty2}\) مع معاملات حمل \(h_1\) و\(h_2\)، حيث \(T_{\infty2} < T_{\infty1}\):</p>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-6.png" alt="Figure 3-6: Thermal resistance network for a plane wall">
+<div class="fig-caption">Figure 3–6: Thermal resistance network for a plane wall with convection on both sides</div>
+</div>
+
+<p>داخل الجدار تتغير درجة الحرارة <span class="term">linearly</span>، بينما في الموائع تقترب درجة الحرارة <span class="term">asymptotically</span> من \(T_{\infty1}\) و\(T_{\infty2}\). في <span class="term">steady conditions</span>، نفس <span class="term">heat-transfer rate</span> يمر خلال كل جزء:</p>
+
+<div class="formula-box">
+<div class="box-label">Steady-State Energy Balance — Eq. 3-13</div>
+\[ \dot{Q} = h_1A(T_{\infty1} - T_1) = kA\frac{T_1 - T_2}{L} = h_2A(T_2 - T_{\infty2}) \tag{3-13} \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Resistance Form — Eq. 3-14</div>
+\[ \dot{Q} = \frac{T_{\infty1} - T_1}{1/(h_1A)} = \frac{T_1 - T_2}{L/(kA)} = \frac{T_2 - T_{\infty2}}{1/(h_2A)} \tag{3-14} \]
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Total Thermal Resistance</h3>
+<p>بجمع <span class="term">temperature differences</span> ومقابلها <span class="term">resistances</span>:</p>
+
+<div class="formula-box">
+<div class="box-label">Total Heat Transfer — Eq. 3-15, 3-16</div>
+\[ \dot{Q} = \frac{T_{\infty1} - T_{\infty2}}{R_{total}} \qquad (W) \tag{3-15} \]
+\[ R_{total} = \frac{1}{h_1A} + \frac{L}{kA} + \frac{1}{h_2A} \qquad (K/W) \tag{3-16} \]
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-7.png" alt="Figure 3-7: Mathematical identity illustration">
+<div class="fig-caption">Figure 3–7: Mathematical identity for ratios</div>
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Temperature Drop Across Any Layer</div>
+<p>بما أن \(\dot{Q}\) ثابت في <span class="term">steady state</span>:</p>
+\[ \Delta T = \dot{Q} \cdot R \qquad (^\circ C) \tag{3-17} \]
+<p><span class="en">Temperature drop across a layer is proportional to the thermal resistance of that layer.</span> كلما زادت \(R\)، زاد الانخفاض في درجة الحرارة عبرها.</p>
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-8.png" alt="Figure 3-8: Temperature drops across layers">
+<div class="fig-caption">Figure 3–8: Temperature drops proportional to thermal resistances</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Overall Heat Transfer Coefficient \(U\)</h3>
+
+<div class="formula-box">
+<div class="box-label">Overall Heat Transfer Coefficient — Eq. 3-18, 3-19</div>
+\[ \dot{Q} = UA\Delta T \qquad (W) \tag{3-18} \]
+\[ UA = \frac{1}{R_{total}} \qquad (W/K) \tag{3-19} \]
+</div>
+
+<div class="def-box">
+<div class="box-title">📌 U-Factor</div>
+<p><span class="en">Overall heat-transfer coefficient = inverse of total thermal resistance per unit area.</span></p>
+<p>وحدته: \(W/m^2 \cdot K\). يُستخدم بشكل خاص في <span class="term">Heat Exchangers</span> و<span class="term">Windows</span> (يُعرف باسم <span class="term">U-factor</span>).</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Determining Surface Temperatures</h3>
+<p>لا نحتاج لمعرفة <span class="term">surface temperatures</span> مسبقًا لحساب \(\dot{Q}\). بعد حسابها:</p>
+
+<div class="formula-box">
+<div class="box-label">Finding Surface Temperature — Eq. 3-20</div>
+\[ T_1 = T_{\infty1} - \dot{Q} \cdot R_{conv,1} \tag{3-20} \]
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 6 ==================== -->
+<section class="section" id="sec6">
+<div class="section-header">
+<div class="section-icon">🏗️</div>
+<div class="section-titles">
+<h2>Multilayer Plane Walls</h2>
+<span class="section-sub">§ 3-1 — Composite Wall Systems</span>
+</div>
+</div>
+
+<p>في التطبيقات العملية، قد يتكون الجدار من عدة طبقات من مواد مختلفة. كل طبقة تضيف <span class="term">conduction resistance</span> جديدة <strong>in series</strong>.</p>
+
+<div class="formula-box">
+<div class="box-label">Two-Layer Composite Wall — Eq. 3-21, 3-22</div>
+\[ \dot{Q} = \frac{T_{\infty1} - T_{\infty2}}{R_{total}} \tag{3-21} \]
+\[ R_{total} = \frac{1}{h_1A} + \frac{L_1}{k_1A} + \frac{L_2}{k_2A} + \frac{1}{h_2A} \qquad (K/W) \tag{3-22} \]
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Why Series?</div>
+<p>في <span class="term">Steady State</span>، \(\dot{Q}\) ثابت، لذلك نفس معدل انتقال الحرارة يمر خلال كل طبقة وكل مقاومة حمل حراري. لذلك تكون <span class="term">resistances in series</span>، والـ<span class="term">total resistance</span> = المجموع الحسابي. لثلاث طبقات أو أكثر: أضف مقاومة توصيل واحدة لكل طبقة إضافية.</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Finding Interface Temperatures</h3>
+
+<div class="formula-box">
+<div class="box-label">Interface Temperature — Eq. 3-23, 3-24</div>
+\[ \dot{Q} = \frac{T_i - T_j}{R_{total,i-j}} \tag{3-23} \]
+\[ \dot{Q} = \frac{T_{\infty1} - T_2}{\dfrac{1}{h_1A} + \dfrac{L_1}{k_1A}} \tag{3-24} \]
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-10.png" alt="Figure 3-10: Multilayer wall temperature distribution">
+<div class="fig-caption">Figure 3–10: Temperature distribution in a multilayer wall</div>
+</div>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ Limitation</div>
+<p>الـ<span class="term">Thermal Resistance Concept</span> أداة قوية وسهلة، لكنها تعتمد على أن \(\dot{Q} = \text{constant}\). لذلك تُستخدم فقط للأنظمة ذات <span class="term">steady heat transfer</span> وبدون <span class="term">internal heat generation</span>.</p>
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 7 ==================== -->
+<section class="section" id="sec7">
+<div class="section-header">
+<div class="section-icon">🔬</div>
+<div class="section-titles">
+<h2>Thermal Contact Resistance</h2>
+<span class="section-sub">§ 3-2 — Imperfect Contact Between Solids</span>
+</div>
+</div>
+
+<p>في تحليل <span class="term">multilayer solids</span>، افترضنا وجود <span class="term">perfect contact</span> بين الطبقات. لكن في الواقع، حتى الأسطح التي تبدو ملساء تكون <span class="term">microscopically rough</span> وتحتوي على <span class="term">peaks</span> و<span class="term">valleys</span>.</p>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-18.png" alt="Figure 3-18: Microscopic view of contact interface">
+<div class="fig-caption">Figure 3–14/15: Microscopic view of contact interface — peaks provide solid contact, valleys contain air gaps</div>
+</div>
+
+<p>عند ضغط سطحين معًا:</p>
+<ul>
+<li>الـ<span class="term">peaks</span> تعمل كـ<span class="term">solid-to-solid contact</span>.</li>
+<li>الـ<span class="term">valleys</span> تحتوي غالبًا على <span class="term">air gaps</span>.</li>
+<li>لأن <span class="term">thermal conductivity of air</span> منخفضة، تعمل هذه الفجوات كـ<span class="term">insulation</span>.</li>
+</ul>
+
+<div class="def-box">
+<div class="box-title">📌 Thermal Contact Resistance</div>
+<p><span class="en">Thermal contact resistance \(R_c\) is the thermal resistance at the interface between two solid surfaces due to imperfect contact, defined per unit interface area.</span></p>
+<p>قيمتها تُحدد <span class="term">experimentally</span>، مع وجود <span class="term">scatter</span> ملحوظ في البيانات.</p>
+</div>
+
+<div class="formula-box">
+<div class="box-label">Contact Conductance &amp; Resistance — Eq. 3-25 to 3-28</div>
+\[ \dot{Q} = \dot{Q}_{contact} + \dot{Q}_{gap} \tag{3-25} \]
+\[ \dot{Q} = h_c A \Delta T_{interface} \tag{3-26} \]
+\[ h_c = \frac{\dot{Q}/A}{\Delta T_{interface}} \qquad (W/m^2\cdot K) \tag{3-27} \]
+\[ R_c = \frac{1}{h_c} = \frac{\Delta T_{interface}}{\dot{Q}/A} \qquad (m^2\cdot K/W) \tag{3-28} \]
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Typical Values</div>
+<p>\(R_c = 0.000005\) إلى \(0.0005 \; m^2 \cdot K/W\) &nbsp;←→&nbsp; \(h_c = 2{,}000\) إلى \(200{,}000 \; W/m^2 \cdot K\)</p>
+<p>العوامل المؤثرة: <span class="term">surface roughness</span>، <span class="term">material properties</span>، <span class="term">interface temperature</span>، <span class="term">interface pressure</span>، ونوع <span class="term">fluid</span> المحصور.</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">When is \(R_c\) Significant?</h3>
+<p>نقارنها مع <span class="term">thermal resistance</span> للطبقة:</p>
+<ul>
+<li><strong>1 cm insulation:</strong> \(R = L/k = 0.01/0.04 = 0.25 \; m^2 \cdot K/W\) ← مقاومة الطبقة كبيرة جدًا ← \(R_c\) يمكن إهمالها.</li>
+<li><strong>1 cm copper:</strong> \(R = L/k = 0.01/386 = 0.000026 \; m^2 \cdot K/W\) ← مقاومة الطبقة صغيرة ← \(R_c\) قد تكون <strong>dominant</strong>.</li>
+</ul>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Reducing \(R_c\)</h3>
+<ol>
+<li><strong><span class="term">Thermal Grease</span></strong> (مثل silicone oil) بين السطحين — خاصة عند تركيب electronic components على heat sinks.</li>
+<li><strong>استبدال الهواء</strong> بغاز أفضل توصيلًا مثل <span class="term">helium</span> أو <span class="term">hydrogen</span>.</li>
+<li><strong><span class="term">Soft Metallic Foil</span></strong> (tin, silver, copper, nickel, aluminum) — يقلل \(R_c\) بعامل يصل إلى 7.</li>
+</ol>
+
+<div class="analogy-box">
+<div class="table-wrapper">
+<table>
+<thead><tr><th colspan="2">Table 3–1: Thermal Contact Conductance (Aluminum, 10 μm roughness, 1 atm)</th></tr>
+<tr><th>Fluid at Interface</th><th>\(h_c\) (W/m²·K)</th></tr></thead>
+<tbody>
+<tr><td class="td-label">Air</td><td>3,640</td></tr>
+<tr><td class="td-label">Helium</td><td>9,520</td></tr>
+<tr><td class="td-label">Hydrogen</td><td>13,900</td></tr>
+<tr><td class="td-label">Silicone oil</td><td>19,000</td></tr>
+<tr><td class="td-label">Glycerin</td><td>37,700</td></tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<div class="analogy-box">
+<div class="table-wrapper">
+<table>
+<thead><tr><th colspan="4">Table 3–2: Thermal Contact Conductance of Metal Surfaces</th></tr>
+<tr><th>Material Pair / Condition</th><th>Roughness (μm)</th><th>Pressure (MPa)</th><th>\(h_c\) (W/m²·K)</th></tr></thead>
+<tbody>
+<tr><td class="td-label">416 SS, ground</td><td>2.54</td><td>0.17–2.5</td><td>3,800</td></tr>
+<tr><td class="td-label">304 SS, ground</td><td>1.14</td><td>4–7</td><td>1,900</td></tr>
+<tr><td class="td-label">Aluminum, ground</td><td>2.54</td><td>1.2–2.5</td><td>11,400</td></tr>
+<tr><td class="td-label">Copper, ground</td><td>1.27</td><td>1.2–20</td><td>143,000</td></tr>
+<tr><td class="td-label">Copper, milled</td><td>3.81</td><td>1–5</td><td>55,500</td></tr>
+<tr><td class="td-label">Steel–Aluminum, ground</td><td>1.4–2.0</td><td>15–35</td><td>59,000</td></tr>
+<tr><td class="td-label">Aluminum–Copper, ground</td><td>1.17–1.4</td><td>15</td><td>56,000</td></tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Trend</div>
+<p>\(h_c\) يكون أعلى (و\(R_c\) أقل) عند: <strong>soft metals + smooth surfaces + high pressure</strong>.</p>
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 8 ==================== -->
+<section class="section" id="sec8">
+<div class="section-header">
+<div class="section-icon">🧩</div>
+<div class="section-titles">
+<h2>Generalized Thermal Resistance Networks</h2>
+<span class="section-sub">§ 3-3 — Parallel &amp; Series-Parallel Arrangements</span>
+</div>
+</div>
+
+<p>يمكن استخدام <span class="term">Thermal Resistance Concept</span> أيضًا في <span class="term">steady heat transfer</span> الذي يحتوي على <span class="term">parallel layers</span> و<span class="term">series-parallel arrangements</span>.</p>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-19.png" alt="Figure 3-19: Parallel thermal resistances">
+<div class="fig-caption">Figure 3–19: Parallel thermal resistances</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:18px 0 12px;">Parallel Thermal Resistances</h3>
+
+<div class="formula-box">
+<div class="box-label">Parallel Resistances — Eq. 3-29 to 3-31</div>
+\[ \dot{Q} = (T_1 - T_2)\left(\frac{1}{R_1} + \frac{1}{R_2}\right) \tag{3-29} \]
+\[ \dot{Q} = \frac{T_1 - T_2}{R_{total}} \tag{3-30} \]
+\[ \frac{1}{R_{total}} = \frac{1}{R_1} + \frac{1}{R_2} \quad \Rightarrow \quad R_{total} = \frac{R_1 R_2}{R_1 + R_2} \tag{3-31} \]
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Combined Series-Parallel Arrangement</h3>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-20.png" alt="Figure 3-20: Series-parallel resistance network">
+<div class="fig-caption">Figure 3–20: Series-parallel thermal resistance network</div>
+</div>
+
+<div class="formula-box">
+<div class="box-label">Series-Parallel — Eq. 3-32 to 3-34</div>
+\[ \dot{Q} = \frac{T_1 - T_\infty}{R_{total}} \tag{3-32} \]
+\[ R_{total} = \frac{R_1 R_2}{R_1 + R_2} + R_3 + R_{conv} \tag{3-33} \]
+</div>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ Limitation</div>
+<p>هذا الحل <span class="term">approximate</span> لأن أسطح الطبقة الثالثة قد لا تكون <span class="term">isothermal</span>، وقد يحدث <span class="term">heat transfer</span> بين الطبقتين الأولى والثانية.</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Two Approximation Approaches</h3>
+<div class="def-box">
+<div class="box-title">📌 Approach 1 — Isothermal Planes</div>
+<p>أي <span class="term">plane wall normal</span> لمحور \(x\) تكون <span class="term">isothermal</span>: \(T = T(x)\).</p>
+</div>
+<div class="def-box" style="margin-top:12px;">
+<div class="box-title">📌 Approach 2 — Adiabatic Planes</div>
+<p>أي <span class="term">plane parallel</span> لمحور \(x\) تكون <span class="term">adiabatic</span>.</p>
+</div>
+<p>الافتراضان يؤديان إلى قيم مختلفة قليلًا لـ\(R_{total}\) و\(\dot{Q}\). القيمة الفعلية تقع بينهما. عندما يكون <span class="term">heat transfer predominant</span> في اتجاه واحد، كلاهما يعطي نتائج مقبولة.</p>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 9 ==================== -->
+<section class="section" id="sec9">
+<div class="section-header">
+<div class="section-icon">🔵</div>
+<div class="section-titles">
+<h2>Heat Conduction in Cylinders &amp; Spheres</h2>
+<span class="section-sub">§ 3-4 — Multilayered Cylindrical &amp; Spherical Systems</span>
+</div>
+</div>
+
+<p>عند انتقال الحرارة خلال <span class="term">multilayered cylindrical</span> أو <span class="term">spherical systems</span> في حالة <span class="term">steady-state</span>، يمكن التعامل مع كل طبقة كـ<span class="term">thermal resistance</span> مستقلة. المثال الأساسي هو <span class="term">hot-water pipe</span> حيث يحدث فقدان حرارة باستمرار.</p>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-23.png" alt="Figure 3-23: Heat conduction through cylindrical and spherical shells">
+<div class="fig-caption">Figure 3–23: Heat conduction through cylindrical and spherical shells</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:18px 0 12px;">Multilayered Composite Cylinder</h3>
+<p>لـ<span class="term">cylinder</span> مكوّن من ثلاث طبقات أسطوانية، مع <span class="term">convection</span> على السطح الداخلي والخارجي:</p>
+
+<div class="formula-box">
+<div class="box-label">Total Resistance — Multilayered Cylinder</div>
+<div class="equation-scroll">
+\[ R_{total} = \frac{1}{h_1 A_1} + \frac{\ln(r_2/r_1)}{2\pi L k_1} + \frac{\ln(r_3/r_2)}{2\pi L k_2} + \frac{\ln(r_4/r_3)}{2\pi L k_3} + \frac{1}{h_2 A_4} \]
+</div>
+</div>
+
+<p>حيث \(A_1 = 2\pi r_1 L\) و\(A_4 = 2\pi r_4 L\). ومعدل انتقال الحرارة:</p>
+
+<div class="formula-box">
+<div class="box-label">Heat Transfer Rate</div>
+<div class="equation-scroll">
+\[ \dot{Q} = \frac{T_{\infty1} - T_{\infty2}}{R_{total}} \]
+</div>
+</div>
+
+<div class="analogy-box">
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Resistance</th><th>Physical Meaning</th></tr></thead>
+<tbody>
+<tr><td>\(R_{conv,1}\)</td><td class="td-label">مقاومة Convection عند السطح الداخلي</td></tr>
+<tr><td>\(R_{cyl,1}\)</td><td class="td-label">مقاومة Conduction خلال Layer 1</td></tr>
+<tr><td>\(R_{cyl,2}\)</td><td class="td-label">مقاومة Conduction خلال Layer 2</td></tr>
+<tr><td>\(R_{cyl,3}\)</td><td class="td-label">مقاومة Conduction خلال Layer 3</td></tr>
+<tr><td>\(R_{conv,2}\)</td><td class="td-label">مقاومة Convection عند السطح الخارجي</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-24.png" alt="Figure 3-24: Cylindrical thermal resistance network">
+<div class="fig-caption">Figure 3–24: Thermal resistance network for a multilayered cylinder</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Multilayered Spherical Shell</h3>
+<p>نفس الأسلوب يُستخدم مع <span class="term">spherical shells</span>، مع اختلاف صيغة <span class="term">conduction resistance</span>:</p>
+
+<div class="formula-box">
+<div class="box-label">Spherical Conduction Resistance</div>
+\[ R_{sphere} = \frac{r_2 - r_1}{4\pi k\, r_1\, r_2} \]
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Intermediate Temperatures</h3>
+<p>يمكن إيجاد <span class="term">temperatures</span> عند أي <span class="term">interface</span> باستخدام:</p>
+\[ \Delta T_i = \dot{Q} \cdot R_i \]
+<p>فمثلًا: \(T_2 = T_{\infty1} - \dot{Q}(R_{conv,1} + R_{cyl,1})\)</p>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-25.png" alt="Figure 3-25: Temperature distribution">
+<div class="fig-caption">Figure 3–25: Temperature distribution and resistance network</div>
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 10 ==================== -->
+<section class="section" id="sec10">
+<div class="section-header">
+<div class="section-icon">🎯</div>
+<div class="section-titles">
+<h2>Critical Radius of Insulation</h2>
+<span class="section-sub">§ 3-5 — Opposing Effects of Insulation</span>
+</div>
+</div>
+
+<p>في <span class="term">Plane Wall</span>، إضافة <span class="term">insulation</span> دائمًا تقلل <span class="term">heat transfer</span> لأن المساحة لا تتغير. لكن في <span class="term">cylinders</span> و<span class="term">spheres</span> يحدث تأثيران متعاكسان:</p>
+
+<div class="def-box">
+<div class="box-title">📌 Two Opposing Effects</div>
+<ul>
+<li><strong>Effect 1 — Conduction Resistance ↑:</strong> زيادة <span class="term">insulation thickness</span> تزيد \(R_{conduction}\) ← تميل لتقليل <span class="term">heat transfer</span>.</li>
+<li><strong>Effect 2 — Convection Area ↑:</strong> زيادة <span class="term">outer radius</span> تزيد <span class="term">surface area</span> ← تقل \(R_{convection} = 1/(hA)\) ← تميل لزيادة <span class="term">heat transfer</span>.</li>
+</ul>
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-30.png" alt="Figure 3-30: Insulated cylinder model">
+<div class="fig-caption">Figure 3–30: Physical model and resistance network for insulated cylinder</div>
+</div>
+
+<p>لأنبوب أسطواني، معدل انتقال الحرارة:</p>
+<div class="equation-scroll">
+\[ \dot{Q} = \frac{T_1 - T_\infty}{\dfrac{\ln(r_2/r_1)}{2\pi Lk} + \dfrac{1}{h(2\pi r_2 L)}} \]
+</div>
+
+<p>بوضع \(\dfrac{d\dot{Q}}{dr_2} = 0\) نحصل على <span class="term">Critical Radius</span>:</p>
+
+<div class="formula-box">
+<div class="box-label">Critical Radius — Cylinder &amp; Sphere</div>
+\[ r_{cr,\,cylinder} = \frac{k}{h} \]
+\[ r_{cr,\,sphere} = \frac{2k}{h} \]
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-31.png" alt="Figure 3-31: Heat transfer vs outer radius">
+<div class="fig-caption">Figure 3–31: \(\dot{Q}\) vs. outer radius — maximum at critical radius</div>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Behavior Around Critical Radius</div>
+<ul>
+<li>\(r_2 < r_{cr}\): زيادة <span class="term">insulation</span> تزيد \(\dot{Q}\).</li>
+<li>\(r_2 = r_{cr}\): \(\dot{Q}\) يصل إلى <strong>maximum</strong>.</li>
+<li>\(r_2 > r_{cr}\): زيادة <span class="term">insulation</span> تقلل \(\dot{Q}\).</li>
+</ul>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Practical Significance</h3>
+<p>لأقل قيم عملية لـ\(h\) في <span class="term">natural convection of gases</span> (حوالي \(5\;W/m^2\cdot K\)) ومعامل توصيل <span class="term">insulation</span> نموذجي (\(k \approx 0.05\;W/m\cdot K\)):</p>
+\[ r_{cr,max} = \frac{k}{h} = \frac{0.05}{5} \approx 0.01\;m = 1\;cm \]
+
+<div class="note-box">
+<div class="note-title">📝 Practical Conclusions</div>
+<ul>
+<li><strong>Hot-water/steam pipes:</strong> يمكن إضافة <span class="term">insulation</span> بدون قلق لأن أنصاف أقطار الأنابيب أكبر عادةً من \(r_{cr}\).</li>
+<li><strong>Electric wires:</strong> قد يكون نصف القطر أقل من \(r_{cr}\)، فإضافة <span class="term">plastic insulation</span> قد تزيد <span class="term">heat transfer</span> وتخفض درجة الحرارة — مفيد للسلامة!</li>
+</ul>
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-32.png" alt="Figure 3-32: Electric wire with insulation">
+<div class="fig-caption">Figure 3–32: Electric wire with plastic insulation — critical radius effect</div>
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 11 ==================== -->
+<section class="section" id="sec11">
+<div class="section-header">
+<div class="section-icon">🪶</div>
+<div class="section-titles">
+<h2>Fin Effectiveness &amp; Efficiency</h2>
+<span class="section-sub">§ 3-6 — Extended Surfaces</span>
+</div>
+</div>
+
+<div class="def-box">
+<div class="box-title">📌 Fin Effectiveness</div>
+<p><span class="en">Fin effectiveness is the ratio of heat transfer from the fin to the heat transfer that would occur from the same base area without the fin:</span></p>
+\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{no\;fin}} = \frac{\dot{Q}_{fin}}{hA_b(T_b - T_\infty)} \]
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-45.png" alt="Figure 3-45: Fin effectiveness concept">
+<div class="fig-caption">Figure 3–45: Fin effectiveness concept</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:18px 0 12px;">Physical Meaning</h3>
+<ul>
+<li>\(\varepsilon_{fin} = 1\): الـ<span class="term">fin</span> لا تؤثر على <span class="term">heat transfer</span>.</li>
+<li>\(\varepsilon_{fin} < 1\): الـ<span class="term">fin</span> تعمل كـ<span class="term">insulation</span> وتقلل <span class="term">heat transfer</span> — يحدث مع مواد ذات \(k\) منخفض.</li>
+<li>\(\varepsilon_{fin} > 1\): الـ<span class="term">fin</span> تعزز <span class="term">heat transfer</span> — وهذا هو المطلوب.</li>
+</ul>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Relationship: Efficiency ↔ Effectiveness</h3>
+
+<div class="formula-box">
+<div class="box-label">Efficiency–Effectiveness Relation</div>
+\[ \varepsilon_{fin} = \frac{A_{fin}}{A_b}\,\eta_{fin} \]
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Effectiveness of a Sufficiently Long Fin</h3>
+<p>من معادلة <span class="term">heat transfer</span> لـ<span class="term">sufficiently long fin</span> ذات <span class="term">uniform cross section</span>:</p>
+
+<div class="formula-box">
+<div class="box-label">Long-Fin Effectiveness</div>
+\[ \varepsilon_{long\;fin} = \sqrt{\frac{kp}{hA_c}} \]
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Design Conclusions for Fins</h3>
+<div class="insight-box">
+<div class="insight-title">💡 Design Guidelines</div>
+<ol>
+<li><strong>High \(k\):</strong> استخدام معادن مثل <span class="term">Copper</span> أو <span class="term">Aluminum</span> (الأكثر شيوعًا لانخفاض تكلفته ووزنه ومقاومته للتآكل).</li>
+<li><strong>High \(p/A_c\):</strong> استخدام <span class="term">thin plate fins</span> أو <span class="term">slender pin fins</span>.</li>
+<li><strong>Low \(h\):</strong> الـ<span class="term">fins</span> أكثر فاعلية مع <span class="term">gas</span> (بدلًا من <span class="term">liquid</span>) و<span class="term">natural convection</span> (بدلًا من <span class="term">forced convection</span>). لذلك في <span class="term">car radiators</span> توضع الـ<span class="term">fins</span> على جانب الغاز.</li>
+</ol>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Heat Transfer from a Finned Surface</h3>
+
+<div class="formula-box">
+<div class="box-label">Total Heat Transfer — Eq. 3-81</div>
+\[ \dot{Q}_{total,fin} = h\left(A_{unfin} + \eta_{fin}\,A_{fin}\right)(T_b - T_\infty) \tag{3-81} \]
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Overall Fin Effectiveness</h3>
+
+<div class="formula-box">
+<div class="box-label">Overall Fin Effectiveness — Eq. 3-82</div>
+\[ \varepsilon_{fin,overall} = \frac{A_{unfin} + \eta_{fin}\,A_{fin}}{A_{no\;fin}} \tag{3-82} \]
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-46.png" alt="Figure 3-46: Finned surface heat transfer">
+<div class="fig-caption">Figure 3–46: Heat transfer from a finned surface — fins + unfinned area</div>
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 12 ==================== -->
+<section class="section" id="sec12">
+<div class="section-header">
+<div class="section-icon">📏</div>
+<div class="section-titles">
+<h2>Fin Design &amp; Heat Sinks</h2>
+<span class="section-sub">§ 3-6 — Proper Length, Heat Sinks, Bioheat</span>
+</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:0 0 12px;">Proper Length of a Fin</h3>
+<p>درجة الحرارة على طول الـ<span class="term">fin</span> تنخفض <span class="term">exponentially</span> وتقترب من \(T_\infty\). بعد مسافة معينة، الجزء الإضافي لا يساهم بشكل مؤثر في <span class="term">heat transfer</span>.</p>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-47.png" alt="Figure 3-47: Temperature distribution along a fin">
+<div class="fig-caption">Figure 3–47: Temperature distribution along a fin — exponential decay</div>
+</div>
+
+<div class="formula-box">
+<div class="box-label">Finite vs. Infinite Fin — Eq. 3-83</div>
+\[ \frac{\dot{Q}_{fin}}{\dot{Q}_{long\;fin}} = \tanh(mL) \tag{3-83} \]
+</div>
+
+<div class="analogy-box">
+<div class="table-wrapper">
+<table>
+<thead><tr><th>\(mL\)</th><th>\(\tanh(mL)\)</th><th>% of Maximum</th></tr></thead>
+<tbody>
+<tr><td>0.1</td><td>0.100</td><td>10.0%</td></tr>
+<tr><td>0.5</td><td>0.462</td><td>46.2%</td></tr>
+<tr><td>1.0</td><td>0.762</td><td>76.2%</td></tr>
+<tr><td>1.5</td><td>0.905</td><td>90.5%</td></tr>
+<tr><td>2.0</td><td>0.964</td><td>96.4%</td></tr>
+<tr><td>2.5</td><td>0.987</td><td>98.7%</td></tr>
+<tr><td>3.0</td><td>0.995</td><td>99.5%</td></tr>
+<tr><td>5.0</td><td>1.000</td><td>100%</td></tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Practical Fin Length</div>
+<ul>
+<li><strong>\(mL = 5\):</strong> الـ<span class="term">fin</span> عمليًا مكافئة لـ<span class="term">infinitely long fin</span> ← \(L = 5/m\).</li>
+<li><strong>\(mL = 2.5\):</strong> 98.7% من maximum heat transfer ← تقليل الطول للنصف مع خسارة 1% فقط!</li>
+<li><strong>\(mL = 1\):</strong> 76.2% من maximum ← اختيار عملي جيد يحقق compromise بين الأداء والتكلفة والوزن.</li>
+</ul>
+</div>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ Extra-Long Fins</div>
+<p>الـ<span class="term">fin</span> الطويلة جدًا تؤدي إلى: <span class="term">material waste</span>، وزن زائد، تكلفة مرتفعة، وقد تعيق حركة المائع (<span class="term">suppress fluid motion</span>) مما يقلل \(h\).</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">One-Dimensional Validity</h3>
+<p>الخطأ في التحليل أحادي البعد يكون أقل من 1% عندما:</p>
+<div class="formula-box">
+<div class="box-label">1-D Validity Criterion</div>
+\[ \frac{hd}{k} < 0.2 \]
+</div>
+<p>حيث \(d\) هي <span class="term">characteristic thickness</span> (سمك الـ<span class="term">rectangular fin</span> أو قطر الـ<span class="term">cylindrical fin</span>).</p>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Heat Sinks</h3>
+<p>هي <span class="term">finned surfaces</span> مصممة خصيصًا لتبريد <span class="term">electronic equipment</span>. أداؤها يُقاس بـ<span class="term">thermal resistance</span>:</p>
+
+<div class="formula-box">
+<div class="box-label">Heat Sink Thermal Resistance</div>
+\[ R = \frac{T_b - T_\infty}{\dot{Q}_{fin}} = \frac{1}{h\,\eta_{fin}\,A_{fin}} \]
+</div>
+
+<p>كلما كانت \(R\) أصغر ← أداء أفضل. <span class="term">Fin parameter</span> لمقطع عرضي ثابت:</p>
+\[ m = \sqrt{\frac{hp}{kA_c}} \]
+<p>وكفاءة <span class="term">fin</span> مع <span class="term">adiabatic tip</span>:</p>
+\[ \eta_{fin} = \frac{\tanh(mL)}{mL} \]
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Bioheat Transfer</h3>
+<p>هو دراسة انتقال الحرارة داخل <span class="term">human body</span> أو بينه وبين البيئة الخارجية. يشمل عدة آليات في الوقت نفسه: <span class="term">Conduction</span>، <span class="term">Convection</span>، <span class="term">Radiation</span>، <span class="term">Evaporation</span>، <span class="term">Phase Change</span>، <span class="term">Metabolic Heat Generation</span> (الحرارة الناتجة من هضم الطعام والعمل والتمارين)، و<span class="term">Perfusion</span> (تبادل الطاقة الحرارية بين الدم المتدفق والأنسجة المحيطة).</p>
+<p>قدم <span class="en">Harry Pennes</span> (1948) نموذجًا بسيطًا لكنه دقيق نسبيًا، أظهر وجود فرق حرارة حوالي 3–4°C بين الجلد والأنسجة الداخلية.</p>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 13 ==================== -->
+<section class="section" id="sec13">
+<div class="section-header">
+<div class="section-icon">🏠</div>
+<div class="section-titles">
+<h2>Heat Transfer through Walls &amp; Roofs</h2>
+<span class="section-sub">§ 3-7 — Building Envelope Heat Transfer</span>
+</div>
+</div>
+
+<p>تحت ظروف <span class="term">Steady Conditions</span>، معدل انتقال الحرارة خلال أي جزء من <span class="term">building wall or roof</span>:</p>
+
+<div class="formula-box">
+<div class="box-label">Building Heat Transfer — Eq. 3-94</div>
+\[ \dot{Q} = UA(T_i - T_o) = \frac{A(T_i - T_o)}{R} \tag{3-94} \]
+</div>
+
+<p>حيث \(T_i\) و\(T_o\) درجتا حرارة الهواء الداخلي والخارجي، \(U\) هو <span class="term">Overall Heat Transfer Coefficient</span>، و\(R = 1/U\) هو <span class="term">R-value</span>.</p>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Surface Convection &amp; Radiation Coefficients</h3>
+<p>يتم دمج تأثيري <span class="term">Convection</span> و<span class="term">Radiation</span> عند كل سطح في معامل واحد: <span class="term">combined convection and radiation heat transfer coefficient</span> (أو <span class="term">surface conductance</span>).</p>
+
+<div class="note-box">
+<div class="note-title">📝 Design Values</div>
+<ul>
+<li><strong>Indoor:</strong> \(h_i = 8.29\;W/m^2\cdot K\) (ثابت تقريبًا طوال السنة)</li>
+<li><strong>Outdoor (Winter):</strong> \(h_o = 34.0\;W/m^2\cdot K\) عند سرعة رياح \(24\;km/h\)</li>
+<li><strong>Outdoor (Summer):</strong> \(h_o = 22.7\;W/m^2\cdot K\) عند سرعة رياح \(12\;km/h\)</li>
+</ul>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Trapped Air Spaces</h3>
+<p>قد تحتوي مكونات البناء على <span class="term">trapped air spaces</span>. الـ<span class="term">thermal resistance</span> لهذه الطبقات تعتمد على: السمك، فرق درجات الحرارة، متوسط درجة الحرارة، <span class="term">emissivity</span> لكل سطح، الاتجاه، واتجاه <span class="term">heat flow</span>.</p>
+
+<div class="formula-box">
+<div class="box-label">Effective Emissivity — Eq. 3-95</div>
+\[ \frac{1}{\varepsilon_{effective}} = \frac{1}{\varepsilon_1} + \frac{1}{\varepsilon_2} - 1 \tag{3-95} \]
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Low-Emissivity Surfaces</div>
+<p>عندما يكون أحد الأسطح <span class="term">reflective</span> (مثل <span class="term">aluminum foil</span>)، فإن \(\varepsilon_{effective}\) تنخفض بشدة. النسبة: \(0.82/0.03 \approx 27\)، أي أن <span class="term">radiation heat transfer</span> مع أسطح عادية أكبر بحوالي 27 مرة من حالة <span class="term">reflective surfaces</span>.</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Overall R-value</h3>
+<p>لجدار أو سقف يتكون من طبقات <span class="term">uniform thickness</span> مرتبة <span class="term">in series</span>:</p>
+\[ R_{overall} = \sum R_i \]
+
+<div class="note-box">
+<div class="note-title">📝 Parallel Heat-Flow Paths</div>
+<p>عند وجود مكونات مثل <span class="term">wood studs</span> أو <span class="term">metal connectors</span>:</p>
+<ul>
+<li><strong>Parallel paths method:</strong> عادةً <span class="term">overpredicts</span> الـ\(R\) — مناسبة لـ<span class="term">wood-frame walls</span>.</li>
+<li><strong>Isothermal planes method:</strong> عادةً <span class="term">underpredicts</span> الـ\(R\) — مناسبة لـ<span class="term">masonry/metal-frame walls</span>.</li>
+</ul>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Roof–Attic–Ceiling Systems</h3>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-55.png" alt="Figure 3-55: Vented attic">
+<div class="fig-caption">Figure 3–55: Vented attic — roof acts as radiation shield</div>
+</div>
+
+<p><strong>Vented Attic:</strong> \(T_{attic} \approx T_{outdoor}\)، فيكون <span class="term">heat transfer</span> محكومًا أساسًا بـ\(R\)-value للـ<span class="term">ceiling</span>. الـ<span class="term">roof</span> يعمل كـ<span class="term">radiation shield</span>.</p>
+
+<div class="def-box">
+<div class="box-title">📌 Radiant Barrier</div>
+<p>يمكن تقليل <span class="term">radiation heat transfer</span> بين <span class="term">ceiling</span> و<span class="term">roof</span> بمادة <span class="term">reflective</span> مثل <span class="term">aluminum foil</span>. تقلل <span class="term">summer ceiling heat gain</span> بنسبة 16%–42%، وتقلل <span class="term">air-conditioning costs</span> بحوالي 2%–10%.</p>
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-56.png" alt="Figure 3-56: Radiant barrier locations">
+<div class="fig-caption">Figure 3–56: Possible radiant barrier locations in attic</div>
+</div>
+
+<p><strong>Unvented Attic:</strong></p>
+<div class="formula-box">
+<div class="box-label">Ceiling–Roof Combination R-value — Eq. 3-96</div>
+\[ R = R_{ceiling} + R_{roof}\left(\frac{A_{ceiling}}{A_{roof}}\right) \tag{3-96} \]
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-57.png" alt="Figure 3-57: Unvented attic">
+<div class="fig-caption">Figure 3–57: Unvented attic — heat transfer through ceiling, attic space, and roof</div>
+</div>
+
+<p>لـ<span class="term">flat roofs</span>: \(A_{ceiling}/A_{roof} = 1\). لـ<span class="term">45° pitched roof</span>: \(A_{ceiling}/A_{roof} = 1/\sqrt{2} = 0.707\).</p>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 14: SOLVED EXAMPLES ==================== -->
+<section class="section" id="sec14">
+<div class="section-header">
+<div class="section-icon">📝</div>
+<div class="section-titles">
+<h2>Solved Examples</h2>
+<span class="section-sub">Examples 3-1 through 3-13</span>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-1 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–1: Heat Loss through a Wall</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 3-m-high, 5-m-wide, and 0.3-m-thick wall whose thermal conductivity is <em>k</em> = 0.9 W/m·K. On a certain day, the temperatures of the inner and the outer surfaces of the wall are measured to be 16°C and 2°C, respectively. Determine the rate of heat loss through the wall on that day.
+</div>
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(H = 3\;m\)</span>
+<span>\(W = 5\;m\)</span>
+<span>\(L = 0.3\;m\)</span>
+<span>\(k = 0.9\;W/m\cdot K\)</span>
+<span>\(T_1 = 16°C\)</span>
+<span>\(T_2 = 2°C\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Wall area: \(A = (3)(5) = 15\;m^2\)
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Using Eq. 3-3:
+\[ \dot{Q} = kA\frac{T_1 - T_2}{L} = (0.9)(15)\frac{(16 - 2)}{0.3} \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Using thermal resistance:
+\[ R_{wall} = \frac{L}{kA} = \frac{0.3}{(0.9)(15)} = 0.02222\;°C/W \]
+\[ \dot{Q} = \frac{\Delta T}{R_{wall}} = \frac{14}{0.02222} \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} = 630\;W \]
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-2 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–2: Heat Loss through a Single-Pane Window</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 0.8-m-high and 1.5-m-wide glass window with a thickness of 8 mm and a thermal conductivity of <em>k</em> = 0.78 W/m·K. Determine the steady rate of heat transfer through this glass window and the temperature of its inner surface for a day during which the room is maintained at 20°C while the temperature of the outdoors is −10°C. Take the heat transfer coefficients on the inner and outer surfaces of the window to be <em>h</em><sub>1</sub> = 10 W/m²·K and <em>h</em><sub>2</sub> = 40 W/m²·K, which includes the effects of radiation.
+</div>
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A = 0.8 \times 1.5 = 1.2\;m^2\)</span>
+<span>\(L = 0.008\;m\)</span>
+<span>\(k = 0.78\;W/m\cdot K\)</span>
+<span>\(T_{\infty1} = 20°C\)</span>
+<span>\(T_{\infty2} = -10°C\)</span>
+<span>\(h_1 = 10\;W/m^2\cdot K\)</span>
+<span>\(h_2 = 40\;W/m^2\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Individual Resistances:
+\[ R_i = \frac{1}{h_1 A} = \frac{1}{(10)(1.2)} = 0.08333\;°C/W \]
+\[ R_{glass} = \frac{L}{kA} = \frac{0.008}{(0.78)(1.2)} = 0.00855\;°C/W \]
+\[ R_o = \frac{1}{h_2 A} = \frac{1}{(40)(1.2)} = 0.02083\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Total Resistance:
+\[ R_{total} = 0.08333 + 0.00855 + 0.02083 = 0.1127\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Heat-transfer rate:
+\[ \dot{Q} = \frac{20 - (-10)}{0.1127} = 266\;W \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Inner surface temperature:
+\[ T_1 = T_{\infty1} - \dot{Q}\,R_{conv,1} = 20 - (266)(0.08333) = -2.2°C \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} = 266\;W \qquad T_1 = -2.2°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>رغم أن درجة حرارة الغرفة 20°C، فإن السطح الداخلي للزجاج عند −2.2°C تقريبًا! هذا قد يسبب <span class="term">fog formation</span> أو حتى <span class="term">frost</span> عند ارتفاع <span class="term">humidity</span> داخل الغرفة.</p>
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-3 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–3: Heat Loss through Double-Pane Windows</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 0.8-m-high and 1.5-m-wide double-pane window consisting of two 4-mm-thick layers of glass (<em>k</em> = 0.78 W/m·K) separated by a 10-mm-wide stagnant air space (<em>k</em> = 0.026 W/m·K). Determine the steady rate of heat transfer through this double-pane window and the temperature of its inner surface for the same conditions as Example 3-2.
+</div>
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A = 1.2\;m^2\)</span>
+<span>\(L_1 = L_3 = 0.004\;m\)</span>
+<span>\(L_2 = 0.01\;m\)</span>
+<span>\(k_{glass} = 0.78\;W/m\cdot K\)</span>
+<span>\(k_{air} = 0.026\;W/m\cdot K\)</span>
+<span>\(h_1 = 10,\;h_2 = 40\;W/m^2\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Individual Resistances:
+\[ R_i = 0.08333\;°C/W \quad R_o = 0.02083\;°C/W \]
+\[ R_{glass} = \frac{0.004}{(0.78)(1.2)} = 0.00427\;°C/W \quad (\text{each layer}) \]
+\[ R_{air} = \frac{0.01}{(0.026)(1.2)} = 0.3205\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Total Resistance:
+\[ R_{total} = 0.08333 + 0.00427 + 0.3205 + 0.00427 + 0.02083 = 0.4332\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\(\dot{Q} = 30/0.4332 = 69.2\;W\) — approximately <strong>one-fourth</strong> of single-pane!
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\(T_1 = 20 - (69.2)(0.08333) = 14.2°C\)
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} = 69.2\;W \qquad T_1 = 14.2°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>مقارنةً بـ<span class="term">single-pane window</span>: \(T_1\) ارتفعت من −2.2°C إلى 14.2°C. الـ<span class="term">stagnant air layer</span> تمتلك مقاومة حرارية كبيرة (\(R_{air}\) هي المهيمنة). النوافذ المزدوجة تقلل <span class="term">fogging</span>، وفقدان الحرارة شتاءً، واكتساب الحرارة صيفًا، وبالتالي تقلل تكاليف التكييف.</p>
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-4 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–4: Equivalent Thickness for Contact Resistance</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+The thermal contact conductance at the interface of two 1-cm-thick aluminum plates is measured to be 11,000 W/m²·K. Determine the thickness of the aluminum plate whose thermal resistance is equal to the thermal resistance of the interface between the plates.
+</div>
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(h_c = 11{,}000\;W/m^2\cdot K\)</span>
+<span>\(k_{Al} = 237\;W/m\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ R_c = \frac{1}{h_c} = \frac{1}{11{,}000} = 0.909 \times 10^{-4}\;m^2\cdot K/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Setting \(R = L/k = R_c\):
+\[ L = k\,R_c = (237)(0.909 \times 10^{-4}) = 0.0215\;m \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ L = 0.0215\;m = 2.15\;cm \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>الـ<span class="term">interface</span> بين اللوحين لها نفس <span class="term">thermal resistance</span> تقريبًا لطبقة <span class="term">aluminum</span> سمكها 2.15 cm — أكبر من مجموع مقاومتي اللوحين نفسيهما.</p>
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-5 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–5: Contact Resistance of Transistors</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Four identical power transistors with aluminum casing are attached on one side of a 1-cm-thick 20 cm × 20 cm copper plate (<em>k</em> = 386 W/m·K) by screws that exert an average pressure of 6 MPa. Each transistor base area is 8 cm², placed at the center of a 10 cm × 10 cm quarter section. Interface roughness ≈ 1.5 μm. All heat must dissipate to the ambient at 20°C through the back surface (<em>h</em> = 25 W/m²·K). If case temperature must not exceed 70°C, determine the maximum power each transistor can dissipate and the temperature jump at the case-plate interface.
+</div>
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(L_{plate} = 0.01\;m\)</span>
+<span>\(k_{Cu} = 386\;W/m\cdot K\)</span>
+<span>\(A_c = 8 \times 10^{-4}\;m^2\)</span>
+<span>\(A = 0.01\;m^2\)</span>
+<span>\(h_c = 42{,}000\;W/m^2\cdot K\)</span>
+<span>\(h_o = 25\;W/m^2\cdot K\)</span>
+<span>\(T_{case} = 70°C,\;T_\infty = 20°C\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ R_{interface} = \frac{1}{h_c A_c} = \frac{1}{(42{,}000)(8 \times 10^{-4})} = 0.0298\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_{plate} = \frac{L}{kA} = \frac{0.01}{(386)(0.01)} = 0.0026\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\[ R_{conv} = \frac{1}{h_o A} = \frac{1}{(25)(0.01)} = 4.0\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ R_{total} = 0.0298 + 0.0026 + 4.0 = 4.0324\;°C/W \]
+\[ \dot{Q} = \frac{70 - 20}{4.0324} = 12.4\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+\[ \Delta T_{interface} = \dot{Q}\,R_{interface} = (12.4)(0.0298) = 0.37°C \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ P_{max} = 12.4\;W/\text{transistor} \qquad \Delta T_{interface} = 0.37°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>الـ<span class="term">temperature jump</span> صغير جدًا. حتى لو تم إزالة <span class="term">contact resistance</span> تمامًا، لن تنخفض درجة حرارة التشغيل إلا بأقل من 0.4°C. الـ<span class="term">convection resistance</span> هي المهيمنة.</p>
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-6 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–6: Heat Loss through a Composite Wall</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 3-m-high and 5-m-wide wall consists of long 16 cm × 22 cm cross section horizontal bricks (<em>k</em> = 0.72 W/m·K) separated by 3-cm-thick plaster layers (<em>k</em> = 0.22 W/m·K). There are also 2-cm-thick plaster layers on each side of the brick and a 3-cm-thick rigid foam (<em>k</em> = 0.026 W/m·K) on the inner side. Indoor and outdoor temperatures are 20°C and −10°C with <em>h</em><sub>1</sub> = 10 and <em>h</em><sub>2</sub> = 25 W/m²·K. Assuming 1-D heat transfer and disregarding radiation, determine the rate of heat transfer through the wall.
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-21.png" alt="Figure 3-21: Composite wall cross section">
+<div class="fig-caption">Figure 3–21: Composite wall — representative section and resistance network</div>
+</div>
+
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{wall} = 15\;m^2\)</span>
+<span>\(k_{brick} = 0.72\)</span>
+<span>\(k_{plaster} = 0.22\)</span>
+<span>\(k_{foam} = 0.026\;W/m\cdot K\)</span>
+<span>Representative section: \(A = 0.25\;m^2\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<p style="direction:ltr;text-align:left;">The construction repeats every 25 cm vertically. Taking a representative section (\(A = 0.25\;m^2\)):</p>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Individual Resistances:
+\[ R_i = \frac{1}{(10)(0.25)} = 0.40\;°C/W \qquad R_1(foam) = \frac{0.03}{(0.026)(0.25)} = 4.62\;°C/W \]
+\[ R_2 = R_6(plaster,side) = \frac{0.02}{(0.22)(0.25)} = 0.36\;°C/W \]
+\[ R_3 = R_5(plaster,center) = \frac{0.16}{(0.22)(0.015)} = 48.48\;°C/W \]
+\[ R_4(brick) = \frac{0.16}{(0.72)(0.22)} = 1.01\;°C/W \qquad R_o = \frac{1}{(25)(0.25)} = 0.16\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Parallel middle section (\(R_3\), \(R_4\), \(R_5\) in parallel):
+\[ \frac{1}{R_{mid}} = \frac{1}{48.48} + \frac{1}{1.01} + \frac{1}{48.48} = 1.03\;W/°C \quad \Rightarrow \quad R_{mid} = 0.97\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Total: \(R_{total} = 0.40 + 4.62 + 0.36 + 0.97 + 0.36 + 0.16 = 6.87\;°C/W\)
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Per section: \(\dot{Q} = 30/6.87 = 4.37\;W\). Per unit area: \(17.5\;W/m^2\).
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q}_{total} = (17.5)(15) = 263\;W \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>النتيجة <span class="term">approximate</span>. الأسلوب البديل (<span class="term">adiabatic planes</span>) يعطي \(R_{total} = 6.97\;°C/W\) — قريبة جدًا. كلا الأسلوبين يعطي نتائج مقبولة لهذه الهندسة.</p>
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-7 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–7: Spherical Tank (Iced Water)</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A spherical tank (internal diameter 3 m, 2-cm-thick stainless steel, <em>k</em> = 15 W/m·K) contains iced water at 0°C in a room at 22°C. The outer surface is black. Given <em>h</em><sub>1</sub> = 80, <em>h</em><sub>2</sub> = 10 W/m²·K. Determine: (1) rate of heat transfer to the iced water; (2) amount of ice melted during 24 h.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-28.png" alt="Figure 3-28: Spherical tank">
+<div class="fig-caption">Figure 3–28: Spherical tank with resistance network</div>
+</div>
+
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 1.50\;m,\;r_2 = 1.52\;m\)</span>
+<span>\(A_1 = 28.3\;m^2,\;A_2 = 29.0\;m^2\)</span>
+<span>\(T_{\infty1} = 0°C,\;T_{\infty2} = 22°C\)</span>
+<span>\(h_{rad} = 5.34\;W/m^2\cdot K\) (assuming \(T_2 \approx 5°C\))</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ R_i = \frac{1}{(80)(28.3)} = 0.000442\;°C/W \]
+\[ R_1 = \frac{1.52 - 1.50}{4\pi(15)(1.50)(1.52)} = 0.0000478\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_o = \frac{1}{(10)(29.0)} = 0.00345\;°C/W \qquad R_{rad} = \frac{1}{(5.34)(29.0)} = 0.00646\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\(R_o\) and \(R_{rad}\) are in parallel:
+\[ \frac{1}{R_{eq}} = \frac{1}{0.00345} + \frac{1}{0.00646} = 444.7 \quad \Rightarrow \quad R_{eq} = 0.00225\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ R_{total} = 0.000442 + 0.0000478 + 0.00225 = 0.00274\;°C/W \]
+\[ \dot{Q} = \frac{22 - 0}{0.00274} \approx 8029\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+Verify: \(T_2 = 22 - (8029)(0.00225) \approx 4°C\) ← close to assumed 5°C ✓
+</div></div>
+<div class="step"><div class="step-num">6</div><div class="step-content">
+In 24 h: \(Q = (8.029)(24 \times 3600) = 693{,}700\;kJ\)
+\[ m = \frac{Q}{h_{if}} = \frac{693{,}700}{333.7} \approx 2079\;kg \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} \approx 8029\;W \qquad m \approx 2079\;kg \approx 2\;\text{metric tons/day} \]
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-8 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–8: Insulated Cast-Iron Pipe</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Steam at 320°C flows through a cast-iron pipe (<em>k</em> = 80 W/m·K) with <em>D</em><sub>1</sub> = 5 cm, <em>D</em><sub>2</sub> = 5.5 cm, covered with 3-cm-thick glass wool insulation (<em>k</em> = 0.05 W/m·K). Surroundings at 5°C. Combined external <em>h</em><sub>2</sub> = 18, internal <em>h</em><sub>1</sub> = 60 W/m²·K. Determine: (1) heat loss per unit length; (2) temperature drops across pipe and insulation.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-29.png" alt="Figure 3-29: Insulated pipe">
+<div class="fig-caption">Figure 3–29: Insulated cast-iron pipe — resistance network</div>
+</div>
+
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 0.025\;m\)</span>
+<span>\(r_2 = 0.0275\;m\)</span>
+<span>\(r_3 = 0.0575\;m\)</span>
+<span>\(L = 1\;m\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\(A_1 = 2\pi(0.025)(1) = 0.157\;m^2\), \(A_3 = 2\pi(0.0575)(1) = 0.361\;m^2\)
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_i = \frac{1}{(60)(0.157)} = 0.106\;°C/W \qquad R_{pipe} = \frac{\ln(2.75/2.5)}{2\pi(80)} = 0.000189\;°C/W \]
+\[ R_{ins} = \frac{\ln(5.75/2.75)}{2\pi(0.05)} = 2.35\;°C/W \qquad R_o = \frac{1}{(18)(0.361)} = 0.154\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\[ R_{total} \approx 0.106 + 0.000189 + 2.35 + 0.154 \approx 2.61\;°C/W \]
+\[ \dot{Q} = \frac{320 - 5}{2.61} \approx 121\;W/m \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ \Delta T_{pipe} = (121)(0.000189) \approx 0.023°C \qquad \Delta T_{ins} = (121)(2.35) \approx 284°C \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} \approx 121\;W/m \qquad \Delta T_{pipe} \approx 0.02°C \qquad \Delta T_{ins} \approx 284°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>\(R_{pipe} \ll R_{ins}\): الأنبوب تقريبًا <span class="term">isothermal</span>. معظم الـ<span class="term">temperature drop</span> يحدث عبر <span class="term">insulation</span> التي تتحكم أساسًا في <span class="term">total thermal resistance</span> وبالتالي <span class="term">heat loss</span>.</p>
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-9 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–9: Electric Wire with Plastic Insulation</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+An electric wire (diameter 3 mm, length 5 m) is covered with a 2-mm-thick plastic layer (<em>k</em> = 0.15 W/m·K). Current <em>I</em> = 10 A, voltage drop <em>V</em> = 8 V. Ambient at 30°C, <em>h</em> = 12 W/m²·K. Determine: (1) the interface temperature; (2) the effect of doubling the cover thickness.
+</div>
+
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 1.5\;mm\)</span>
+<span>\(r_2 = 3.5\;mm\)</span>
+<span>\(\dot{Q} = VI = (8)(10) = 80\;W\)</span>
+<span>\(k = 0.15\;W/m\cdot K\)</span>
+<span>\(h = 12\;W/m^2\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\(A_2 = 2\pi(0.0035)(5) = 0.110\;m^2\)
+\[ R_{conv} = \frac{1}{(12)(0.110)} = 0.758\;°C/W \qquad R_{plastic} = \frac{\ln(3.5/1.5)}{2\pi(5)(0.15)} = 0.180\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_{total} = 0.758 + 0.180 = 0.938\;°C/W \]
+\[ T_1 = 30 + (80)(0.938) \approx 105°C \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Critical radius: \(r_{cr} = k/h = 0.15/12 = 12.5\;mm\). Since \(r_2 = 3.5\;mm < r_{cr}\), the wire is below critical radius.
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Doubling cover to 4 mm: \(T_1 \approx 90.6°C\). At \(r_2 = r_{cr} = 12.5\;mm\): \(T_{1,min} \approx 83°C\).
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ T_1 \approx 105°C \quad \text{(original)} \qquad T_1 \approx 90.6°C \quad \text{(doubled cover)} \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>بما أن \(r_2 < r_{cr}\)، فإن إضافة <span class="term">insulation</span> تزيد <span class="term">heat transfer</span> وتخفض درجة الحرارة — مفيد لسلامة الأسلاك الكهربائية! عند \(r_2 = r_{cr}\) تصل درجة الحرارة إلى أدنى مستوى (83°C تقريبًا).</p>
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-10 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–10: Maximum Power Dissipation of a Transistor</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A power transistor has a maximum power rating of 10 W, and its case-to-ambient thermal resistance is <em>R</em><sub>case-ambient</sub> = 20°C/W. If the case temperature is not to exceed 85°C, determine the maximum power at which the transistor can be operated safely in an environment at 25°C.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-48.png" alt="Figure 3-48: Transistor thermal model">
+<div class="fig-caption">Figure 3–48: Transistor thermal resistance model</div>
+</div>
+
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(T_c = 85°C\)</span>
+<span>\(T_\infty = 25°C\)</span>
+<span>\(R_{case-ambient} = 20\;°C/W\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ \dot{Q} = \frac{T_c - T_\infty}{R_{case-ambient}} = \frac{85 - 25}{20} = \frac{60}{20} \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q}_{max} = 3\;W \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>يجب ألا يعمل الـ<span class="term">transistor</span> عند <span class="term">power level</span> أعلى من 3 W — أقل بكثير من التصنيف الأقصى (10 W). يمكن تشغيله عند طاقة أعلى بإضافة <span class="term">heat sink</span> لتقليل <span class="term">thermal resistance</span> أو استخدام <span class="term">fan</span> لزيادة \(h\).</p>
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-11 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–11: Selecting a Heat Sink for a Transistor</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 60-W power transistor is to be cooled by attaching it to one of the commercially available heat sinks listed in Table 3–6. Select a heat sink that keeps the case temperature from exceeding 90°C when the ambient air is at 30°C.
+</div>
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(\dot{Q} = 60\;W\)</span>
+<span>\(T_c = 90°C\)</span>
+<span>\(T_\infty = 30°C\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Required thermal resistance:
+\[ R = \frac{\Delta T}{\dot{Q}} = \frac{90 - 30}{60} = 1.0\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+The heat sink must have \(R < 1.0\;°C/W\). From Table 3–6:
+<br><strong>HS 5030</strong> has \(R = 0.9\;°C/W\) in vertical position ✓
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+<p style="direction:ltr;text-align:center;">Select <strong>HS 5030</strong> (R = 0.9°C/W, vertical position)</p>
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-12 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–12: Fins of Variable Cross Section (Parabolic Pin Fin)</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Aluminum pin fins with a parabolic profile and blunt tips are attached to a plane wall at <em>T<sub>b</sub></em> = 200°C. Each fin has <em>L</em> = 20 mm and <em>D</em> = 5 mm. Exposed to air at 25°C with <em>h</em> = 50 W/m²·K and <em>k</em> = 240 W/m·K. Determine: (1) fin efficiency; (2) heat transfer rate; (3) fin effectiveness.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-49.png" alt="Figure 3-49: Parabolic pin fin">
+<div class="fig-caption">Figure 3–49: Parabolic pin fin with blunt tip</div>
+</div>
+
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(L = 0.020\;m\)</span>
+<span>\(D = 0.005\;m\)</span>
+<span>\(T_b = 200°C\)</span>
+<span>\(T_\infty = 25°C\)</span>
+<span>\(h = 50\;W/m^2\cdot K\)</span>
+<span>\(k = 240\;W/m\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+For parabolic pin fin (Table 3-3): \(mL = \sqrt{\dfrac{4h}{kD}} \cdot L = \sqrt{\dfrac{4(50)}{(240)(0.005)}} \cdot 0.020\)
+<br>Wait — the correct form: \(mL = L\sqrt{\dfrac{4h}{kD}} = 0.020\sqrt{\dfrac{200}{1.2}} = 0.020 \times 12.91 = 0.2582\)
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Fin surface area: \(A_{fin} = 2.106 \times 10^{-4}\;m^2\)
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Using modified Bessel functions (Table 3-3):
+\[ \eta_{fin} = \frac{3}{2(0.2582)} \cdot \frac{I_1(0.3443)}{I_0(0.3443)} = 5.81 \times \frac{0.1716}{1.0350} = 0.963 \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ \dot{Q}_{fin} = \eta_{fin}\,h\,A_{fin}(T_b - T_\infty) = (0.963)(50)(2.106 \times 10^{-4})(175) = 1.77\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{hA_b(T_b - T_\infty)} = \frac{1.77}{(50)(\pi(0.005)^2/4)(175)} \approx 10.3 \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \eta_{fin} = 0.963 \qquad \dot{Q}_{fin} = 1.77\;W \qquad \varepsilon_{fin} \approx 10.3 \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>الـ<span class="term">pin fin</span> يحقق تقريبًا <strong>10-fold increase</strong> في <span class="term">heat transfer</span> مقارنةً بالـ<span class="term">base area</span> وحدها. باستخدام <span class="term">EES</span> بدون <span class="term">interpolation</span>: \(\eta_{fin} = 0.9855\) (أعلى بحوالي 2%).</p>
+</div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-13 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–13: Preventing Circuit Board Overheating</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 15 cm × 20 cm integrated circuit board is cooled by attaching 4-cm-long aluminum pin fins (square cross section 2 mm × 2 mm, <em>k</em> = 237 W/m·K). Surrounding air at 25°C with <em>h</em> = 20 W/m²·K. Board surface must not exceed 85°C. Design a finned surface with overall effectiveness of 3 and determine the appropriate number of fins.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-50.png" alt="Figure 3-50: Circuit board with fins">
+<div class="fig-caption">Figure 3–50: Circuit board with pin fins</div>
+</div>
+
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{board} = 0.03\;m^2\)</span>
+<span>\(L = 0.04\;m\)</span>
+<span>\(a = 0.002\;m\) (square side)</span>
+<span>\(k = 237\;W/m\cdot K\)</span>
+<span>\(h = 20\;W/m^2\cdot K\)</span>
+<span>\(T_b = 85°C,\;T_\infty = 25°C\)</span>
+<span>\(\varepsilon_{fin,overall} = 3\) (required)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Fin parameter:
+\[ m = \sqrt{\frac{4h}{ka}} = \sqrt{\frac{4(20)}{(237)(0.002)}} = 12.99\;m^{-1} \]
+\[ mL = (12.99)(0.04) = 0.5196 \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Fin efficiency:
+\[ \eta_{fin} = \frac{\tanh(0.5196)}{0.5196} = 0.919 \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Areas per fin: \(A_{one\;fin} = 4(0.002)(0.04) = 3.2 \times 10^{-4}\;m^2\)
+<br>Base area covered per fin: \((0.002)^2 = 4 \times 10^{-6}\;m^2\)
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Heat transfer without fins: \(\dot{Q}_{no\;fin} = (20)(0.03)(60) = 36\;W\)
+<br>With \(n\) fins: \(\dot{Q}_{total} = 36 + 0.3481\,n\)
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+From \(\varepsilon_{fin,overall} = 3\):
+\[ 3 = \frac{36 + 0.3481\,n}{36} \quad \Rightarrow \quad 72 = 0.3481\,n \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ n_{fin} \approx 207 \;\text{fins} \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>لتحقيق <span class="term">overall fin effectiveness</span> = 3 والحفاظ على سطح الـ<span class="term">circuit board</span> عند \(T_b \leq 85°C\)، نحتاج إلى الأقل 207 <span class="term">fin</span>. يمكن تقليل العدد باستخدام مادة مختلفة أو هندسة مختلفة للـ<span class="term">fins</span>.</p>
+</div>
+</div>
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== KEY RELATIONS SUMMARY ==================== -->
+<section class="section">
+<div class="section-header">
+<div class="section-icon">📋</div>
+<div class="section-titles">
+<h2>Key Relations Summary</h2>
+<span class="section-sub">Chapter 3 — Quick Reference</span>
+</div>
+</div>
+
+<div class="analogy-box">
+<div class="table-wrapper">
+<table class="key-table">
+<thead><tr><th>Concept</th><th>Key Relation</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td class="td-label">Fourier's Law</td><td>\(\dot{Q} = -kA\dfrac{dT}{dx}\)</td><td>Heat conduction rate</td></tr>
+<tr><td class="td-label">Plane Wall</td><td>\(\dot{Q} = kA\dfrac{T_1 - T_2}{L}\)</td><td>Steady 1-D conduction</td></tr>
+<tr><td class="td-label">Conduction Resistance</td><td>\(R_{wall} = \dfrac{L}{kA}\)</td><td>Plane wall resistance</td></tr>
+<tr><td class="td-label">Convection Resistance</td><td>\(R_{conv} = \dfrac{1}{hA_s}\)</td><td>Surface convection resistance</td></tr>
+<tr><td class="td-label">Radiation Resistance</td><td>\(R_{rad} = \dfrac{1}{h_{rad}A_s}\)</td><td>Surface radiation resistance</td></tr>
+<tr><td class="td-label">Radiation Coefficient</td><td>\(h_{rad} = \varepsilon\sigma(T_s^2 + T_{surr}^2)(T_s + T_{surr})\)</td><td>Temperatures in K!</td></tr>
+<tr><td class="td-label">Combined Coefficient</td><td>\(h_{combined} = h_{conv} + h_{rad}\)</td><td>When \(T_{surr} \approx T_\infty\)</td></tr>
+<tr><td class="td-label">Thermal Resistance Method</td><td>\(\dot{Q} = \dfrac{\Delta T}{R}\)</td><td>Core concept</td></tr>
+<tr><td class="td-label">Series Resistances</td><td>\(R_{total} = \sum R_i\)</td><td>Same \(\dot{Q}\) through each</td></tr>
+<tr><td class="td-label">Parallel Resistances</td><td>\(\dfrac{1}{R_{total}} = \sum \dfrac{1}{R_i}\)</td><td>Same \(\Delta T\) across each</td></tr>
+<tr><td class="td-label">Temperature Drop</td><td>\(\Delta T = \dot{Q} \cdot R\)</td><td>Drop ∝ resistance</td></tr>
+<tr><td class="td-label">Cylinder Resistance</td><td>\(R_{cyl} = \dfrac{\ln(r_2/r_1)}{2\pi Lk}\)</td><td>Cylindrical conduction</td></tr>
+<tr><td class="td-label">Sphere Resistance</td><td>\(R_{sph} = \dfrac{r_2 - r_1}{4\pi k\,r_1 r_2}\)</td><td>Spherical conduction</td></tr>
+<tr><td class="td-label">Critical Radius (Cylinder)</td><td>\(r_{cr} = k/h\)</td><td>\(\dot{Q}\) max at this radius</td></tr>
+<tr><td class="td-label">Critical Radius (Sphere)</td><td>\(r_{cr} = 2k/h\)</td><td>\(\dot{Q}\) max at this radius</td></tr>
+<tr><td class="td-label">Fin Effectiveness</td><td>\(\varepsilon_{fin} = \dfrac{\dot{Q}_{fin}}{hA_b(T_b - T_\infty)}\)</td><td>Benefit of adding fin</td></tr>
+<tr><td class="td-label">Long-Fin Effectiveness</td><td>\(\varepsilon = \sqrt{kp/(hA_c)}\)</td><td>Infinite fin</td></tr>
+<tr><td class="td-label">Fin Heat Transfer Ratio</td><td>\(\dot{Q}_{fin}/\dot{Q}_{long} = \tanh(mL)\)</td><td>Finite vs. infinite</td></tr>
+<tr><td class="td-label">Fin Efficiency</td><td>\(\eta_{fin} = \tanh(mL)/(mL)\)</td><td>Adiabatic tip</td></tr>
+<tr><td class="td-label">1-D Validity</td><td>\(hd/k < 0.2\)</td><td>Error &lt; 1%</td></tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Core Conceptual Chain</div>
+<p style="text-align:center;direction:ltr;">
+<strong>Temperature Difference → Thermal Resistance Network → \(\dot{Q}\) → Temperature Drops</strong>
+</p>
+<p>في <span class="term">multilayer systems</span>: \(R_{total} = R_1 + R_2 + R_3 + \cdots\)، ثم \(\dot{Q} = \Delta T / R_{total}\)، ثم لأي طبقة: \(\Delta T_i = \dot{Q} \cdot R_i\).</p>
+<p>في <span class="term">insulation</span> على <span class="term">cylinders/spheres</span>: لا يكفي القول "insulation تزيد resistance" — يجب مراعاة زيادة <span class="term">convection area</span> أيضًا. لذلك يوجد <span class="term">Critical Radius</span>.</p>
+</div>
+
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="lecture-footer" style="margin-left:auto;margin-right:auto;max-width:960px;padding-left:24px;padding-right:24px;">
+<div style="background:var(--navy);border-radius:var(--radius);padding:36px 30px;">
+<h3>Chapter 3 — Steady Heat Conduction</h3>
+<p>Thermal Resistance Networks · Cylinders &amp; Spheres · Critical Radius · Fins · Building Heat Transfer</p>
+<div class="footer-tags">
+<span class="footer-tag">Fourier's Law</span>
+<span class="footer-tag">Thermal Resistance</span>
+<span class="footer-tag">Contact Resistance</span>
+<span class="footer-tag">Composite Walls</span>
+<span class="footer-tag">Cylinders &amp; Spheres</span>
+<span class="footer-tag">Critical Radius</span>
+<span class="footer-tag">Fin Effectiveness</span>
+<span class="footer-tag">Fin Efficiency</span>
+<span class="footer-tag">Heat Sinks</span>
+<span class="footer-tag">Building Envelope</span>
+<span class="footer-tag">R-value &amp; U-factor</span>
+</div>
+</div>
+</footer>
+
+<!-- ===== CLOSING PRAYER ===== -->
+<div class="closing-prayer">
+<div class="closing-prayer-card">
+<p>🤲 ولا تنسوا الصلاة على النبي صلى الله عليه وسلم، والدعاء لإخوانكم في فلسطين وغزة وفي جميع بقاع الأرض، وأن ينصر الله المسلمين المستضعفين. 🤲</p>
+</div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script src="chapter3.js"></script>
+
+</body>
+</html>

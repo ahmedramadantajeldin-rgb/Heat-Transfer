@@ -1,9 +1,14 @@
+/*
+ * Home page behaviour: builds the chapter cards from window.CHAPTERS (see chapters.js)
+ * and points the hero shortcut at the first available chapter.
+ */
 (function () {
-  "use strict";
+  'use strict';
 
-  var course = window.COURSE || {};
-  var chapters = (window.CHAPTERS || []).slice().sort(function (a, b) { return a.number - b.number; });
+  var grid = document.getElementById('chapter-grid');
+  if (!grid || !Array.isArray(window.CHAPTERS)) return;
 
+  /** Create an element with optional class name and text. Text is always set as text, never HTML. */
   function el(tag, className, text) {
     var node = document.createElement(tag);
     if (className) node.className = className;
@@ -11,70 +16,91 @@
     return node;
   }
 
-  function isAvailable(ch) { return ch.status === "available" && !!ch.href; }
+  /** Encode spaces etc. in a relative path (e.g. "Chapter 1/chapter1.html") without double-encoding. */
+  function toUrl(path) {
+    return path.indexOf('%') === -1 ? encodeURI(path) : path;
+  }
 
-  function buildCard(ch) {
-    var available = isAvailable(ch);
-    var heading = ch.title || "Chapter " + ch.number;
+  /** A chapter is only treated as available when it also has a page to open. */
+  function isAvailable(chapter) {
+    return chapter.status === 'available' && typeof chapter.href === 'string' && chapter.href !== '';
+  }
 
-    var item = el("li", "chapter " + (available ? "is-available" : "is-soon"));
-    item.appendChild(el("span", "node", String(ch.number)));
+  function statusPill(available) {
+    var pill = el('p', 'status-pill ' + (available ? 'is-lit' : 'is-unlit'));
+    pill.appendChild(el('span', 'status-dot'));
+    pill.appendChild(el('span', null, available ? 'Available' : 'Coming soon'));
+    return pill;
+  }
 
-    var card = el("article", "card");
-    var head = el("div", "card-head");
-    head.appendChild(el("span", "card-no", ch.title ? "Chapter " + ch.number : ""));
-    head.appendChild(el("span", "badge", available ? "Available" : "Coming soon"));
-    card.appendChild(head);
-
-    card.appendChild(el("h3", "card-title", heading));
-    if (ch.titleAr) {
-      var ar = el("p", "card-ar", ch.titleAr);
-      ar.lang = "ar"; ar.dir = "rtl";
-      card.appendChild(ar);
+  function heading(chapter, available) {
+    var h3 = el('h3', 'card-heading');
+    var lockup = el('span', 'card-chapter');
+    lockup.appendChild(document.createTextNode('Chapter '));
+    lockup.appendChild(el('span', 'card-num', String(chapter.number)));
+    h3.appendChild(lockup);
+    if (available && chapter.title) {
+      h3.appendChild(document.createTextNode(' '));
+      h3.appendChild(el('span', 'card-title', chapter.title));
     }
-    if (ch.summary) card.appendChild(el("p", "card-text", ch.summary));
+    return h3;
+  }
 
-    if (ch.topics && ch.topics.length) {
-      var chips = el("ul", "chips");
-      ch.topics.forEach(function (t) { chips.appendChild(el("li", "", t)); });
-      card.appendChild(chips);
-    }
+  function topicList(topics) {
+    var list = el('ul', 'topics');
+    list.setAttribute('aria-label', 'Topics covered');
+    topics.forEach(function (topic) {
+      list.appendChild(el('li', null, topic));
+    });
+    return list;
+  }
 
-    var foot = el("div", "card-foot");
+  function buildCard(chapter) {
+    var available = isAvailable(chapter);
+    var card = el('li', 'chapter-card ' + (available ? 'is-available' : 'is-soon'));
+
+    card.appendChild(statusPill(available));
+    card.appendChild(heading(chapter, available));
+
     if (available) {
-      var open = el("a", "btn btn-primary", "Open Chapter " + ch.number);
-      open.href = encodeURI(ch.href);
-      foot.appendChild(open);
-      if (ch.sections) foot.appendChild(el("span", "card-meta", ch.sections + " sections"));
+      if (chapter.description) card.appendChild(el('p', 'card-text', chapter.description));
+      if (chapter.topics && chapter.topics.length) card.appendChild(topicList(chapter.topics));
     } else {
-      var off = el("span", "btn btn-disabled", "Under development");
-      off.setAttribute("aria-disabled", "true");
-      foot.appendChild(off);
+      card.appendChild(
+        el('p', 'card-text', 'This chapter is under development and will be added later.')
+      );
     }
-    card.appendChild(foot);
 
-    item.appendChild(card);
-    return item;
+    var footer = el('div', 'card-footer');
+    if (available) {
+      if (chapter.sections) footer.appendChild(el('span', 'card-meta', chapter.sections + ' sections'));
+      var link = el('a', 'btn btn-primary card-link', 'Open Chapter ' + chapter.number);
+      link.href = toUrl(chapter.href);
+      footer.appendChild(link);
+    } else {
+      var disabled = el('button', 'btn btn-disabled', 'Coming soon');
+      disabled.type = 'button';
+      disabled.disabled = true;
+      footer.appendChild(disabled);
+    }
+    card.appendChild(footer);
+    return card;
   }
 
-  if (course.title) {
-    document.getElementById("course-title").textContent = course.title;
-    document.title = course.title + " | Course Home";
-  }
-  document.getElementById("course-subtitle").textContent = course.subtitle || "";
+  var chapters = window.CHAPTERS.slice().sort(function (a, b) {
+    return a.number - b.number;
+  });
 
-  var list = document.getElementById("chapter-list");
-  chapters.forEach(function (ch) { list.appendChild(buildCard(ch)); });
+  chapters.forEach(function (chapter) {
+    grid.appendChild(buildCard(chapter));
+  });
 
-  var open = chapters.filter(isAvailable);
-  var soon = chapters.length - open.length;
-  document.getElementById("chapters-note").textContent =
-    open.length + " available" + (soon ? ", " + soon + " coming soon" : "");
-
-  if (open.length) {
-    var start = document.getElementById("start-link");
-    start.textContent = "Open Chapter " + open[0].number;
-    start.href = encodeURI(open[0].href);
+  // Hero shortcut: send visitors straight to the first available chapter.
+  var first = chapters.filter(isAvailable)[0];
+  var start = document.getElementById('hero-start');
+  if (first && start) {
+    start.href = toUrl(first.href);
+    start.textContent = 'Open Chapter ' + first.number;
     start.hidden = false;
   }
 })();
