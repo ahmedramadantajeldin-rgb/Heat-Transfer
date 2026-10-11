@@ -1838,19 +1838,185 @@ Per section: \(\dot{Q} = 30/6.87 = 4.37\;W\). Per unit area: \(17.5\;W/m^2\).
 </button>
 </div>
 
-<p>عند انتقال الحرارة خلال <span class="term">multilayered cylindrical</span> أو <span class="term">spherical systems</span> في حالة <span class="term">steady-state</span>، يمكن التعامل مع كل طبقة كـ<span class="term">thermal resistance</span> مستقلة. المثال الأساسي هو <span class="term">hot-water pipe</span> حيث يحدث فقدان حرارة باستمرار.</p>
+<p>عند انتقال الحرارة خلال <span class="term">cylinders</span> و<span class="term">spheres</span> الطويلة، مثل <span class="term">hot-water pipe</span> الذي يفقد حرارة باستمرار إلى الهواء المحيط، تتحرك الحرارة في الاتجاه الشعاعي <span class="term">radial direction</span> فقط. وفي حالة <span class="term">steady-state</span> يمكن التعامل مع كل طبقة كـ<span class="term">thermal resistance</span> مستقلة، بشرط تحقق الافتراضات التالية:</p>
+
+<div class="note-box">
+<div class="note-title">📝 Assumptions</div>
+<ul>
+<li><span class="term">Steady state</span>: درجة الحرارة لا تتغير مع الزمن، أي \(\partial T/\partial t = 0\).</li>
+<li>الأسطوانة طويلة (\(L \gg r_2\))، فتُهمل <span class="term">end effects</span> ولا تتغير \(T\) مع المحور \(z\).</li>
+<li>الظروف الحدية منتظمة على السطحين الداخلي والخارجي (<span class="term">symmetry</span>)، فلا تتغير \(T\) مع الزاوية: \(\theta\) في الـ cylinder، و\(\theta\) و\(\phi\) في الـ sphere.</li>
+<li>لا يوجد <span class="term">heat generation</span> داخل الجدار، ومعامل التوصيل \(k\) ثابت (قيمة متوسطة).</li>
+</ul>
+</div>
+
+<p>ينتج عن ذلك أن درجة الحرارة دالة في نصف القطر \(r\) فقط:</p>
+<div class="equation-scroll" style="direction:ltr;">
+\[ T = T(r) \]
+</div>
+
+<p>ولأن الحالة <span class="term">steady</span> ولا يوجد <span class="term">heat generation</span>، فإن <span class="term">energy balance</span> على أي سطح أسطواني أو كروي يعطي نفس \(\dot{Q}\) عند كل \(r\). ما يتغير مع \(r\) هو <strong>مساحة السطح</strong> \(A(r)\) التي تمر خلالها الحرارة، وهذه النقطة هي أساس الاشتقاقات التالية.</p>
 
 <div class="fig-container fig-medium">
 <img src="images/figure-3-23.png" alt="Figure 3-23: Heat conduction through cylindrical and spherical shells">
 <div class="fig-caption">Figure 3–23: Heat conduction through cylindrical and spherical shells</div>
 </div>
 
-<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:18px 0 12px;">Multilayered Composite Cylinder</h3>
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:18px 0 12px;">Single Cylindrical Layer</h3>
+<p>نأخذ <span class="term">cylindrical layer</span> طوله \(L\)، ونصف قطره الداخلي \(r_1\) والخارجي \(r_2\)، ومعامل توصيله \(k\)، ودرجتا حرارة سطحيه \(T_1\) عند \(r_1\) و\(T_2\) عند \(r_2\)، مع \(T_1 > T_2\) بحيث تتجه الحرارة للخارج في اتجاه \(+r\).</p>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-24.png" alt="Figure 3-24: Long cylindrical pipe (or spherical shell) with specified inner and outer surface temperatures">
+<div class="fig-caption">Figure 3–24: A long cylindrical pipe (or spherical shell) with specified inner and outer surface temperatures <em>T</em><sub>1</sub> and <em>T</em><sub>2</sub></div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Derivation of the Cylindrical Conduction Equation</h3>
+<p>نبدأ من <span class="term">Fourier's law</span> في الاتجاه الشعاعي. الإشارة السالبة لأن \(T\) تنخفض في اتجاه \(+r\)، فتكون \(\dot{Q}\) موجبة:</p>
+
+<div class="formula-box">
+<div class="box-label">Fourier's Law — Radial Direction — Eq. 3-34</div>
+\[ \dot{Q} = -kA\frac{dT}{dr} \qquad (W) \tag{3-34} \]
+</div>
+
+<p>في الـ cylinder المساحة العمودية على اتجاه الحرارة ليست ثابتة: عند نصف القطر \(r\) هي المساحة الجانبية لأسطوانة طولها \(L\)، أي \(A = 2\pi r L\)، فتزداد خطيًا مع \(r\) بعكس الـ plane wall. بالتعويض في Eq. 3-34:</p>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{cyl} = -k\,(2\pi r L)\,\frac{dT}{dr} \]
+</div>
+
+<p>الكميات \(\dot{Q}_{cyl}\) و\(k\) و\(L\) ثابتة، فنفصل المتغيرات (<span class="term">separation of variables</span>) بحيث يكون \(r\) في جهة و\(T\) في الجهة الأخرى:</p>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{cyl}\,\frac{dr}{r} = -2\pi L k\,dT \]
+</div>
+
+<p>ثم نكامل من السطح الداخلي \((r = r_1,\ T = T_1)\) إلى السطح الخارجي \((r = r_2,\ T = T_2)\):</p>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{cyl}\int_{r_1}^{r_2}\frac{dr}{r} = -2\pi L k\int_{T_1}^{T_2} dT \]
+</div>
+
+<p>تكامل \(1/r\) هو اللوغاريتم الطبيعي \(\ln r\)، وتكامل \(dT\) هو \(T\) نفسها:</p>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{cyl}\,\Big[\ln r\Big]_{r_1}^{r_2} = -2\pi L k\,\Big[T\Big]_{T_1}^{T_2} \]
+</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{cyl}\,(\ln r_2 - \ln r_1) = -2\pi L k\,(T_2 - T_1) \]
+</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{cyl}\,\ln\frac{r_2}{r_1} = 2\pi L k\,(T_1 - T_2) \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Heat Transfer Through a Cylindrical Layer — Eq. 3-35</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{cyl} = \frac{2\pi L k\,(T_1 - T_2)}{\ln(r_2/r_1)} \qquad (W) \tag{3-35} \]
+</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Cylindrical Thermal Resistance</h3>
+<p>بمقارنة Eq. 3-35 بالشكل العام \(\dot{Q} = \Delta T / R\) (Eq. 3-4) نعيد ترتيبها:</p>
+
+<div class="formula-box">
+<div class="box-label">Cylindrical Conduction Resistance — Eq. 3-36, 3-37</div>
+\[ \dot{Q}_{cyl} = \frac{T_1 - T_2}{R_{cyl}} \qquad (W) \tag{3-36} \]
+\[ R_{cyl} = \frac{\ln(r_2/r_1)}{2\pi L k} \qquad (K/W) \tag{3-37} \]
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Origin of the Logarithm</div>
+<p>المساحة \(A = 2\pi r L\) تزداد مع \(r\) بينما \(\dot{Q}\) ثابتة، لذلك يتناقص <span class="term">heat flux</span> \(\dot{q} = \dot{Q}/A\) مع \(r\) (يتناسب مع \(1/r\))، ومعه \(|dT/dr|\). فلا يكون \(dT/dr\) ثابتًا كما في الـ plane wall، ويظهر التكامل \(\int dr/r\) الذي ينتج \(\ln(r_2/r_1)\) في \(R_{cyl}\). ولهذا تتغير \(T(r)\) <strong>لوغاريتميًا</strong> داخل الجدار وليس خطيًا.</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Single Spherical Layer</h3>
+<p>نطبق نفس الخطوات على <span class="term">spherical shell</span> نصف قطريه \(r_1\) و\(r_2\) ودرجتي حرارة سطحيه \(T_1\) و\(T_2\) (المقطع في Figure 3–24 يمثل الحالتين). نبدأ من نفس Fourier's law (Eq. 3-34)، لكن مساحة السطح الكروي عند نصف القطر \(r\) هي \(A = 4\pi r^2\)، أي أنها تتناسب مع \(r^2\):</p>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{sph} = -k\,(4\pi r^2)\,\frac{dT}{dr} \]
+</div>
+
+<p>نفصل المتغيرات (مع ثبات \(\dot{Q}_{sph}\) و\(k\)) ثم نكامل بين نفس الحدود: \(r_1 \to r_2\) و\(T_1 \to T_2\):</p>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{sph}\,\frac{dr}{r^2} = -4\pi k\,dT \]
+</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{sph}\int_{r_1}^{r_2}\frac{dr}{r^2} = -4\pi k\int_{T_1}^{T_2} dT \]
+</div>
+
+<p>هنا يظهر تكامل \(r^{-2}\) وليس \(1/r\)، وناتجه دالة جبرية (<span class="term">algebraic</span>) وليس لوغاريتمًا:</p>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \int_{r_1}^{r_2} r^{-2}\,dr = \Big[-\frac{1}{r}\Big]_{r_1}^{r_2} = \frac{1}{r_1} - \frac{1}{r_2} = \frac{r_2 - r_1}{r_1 r_2} \]
+</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{sph}\,\frac{r_2 - r_1}{r_1 r_2} = -4\pi k\,(T_2 - T_1) = 4\pi k\,(T_1 - T_2) \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Heat Transfer Through a Spherical Layer — Eq. 3-38</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{sph} = \frac{4\pi k\, r_1 r_2\,(T_1 - T_2)}{r_2 - r_1} \qquad (W) \tag{3-38} \]
+</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Spherical Thermal Resistance</h3>
+<p>وبنفس الطريقة نكتب Eq. 3-38 على شكل \(\dot{Q} = \Delta T / R\):</p>
+
+<div class="formula-box">
+<div class="box-label">Spherical Conduction Resistance — Eq. 3-39, 3-40</div>
+\[ \dot{Q}_{sph} = \frac{T_1 - T_2}{R_{sph}} \qquad (W) \tag{3-39} \]
+\[ R_{sph} = \frac{r_2 - r_1}{4\pi k\, r_1\, r_2} \qquad (K/W) \tag{3-40} \]
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Geometry → Area → Integral → Resistance</div>
+<p>في كل الحالات نفصل المتغيرات في \(\dot{Q} = -kA(r)\,dT/dr\) فنحصل على \(\dot{Q}\int dr/A(r) = k\,(T_1 - T_2)\)، ومنها:</p>
+\[ R = \frac{T_1 - T_2}{\dot{Q}} = \frac{1}{k}\int_{r_1}^{r_2}\frac{dr}{A(r)} \]
+<p>مع \(A = 2\pi r L\) يصبح \(\int dr/A\) متناسبًا مع \(\int dr/r = \ln(r_2/r_1)\)، ومع \(A = 4\pi r^2\) يصبح متناسبًا مع \(\int dr/r^2 = (r_2 - r_1)/(r_1 r_2)\). أي أن شكل الـ resistance يتحدد بكيفية تغير المساحة مع \(r\).</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Convection on Both Sides</h3>
+<p>إذا كانت درجتا حرارة الـ <span class="term">fluids</span> هما المعلومتين بدلًا من درجتي حرارة السطحين (\(T_{\infty1}\) داخل الـ shell بمعامل \(h_1\)، و\(T_{\infty2}\) خارجه بمعامل \(h_2\))، فإن نفس \(\dot{Q}\) تمر على ثلاث مراحل متتالية: <span class="term">convection</span> من الـ fluid الداخلي إلى السطح الداخلي، ثم <span class="term">conduction</span> خلال الجدار، ثم <span class="term">convection</span> من السطح الخارجي إلى الـ fluid الخارجي:</p>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q} = \frac{T_{\infty1} - T_1}{R_{conv,1}} = \frac{T_1 - T_2}{R_{wall}} = \frac{T_2 - T_{\infty2}}{R_{conv,2}} \]
+</div>
+
+<p>حيث \(R_{wall}\) هي \(R_{cyl}\) أو \(R_{sph}\). ولأن \(\dot{Q}\) واحدة في المراحل الثلاث، فالمقاومات موصولة على <span class="term">series</span>، وبجمع فروق درجات الحرارة تُحذف \(T_1\) و\(T_2\):</p>
+<div class="equation-scroll" style="direction:ltr;">
+\[ T_{\infty1} - T_{\infty2} = \dot{Q}\,(R_{conv,1} + R_{wall} + R_{conv,2}) \quad\Rightarrow\quad \dot{Q} = \frac{T_{\infty1} - T_{\infty2}}{R_{total}} \]
+</div>
+
+<p>مقاومة الـ convection هي \(R_{conv} = 1/(hA_s)\) حيث \(A_s\) مساحة السطح الفعلية الملامسة للـ fluid. وبخلاف الـ plane wall تختلف مساحة السطحين هنا (\(A_2 > A_1\))، لذلك نستخدم المساحة عند \(r_1\) مع \(h_1\)، والمساحة عند \(r_2\) مع \(h_2\):</p>
+
+<div class="formula-box">
+<div class="box-label">Total Resistance — Cylindrical Wall — Eq. 3-41</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ R_{total} = \frac{1}{h_1 A_1} + \frac{\ln(r_2/r_1)}{2\pi L k} + \frac{1}{h_2 A_2} \qquad (K/W) \tag{3-41} \]
+</div>
+\[ A_1 = 2\pi r_1 L \qquad A_2 = 2\pi r_2 L \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Total Resistance — Spherical Wall — Eq. 3-42</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ R_{total} = \frac{1}{h_1 A_1} + \frac{r_2 - r_1}{4\pi k\, r_1 r_2} + \frac{1}{h_2 A_2} \qquad (K/W) \tag{3-42} \]
+</div>
+\[ A_1 = 4\pi r_1^2 \qquad A_2 = 4\pi r_2^2 \]
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-25.png" alt="Figure 3-25: Thermal resistance network for a cylindrical (or spherical) shell with convection on both sides">
+<div class="fig-caption">Figure 3–25: The thermal resistance network for a cylindrical (or spherical) shell subjected to convection from both the inner and the outer sides</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Multilayered Composite Cylinder</h3>
+<p>عند وجود عدة طبقات، تُجمع مقاومة كل طبقة مع مقاومات الـ convection عند الحدود، لأن الطبقات والـ convection على <span class="term">series</span>. للطبقة \(i\) نصف قطرها الداخلي \(r_i\) والخارجي \(r_{i+1}\) ومعامل توصيلها \(k_i\)، نستخدم نفس صيغة الطبقة المفردة بقيم هذه الطبقة وحدها:</p>
+
+<div class="formula-box">
+<div class="box-label">Layer Resistance — Cylinder — Eq. 3-43</div>
+\[ R_{cyl,i} = \frac{\ln(r_{i+1}/r_i)}{2\pi L k_i} \qquad (K/W) \tag{3-43} \]
+</div>
+
 <p>لـ<span class="term">cylinder</span> مكوّن من ثلاث طبقات أسطوانية، مع <span class="term">convection</span> على السطح الداخلي والخارجي:</p>
 
 <div class="formula-box">
 <div class="box-label">Total Resistance — Multilayered Cylinder</div>
-<div class="equation-scroll">
+<div class="equation-scroll" style="direction:ltr;">
 \[ R_{total} = \frac{1}{h_1 A_1} + \frac{\ln(r_2/r_1)}{2\pi L k_1} + \frac{\ln(r_3/r_2)}{2\pi L k_2} + \frac{\ln(r_4/r_3)}{2\pi L k_3} + \frac{1}{h_2 A_4} \]
 </div>
 </div>
@@ -1859,10 +2025,12 @@ Per section: \(\dot{Q} = 30/6.87 = 4.37\;W\). Per unit area: \(17.5\;W/m^2\).
 
 <div class="formula-box">
 <div class="box-label">Heat Transfer Rate</div>
-<div class="equation-scroll">
+<div class="equation-scroll" style="direction:ltr;">
 \[ \dot{Q} = \frac{T_{\infty1} - T_{\infty2}}{R_{total}} \]
 </div>
 </div>
+
+<p>وإذا كانت درجتا حرارة السطحين الداخلي والخارجي معلومتين بدلًا من درجتي حرارة الـ fluids، فتُحذف حدود الـ convection من \(R_{total}\).</p>
 
 <div class="analogy-box">
 <div class="table-wrapper">
@@ -1880,27 +2048,55 @@ Per section: \(\dot{Q} = 30/6.87 = 4.37\;W\). Per unit area: \(17.5\;W/m^2\).
 </div>
 
 <div class="fig-container fig-medium">
-<img src="images/figure-3-24.png" alt="Figure 3-24: Cylindrical thermal resistance network">
-<div class="fig-caption">Figure 3–24: Thermal resistance network for a multilayered cylinder</div>
+<img src="images/figure-3-26.png" style="max-width:min(100%,600px);" alt="Figure 3-26: Thermal resistance network for a three-layered composite cylinder with convection on both sides">
+<div class="fig-caption">Figure 3–26: The thermal resistance network for heat transfer through a three-layered composite cylinder subjected to convection on both sides</div>
 </div>
 
 <h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Multilayered Spherical Shell</h3>
-<p>نفس الأسلوب يُستخدم مع <span class="term">spherical shells</span>، مع اختلاف صيغة <span class="term">conduction resistance</span>:</p>
+<p>نفس الأسلوب يُستخدم مع <span class="term">spherical shells</span>، مع اختلاف صيغة <span class="term">conduction resistance</span> لكل طبقة:</p>
 
 <div class="formula-box">
-<div class="box-label">Spherical Conduction Resistance</div>
-\[ R_{sphere} = \frac{r_2 - r_1}{4\pi k\, r_1\, r_2} \]
+<div class="box-label">Layer Resistance — Sphere — Eq. 3-44</div>
+\[ R_{sph,i} = \frac{r_{i+1} - r_i}{4\pi k_i\, r_i\, r_{i+1}} \qquad (K/W) \tag{3-44} \]
 </div>
+
+<p>ولـ shell من ثلاث طبقات مع convection على السطحين، تكون الشبكة هي نفسها في Figure 3–26 مع استبدال \(R_{cyl,i}\) بـ \(R_{sph,i}\):</p>
+
+<div class="formula-box">
+<div class="box-label">Total Resistance — Multilayered Spherical Shell</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ R_{total} = \frac{1}{h_1 A_1} + \frac{r_2 - r_1}{4\pi k_1\, r_1 r_2} + \frac{r_3 - r_2}{4\pi k_2\, r_2 r_3} + \frac{r_4 - r_3}{4\pi k_3\, r_3 r_4} + \frac{1}{h_2 A_4} \]
+</div>
+\[ A_1 = 4\pi r_1^2 \qquad A_4 = 4\pi r_4^2 \]
+</div>
+
+<p>ويُحسب معدل انتقال الحرارة من نفس العلاقة \(\dot{Q} = (T_{\infty1} - T_{\infty2})/R_{total}\).</p>
 
 <h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Intermediate Temperatures</h3>
-<p>يمكن إيجاد <span class="term">temperatures</span> عند أي <span class="term">interface</span> باستخدام:</p>
-\[ \Delta T_i = \dot{Q} \cdot R_i \]
-<p>فمثلًا: \(T_2 = T_{\infty1} - \dot{Q}(R_{conv,1} + R_{cyl,1})\)</p>
+<p>في الـ <span class="term">series network</span> تبقى \(\dot{Q}\) واحدة عند كل موضع، لذلك بعد حسابها من \(R_{total}\) يمكن إيجاد <span class="term">temperature</span> عند أي <span class="term">interface</span> من العلاقة بين أي موضعين \(i\) و\(j\):</p>
 
-<div class="fig-container fig-medium">
-<img src="images/figure-3-25.png" alt="Figure 3-25: Temperature distribution">
-<div class="fig-caption">Figure 3–25: Temperature distribution and resistance network</div>
+<div class="formula-box">
+<div class="box-label">Temperature Between Two Locations — Eq. 3-45</div>
+\[ \dot{Q} = \frac{T_i - T_j}{R_{i \to j}} \quad\Rightarrow\quad T_i - T_j = \dot{Q}\,R_{i \to j} \tag{3-45} \]
 </div>
+
+<div class="note-box">
+<div class="note-title">📝 Only the Resistances in Between</div>
+<p>\(R_{i \to j}\) هي مجموع المقاومات الواقعة <strong>بين الموضعين</strong> \(i\) و\(j\) فقط، وليست \(R_{total}\). وفي حالة مقاومة واحدة يصبح \(\Delta T_i = \dot{Q} \cdot R_i\).</p>
+</div>
+
+<p>فمثلًا في الـ cylinder ذي الطبقات الثلاث (Figure 3–26): \(T_2\) من جهة الـ fluid الداخلي، و\(T_3\) من جهة الـ fluid الخارجي، وفرق درجات الحرارة عبر Layer 2 وحدها:</p>
+<div class="equation-scroll" style="direction:ltr;">
+\[ T_2 = T_{\infty1} - \dot{Q}\,(R_{conv,1} + R_{cyl,1}) \]
+</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ T_3 = T_{\infty2} + \dot{Q}\,(R_{cyl,3} + R_{conv,2}) \]
+</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ T_2 - T_3 = \dot{Q}\,R_{cyl,2} \]
+</div>
+
+<p>وتنطبق نفس العلاقات على الـ spherical shells مع استخدام \(R_{sph,i}\).</p>
 
 
 
