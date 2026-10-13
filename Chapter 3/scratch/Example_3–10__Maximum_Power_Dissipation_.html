@@ -1,0 +1,43 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–10: Maximum Power Dissipation of a Transistor</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A power transistor has a maximum power rating of 10 W, and its case-to-ambient thermal resistance is <em>R</em><sub>case-ambient</sub> = 20°C/W. If the case temperature is not to exceed 85°C, determine the maximum power at which the transistor can be operated safely in an environment at 25°C.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-48.png" alt="Figure 3-48: Transistor thermal resistance model">
+<div class="fig-caption">Figure 3–48: Transistor thermal resistance model (Example 3–10).</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-10"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-10"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(T_c \le 85°C\)</span>
+<span>\(T_\infty = 25°C\)</span>
+<span>\(R_{case-ambient} = 20\;°C/W\)</span>
+<span>\(\dot{W}_{rating} = 10\;W\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+From the thermal resistance model between the transistor case and ambient air:
+\[ \dot{Q} = \frac{T_c - T_\infty}{R_{case-ambient}} = \frac{85 - 25}{20} = \frac{60}{20} = 3\;W \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q}_{max} = 3\;W \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>يجب ألا يعمل الترانزستور عند قدرة تتجاوز 3 W في هذه الظروف لتجنب تجاوز درجة حرارة الغلاف \(85°C\)، وهي أقل بكثير من قدرته القصوى المصنفة (10 W). ولتشغيل الترانزستور عند مستويات قدرة أعلى تقترب من 10 W بأمان، يجب خفض المقاومة الحرارية بإضافة مشتت حراري (<span class="term">heat sink</span>) أو استخدام مروحة تبريد (<span class="term">cooling fan</span>) لزيادة معامل الحمل \(h\).</p>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-11 ===== -->

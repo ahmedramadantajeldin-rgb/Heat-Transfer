@@ -1,0 +1,168 @@
+Title: Example 3–1: Heat Loss through a Wall
+Has Fig early: True
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–1: Heat Loss through a Wall</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 3-m-high, 5-m-wide, and 0.3-m-thick wall whose thermal conductivity is <em>k</em> = 0.9 W/m·K. On a certain day, the temperatures of the inner and the outer surfaces of the wall are measured to be 16°C and 2°C, respectively. Determine the rate of heat loss through the wall on that day.
+</div>
+<div class="fig-container fig-small">
+<img src="images
+--------------------------------------------------
+Title: Example 3–2: Heat Loss through a Single-Pane Window
+Has Fig early: True
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–2: Heat Loss through a Single-Pane Window</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 0.8-m-high and 1.5-m-wide glass window with a thickness of 8 mm and a thermal conductivity of <em>k</em> = 0.78 W/m·K. Determine the steady rate of heat transfer through this glass window and the temperature of its inner surface for a day during which the room is maintained at 20°C while the temperature of the outdoors is −10°C. Tak
+--------------------------------------------------
+Title: Example 3–3: Heat Loss through Double-Pane Windows
+Has Fig early: True
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–3: Heat Loss through Double-Pane Windows</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 0.8-m-high and 1.5-m-wide double-pane window consisting of two 4-mm-thick layers of glass (<em>k</em> = 0.78 W/m·K) separated by a 10-mm-wide stagnant air space (<em>k</em> = 0.026 W/m·K). Determine the steady rate of heat transfer through this double-pane window and the temperature of its inner surface for the same conditions as Exa
+--------------------------------------------------
+Title: Example 3–4: Equivalent Thickness for Contact Resistance
+Has Fig early: False
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–4: Equivalent Thickness for Contact Resistance</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+The thermal contact conductance at the interface of two 1-cm-thick aluminum plates is measured to be 11,000 W/m²·K. Determine the thickness of the aluminum plate whose thermal resistance is equal to the thermal resistance of the interface between the plates.
+</div>
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-
+--------------------------------------------------
+Title: Example 3–5: Contact Resistance of Transistors
+Has Fig early: True
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–5: Contact Resistance of Transistors</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Four identical power transistors with aluminum casing are attached on one side of a 1-cm-thick 20 cm × 20 cm copper plate (<em>k</em> = 386 W/m·K) by screws that exert an average pressure of 6 MPa. Each transistor base area is 8 cm², placed at the center of a 10 cm × 10 cm quarter section. Interface roughness ≈ 1.5 μm. All heat must dissipate to th
+--------------------------------------------------
+Title: Example 3–6: Heat Loss through a Composite Wall
+Has Fig early: True
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–6: Heat Loss through a Composite Wall</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 3-m-high and 5-m-wide wall consists of long 16 cm × 22 cm cross section horizontal bricks (<em>k</em> = 0.72 W/m·K) separated by 3-cm-thick plaster layers (<em>k</em> = 0.22 W/m·K). There are also 2-cm-thick plaster layers on each side of the brick and a 3-cm-thick rigid foam (<em>k</em> = 0.026 W/m·K) on the inner side. Indoor and outdoor tempe
+--------------------------------------------------
+Title: Example 3–7: Spherical Tank (Iced Water)
+Has Fig early: True
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–7: Spherical Tank (Iced Water)</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A spherical tank (internal diameter 3 m, 2-cm-thick stainless steel, <em>k</em> = 15 W/m·K) contains iced water at 0°C in a room at 22°C. The outer surface is black. Given <em>h</em><sub>1</sub> = 80, <em>h</em><sub>2</sub> = 10 W/m²·K. Determine: (1) rate of heat transfer to the iced water; (2) amount of ice melted during 24 h.
+</div>
+
+<div class="fig-c
+--------------------------------------------------
+Title: Example 3–8: Insulated Cast-Iron Pipe
+Has Fig early: True
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–8: Insulated Cast-Iron Pipe</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Steam at 320°C flows through a cast-iron pipe (<em>k</em> = 80 W/m·K) with <em>D</em><sub>1</sub> = 5 cm, <em>D</em><sub>2</sub> = 5.5 cm, covered with 3-cm-thick glass wool insulation (<em>k</em> = 0.05 W/m·K). Surroundings at 5°C. Combined external <em>h</em><sub>2</sub> = 18, internal <em>h</em><sub>1</sub> = 60 W/m²·K. Determine: (1) heat loss per unit 
+--------------------------------------------------
+Title: Example 3–9: Electric Wire with Plastic Insulation
+Has Fig early: True
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–9: Electric Wire with Plastic Insulation</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+An electric wire (diameter 3 mm, length 5 m) is covered with a 2-mm-thick plastic layer (<em>k</em> = 0.15 W/m·K). Current <em>I</em> = 10 A, voltage drop <em>V</em> = 8 V. Ambient at 30°C, <em>h</em> = 12 W/m²·K. Determine: (1) the interface temperature; (2) the effect of doubling the cover thickness.
+</div>
+
+<div class="fig-container fig-smal
+--------------------------------------------------
+Title: Example 3–12: Fins of Variable Cross Section (Parabolic Pin Fin)
+Has Fig early: True
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–12: Fins of Variable Cross Section (Parabolic Pin Fin)</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Aluminum pin fins of parabolic profile with blunt tips are attached to a plane wall at <em>T<sub>b</sub></em> = 200°C. Each fin has a length of <em>L</em> = 20 mm and a base diameter of <em>D</em> = 5 mm. The fins are exposed to ambient air at <em>T</em><sub>∞</sub> = 25°C with a convection heat transfer coefficient of <em>h</em> 
+--------------------------------------------------
+Title: Example 3–10: Maximum Power Dissipation of a Transistor
+Has Fig early: True
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–10: Maximum Power Dissipation of a Transistor</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A power transistor has a maximum power rating of 10 W, and its case-to-ambient thermal resistance is <em>R</em><sub>case-ambient</sub> = 20°C/W. If the case temperature is not to exceed 85°C, determine the maximum power at which the transistor can be operated safely in an environment at 25°C.
+</div>
+
+<div class="fig-container fig-small">
+<
+--------------------------------------------------
+Title: Example 3–11: Selecting a Heat Sink for a Transistor
+Has Fig early: False
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–11: Selecting a Heat Sink for a Transistor</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 60-W power transistor is to be cooled by attaching it to one of the commercially available heat sinks listed in Table 3–6. Select a heat sink that keeps the case temperature from exceeding 90°C when the ambient air is at 30°C.
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="s
+--------------------------------------------------
+Title: Example 3–13: Preventing Circuit Board Overheating
+Has Fig early: True
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–13: Preventing Circuit Board Overheating</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 15 cm × 20 cm integrated circuit board is cooled by attaching 4-cm-long aluminum pin fins of square cross section (2 mm × 2 mm, <em>k</em> = 237 W/m·K). The surrounding air is at 25°C with a convection heat transfer coefficient of <em>h</em> = 20 W/m²·K. The board surface temperature must not exceed 85°C. Design a finned surface with an overa
+--------------------------------------------------
+Title: Example 3–18: The R-Value of a Wood Frame Wall
+Has Fig early: False
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–18: The R-Value of a Wood Frame Wall</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+The overall unit thermal resistance (R-value) and the overall heat transfer coefficient (U-factor) of a wood frame wall of a house are to be determined. The wall construction consists of 13-mm-thick wood siding, 13-mm-thick fiberboard sheathing, a 90-mm-thick cavity filled with fiberglass insulation between 38-mm &times; 90-mm wood studs spaced 400
+--------------------------------------------------
+Title: Example 3–19: The R-Value of a Wall with Rigid Foam
+Has Fig early: False
+Has Sol: True
+First 500 chars:
+
+<div class="example-header"><h3>Example 3–19: The R-Value of a Wall with Rigid Foam</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Determine the overall R-value of the wood frame wall in Example 3–18 if the 13-mm-thick fiberboard sheathing (R = 0.23 m&sup2;&middot;&deg;C/W) is replaced by 25-mm-thick rigid foam insulation board with an R-value of 0.98 m&sup2;&middot;&deg;C/W. Also determine the percentage increase in the overall thermal resistance of the wall and the new 
+--------------------------------------------------

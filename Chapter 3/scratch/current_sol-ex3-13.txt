@@ -1,0 +1,53 @@
+id="sol-ex3-13"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{board} = (0.15)(0.20) = 0.03\;m^2\)</span>
+<span>\(L = 0.04\;m\)</span>
+<span>\(a = 0.002\;m\) (square side)</span>
+<span>\(k = 237\;W/m\cdot K\)</span>
+<span>\(h = 20\;W/m^2\cdot K\)</span>
+<span>\(T_b = 85°C,\;T_\infty = 25°C\)</span>
+<span>\(\varepsilon_{fin,overall} = 3\) (required)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Fin parameter \(m\) and product \(mL\):
+<br>For a pin fin of square cross section (\(a \times a\)):
+\[ p = 4a = 4(0.002) = 0.008\;m, \qquad A_c = a^2 = (0.002)^2 = 4 \times 10^{-6}\;m^2 \]
+\[ m = \sqrt{\frac{hp}{kA_c}} = \sqrt{\frac{4h}{ka}} = \sqrt{\frac{4(20)}{(237)(0.002)}} = \sqrt{\frac{80}{0.474}} = 12.99\;m^{-1} \]
+\[ mL = (12.99\;m^{-1})(0.04\;m) = 0.5196 \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Individual fin efficiency (assuming adiabatic tip):
+\[ \eta_{fin} = \frac{\tanh(mL)}{mL} = \frac{\tanh(0.5196)}{0.5196} = \frac{0.4774}{0.5196} = 0.919 \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Areas per fin:
+<br>Surface area of one fin:
+\[ A_{fin} = p L = 4(0.002)(0.04) = 3.2 \times 10^{-4}\;m^2 \]
+Base area occupied by one fin:
+\[ A_b = a^2 = (0.002)^2 = 4 \times 10^{-6}\;m^2 \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Heat transfer rates without fins and with \(n\) fins:
+<br>Without fins:
+\[ \dot{Q}_{no\;fin} = h A_{board} (T_b - T_\infty) = (20)(0.03)(85 - 25) = 36\;W \]
+With \(n\) fins attached:
+\[ A_{unfin} = A_{board} - n A_b = 0.03 - 4 \times 10^{-6} n \]
+\[ \dot{Q}_{total} = h \left( A_{unfin} + \eta_{fin} A_{fin} \right) (T_b - T_\infty) \]
+\[ \dot{Q}_{total} = (20)(60)\left[ (0.03 - 4 \times 10^{-6} n) + (0.919)(3.2 \times 10^{-4} n) \right] \]
+\[ \dot{Q}_{total} = 1200\left[ 0.03 + 2.9008 \times 10^{-4} n \right] = 36 + 0.3481\,n \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+Determine the number of fins \(n\) from required \(\varepsilon_{fin,overall} = 3\):
+\[ \varepsilon_{fin,overall} = \frac{\dot{Q}_{total}}{\dot{Q}_{no\;fin}} = \frac{36 + 0.3481\,n}{36} = 3 \]
+\[ 36 + 0.3481\,n = 3 \times 36 = 108 \]
+\[ 0.3481\,n = 108 - 36 = 72 \]
+\[ n = \frac{72}{0.3481} \approx 206.8 \approx 207\;\text{fins} \]
+</div></div>
+</div>
+<div
+...

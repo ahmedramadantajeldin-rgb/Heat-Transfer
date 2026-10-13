@@ -1,0 +1,625 @@
+<!-- ==================== SECTION 12 ==================== -->
+<section class="section" id="sec12">
+<div class="section-header">
+<div class="section-icon">📏</div>
+<div class="section-titles">
+<h2>Fin Effectiveness, Performance &amp; Design</h2>
+<span class="section-sub">§ 3-6 — Fin Effectiveness, Proper Length, Heat Sinks</span>
+</div>
+<button class="task-check" data-task="sec12" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">12</span></span>
+</button>
+</div>
+
+<p>عند إضافة زعانف (<span class="term">fins</span>) إلى سطح ما لتعزيز انتقال الحرارة، فإن الزعنفة بحد ذاتها تمثل مقاومة حرارية إضافية بالتوصيل (<span class="term">conduction resistance</span>) مقارنة بالقاعدة الأصلية. لذا، فإن إضافة الزعانف لا تضمن دائمًا زيادة في معدل انتقال الحرارة! لتقييم الأداء الحقيقي للزعنفة وتحديد ما إذا كان استخدامها مبررًا من الناحية الهندسية والاقتصادية، نستخدم مقياسًا أساسيًا يُعرف بـ <strong>فعالية الزعنفة (<span class="term">Fin Effectiveness</span>)</strong>.</p>
+
+<!-- ==================== 1. FIN EFFECTIVENESS DEFINITION ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Fin Effectiveness — Definition and Derivation</h3>
+
+<div class="def-box">
+<div class="box-title">📌 Fin Effectiveness</div>
+<p><span class="en">Fin effectiveness is defined as the ratio of the heat transfer rate from the fin to the heat transfer rate that would occur from the same base area without the fin:</span></p>
+\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{no\;fin}} = \frac{\dot{Q}_{fin}}{h A_b (T_b - T_\infty)} \tag{3-78} \]
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-45.png" alt="Figure 3-45: Fin effectiveness concept illustration">
+<div class="fig-caption">Figure 3–45: The fin effectiveness \(\varepsilon_{fin}\) is a measure of the heat transfer enhancement provided by the fin.</div>
+</div>
+
+<p>حيث تمثل \(A_b\) مساحة مقطع قاعدة الزعنفة (<span class="term">base cross-sectional area</span>)، و\(T_b\) درجة حرارة القاعدة، و\(T_\infty\) درجة حرارة المائع المحيط، و\(h\) معامل انتقال الحرارة بالحمل على السطح الأصلي. ومعدل انتقال الحرارة من القاعدة بدون وجود الزعنفة هو:</p>
+
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{no\;fin} = h A_b (T_b - T_\infty) \]
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Physical Significance of Fin Effectiveness</h3>
+<p>تعطي قيمة الفعالية \(\varepsilon_{fin}\) دلالة فيزيائية وهندسية واضحة لأداء الزعنفة:</p>
+
+<ul>
+<li><strong>\(\varepsilon_{fin} = 1\):</strong> وجود الزعنفة لا يغير معدل انتقال الحرارة على الإطلاق؛ فالسطح المغطى بقاعدة الزعنفة كان سينقل نفس كمية الحرارة مباشرة بالحمل الحراري إلى المائع (<span class="term">no improvement</span>).</li>
+<li><strong>\(\varepsilon_{fin} < 1\):</strong> الزعنفة تعمل كعازل حراري (<span class="term">fin acts as an insulator</span>) وتقلل انتقال الحرارة بدلاً من زيادته! يحدث هذا عندما تُصنع الزعنفة من مادة ذات موصلية حرارية منخفضة جدًا (\(k\) صغير)، فتكون مقاومتها بالتوصيل أكبر من أي فائدة لزيادة المساحة السطحية.</li>
+<li><strong>\(\varepsilon_{fin} > 1\):</strong> الزعنفة تعزز انتقال الحرارة (<span class="term">fin enhances heat transfer</span>)، وهو الهدف الهندسي المطلوب من تركيبها.</li>
+</ul>
+
+<div class="insight-box">
+<div class="insight-title">💡 Practical and Economic Justification</div>
+<p>في التطبيقات الهندسية العملية، لا يكفي مجرد تحقيق \(\varepsilon_{fin} > 1\)، بل يُشترط أن تكون الفعالية <strong>مرتفعة بدرجة كافية</strong> (عادة \(\varepsilon_{fin} \ge 2\) كحد أدنى، وتصل في تصميمات كثيرة إلى 5 أو 10 أو أكثر) لتبرير تكلفة تصنيع وتركيب الزعانف، والوزن الإضافي للمنظومة، ومقاومة سريان المائع الناتجة عنها.</p>
+</div>
+
+<!-- ==================== 2. RELATIONSHIP BETWEEN EFFICIENCY AND EFFECTIVENESS ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Relationship Between Efficiency and Effectiveness</h3>
+
+<p>ترتبط كفاءة الزعنفة (\(\eta_{fin}\)) بفعاليتها (\(\varepsilon_{fin}\)) ارتباطًا وثيقًا، ولكن لكل منهما معنى فيزيائي مختلف: فالكفاءة تقارن أداء الزعنفة الفعلي بأقصى أداء مثالي لنفس الزعنفة عند ثبوت درجة حرارتها عند \(T_b\)، بينما الفعالية تقارن أداء الزعنفة الفعلي بالسطح الأملس بدون زعنفة.</p>
+
+<div class="formula-box">
+<div class="box-label">Efficiency–Effectiveness Relation — Eq. 3-79</div>
+\[ \varepsilon_{fin} = \eta_{fin} \frac{A_{fin}}{A_b} \tag{3-79} \]
+</div>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-eta-eps"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-eta-eps"><div class="deriv-inner">
+<div class="solution-steps">
+<div class="step"><div class="step-num">1</div><div class="step-content">
+From the definition of fin efficiency \(\eta_{fin}\), the actual heat transfer rate from the fin is:
+\[ \dot{Q}_{fin} = \eta_{fin} \dot{Q}_{fin,max} = \eta_{fin} h A_{fin} (T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+The heat transfer rate that would occur from the base area without the fin is:
+\[ \dot{Q}_{no\;fin} = h A_b (T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Substitute both expressions into the definition of fin effectiveness (Eq. 3-78):
+\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{no\;fin}} = \frac{\eta_{fin} h A_{fin} (T_b - T_\infty)}{h A_b (T_b - T_\infty)} \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Canceling \(h(T_b - T_\infty)\) from both numerator and denominator yields:
+\[ \varepsilon_{fin} = \eta_{fin} \frac{A_{fin}}{A_b} \tag{3-79} \]
+</div></div>
+</div>
+</div></div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Efficiency vs. Effectiveness Interplay</div>
+<p>توضح Eq. 3-79 أن فعالية الزعنفة تعتمد على عاملين رئيسيين: كفاءتها (\(\eta_{fin}\))، ونسبة المساحة السطحية للزعنفة إلى مساحة قاعدتها (\(A_{fin}/A_b\)). ولذلك، <strong>انخفاض كفاءة الزعنفة لا يعني بالضرورة أنها غير فعالة!</strong> فعلى سبيل المثال، قد تكون كفاءة الزعنفة منخفضة نسبيًا مثل \(\eta_{fin} = 0.5\)، لكن نسبة المساحة كبيرة جدًا مثل \(A_{fin}/A_b = 30\)، فتكون الفعالية الناتجة \(\varepsilon_{fin} = 0.5 \times 30 = 15\)، وهو تعزيز هائل لانتقال الحرارة بمقدار 15 ضعفًا.</p>
+</div>
+
+<!-- ==================== 3. EFFECTIVENESS OF A LONG FIN ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Effectiveness of a Sufficiently Long Fin</h3>
+
+<p>في حالة الزعنفة الطويلة جدًا ذات المقطع المنتظم (\(A_b = A_c\))، تنخفض درجة الحرارة تدريجيًا حتى تصل إلى \(T_\infty\) عند طرف الزعنفة. باشتقاق نسبة انتقال الحرارة نحصل على علاقة تعبر عن الفعالية بدلالة الخواص الهندسية والفيزيائية للزعنفة:</p>
+
+<div class="formula-box">
+<div class="box-label">Effectiveness of an Infinitely Long Fin — Eq. 3-80</div>
+\[ \varepsilon_{long\;fin} = \sqrt{\frac{k p}{h A_c}} \tag{3-80} \]
+</div>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-eps-long"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-eps-long"><div class="deriv-inner">
+<div class="solution-steps">
+<div class="step"><div class="step-num">1</div><div class="step-content">
+The heat transfer rate from an infinitely long fin with uniform cross section is:
+\[ \dot{Q}_{long\;fin} = \sqrt{h p k A_c}\,(T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+The heat transfer from the bare base area in the absence of the fin (noting that \(A_b = A_c\)) is:
+\[ \dot{Q}_{no\;fin} = h A_b (T_b - T_\infty) = h A_c (T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Dividing \(\dot{Q}_{long\;fin}\) by \(\dot{Q}_{no\;fin}\) to find the effectiveness:
+\[ \varepsilon_{long\;fin} = \frac{\dot{Q}_{long\;fin}}{\dot{Q}_{no\;fin}} = \frac{\sqrt{h p k A_c}\,(T_b - T_\infty)}{h A_c (T_b - T_\infty)} = \frac{\sqrt{h p k A_c}}{h A_c} \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Entering the denominator inside the square root:
+\[ \varepsilon_{long\;fin} = \sqrt{\frac{h p k A_c}{(h A_c)^2}} = \sqrt{\frac{h p k A_c}{h^2 A_c^2}} = \sqrt{\frac{k p}{h A_c}} \tag{3-80} \]
+</div></div>
+</div>
+</div></div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Design Conclusions from Eq. 3-80</div>
+<p>تقدم المعادلة (3-80) ثلاثة مبادئ هندسية جوهرية لتصميم واختيار الزعانف:</p>
+<ol>
+<li><strong>الموصلية الحرارية العالية للمادة (<span class="term">High \(k\)</span>):</strong> تتناسب الفعالية طرديًا مع \(\sqrt{k}\). لذلك تُصنع الزعانف من معادن ذات موصلية عالية كالنحاس (<span class="term">Copper</span>) والألمنيوم (<span class="term">Aluminum</span>) والحديد. ويُعد <strong>الألمنيوم</strong> الخيار الأكثر شيوعًا وتفضيلاً في الصناعة بفضل خفة وزنه، وانخفاض تكلفته، ومقاومته الممتازة للتآكل، وسهولة تشكيله.</li>
+<li><strong>نسبة محيط إلى مساحة مقطع عالية (<span class="term">High \(p/A_c\)</span>):</strong> تتناسب الفعالية طرديًا مع \(\sqrt{p/A_c}\). لذا يفضل استخدام زعانف نحيفة ورقيقة، مثل الصفائح الرقيقة (<span class="term">thin plate fins</span>) أو الزعانف الإبرية الرفيعة (<span class="term">slender pin fins</span>).</li>
+<li><strong>معامل انتقال الحرارة بالحمل المنخفض (<span class="term">Low \(h\)</span>):</strong> تتناسب الفعالية عكسيًا مع \(\sqrt{h}\)؛ أي أن الزعانف تكون أكثر فائدة وجدوى هندسية عندما يكون \(h\) صغيرًا! وينتج عن ذلك:
+  <ul>
+  <li>تكون الزعانف أكثر فاعلية عند التبريد بواسطة الغازات (<span class="term">gases</span>) مقارنة بالسوائل (<span class="term">liquids</span>)، لأن معامل الحمل للغازات أقل بكثير.</li>
+  <li>تكون الزعانف أكثر فاعلية في الحمل الحر الطبيعي (<span class="term">natural convection</span>) مقارنة بالحمل القسري (<span class="term">forced convection</span>).</li>
+  <li>في مشعات السيارات (<span class="term">car radiators</span>)، تُثبت الزعانف على الجانب المعرض للهواء (حيث \(h\) منخفض)، بينما لا توجد حاجة لوضع زعانف داخل أنابيب سائل التبريد (حيث \(h\) مرتفع جدًا).</li>
+  </ul>
+</li>
+</ol>
+</div>
+
+<!-- ==================== 4. HEAT TRANSFER FROM A FINNED SURFACE ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Heat Transfer from a Finned Surface</h3>
+
+<p>في التطبيقات العملية، لا تُستخدم زعنفة واحدة منفردة، بل يتم تزويد السطح بمصفوفة كاملة من الزعانف (<span class="term">array of fins</span>). ينقسم السطح الكلي المعرض للمائع حينئذٍ إلى قسمين:</p>
+
+<ul>
+<li><strong>مساحة أسطح الزعانف (<span class="term">Fin surface area, \(A_{fin}\)</span>):</strong> المساحة السطحية الكلية لجميع الزعانف الملحقة بالسطح. إذا كان هناك \(n\) زعنفة متماثلة، فالمساحة تكون \(A_{fin} = n \cdot A_{one\;fin}\).</li>
+<li><strong>المساحة غير المزخرفة من القاعدة (<span class="term">Unfinned prime area, \(A_{unfin}\)</span>):</strong> المساحة المكشوفة المتبقية من سطح القاعدة بين الزعانف المعرضة مباشرة للمائع. وتُحسب بطرح مساحة القواعد التي تشغلها الزعانف من مساحة السطح الأصلية:
+\[ A_{unfin} = A_{no\;fin} - n A_b \]</li>
+<li><strong>المساحة الأصلية بدون زعانف (<span class="term">Prime area without fins, \(A_{no\;fin}\)</span>):</strong> المساحة السطحية الكلية لجدار القاعدة الأملس قبل تركيب أي زعانف عليه.</li>
+</ul>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-46.png" alt="Figure 3-46: Heat transfer from a finned surface">
+<div class="fig-caption">Figure 3–46: Various surface areas associated with a finned surface — fins plus unfinned prime surface area.</div>
+</div>
+
+<p>معدل انتقال الحرارة الكلي من السطح المزعنف هو مجموع الحرارة المنتقلة من المساحة المكشوفة غير المزعنفة والحرارة المنتقلة من جميع الزعانف:</p>
+
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{total,fin} = \dot{Q}_{unfin} + \dot{Q}_{fin} \]
+</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{unfin} = h A_{unfin} (T_b - T_\infty) \]
+</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{fin} = \eta_{fin} h A_{fin} (T_b - T_\infty) \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Total Heat Transfer from a Finned Surface — Eq. 3-81</div>
+\[ \dot{Q}_{total,fin} = h \left( A_{unfin} + \eta_{fin} A_{fin} \right) (T_b - T_\infty) \tag{3-81} \]
+</div>
+
+<!-- ==================== 5. OVERALL FIN EFFECTIVENESS ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Overall Fin Effectiveness</h3>
+
+<p>تُعرّف <strong>الفعالية الإجمالية للسطح المزعنف (<span class="term">Overall fin effectiveness, \(\varepsilon_{fin,overall}\)</span>)</strong> بأنها النسبة بين معدل انتقال الحرارة الكلي من السطح بعد تركيب الزعانف إلى معدل انتقال الحرارة من نفس السطح الأملس بدون زعانف:</p>
+
+<div class="equation-scroll" style="direction:ltr;">
+\[ \varepsilon_{fin,overall} = \frac{\dot{Q}_{total,fin}}{\dot{Q}_{total,no\;fin}} \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Overall Fin Effectiveness — Eq. 3-82</div>
+\[ \varepsilon_{fin,overall} = \frac{A_{unfin} + \eta_{fin} A_{fin}}{A_{no\;fin}} \tag{3-82} \]
+</div>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-eps-overall"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-eps-overall"><div class="deriv-inner">
+<div class="solution-steps">
+<div class="step"><div class="step-num">1</div><div class="step-content">
+From Eq. 3-81, the total heat transfer rate from the finned surface is:
+\[ \dot{Q}_{total,fin} = h \left( A_{unfin} + \eta_{fin} A_{fin} \right) (T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+The heat transfer rate from the entire base area without any fins is:
+\[ \dot{Q}_{total,no\;fin} = h A_{no\;fin} (T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Dividing \(\dot{Q}_{total,fin}\) by \(\dot{Q}_{total,no\;fin}\):
+\[ \varepsilon_{fin,overall} = \frac{h \left( A_{unfin} + \eta_{fin} A_{fin} \right) (T_b - T_\infty)}{h A_{no\;fin} (T_b - T_\infty)} \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Canceling the common term \(h (T_b - T_\infty)\) yields:
+\[ \varepsilon_{fin,overall} = \frac{A_{unfin} + \eta_{fin} A_{fin}}{A_{no\;fin}} \tag{3-82} \]
+</div></div>
+</div>
+</div></div>
+
+<div class="note-box">
+<div class="note-title">📝 Factors Influencing Overall Effectiveness</div>
+<p>تعتمد الفعالية الإجمالية على عاملين أساسيين:</p>
+<ul>
+<li><strong>كثافة الزعانف (<span class="term">Fin density</span>):</strong> عدد الزعانف في وحدة المساحة أو الطول. زيادة عدد الزعانف تزيد المساحة السطحية الكلية \(A_{fin}\).</li>
+<li><strong>كفاءة الزعنفة الفردية (\(\eta_{fin}\)):</strong> التي تعتمد على هندسة الزعنفة وطولها ومادتها.</li>
+</ul>
+<p>لكن يجب الحذر من تقريب الزعانف أكثر من اللازم، لأن المسافات شديدة الضيق قد تؤدي لتداخل الطبقات الجدارية وإعاقة حركة المائع، مما يؤدي لانخفاض حاد في \(h\).</p>
+</div>
+
+<!-- ==================== 6. PROPER LENGTH OF A FIN ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Proper Length of a Fin</h3>
+
+<p>تنخفض درجة الحرارة على طول الزعنفة انخفاضًا أسيًا (<span class="term">exponential decay</span>) وتقترب تدريجيًا من درجة حرارة المائع المحيط \(T_\infty\). بعد مسافة معينة من القاعدة، يصبح فرق درجات الحرارة \((T - T_\infty)\) ضئيلًا للغاية، مما يعني أن الجزء البعيد الإضافي من الزعنفة يكاد لا يساهم بأي قدر ملموس في تبديد الحرارة.</p>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-47.png" alt="Figure 3-47: Temperature distribution along a fin">
+<div class="fig-caption">Figure 3–47: Temperature distribution along a fin — exponential decay of temperature with distance from the base.</div>
+</div>
+
+<p>تُعطى النسبة بين معدل انتقال الحرارة لزعنفة حقيقية ذات طول محدد \(L\) (مع فرض طرف معزول) إلى معدل انتقال الحرارة لزعنفة لانهائية الطول بنفس المقطع بالعلاقة:</p>
+
+<div class="formula-box">
+<div class="box-label">Finite vs. Infinite Fin Heat Transfer Ratio — Eq. 3-83</div>
+\[ \frac{\dot{Q}_{fin}}{\dot{Q}_{long\;fin}} = \tanh(mL) \tag{3-83} \]
+</div>
+
+<p>يبين الجدول التالي قيم الدالة الزائدية \(\tanh(mL)\) ونسبة الأداء المحقق مقارنة بالحد الأقصى النظري (\(\dot{Q}_{long\;fin}\)):</p>
+
+<div class="analogy-box num-table-box">
+<div class="table-wrapper">
+<table class="num-table">
+<thead>
+<tr>
+<th>\(mL\)</th>
+<th>\(\tanh(mL)\)</th>
+<th>% of Maximum Heat Transfer</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>0.1</td><td>0.100</td><td>10.0%</td></tr>
+<tr><td>0.5</td><td>0.462</td><td>46.2%</td></tr>
+<tr><td>1.0</td><td>0.762</td><td>76.2%</td></tr>
+<tr><td>1.5</td><td>0.905</td><td>90.5%</td></tr>
+<tr><td>2.0</td><td>0.964</td><td>96.4%</td></tr>
+<tr><td>2.5</td><td>0.987</td><td>98.7%</td></tr>
+<tr><td>3.0</td><td>0.995</td><td>99.5%</td></tr>
+<tr><td>5.0</td><td>1.000</td><td>100.0%</td></tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Practical Guidelines for Fin Length</div>
+<ul>
+<li><strong>\(mL \approx 1\):</strong> الزعنفة تنقل 76.2% من أقصى انتقال حرارة ممكن. يُعد هذا الاختيار هو <strong>الحل العملي الأمثل (<span class="term">good practical choice</span>)</strong>، حيث يحقق تسوية وتوازنًا ممتازين بين الأداء الحراري، والتكلفة، والوزن والمساحة المستغلة.</li>
+<li><strong>\(mL \approx 2.5\):</strong> الزعنفة تنقل 98.7% من الحد الأقصى. لاحظ أن تقليل طول الزعنفة إلى النصف (من \(mL = 5\) إلى \(mL = 2.5\)) يوفر 50% من مادة الزعنفة وتكلفتها ووزنها مع التنازل عن 1% فقط من قدرة التبريد!</li>
+<li><strong>\(mL \ge 5\):</strong> تتصرف الزعنفة عمليًا كزعنفة لانهائية الطول (<span class="term">practically infinite fin</span>) حيث \(\tanh(5) \approx 1\). أي زيادة في الطول تتجاوز \(L = 5/m\) لا تضيف أي فائدة حرارية تذكر.</li>
+</ul>
+</div>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ Hazards and Drawbacks of Extra-Long Fins</div>
+<p>الزعانف الطويلة جدًا لا تؤدي فقط إلى هدر غير مبرر في المواد (<span class="term">material waste</span>) وزيادة الوزن والتكلفة، بل قد تعيق حركة المائع الطبيعية بين الزعانف المتقاربة (<span class="term">suppress fluid motion</span>)، مما يؤدي إلى خفض معامل الحمل \(h\) وتدهور انتقال الحرارة بدلاً من تحسينه.</p>
+</div>
+
+<!-- ==================== 7. ONE-DIMENSIONAL VALIDITY ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">One-Dimensional Heat Transfer Validity</h3>
+
+<p>اعتمدت جميع التحليلات الرياضية السابقة على فرضية أن انتقال الحرارة يتم في اتجاه واحد فقط على طول الزعنفة (\(x\))، مع إهمال التغير في درجة الحرارة عبر سُمك الزعنفة أو قطرها. يكون هذا التحليل أحادي البعد (<span class="term">1-D approximation</span>) دقيقًا للغاية والخطأ فيه أقل من 1% عندما يتحقق المعيار التالي:</p>
+
+<div class="formula-box">
+<div class="box-label">1-D Approximation Validity Criterion</div>
+\[ \frac{h d}{k} < 0.2 \]
+</div>
+
+<p>حيث يمثل \(d\) البُعد المميز لسُمك الزعنفة (<span class="term">characteristic thickness</span>):</p>
+<ul>
+<li>\(d = t\) (السُمك) في الزعانف المستطيلة واللوحية (<span class="term">rectangular fins</span>).</li>
+<li>\(d = D\) (القطر) في الزعانف الدائرية والأسطوانية (<span class="term">cylindrical pin fins</span>).</li>
+</ul>
+<p>هذا المعيار مشابه لعدد بيوت (<span class="term">Biot number</span>)، وهو يتحقق عمليًا في جميع الزعانف المعدنية الرقيقة المصنوعة من مواد عالية الموصلية كالنحاس والألمنيوم.</p>
+
+<!-- ==================== 8. HEAT SINKS AND THERMAL RESISTANCE ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Heat Sinks and Thermal Resistance</h3>
+
+<p>المشتتات الحرارية (<span class="term">Heat Sinks</span>) هي أسطح مزعنفة متخصصة مصممة ومجهزة لتبريد المكونات الإلكترونية الدقيقة مثل المعالجات الرقمية وترانزستورات القدرة (<span class="term">power transistors</span>). يُعبر المصنعون والمهندسون عن أداء المشتت بدلالة <strong>المقاومة الحرارية (<span class="term">Thermal Resistance</span>)</strong> بين قاعدة المشتت والوسط المحيط:</p>
+
+<div class="formula-box">
+<div class="box-label">Heat Sink Thermal Resistance — Eq. 3-84</div>
+\[ R = \frac{T_b - T_\infty}{\dot{Q}_{fin}} = \frac{1}{\eta_{fin} h A_{fin}} \tag{3-84} \]
+</div>
+
+<p>وبمعرفة المقاومة الحرارية للمشتت، يُحسب معدل تبديد الحرارة ببساطة من قانون أوم الحراري:</p>
+
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{fin} = \frac{T_b - T_\infty}{R} \]
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Thermal Resistance as a Performance Metric</div>
+<p>كلما كانت المقاومة الحرارية للمشتت \(R\) أصغر، كان أداؤه التبريدي أفضل وأعلى. فالمشتت ذو المقاومة الحرارية المنخفضة يسمح بتبديد قدرة حرارية أكبر عند نفس فرق درجات الحرارة، أو يحافظ على درجة حرارة المكون الإلكتروني منخفضة وآمنة عند نفس معدل توليد الحرارة.</p>
+</div>
+
+<!-- ==================== 9. EXAMPLES ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Worked Examples</h3>
+
+<!-- ===== EXAMPLE 3-12 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–12: Fins of Variable Cross Section (Parabolic Pin Fin)</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Aluminum pin fins of parabolic profile with blunt tips are attached to a plane wall at <em>T<sub>b</sub></em> = 200°C. Each fin has a length of <em>L</em> = 20 mm and a base diameter of <em>D</em> = 5 mm. The fins are exposed to ambient air at <em>T</em><sub>∞</sub> = 25°C with a convection heat transfer coefficient of <em>h</em> = 50 W/m²·K. The thermal conductivity of aluminum is <em>k</em> = 240 W/m·K. Determine: (1) the fin efficiency, (2) the heat transfer rate from a single fin, and (3) the fin effectiveness.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-49.png" alt="Figure 3-49: Parabolic pin fin with blunt tip">
+<div class="fig-caption">Figure 3–49: Parabolic pin fin with blunt tip attached to a plane wall (Example 3–12).</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-12"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-12"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(T_b = 200°C\)</span>
+<span>\(T_\infty = 25°C\)</span>
+<span>\(L = 20\;mm = 0.020\;m\)</span>
+<span>\(D = 5\;mm = 0.005\;m\)</span>
+<span>\(h = 50\;W/m^2\cdot K\)</span>
+<span>\(k = 240\;W/m\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Calculate the fin parameter product \(mL\):
+<br>For a parabolic pin fin with blunt tip (Table 3–3):
+\[ mL = L\sqrt{\frac{4h}{kD}} = 0.020\sqrt{\frac{4(50)}{(240)(0.005)}} = 0.020\sqrt{\frac{200}{1.20}} = 0.020 \times 12.91 = 0.2582 \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Fin surface area \(A_{fin}\):
+<br>From geometric relations for parabolic pin fins in Table 3–3:
+\[ A_{fin} = 2.106 \times 10^{-4}\;m^2 \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Calculate the fin efficiency \(\eta_{fin}\) using modified Bessel functions:
+<br>From Table 3–3 for this parabolic profile:
+\[ \eta_{fin} = \frac{3}{2(mL)} \frac{I_1\left(\frac{4}{3}mL\right)}{I_0\left(\frac{4}{3}mL\right)} \]
+The argument for the Bessel functions is:
+\[ \frac{4}{3} mL = \frac{4}{3}(0.2582) = 0.3443 \]
+From tables of modified Bessel functions:
+\[ I_0(0.3443) \approx 1.0350 \qquad I_1(0.3443) \approx 0.1716 \]
+Substituting these values:
+\[ \eta_{fin} = \frac{3}{2(0.2582)} \frac{0.1716}{1.0350} = 5.81 \times \frac{0.1716}{1.0350} = 0.963 \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Heat transfer rate from a single fin:
+\[ \dot{Q}_{fin} = \eta_{fin} h A_{fin} (T_b - T_\infty) = (0.963)(50\;W/m^2\cdot K)(2.106 \times 10^{-4}\;m^2)(200 - 25)°C = 1.77\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+Calculate the fin effectiveness \(\varepsilon_{fin}\):
+<br>The base area of the pin fin is:
+\[ A_b = \frac{\pi D^2}{4} = \frac{\pi (0.005\;m)^2}{4} = 1.9635 \times 10^{-5}\;m^2 \]
+The heat transfer from this base area without the fin:
+\[ \dot{Q}_{no\;fin} = h A_b (T_b - T_\infty) = (50)(1.9635 \times 10^{-5})(175) = 0.1718\;W \]
+Therefore:
+\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{no\;fin}} = \frac{1.77\;W}{0.1718\;W} \approx 10.3 \]
+<br>Alternatively, using Eq. 3-79:
+\[ \varepsilon_{fin} = \eta_{fin} \frac{A_{fin}}{A_b} = (0.963) \frac{2.106 \times 10^{-4}}{1.9635 \times 10^{-5}} \approx 10.3 \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \eta_{fin} = 0.963 \qquad \dot{Q}_{fin} = 1.77\;W \qquad \varepsilon_{fin} \approx 10.3 \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>تحقق هذه الزعنفة زيادة مقدارها <strong>10 أضعاف تقريبًا (10-fold increase)</strong> في معدل انتقال الحرارة مقارنة بمساحة القاعدة غير المزودة بزعنفة. وعند استخدام برنامج <span class="term">EES</span> لحساب قيم دوال بيسل بدقة دون الحاجة للاستيفاء الخطي من الجداول، نحصل على \(\eta_{fin} = 0.9855\) (أعلى بنحو 2% فقط من قيمة الجداول التقريبية).</p>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-10 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–10: Maximum Power Dissipation of a Transistor</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A power transistor has a maximum power rating of 10 W, and its case-to-ambient thermal resistance is <em>R</em><sub>case-ambient</sub> = 20°C/W. If the case temperature is not to exceed 85°C, determine the maximum power at which the transistor can be operated safely in an environment at 25°C.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-48.png" alt="Figure 3-48: Transistor thermal resistance model">
+<div class="fig-caption">Figure 3–48: Transistor thermal resistance model (Example 3–10).</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-10"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-10"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(T_c \le 85°C\)</span>
+<span>\(T_\infty = 25°C\)</span>
+<span>\(R_{case-ambient} = 20\;°C/W\)</span>
+<span>\(\dot{W}_{rating} = 10\;W\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+From the thermal resistance model between the transistor case and ambient air:
+\[ \dot{Q} = \frac{T_c - T_\infty}{R_{case-ambient}} = \frac{85 - 25}{20} = \frac{60}{20} = 3\;W \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q}_{max} = 3\;W \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>يجب ألا يعمل الترانزستور عند قدرة تتجاوز 3 W في هذه الظروف لتجنب تجاوز درجة حرارة الغلاف \(85°C\)، وهي أقل بكثير من قدرته القصوى المصنفة (10 W). ولتشغيل الترانزستور عند مستويات قدرة أعلى تقترب من 10 W بأمان، يجب خفض المقاومة الحرارية بإضافة مشتت حراري (<span class="term">heat sink</span>) أو استخدام مروحة تبريد (<span class="term">cooling fan</span>) لزيادة معامل الحمل \(h\).</p>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-11 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–11: Selecting a Heat Sink for a Transistor</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 60-W power transistor is to be cooled by attaching it to one of the commercially available heat sinks listed in Table 3–6. Select a heat sink that keeps the case temperature from exceeding 90°C when the ambient air is at 30°C.
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-11"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-11"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(\dot{Q} = 60\;W\)</span>
+<span>\(T_c \le 90°C\)</span>
+<span>\(T_\infty = 30°C\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Calculate the maximum allowable thermal resistance:
+<br>The maximum allowable temperature difference is:
+\[ \Delta T = T_c - T_\infty = 90°C - 30°C = 60°C \]
+The required thermal resistance is:
+\[ R = \frac{\Delta T}{\dot{Q}} = \frac{60°C}{60\;W} = 1.0\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Heat sink selection:
+<br>To maintain the case temperature at or below 90°C, the selected heat sink must satisfy:
+\[ R < 1.0\;°C/W \]
+From Table 3–6 of standard commercial heat sinks:
+<br>The <strong>HS 5030</strong> heat sink provides \(R = 0.9\;°C/W\) in vertical orientation ✓.
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+<p style="direction:ltr;text-align:center;">Select <strong>HS 5030</strong> heat sink (\(R = 0.9\;°C/W\), vertical orientation)</p>
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>المشتت الحراري HS 5030 ذو المقاومة \(0.9\;°C/W\) سيحافظ على درجة حرارة الغلاف عند: \(T_c = T_\infty + \dot{Q}R = 30 + (60)(0.9) = 84°C\)، وهي أقل بـ 6 درجات مئوية من الحد الأقصى المسموح به (\(90°C\))، مما يوفر هامش أمان ممتاز وموثوقية عالية أثناء التشغيل المستمر.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-13 ===== -->
+<div class="example-card">
+<div class="example-header"><h3>Example 3–13: Preventing Circuit Board Overheating</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 15 cm × 20 cm integrated circuit board is cooled by attaching 4-cm-long aluminum pin fins of square cross section (2 mm × 2 mm, <em>k</em> = 237 W/m·K). The surrounding air is at 25°C with a convection heat transfer coefficient of <em>h</em> = 20 W/m²·K. The board surface temperature must not exceed 85°C. Design a finned surface with an overall effectiveness of 3, and determine the appropriate number of fins needed.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-50.png" alt="Figure 3-50: Circuit board with pin fins">
+<div class="fig-caption">Figure 3–50: Circuit board cooled by an array of aluminum pin fins (Example 3–13).</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-13"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-13"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{board} = (0.15)(0.20) = 0.03\;m^2\)</span>
+<span>\(L = 0.04\;m\)</span>
+<span>\(a = 0.002\;m\) (square side)</span>
+<span>\(k = 237\;W/m\cdot K\)</span>
+<span>\(h = 20\;W/m^2\cdot K\)</span>
+<span>\(T_b = 85°C,\;T_\infty = 25°C\)</span>
+<span>\(\varepsilon_{fin,overall} = 3\) (required)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Fin parameter \(m\) and product \(mL\):
+<br>For a pin fin of square cross section (\(a \times a\)):
+\[ p = 4a = 4(0.002) = 0.008\;m, \qquad A_c = a^2 = (0.002)^2 = 4 \times 10^{-6}\;m^2 \]
+\[ m = \sqrt{\frac{hp}{kA_c}} = \sqrt{\frac{4h}{ka}} = \sqrt{\frac{4(20)}{(237)(0.002)}} = \sqrt{\frac{80}{0.474}} = 12.99\;m^{-1} \]
+\[ mL = (12.99\;m^{-1})(0.04\;m) = 0.5196 \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Individual fin efficiency (assuming adiabatic tip):
+\[ \eta_{fin} = \frac{\tanh(mL)}{mL} = \frac{\tanh(0.5196)}{0.5196} = \frac{0.4774}{0.5196} = 0.919 \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Areas per fin:
+<br>Surface area of one fin:
+\[ A_{fin} = p L = 4(0.002)(0.04) = 3.2 \times 10^{-4}\;m^2 \]
+Base area occupied by one fin:
+\[ A_b = a^2 = (0.002)^2 = 4 \times 10^{-6}\;m^2 \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Heat transfer rates without fins and with \(n\) fins:
+<br>Without fins:
+\[ \dot{Q}_{no\;fin} = h A_{board} (T_b - T_\infty) = (20)(0.03)(85 - 25) = 36\;W \]
+With \(n\) fins attached:
+\[ A_{unfin} = A_{board} - n A_b = 0.03 - 4 \times 10^{-6} n \]
+\[ \dot{Q}_{total} = h \left( A_{unfin} + \eta_{fin} A_{fin} \right) (T_b - T_\infty) \]
+\[ \dot{Q}_{total} = (20)(60)\left[ (0.03 - 4 \times 10^{-6} n) + (0.919)(3.2 \times 10^{-4} n) \right] \]
+\[ \dot{Q}_{total} = 1200\left[ 0.03 + 2.9008 \times 10^{-4} n \right] = 36 + 0.3481\,n \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+Determine the number of fins \(n\) from required \(\varepsilon_{fin,overall} = 3\):
+\[ \varepsilon_{fin,overall} = \frac{\dot{Q}_{total}}{\dot{Q}_{no\;fin}} = \frac{36 + 0.3481\,n}{36} = 3 \]
+\[ 36 + 0.3481\,n = 3 \times 36 = 108 \]
+\[ 0.3481\,n = 108 - 36 = 72 \]
+\[ n = \frac{72}{0.3481} \approx 206.8 \approx 207\;\text{fins} \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ n_{fin} \approx 207\;\text{fins} \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>لتحقيق فعالية إجمالية قدرها 3 مع الحفاظ على درجة حرارة سطح لوحة الدوائر عند \(85°C\) أو أقل، نحتاج إلى تثبيت ما لا يقل عن 207 زعنفة على اللوحة. يمكن ترتيب هذه الزعانف في شبكة منتظمة مستطيلة من \(12 \times 18 = 216\) زعنفة. هذا التوزيع يترك مسافات بينية تبلغ حوالي 1 cm بين الزعانف، وهي كافية جدًا لمنع تداخل الطبقات الجدارية وضمان تدفق تيار الحمل الحر الطبيعي دون خنق.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ==================== 10. FINAL REVIEW TABLE ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Comprehensive Review of Fin Performance &amp; Design Formulas</h3>
+
+<div class="analogy-box num-table-box">
+<div class="table-wrapper">
+<table class="num-table">
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Relation / Formula</th>
+<th>Physical Meaning &amp; Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fin Effectiveness</strong></td>
+<td>\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{no\;fin}} = \frac{\dot{Q}_{fin}}{h A_b (T_b - T_\infty)} \]</td>
+<td class="td-label">يقارن معدل انتقال الحرارة مع وجود الزعنفة بمعدل انتقاله من نفس مساحة القاعدة بدونها. يحدد ما إذا كانت الزعنفة مبررة هندسيًا (\(\varepsilon_{fin} > 1\)).</td>
+</tr>
+<tr>
+<td><strong>Fin Efficiency</strong></td>
+<td>\[ \eta_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{fin,max}} = \frac{\dot{Q}_{fin}}{h A_{fin} (T_b - T_\infty)} \]</td>
+<td class="td-label">يقارن الأداء الفعلي بأقصى أداء مثالي ممكن لنفس الزعنفة إذا كان سطحها بالكامل عند درجة حرارة القاعدة \(T_b\).</td>
+</tr>
+<tr>
+<td><strong>Efficiency ↔ Effectiveness</strong></td>
+<td>\[ \varepsilon_{fin} = \eta_{fin} \frac{A_{fin}}{A_b} \]</td>
+<td class="td-label">يربط بين المقياسين ويوضح أن الزعنفة قد تكون عالية الفعالية رغم انخفاض كفاءتها إذا كانت نسبة المساحة السطحية للقاعدة كبيرة جدًا.</td>
+</tr>
+<tr>
+<td><strong>Long Fin Effectiveness</strong></td>
+<td>\[ \varepsilon_{long\;fin} = \sqrt{\frac{k p}{h A_c}} \]</td>
+<td class="td-label">يوضح تأثير الخصائص التصميمية: تفضيل \(k\) عالي (معادن كالألمنيوم)، ونسبة \(p/A_c\) مرتفعة (زعانف نحيفة)، وتفوق الزعانف عند انخفاض \(h\) (الغازات والحمل الحر).</td>
+</tr>
+<tr>
+<td><strong>Finned Surface Heat Transfer</strong></td>
+<td>\[ \dot{Q}_{total} = h\left(A_{unfin} + \eta_{fin} A_{fin}\right)(T_b - T_\infty) \]</td>
+<td class="td-label">يحسب معدل انتقال الحرارة الإجمالي لسطح كامل يحتوي على زعانف ومساحات مكشوفة بينها.</td>
+</tr>
+<tr>
+<td><strong>Overall Fin Effectiveness</strong></td>
+<td>\[ \varepsilon_{fin,overall} = \frac{A_{unfin} + \eta_{fin} A_{fin}}{A_{no\;fin}} \]</td>
+<td class="td-label">يقيم الجدوى الشاملة لتزويد السطح الكامل بالزعانف مقارنة بالسطح الأملس الأصلي قبل تركيب الزعانف.</td>
+</tr>
+<tr>
+<td><strong>Heat Transfer Ratio (Proper Length)</strong></td>
+<td>\[ \frac{\dot{Q}_{fin}}{\dot{Q}_{long\;fin}} = \tanh(mL) \]</td>
+<td class="td-label">يحدد الطول الاقتصادي المناسب للزعنفة؛ يوضح أن \(mL \approx 1\) يحقق 76.2% و \(mL = 2.5\) يحقق 98.7%، بينما زيادة الطول بعد \(mL = 5\) هدر غير مبرر للمواد.</td>
+</tr>
+<tr>
+<td><strong>One-Dimensional Validity</strong></td>
+<td>\[ \frac{h d}{k} < 0.2 \]</td>
+<td class="td-label">يضمن أن الخطأ الناتج عن إهمال التغير في درجات الحرارة عبر سُمك الزعنفة أقل من 1%.</td>
+</tr>
+<tr>
+<td><strong>Heat Sink Thermal Resistance</strong></td>
+<td>\[ R = \frac{T_b - T_\infty}{\dot{Q}_{fin}} = \frac{1}{\eta_{fin} h A_{fin}} \]</td>
+<td class="td-label">يقيس الأداء الحراري للمشتتات الحرارية في تبريد الإلكترونيات؛ كلما قلت \(R\) زادت قدرة المشتت على تفريغ الحرارة بكفاءة.</td>
+</tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+</section>
+<hr class="section-divider">

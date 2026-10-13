@@ -1,0 +1,35 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–6: Heat Loss through a Composite Wall</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 3-m-high and 5-m-wide wall consists of long 16 cm × 22 cm cross section horizontal bricks (<em>k</em> = 0.72 W/m·K) separated by 3-cm-thick plaster layers (<em>k</em> = 0.22 W/m·K). There are also 2-cm-thick plaster layers on each side of the brick and a 3-cm-thick rigid foam (<em>k</em> = 0.026 W/m·K) on the inner side. Indoor and outdoor temperatures are 20°C and −10°C with <em>h</em><sub>1</sub> = 10 and <em>h</em><sub>2</sub> = 25 W/m²·K. Assuming 1-D heat transfer and disregarding radiation, determine the rate of heat transfer through the wall.
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-21.png" alt="Figure 3-21: Composite wall cross section">
+<div class="fig-caption">Figure 3–21: Composite wall — representative section and resistance network</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-6"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-6"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{wall} = 15\;m^2\)</span>
+<span>\(k_{brick} = 0.72\)</span>
+<span>\(k_{plaster} = 0.22\)</span>
+<span>\(k_{foam} = 0.026\;W/m\cdot K\)</span>
+<span>Representative section: \(A = 0.25\;m^2\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<p style="direction:ltr;text-align:left;">The construction repeats every 25 cm vertically. Taking a representative section (\(A = 0.25\;m^2\)):</p>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Individual Resistances:
+\[ R_i = \frac{1}{(10)(0.25)} = 0.40\;°C/W \qquad R_1(foam) = \frac{0.03}{(0.026)(0.25)} = 4.62\;°C/W \]
+\[ R_2 = R_6(plaster,side) = \frac{0.02}{(0.22)(0.25)} = 0.36\;°C/W \]
+\[ R_3 = R_5(plaster,center) = \frac{0.16}{(0.22)(0.015)} = 48.48\;°C/W \]
+\[ R_4(brick) = \frac{0.16}{(0.72)(0.22)} = 1.01\;°C/W \qquad R_o = \frac{1}{(25)(0.25)} = 0.16\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div>

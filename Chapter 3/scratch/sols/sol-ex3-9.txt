@@ -1,0 +1,43 @@
+id="sol-ex3-9"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 1.5\;mm\)</span>
+<span>\(r_2 = 3.5\;mm\)</span>
+<span>\(\dot{Q} = VI = (8)(10) = 80\;W\)</span>
+<span>\(k = 0.15\;W/m\cdot K\)</span>
+<span>\(h = 12\;W/m^2\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\(A_2 = 2\pi(0.0035)(5) = 0.110\;m^2\)
+\[ R_{conv} = \frac{1}{(12)(0.110)} = 0.758\;°C/W \qquad R_{plastic} = \frac{\ln(3.5/1.5)}{2\pi(5)(0.15)} = 0.180\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_{total} = 0.758 + 0.180 = 0.938\;°C/W \]
+\[ T_1 = 30 + (80)(0.938) \approx 105°C \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Critical radius: \(r_{cr} = k/h = 0.15/12 = 12.5\;mm\). Since \(r_2 = 3.5\;mm < r_{cr}\), the wire is below critical radius.
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Doubling cover to 4 mm: \(T_1 \approx 90.6°C\). At \(r_2 = r_{cr} = 12.5\;mm\): \(T_{1,min} \approx 83°C\).
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ T_1 \approx 105°C \quad \text{(original)} \qquad T_1 \approx 90.6°C \quad \text{(doubled cover)} \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>بما أن \(r_2 < r_{cr}\)، فإن إضافة <span class="term">insulation</span> تزيد <span class="term">heat transfer</span> وتخفض درجة الحرارة — مفيد لسلامة الأسلاك الكهربائية! عند \(r_2 = r_{cr}\) تصل درجة الحرارة إلى أدنى مستوى (83°C تقريبًا).</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+...

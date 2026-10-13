@@ -1,0 +1,14 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–13: Preventing Circuit Board Overheating</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 15 cm × 20 cm integrated circuit board is cooled by attaching 4-cm-long aluminum pin fins of square cross section (2 mm × 2 mm, <em>k</em> = 237 W/m·K). The surrounding air is at 25°C with a convection heat transfer coefficient of <em>h</em> = 20 W/m²·K. The board surface temperature must not exceed 85°C. Design a finned surface with an overall effectiveness of 3, and determine the appropriate number of fins needed.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-50.png" alt="Figure 3-50: Circuit board with pin fins">
+<div class="fig-caption">Figure 3–50: Circuit board cooled by an array of aluminum pin fins (Example 3–13).</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class=
+...

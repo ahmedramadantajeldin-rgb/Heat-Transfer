@@ -1,0 +1,480 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–13: Preventing Circuit Board Overheating</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 15 cm × 20 cm integrated circuit board is cooled by attaching 4-cm-long aluminum pin fins of square cross section (2 mm × 2 mm, <em>k</em> = 237 W/m·K). The surrounding air is at 25°C with a convection heat transfer coefficient of <em>h</em> = 20 W/m²·K. The board surface temperature must not exceed 85°C. Design a finned surface with an overall effectiveness of 3, and determine the appropriate number of fins needed.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-50.png" alt="Figure 3-50: Circuit board with pin fins">
+<div class="fig-caption">Figure 3–50: Circuit board cooled by an array of aluminum pin fins (Example 3–13).</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-13"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-13"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{board} = (0.15)(0.20) = 0.03\;m^2\)</span>
+<span>\(L = 0.04\;m\)</span>
+<span>\(a = 0.002\;m\) (square side)</span>
+<span>\(k = 237\;W/m\cdot K\)</span>
+<span>\(h = 20\;W/m^2\cdot K\)</span>
+<span>\(T_b = 85°C,\;T_\infty = 25°C\)</span>
+<span>\(\varepsilon_{fin,overall} = 3\) (required)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Fin parameter \(m\) and product \(mL\):
+<br>For a pin fin of square cross section (\(a \times a\)):
+\[ p = 4a = 4(0.002) = 0.008\;m, \qquad A_c = a^2 = (0.002)^2 = 4 \times 10^{-6}\;m^2 \]
+\[ m = \sqrt{\frac{hp}{kA_c}} = \sqrt{\frac{4h}{ka}} = \sqrt{\frac{4(20)}{(237)(0.002)}} = \sqrt{\frac{80}{0.474}} = 12.99\;m^{-1} \]
+\[ mL = (12.99\;m^{-1})(0.04\;m) = 0.5196 \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Individual fin efficiency (assuming adiabatic tip):
+\[ \eta_{fin} = \frac{\tanh(mL)}{mL} = \frac{\tanh(0.5196)}{0.5196} = \frac{0.4774}{0.5196} = 0.919 \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Areas per fin:
+<br>Surface area of one fin:
+\[ A_{fin} = p L = 4(0.002)(0.04) = 3.2 \times 10^{-4}\;m^2 \]
+Base area occupied by one fin:
+\[ A_b = a^2 = (0.002)^2 = 4 \times 10^{-6}\;m^2 \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Heat transfer rates without fins and with \(n\) fins:
+<br>Without fins:
+\[ \dot{Q}_{no\;fin} = h A_{board} (T_b - T_\infty) = (20)(0.03)(85 - 25) = 36\;W \]
+With \(n\) fins attached:
+\[ A_{unfin} = A_{board} - n A_b = 0.03 - 4 \times 10^{-6} n \]
+\[ \dot{Q}_{total} = h \left( A_{unfin} + \eta_{fin} A_{fin} \right) (T_b - T_\infty) \]
+\[ \dot{Q}_{total} = (20)(60)\left[ (0.03 - 4 \times 10^{-6} n) + (0.919)(3.2 \times 10^{-4} n) \right] \]
+\[ \dot{Q}_{total} = 1200\left[ 0.03 + 2.9008 \times 10^{-4} n \right] = 36 + 0.3481\,n \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+Determine the number of fins \(n\) from required \(\varepsilon_{fin,overall} = 3\):
+\[ \varepsilon_{fin,overall} = \frac{\dot{Q}_{total}}{\dot{Q}_{no\;fin}} = \frac{36 + 0.3481\,n}{36} = 3 \]
+\[ 36 + 0.3481\,n = 3 \times 36 = 108 \]
+\[ 0.3481\,n = 108 - 36 = 72 \]
+\[ n = \frac{72}{0.3481} \approx 206.8 \approx 207\;\text{fins} \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ n_{fin} \approx 207\;\text{fins} \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>لتحقيق فعالية إجمالية قدرها 3 مع الحفاظ على درجة حرارة سطح لوحة الدوائر عند \(85°C\) أو أقل، نحتاج إلى تثبيت ما لا يقل عن 207 زعنفة على اللوحة. يمكن ترتيب هذه الزعانف في شبكة منتظمة مستطيلة من \(12 \times 18 = 216\) زعنفة. هذا التوزيع يترك مسافات بينية تبلغ حوالي 1 cm بين الزعانف، وهي كافية جدًا لمنع تداخل الطبقات الجدارية وضمان تدفق تيار الحمل الحر الطبيعي دون خنق.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ==================== 10. FINAL REVIEW TABLE ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Comprehensive Review of Fin Performance &amp; Design Formulas</h3>
+
+<div class="analogy-box num-table-box">
+<div class="table-wrapper">
+<table class="num-table">
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Relation / Formula</th>
+<th>Physical Meaning &amp; Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fin Effectiveness</strong></td>
+<td>\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{no\;fin}} = \frac{\dot{Q}_{fin}}{h A_b (T_b - T_\infty)} \]</td>
+<td class="td-label">يقارن معدل انتقال الحرارة مع وجود الزعنفة بمعدل انتقاله من نفس مساحة القاعدة بدونها. يحدد ما إذا كانت الزعنفة مبررة هندسيًا (\(\varepsilon_{fin} > 1\)).</td>
+</tr>
+<tr>
+<td><strong>Fin Efficiency</strong></td>
+<td>\[ \eta_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{fin,max}} = \frac{\dot{Q}_{fin}}{h A_{fin} (T_b - T_\infty)} \]</td>
+<td class="td-label">يقارن الأداء الفعلي بأقصى أداء مثالي ممكن لنفس الزعنفة إذا كان سطحها بالكامل عند درجة حرارة القاعدة \(T_b\).</td>
+</tr>
+<tr>
+<td><strong>Efficiency ↔ Effectiveness</strong></td>
+<td>\[ \varepsilon_{fin} = \eta_{fin} \frac{A_{fin}}{A_b} \]</td>
+<td class="td-label">يربط بين المقياسين ويوضح أن الزعنفة قد تكون عالية الفعالية رغم انخفاض كفاءتها إذا كانت نسبة المساحة السطحية للقاعدة كبيرة جدًا.</td>
+</tr>
+<tr>
+<td><strong>Long Fin Effectiveness</strong></td>
+<td>\[ \varepsilon_{long\;fin} = \sqrt{\frac{k p}{h A_c}} \]</td>
+<td class="td-label">يوضح تأثير الخصائص التصميمية: تفضيل \(k\) عالي (معادن كالألمنيوم)، ونسبة \(p/A_c\) مرتفعة (زعانف نحيفة)، وتفوق الزعانف عند انخفاض \(h\) (الغازات والحمل الحر).</td>
+</tr>
+<tr>
+<td><strong>Finned Surface Heat Transfer</strong></td>
+<td>\[ \dot{Q}_{total} = h\left(A_{unfin} + \eta_{fin} A_{fin}\right)(T_b - T_\infty) \]</td>
+<td class="td-label">يحسب معدل انتقال الحرارة الإجمالي لسطح كامل يحتوي على زعانف ومساحات مكشوفة بينها.</td>
+</tr>
+<tr>
+<td><strong>Overall Fin Effectiveness</strong></td>
+<td>\[ \varepsilon_{fin,overall} = \frac{A_{unfin} + \eta_{fin} A_{fin}}{A_{no\;fin}} \]</td>
+<td class="td-label">يقيم الجدوى الشاملة لتزويد السطح الكامل بالزعانف مقارنة بالسطح الأملس الأصلي قبل تركيب الزعانف.</td>
+</tr>
+<tr>
+<td><strong>Heat Transfer Ratio (Proper Length)</strong></td>
+<td>\[ \frac{\dot{Q}_{fin}}{\dot{Q}_{long\;fin}} = \tanh(mL) \]</td>
+<td class="td-label">يحدد الطول الاقتصادي المناسب للزعنفة؛ يوضح أن \(mL \approx 1\) يحقق 76.2% و \(mL = 2.5\) يحقق 98.7%، بينما زيادة الطول بعد \(mL = 5\) هدر غير مبرر للمواد.</td>
+</tr>
+<tr>
+<td><strong>One-Dimensional Validity</strong></td>
+<td>\[ \frac{h d}{k} < 0.2 \]</td>
+<td class="td-label">يضمن أن الخطأ الناتج عن إهمال التغير في درجات الحرارة عبر سُمك الزعنفة أقل من 1%.</td>
+</tr>
+<tr>
+<td><strong>Heat Sink Thermal Resistance</strong></td>
+<td>\[ R = \frac{T_b - T_\infty}{\dot{Q}_{fin}} = \frac{1}{\eta_{fin} h A_{fin}} \]</td>
+<td class="td-label">يقيس الأداء الحراري للمشتتات الحرارية في تبريد الإلكترونيات؛ كلما قلت \(R\) زادت قدرة المشتت على تفريغ الحرارة بكفاءة.</td>
+</tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 13 ==================== -->
+<section class="section" id="sec13">
+<div class="section-header">
+<div class="section-icon">🏠</div>
+<div class="section-titles">
+<h2>Heat Transfer through Walls &amp; Roofs</h2>
+<span class="section-sub">§ 3-7 — Building Envelope, R-value, Insulation</span>
+</div>
+<button class="task-check" data-task="sec13" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">13</span></span>
+</button>
+</div>
+
+<p>
+تُعد دراسة انتقال الحرارة عبر الغلاف الخارجي للمباني (<span class="term">Building Envelope</span>) — الذي يشمل الجدران الخارجية، والأسطح، والأسقف، والنوافذ، والأبواب — الركيزة الهندسية الأساسية لحساب أحمال التدفئة والتبريد وتصميم أنظمة التكييف (<span class="term">HVAC Systems</span>) بما يحقق الراحة الحرارية لشاغلي المبنى مع ترشيد استهلاك الطاقة.
+</p>
+
+<!-- 1. Building Heat Transfer Equation -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">1. Building Heat Transfer Equation</h3>
+
+<p>
+تحت ظروف الحالة المستقرة (<span class="term">Steady Conditions</span>)، يُحسب معدل انتقال الحرارة خلال أي جزء أو عنصر إنشائي من جدار أو سقف بمساحة سطحية \(A\) وفرق درجات حرارة ثابت بين الهواء الداخلي والخارجي من خلال المعادلة:
+</p>
+
+<div class="formula-box">
+<div class="box-label">Building Heat Transfer — Eq. 3-94</div>
+\[ \dot{Q} = UA(T_i - T_o) = \frac{A(T_i - T_o)}{R} \tag{3-94} \]
+</div>
+
+<div class="def-box">
+<div class="box-title">📌 Nomenclature &amp; Physical Parameters</div>
+<ul style="margin-right:20px;line-height:1.9;">
+  <li>\(T_i\): درجة حرارة الهواء الداخلي (<span class="term">Indoor air temperature</span>).</li>
+  <li>\(T_o\): درجة حرارة الهواء الخارجي (<span class="term">Outdoor air temperature</span>).</li>
+  <li>\(U\): معامل انتقال الحرارة الإجمالي للمبنى (<span class="term">Overall Heat Transfer Coefficient</span> أو <span class="term">U-factor</span>)، ووحدته في النظام الدولي: \(\text{W}/(\text{m}^2\cdot\text{K})\) أو \(\text{W}/(\text{m}^2\cdot{^\circ\text{C}})\).</li>
+  <li>\(R = \dfrac{1}{U}\): المقاومة الحرارية الإجمالية لوحدة المساحة، وتُعرف هندسيًا وتجاريًا باسم قيمة الـ <span class="term">R-value</span> (<span class="term">Unit Thermal Resistance</span>)، ووحدتها في النظام الدولي: \(\text{m}^2\cdot{^\circ\text{C}}/\text{W}\) أو \(\text{m}^2\cdot\text{K}/\text{W}\).</li>
+</ul>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Commercial Units &amp; R-Value Definition</div>
+<p>
+في صناعة البناء والعوازل، يُعبَّر دائمًا تقريبًا عن جودة العزل الحراري ومقاومة الجدران باستخدام الـ <span class="term">R-value</span> بدلاً من الموصلية الحرارية \(k\). والمقاومة الحرارية الكلية للمقطع الإنشائي هي:
+\[ R_{total} = \frac{R}{A} = \frac{1}{UA} \]
+وعليه، فإن معدل الفقد الحراري هو:
+\[ \dot{Q} = \frac{T_i - T_o}{R_{total}} = \frac{A(T_i - T_o)}{R} \]
+في الولايات المتحدة (<span class="term">English Units</span>)، تُقاس الـ <span class="term">R-value</span> بوحدة \(\text{h}\cdot\text{ft}^2\cdot{^\circ\text{F}}/\text{Btu}\)، حيث أن:
+\[ 1\;\text{R-value (English)} \approx 0.1761\;\text{m}^2\cdot{^\circ\text{C}}/\text{W (SI)} \]
+للاطلاع على قيم الـ <span class="term">R-value</span> النموذجية لمختلف مواد البناء والعوازل:
+</p>
+<div style="margin-top:12px;">
+<button type="button" class="table-ref-btn" data-table="table-3-8">Table 3–8 <span class="table-ref-icon">📋</span></button>
+</div>
+</div>
+
+<!-- 2. Combined Convection and Radiation at Building Surfaces -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">2. Combined Convection and Radiation at Building Surfaces</h3>
+
+<p>
+تتبادل أسطح المباني (الداخلية والخارجية) الحرارة مع البيئة المحيطة عبر آليتين فيزيائيتين متزامنتين: <strong>الحمل الحراري (<span class="term">Convection</span>)</strong> مع الهواء الملامس، و<strong>الإشعاع الحراري (<span class="term">Radiation</span>)</strong> مع الأسطح المحيطة أو السماء. ولتبسيط التحليل الهندسي، يُدمج التأثيران في معامل سطحي مشترك:
+\[ h = h_{conv} + h_{rad} \]
+حيث يُعبَّر عن معامل انتقال الحرارة بالإشعاع بالعلاقة:
+\[ h_{rad} = \varepsilon\sigma(T_s^2 + T_{surr}^2)(T_s + T_{surr}) \approx 4\varepsilon\sigma T_{avg}^3 \]
+حيث \(\varepsilon\) هي انبعاثية السطح (<span class="term">surface emissivity</span>)، و \(\sigma = 5.67 \times 10^{-8}\;\text{W}/\text{m}^2\cdot\text{K}^4\) هو ثابت ستيفان-بولتزمان.
+</p>
+
+<p>
+تُعطى المقاومة الحرارية السطحية لوحدة المساحة (<span class="term">Surface Thermal Resistance</span>) بمقلوب المعامل السطحي المشترك:
+\[ R_s = \frac{1}{h} \]
+وبناءً عليه، تكون المقاومة السطحية للسطح الداخلي \(R_i = \dfrac{1}{h_i}\)، وللسطح الخارجي \(R_o = \dfrac{1}{h_o}\).
+</p>
+
+<div class="note-box">
+<div class="note-title">📝 Standard Design Values for Building Surfaces</div>
+<p>
+تؤثر انبعاثية السطح (\(\varepsilon\)) بشكل مباشر على مركبة الإشعاع؛ فالأسطح منخفضة الانبعاثية (<span class="term">low-emissivity surfaces</span>) مثل رقائق الألومنيوم المصقولة تُقلل انتقال الحرارة بالإشعاع بدرجة هائلة، مما يؤدي إلى خفض معامل الانتقال السطحي المشترك \(h\) وبالتالي زيادة المقاومة الحرارية السطحية \(R_s\).
+</p>
+<ul style="margin-right:20px;line-height:1.9;">
+  <li><strong>السطح الداخلي (هواء ساكن — <span class="term">Vertical surface, still air</span>):</strong>
+    <ul style="margin-right:20px;">
+      <li>أسطح عادية ذات انبعاثية قياسية (\(\varepsilon = 0.90\)): \(h_i = 8.29\;\text{W}/(\text{m}^2\cdot\text{K})\) \(\quad\Rightarrow\quad R_i = 0.12\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</li>
+      <li>أسطح منخفضة الانبعاثية (\(\varepsilon = 0.20\)): \(h_i = 4.20\;\text{W}/(\text{m}^2\cdot\text{K})\) \(\quad\Rightarrow\quad R_i = 0.24\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</li>
+      <li>أسطح عاكسة ممتازة (\(\varepsilon = 0.05\)): \(h_i = 3.35\;\text{W}/(\text{m}^2\cdot\text{K})\) \(\quad\Rightarrow\quad R_i = 0.30\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</li>
+    </ul>
+  </li>
+  <li><strong>السطح الخارجي في فصل الشتاء (<span class="term">Exterior Winter</span>):</strong><br>
+  بفعل الرياح الشتوية القوية بسرعة \(24\;\text{km/h}\) (حوالي \(15\;\text{mph}\)):
+  \[ h_o = 34.0\;\text{W}/(\text{m}^2\cdot\text{K}) \quad\Rightarrow\quad R_o = \frac{1}{34.0} \approx 0.030\;\text{m}^2\cdot{^\circ\text{C}}/\text{W} \]
+  </li>
+  <li><strong>السطح الخارجي في فصل الصيف (<span class="term">Exterior Summer</span>):</strong><br>
+  بفعل نسيم صيفي معتدل بسرعة \(12\;\text{km/h}\) (حوالي \(7.5\;\text{mph}\)):
+  \[ h_o = 22.7\;\text{W}/(\text{m}^2\cdot\text{K}) \quad\Rightarrow\quad R_o = \frac{1}{22.7} \approx 0.044\;\text{m}^2\cdot{^\circ\text{C}}/\text{W} \]
+  </li>
+</ul>
+<div style="margin-top:12px;">
+<button type="button" class="table-ref-btn" data-table="table-3-9">Table 3–9 <span class="table-ref-icon">📋</span></button>
+</div>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Seasonal Stability &amp; Sky Radiation Effect</div>
+<p>
+يظل معامل الانتقال الداخلي \(h_i\) مستقرًا وثابتًا نسبيًا على مدار فصول السنة لأن الهواء الداخلي هادئ ومتحكم فيه، بينما يتغير المعامل الخارجي \(h_o\) بشكل كبير وحاد تبعًا لسرعة الرياح والتقلبات المناخية.
+</p>
+<p>
+<strong>تأثير إشعاع السماء (<span class="term">Sky Radiation Effect</span>):</strong> في الليالي الصافية، تُشع الأسطح الخارجية والأسقف الحرارة مباشرة نحو السماء التي تكون درجة حرارتها الإشعاعية المكافئة (\(T_{sky}\)) أقل بكثير من درجة حرارة الهواء المحيط (قد تكون أقل بـ \(10\) إلى \(30\;{^\circ\text{C}}\)). ولأخذ هذا التبريد الإشعاعي بعين الاعتبار في الحسابات الهندسية، يُستخدم التقريب الشائع لدرجة حرارة البيئة الخارجية الفعالة:
+\[ T_{outside,approx} \approx \frac{T_{air} + T_{sky}}{2} \]
+وهذا التفسير الفيزيائي يوضح بدقة ظاهرة تشكل الصقيع على زجاج السيارات وأسطح المباني حتى عندما تكون درجة حرارة الهواء الجوي أعلى من الصفر المئوي (مثل \(+3\;{^\circ\text{C}}\) أو \(+4\;{^\circ\text{C}}\)).
+</p>
+</div>
+
+<!-- 3. Thermal Resistance of Air Spaces -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">3. Thermal Resistance of Air Spaces</h3>
+
+<p>
+تحتوي العديد من مكونات البناء على فجوات هوائية محصورة (<span class="term">Trapped Air Spaces</span> أو <span class="term">Air Cavities</span>)، مثل الفراغات بين جدران الطوب المزدوج (<span class="term">Cavity Walls</span>)، وتجاويف الطوب الإسمنتي المفرغ (<span class="term">Cinder Blocks</span>)، والفراغ الهوائي بين ألواح النوافذ المزدوجة (<span class="term">Double-Pane Windows</span>)، والفراغات البينية في الأسقف المعلقة.
+</p>
+
+<p>
+تعتمد المقاومة الحرارية للفجوة الهوائية (\(R\)) على ستة عوامل هندسية وفيزيائية محددة:
+</p>
+<ol style="margin-right:24px;line-height:1.9;">
+  <li><strong>سُمْك الفجوة الهوائية (<span class="term">Thickness, L</span>):</strong> المسافة الفاصلة بين السطحين المتقابلين.</li>
+  <li><strong>فرق درجات الحرارة عبر الفجوة (<span class="term">Temperature difference, \(\Delta T\)</span>):</strong> المحرك لقوى الطفو وتيارات الحمل الطبيعي.</li>
+  <li><strong>متوسط درجة حرارة الهواء (<span class="term">Mean temperature, \(T_{mean}\)</span>):</strong> المؤثر على خواص الهواء الفيزيائية.</li>
+  <li><strong>انبعاثية السطحين المحيطين (<span class="term">Emissivities, \(\varepsilon_1, \varepsilon_2\)</span>):</strong> المحددة للتبادل الإشعاعي.</li>
+  <li><strong>توجيه الفجوة الهوائية (<span class="term">Orientation</span>):</strong> رأسية، أفقية، أو مائلة.</li>
+  <li><strong>اتجاه سريان الحرارة (<span class="term">Direction of heat flow</span>):</strong> لأعلى، لأسفل، أو أفقيًا.</li>
+</ol>
+
+<p>
+تنتقل الحرارة عبر الفجوة الهوائية بآليات متزامنة: <strong>التوصيل والحمل الطبيعي (<span class="term">Conduction &amp; Natural Convection</span>)</strong> بالإضافة إلى <strong>الإشعاع الحراري (<span class="term">Radiation</span>)</strong>:
+\[ \dot{Q}_{total} = \dot{Q}_{conv+cond} + \dot{Q}_{rad} \]
+ولحساب التبادل الإشعاعي الصافي بين السطحين المتقابلين، تُعرَّف <strong>الانبعاثية الفعالة (<span class="term">Effective Emissivity</span>)</strong>:
+</p>
+
+<div class="formula-box">
+<div class="box-label">Effective Emissivity — Eq. 3-95</div>
+\[ \frac{1}{\varepsilon_{eff}} = \frac{1}{\varepsilon_1} + \frac{1}{\varepsilon_2} - 1 \tag{3-95} \]
+</div>
+
+<p>
+وبإعادة ترتيب المعادلة جبريًا لإيجاد \(\varepsilon_{eff}\) مباشرة:
+\[ \varepsilon_{eff} = \frac{\varepsilon_1 \varepsilon_2}{\varepsilon_1 + \varepsilon_2 - \varepsilon_1 \varepsilon_2} \]
+</p>
+
+<!-- Derivation toggle for Effective Emissivity -->
+<div class="deriv-toggle-row">
+<button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-effective-emissivity">
+  <span class="deriv-arrow" aria-hidden="true">▲</span>
+  <span class="deriv-label">Hide Derivation</span>
+</button>
+</div>
+<div class="deriv-wrap" id="deriv-effective-emissivity">
+<div class="deriv-inner">
+<div class="def-box">
+<div class="box-title">📐 Full Derivation of Effective Emissivity (\(\varepsilon_{eff}\))</div>
+<p>
+نعتبر مستويين متوازيين كبيرين جدًا بمساحة \(A\) ودرجتي حرارة مطلقة \(T_1\) و \(T_2\) وبانبعاثيتين \(\varepsilon_1\) و \(\varepsilon_2\).
+باستخدام شبكة المقاومات الإشعاعية (<span class="term">Radiation Network Method</span>):
+</p>
+<ul style="margin-right:20px;line-height:2;">
+  <li>مقاومة السطح الأول الإشعاعية: \(R_{s1} = \dfrac{1 - \varepsilon_1}{\varepsilon_1 A}\)</li>
+  <li>مقاومة الفضاء البيني (حيث معامل الرؤية بين مستويين متوازيين كبيرين \(F_{12} = 1\)): \(R_{space} = \dfrac{1}{A F_{12}} = \dfrac{1}{A}\)</li>
+  <li>مقاومة السطح الثاني الإشعاعية: \(R_{s2} = \dfrac{1 - \varepsilon_2}{\varepsilon_2 A}\)</li>
+</ul>
+<p>
+هذه المقاومات الثلاث متصلة على التوالي بين جهدي إشعاع الجسم الأسود \(E_{b1} = \sigma T_1^4\) و \(E_{b2} = \sigma T_2^4\):
+\[ R_{rad,total} = R_{s1} + R_{space} + R_{s2} = \frac{1 - \varepsilon_1}{\varepsilon_1 A} + \frac{1}{A} + \frac{1 - \varepsilon_2}{\varepsilon_2 A} \]
+بإخراج \(\dfrac{1}{A}\) كعامل مشترك:
+\[ R_{rad,total} = \frac{1}{A} \left[ \frac{1 - \varepsilon_1}{\varepsilon_1} + 1 + \frac{1 - \varepsilon_2}{\varepsilon_2} \right] \]
+وبما أن \(\dfrac{1 - \varepsilon_1}{\varepsilon_1} = \dfrac{1}{\varepsilon_1} - 1\) و \(\dfrac{1 - \varepsilon_2}{\varepsilon_2} = \dfrac{1}{\varepsilon_2} - 1\):
+\[ R_{rad,total} = \frac{1}{A} \left[ \left(\frac{1}{\varepsilon_1} - 1\right) + 1 + \left(\frac{1}{\varepsilon_2} - 1\right) \right] = \frac{1}{A} \left[ \frac{1}{\varepsilon_1} + \frac{1}{\varepsilon_2} - 1 \right] \]
+يكون معدل التبادل الإشعاعي الصافي:
+\[ \dot{Q}_{rad} = \frac{E_{b1} - E_{b2}}{R_{rad,total}} = \frac{A\sigma(T_1^4 - T_2^4)}{\dfrac{1}{\varepsilon_1} + \dfrac{1}{\varepsilon_2} - 1} \]
+وبمقارنة هذا التعبير بالمعادلة القياسية المعرفة بدلالة الانبعاثية الفعالة:
+\[ \dot{Q}_{rad} = \varepsilon_{eff} A \sigma (T_1^4 - T_2^4) \]
+نحصل مباشرة على العلاقة (Eq. 3-95):
+\[ \frac{1}{\varepsilon_{eff}} = \frac{1}{\varepsilon_1} + \frac{1}{\varepsilon_2} - 1 \]
+وبتجميع الكسور على مقام مشترك:
+\[ \frac{1}{\varepsilon_{eff}} = \frac{\varepsilon_2 + \varepsilon_1 - \varepsilon_1 \varepsilon_2}{\varepsilon_1 \varepsilon_2} \quad \implies \quad \varepsilon_{eff} = \frac{\varepsilon_1 \varepsilon_2}{\varepsilon_1 + \varepsilon_2 - \varepsilon_1 \varepsilon_2} \]
+وهو المطلوب إثباته.
+</p>
+</div>
+</div>
+</div>
+
+<p>
+توضح قيم الانبعاثية لبعض المواد الشائعة (المأخوذة من مرجع الجدول 3–10) الفرق الكبير بين الأسطح العادية والأسطح العاكسة:
+</p>
+<ul style="margin-right:20px;line-height:1.9;">
+  <li>رقائق الألومنيوم اللامعة (<span class="term">Bright aluminum foil</span>): \(\varepsilon = 0.05\)</li>
+  <li>صفائح الألومنيوم (<span class="term">Aluminum sheet</span>): \(\varepsilon = 0.12\)</li>
+  <li>ورق مصقول مطلي بالألومنيوم (<span class="term">Aluminum-coated paper, polished</span>): \(\varepsilon = 0.20\)</li>
+  <li>حديد مجلفن لامع (<span class="term">Bright galvanized steel</span>): \(\varepsilon = 0.25\)</li>
+  <li>طلاء الألومنيوم (<span class="term">Aluminum paint</span>): \(\varepsilon = 0.50\)</li>
+  <li>مواد البناء التقليدية (خشب، طوب، خرسانة، جص، دهانات غير معدنية): \(\varepsilon = 0.90\)</li>
+  <li>الزجاج العادي (<span class="term">Ordinary window glass</span>): \(\varepsilon = 0.84\)</li>
+</ul>
+<div style="margin:12px 0;">
+<button type="button" class="table-ref-btn" data-table="table-3-10">Table 3–10 <span class="table-ref-icon">📋</span></button>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Numerical Comparison: Ordinary vs. Reflective Surfaces</div>
+<p>
+لإدراك التأثير الفارق للأسطح العاكسة في خفض التبادل الإشعاعي:
+</p>
+<ul style="margin-right:20px;line-height:2;">
+  <li><strong>حالة الأسطح العادية (\(\varepsilon_1 = 0.90, \varepsilon_2 = 0.90\)):</strong>
+    \[ \varepsilon_{eff} = \frac{0.90 \times 0.90}{0.90 + 0.90 - 0.90 \times 0.90} = \frac{0.81}{1.80 - 0.81} = \frac{0.81}{0.99} \approx 0.82 \]
+  </li>
+  <li><strong>حالة الأسطح العاكسة من رقائق الألومنيوم (\(\varepsilon_1 = 0.05, \varepsilon_2 = 0.05\)):</strong>
+    \[ \varepsilon_{eff} = \frac{0.05 \times 0.05}{0.05 + 0.05 - 0.05 \times 0.05} = \frac{0.0025}{0.10 - 0.0025} = \frac{0.0025}{0.0975} \approx 0.026 \approx 0.03 \]
+  </li>
+</ul>
+<p>
+<strong>نسبة التبادل الإشعاعي:</strong>
+\[ \frac{\varepsilon_{eff,\text{ordinary}}}{\varepsilon_{eff,\text{reflective}}} = \frac{0.82}{0.03} \approx 27.3 \approx 27 \]
+أي أن انتقال الحرارة بالإشعاع عبر الفجوة الهوائية ذات الأسطح التقليدية أكبر بحوالي <strong>27 ضعفًا</strong> مقارنة بالفجوة المبطنة بالأسطح العاكسة!
+</p>
+</div>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ Practical Limitations &amp; Aging of Reflective Cavities</div>
+<p>
+على الرغم من الأداء النظري الممتاز لرقائق الألومنيوم (\(\varepsilon = 0.05\))، إلا أن هناك محاذير تطبيقية بالغة الأهمية:
+تراكم الغبار والأتربة بمرور الوقت (<span class="term">Dust accumulation</span>)، وتكثف الرطوبة (<span class="term">Moisture condensation</span>)، وتأكسد السطح المعدني تؤدي إلى ارتفاع انبعاثية السطح من \(0.05\) لتصل إلى ما بين \(0.30\) و \(0.70\)، مما يفقد الحاجز الإشعاعي جزءًا معتبرًا من فاعليته.
+</p>
+<div style="margin-top:10px;">
+للحصول على قيم المقاومة الحرارية للفجوات الهوائية المحكمة بسماكات مختلفة (\(20\;\text{mm}\)، \(40\;\text{mm}\)، \(90\;\text{mm}\)) باختلاف الاتجاه والحرارة:
+<br><br>
+<button type="button" class="table-ref-btn" data-table="table-3-11">Table 3–11 <span class="table-ref-icon">📋</span></button>
+</div>
+</div>
+
+<!-- 4. Thermal Resistance Networks in Building Structures -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">4. Thermal Resistance Networks in Building Structures</h3>
+
+<p>
+عندما يتكون الجدار أو السقف من طبقات متجانسة بسماكات منتظمة موضوعة على التوالي (<span class="term">In Series</span>)، تكون المقاومة الحرارية الإجمالية لوحدة المساحة مساوية لمجموع المقاومات الفردية:
+\[ R_{total} = R_i + R_1 + R_2 + \cdots + R_n + R_o = \sum R_k \]
+ولكن في معظم المباني الحديثة، لا تكون الجدران متجانسة؛ إذ تتخللها عوارض خشبية (<span class="term">Wood Studs</span>)، أو مقاطع فولاذية (<span class="term">Steel Studs</span>)، ومثبتات، وممرات خدمات، مما يكوّن مسارات متوازية لانتقال الحرارة (<span class="term">Parallel Heat Flow Paths</span>).
+</p>
+
+<div class="note-box">
+<div class="note-title">📝 Two Approximate Methods for Multi-Dimensional Effects</div>
+<p>
+للتعامل مع انتقال الحرارة ثنائي وثلاثي الأبعاد عبر المقاطع غير المتجانسة، تعتمد المعايير الهندسية (مثل <span class="term">ASHRAE</span>) طريقتين تقريبيتين:
+</p>
+<ol style="margin-right:20px;line-height:2;">
+  <li><strong>طريقة المسارات الحرارية المتوازية (<span class="term">Parallel Heat-Flow Paths Method</span>):</strong><br>
+  تفترض أن سريان الحرارة يتم في مسارات مستقلة متوازية أحادية البعد دون أي تبادل حراري جانبي بين المواد المتجاورة. هذه الطريقة <em>تُبالغ في تقدير المقاومة الحرارية</em> (<span class="term">Overpredicts R</span>). تُعد هذه الطريقة مثالية ودقيقة لجدران الهياكل الخشبية (<span class="term">Wood-frame walls</span>)، لأن الخشب مادة ضعيفة التوصيل للحرارة (\(k \approx 0.13\;\text{W}/(\text{m}\cdot\text{K})\)) فلا يحدث توصيل جانبي ملموس.
+  </li>
+  <li><strong>طريقة المستويات متساوية درجة الحرارة (<span class="term">Isothermal Planes Method</span>):</strong><br>
+  تفترض أن الطبقات عالية التوصيل (أو الأسطح الخارجية والداخلية) توزع الحرارة جانبيًا لتخلق مستويات متعامدة مع اتجاه السريان متساوية تمامًا في درجة الحرارة. هذه الطريقة <em>تُقلل من تقدير المقاومة الحرارية</em> (<span class="term">Underpredicts R</span>). تُعد هذه الطريقة مناسبة جدًا للهياكل المعدنية (<span class="term">Steel-frame structures</span>) وجدران البناء الخرساني، لأن العوارض المعدنية تشكل جسورًا حرارية قوية (<span class="term">Thermal Bridging</span>) تجبر الحرارة على الانحراف الجانبي نحوها.
+  </li>
+</ol>
+</div>
+
+<p>
+<strong>مقاومة التلامس الحراري (<span class="term">Thermal Contact Resistance</span>):</strong><br>
+تتراوح مقاومة التلامس بين طبقات مواد البناء في العادة بين \(0.01\) و \(0.1\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\). وتكون هذه المقاومة مهملة عمليًا في الهياكل الخشبية، لكنها تكتسب أهمية ملموسة في الهياكل المعدنية حيث تتصل الصفائح المعدنية بالعوارض.
+</p>
+
+<p>
+<strong>النسبة المساحية للهيكل الإنشائي (<span class="term">Framing Fractions</span>):</strong><br>
+تعتمد النسبة المساحية التي تشغلها العوارض الخشبية على التباعد الهندسي المعتمد في البناء:
+</p>
+<ul style="margin-right:20px;line-height:1.9;">
+  <li>تباعد \(400\;\text{mm}\) (حوالي \(16\;\text{inches}\)): تشكل العوارض كسرًا مساحيًا قدره حوالي \(0.10\) من المساحة الحرة، ويرتفع إلى ما بين \(0.15\) و \(0.25\) عند حساب الألواح العلوية والسفلية والزوايا وإطارات النوافذ.</li>
+  <li>تباعد \(600\;\text{mm}\) (حوالي \(24\;\text{inches}\)): تشكل العوارض كسرًا مساحيًا قدره حوالي \(0.07\) (وحوالي \(0.12\) إلى \(0.18\) عند حساب الإطارات الإجمالية).</li>
+</ul>
+
+<!-- 5. Roof–Attic–Ceiling Systems -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">5. Roof–Attic–Ceiling Systems</h3>
+
+<h4 style="color:var(--royal);font-family:'Playfair Display',serif;margin:18px 0 10px;">5.1 Vented Attic</h4>
+<p>
+في الأسقف ذات العلية جيدة التهوية (<span class="term">Vented Attic</span>) والمزودة بفتحات تهوية سفلية وعلوية (<span class="term">Soffit and ridge vents</span>)، يتدفق الهواء الخارجي بحرية عبر فراغ العلية، مما يجعل درجة حرارة هواء العلية مساوية تقريبًا لدرجة حرارة الهواء الخارجي:
+\[ T_{attic} \approx T_{outdoor} \]
+في هذه الحالة، يكون معدل انتقال الحرارة بين مساحة المعيشة المكيفة وهواء العلية محكومًا بالكامل بقيمة الـ <span class="term">R-value</span> لعزل السقف الداخلي (<span class="term">Ceiling insulation</span>)، بينما يعمل سطح السطح الخارجي المائل (<span class="term">Roof</span>) بمثابة درع واقٍ من الإشعاع الشمسي المباشر (<span class="term">Radiation Shield</span>).
+</p>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-55.png" alt="Figure 3-55: Vented attic with ventilation paths">
+<div class="fig-caption">Figure 3–55: Vented attic with soffit and ridge ventilation paths — roof acts as radiation shield</div>
+</div>
+
+<h4 style="color:var(--royal);font-family:'Playfair Display',serif;margin:18px 0 10px;">5.2 Radiant Barriers</h4>
+<p>
+في فصل الصيف، ترتفع درجة حرارة ألواح السقف الخارجية المعرضة للشمس المباشرة لتصل إلى \(60\)–\(80\;{^\circ\text{C}}\)، فتُشع كميات ضخمة من الحرارة نحو أرضية العلية. وللحد من هذا الحمل الحراري، يُستخدم <strong>الحاجز الإشعاعي (<span class="term">Radiant Barrier</span>)</strong>، وهو مادة عاكسة للغاية (عادة رقائق ألومنيوم ذات انبعاثية \(\varepsilon \leq 0.05\)) تواجه الفضاء الهوائي للعلية.
+</p>
+
+<div class="def-box">
+<div class="box-title">📌 Performance &amp; Energy Savings of Radiant Barriers</div>
+<ul style="margin-right:20px;line-height:2;">
+  <li>أظهرت الاختبارات الميدانية أن الحواجز الإشعاعية تُقلل من اكتساب السقف الداخلي للحرارة صيفًا بنسبة <strong>16% إلى 42%</strong> (مع وجود عزل قياسي \(R\text{-}19\) في أرضية العلية).</li>
+  <li><strong>التركيب فوق عزل أرضية العلية (<span class="term">Floor Installation</span>):</strong> يُحقق خفضًا متوسطًا بنسبة <strong>35%</strong> في اكتساب حرارة السقف (ولكنه عُرضة لتراكم الغبار والأتربة بمرور السنين).</li>
+  <li><strong>التركيب أسفل العوارض الخشبية المائلة (<span class="term">Under-Rafter Installation</span>):</strong> يُحقق خفضًا متوسطًا بنسبة <strong>24%</strong> في اكتساب حرارة السقف (وهو الخيار الأكثر حماية واستدامة ضد تراكم الأتربة).</li>
+  <li>يمثل اكتساب الحرارة عبر الأسقف عادة ما بين <strong>15% إلى 25%</strong> من إجمالي حمل التبريد الكلي للمنزل.</li>
+  <li>يترجم ذلك إلى خفض إجمالي في تكلفة استهلاك طاقة تكييف الهواء يتراوح بين <strong>2% و 10%</strong>.</li>
+</ul>
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-56.png" alt="Figure 3-56: Three possible radiant barrier locations in attic">
+<div class="fig-caption">Figure 3–56: Three possible radiant barrier locations in an attic: (a) draped over rafters, (b) under rafters, (c) laid flat over floor insulation</div>
+</div>
+
+<h4 style="color:var(--royal);font-family:'Playfair Display',serif;margin:18px 0 10px;">5.3 Unvented Attic</h4>
+<p>
+في العليات غير المهواة أو المحكمة الإغلاق (<span class="term">Unvented Attic</span>)، يُحبس الهواء داخل العلية، فتنتقل الحرارة بالتتابع عبر السقف الداخلي (<span class="term">Ceiling</span>)، ثم عبر الفضاء الهوائي للعلية (<span class="term">Attic air space</span>)، ثم عبر السطح المائل الخارجي (<span class="term">Roof</span>).
+تُحسب المقاومة الحرارية الفعالة لمجموعة (السقف الداخلي + السطح المائل) منسوبة إلى مساحة السقف الداخلي \(A_{ceiling}\) من المعادلة:
+</p>
+
+<div class="formula-box">
+<div class="box-label">Ceiling–Roof Combination R-value — Eq. 3-96</div>
+\[ R = R_{ceiling} + R_{roof}\left(\frac{A_{ceiling}}{A_{roof}}\right) \tag{3-96} \]
+</div>
+
+<p>
+تعتمد نسبة المساحات \(\dfrac{A_{ceiling}}{A_{roof}}\) على زاوية ميلان السطح (<span class="term">Roof Pitch</span>):
+</p>
+<ul style="margin-right:20px;line-height:1.9;">
+  <li>السطح المستوي الأفقي (<span class="term">Flat Roof</span>): \(\dfrac{A_{ceiling}}{A_{roof}} = 1\).</li>
+  <li>السطح المائل بزاوية \(45^\circ\) (<span class="term">45° Pitched Roof</span>): \(\dfrac{A_{ceiling}}{A_{roof}} = \cos(45^\circ) = \dfrac{1}{\sqrt{2}} \approx 0.707\).</li>
+</ul>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-57.png" alt="Figure 3-57: Unvented attic thermal resistance network">
+<div class="fig-caption">Figure 3–57: Thermal resistance network for heat transfer through an unvented attic system</div>
+</div>
+
+<!-- 6. Example 3–18 -->

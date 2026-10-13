@@ -1,0 +1,659 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–19: The R-Value of a Wall with Rigid Foam</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Determine the overall R-value of the wood frame wall in Example 3–18 if the 13-mm-thick fiberboard sheathing (R = 0.23 m&sup2;&middot;&deg;C/W) is replaced by 25-mm-thick rigid foam insulation board with an R-value of 0.98 m&sup2;&middot;&deg;C/W. Also determine the percentage increase in the overall thermal resistance of the wall and the new rate of heat loss.
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-19"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-19"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(R_{overall,old} = 2.23\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</span>
+<span>\(R_{fiberboard} = 0.23\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</span>
+<span>\(R_{foam} = 0.98\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</span>
+<span>\(A_{wall} = 100\;\text{m}^2\)</span>
+<span>\(\Delta T = 24\;{^\circ\text{C}}\)</span>
+</div>
+</div>
+
+<div class="solution-steps">
+<h4>Solution</h4>
+
+<div class="step"><div class="step-num">1</div><div class="step-content">
+<strong>Analysis of the continuous layer modification:</strong><br>
+نظرًا لأن لوح العزل الرغوي الصلب (<span class="term">Rigid foam insulation</span>) يغطي الجدار الخارجي باستمرار على كامل المساحة دون انقطاع، فإنه يُطبق بالتساوي فوق مسار العزل ومسار العوارض الخشبية على حد سواء (<span class="term">Continuous Exterior Insulation</span>).
+</div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content">
+<strong>Net increase in unit thermal resistance (\(\Delta R\)):</strong>
+\[ \Delta R = R_{foam} - R_{fiberboard} = 0.98 - 0.23 = +0.75\;\text{m}^2\cdot{^\circ\text{C}}/\text{W} \]
+</div></div>
+
+<div class="step"><div class="step-num">3</div><div class="step-content">
+<strong>New overall unit thermal resistance (\(R_{new}\)):</strong>
+\[ R_{new} = R_{overall,old} - R_{fiberboard} + R_{foam} = 2.23 - 0.23 + 0.98 = 2.98\;\text{m}^2\cdot{^\circ\text{C}}/\text{W} \]
+</div></div>
+
+<div class="step"><div class="step-num">4</div><div class="step-content">
+<strong>Percentage increase in wall R-value:</strong>
+\[ \text{Percentage increase} = \frac{R_{new} - R_{overall,old}}{R_{overall,old}} \times 100\% \]
+\[ \text{Percentage increase} = \frac{2.98 - 2.23}{2.23} \times 100\% = \frac{0.75}{2.23} \times 100\% \approx 33.6\% \approx 34\% \]
+</div></div>
+
+<div class="step"><div class="step-num">5</div><div class="step-content">
+<strong>New overall U-factor and heat loss rate:</strong>
+\[ U_{new} = \frac{1}{R_{new}} = \frac{1}{2.98\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}} \approx 0.336\;\text{W}/(\text{m}^2\cdot\text{K}) \]
+\[ \dot{Q}_{new} = U_{new} A_{wall} \Delta T = (0.336\;\text{W}/\text{m}^2\cdot\text{K})(100\;\text{m}^2)(24\;{^\circ\text{C}}) = 806.4\;\text{W} \approx 0.806\;\text{kW} \]
+مقدار التوفير في الفقد الحراري:
+\[ \Delta \dot{Q} = 1078 - 806.4 = 271.6\;\text{W} \quad (25.2\%\;\text{reduction}) \]
+</div></div>
+
+</div>
+
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ R_{new} = 2.98\;\text{m}^2\cdot{^\circ\text{C}}/\text{W} \quad (\approx 34\%\;\text{increase}), \quad \dot{Q}_{new} \approx 0.806\;\text{kW} \]
+</div>
+
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>
+يُعد استخدام العزل الخارجي المستمر (<span class="term">Continuous Insulation — CI</span>) من أكثر الاستراتيجيات الهندسية فاعلية؛ لأنه يغطي الهيكل الإنشائي بالكامل من الخارج ويكسر الجسور الحرارية الناتجة عن العوارض الخشبية أو المعدنية، مما يرفع المقاومة الكلية بنسبة \(34\%\) ويقلل الفقد الحراري بنسبة تتجاوز الربع (\(25.2\%\)).
+</p>
+</div>
+
+</div></div>
+</div>
+</div>
+
+<!-- 8. Summary of Thermal Resistance Method -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">8. Summary of the Thermal Resistance Method</h3>
+
+<p>
+تُعد طريقة المقاومة الحرارية (<span class="term">Thermal Resistance Concept</span>) الركيزة الرياضية والفيزيائية الأساسية لحل مسائل انتقال الحرارة في الحالة المستقرة عبر تشبيهها بالدوائر الكهربائية وقانون أوم (\(I = \Delta V / R_e \iff \dot{Q} = \Delta T / R\)). وفيما يلي تلخيص شامل للعلاقات الأساسية لكل شكل هندسي وآلية انتقال حرارة:
+</p>
+
+<!-- 1. Plane Wall -->
+<div class="formula-box">
+<div class="box-label">1. Plane Wall Conduction Resistance</div>
+\[ R_{wall} = \frac{L}{kA} \]
+</div>
+
+<!-- 2. Convection -->
+<div class="formula-box">
+<div class="box-label">2. Surface Convection Resistance</div>
+\[ R_{conv} = \frac{1}{hA} \]
+</div>
+
+<!-- 3. Cylinder -->
+<div class="formula-box">
+<div class="box-label">3. Cylindrical Layer Conduction Resistance</div>
+\[ R_{cyl} = \frac{\ln(r_2/r_1)}{2\pi L k} \]
+</div>
+
+<!-- 4. Sphere -->
+<div class="formula-box">
+<div class="box-label">4. Spherical Layer Conduction Resistance</div>
+\[ R_{sph} = \frac{r_2 - r_1}{4\pi k r_1 r_2} \]
+</div>
+
+<!-- 5. Interface -->
+<div class="formula-box">
+<div class="box-label">5. Thermal Contact Interface Resistance</div>
+\[ R_{contact} = \frac{1}{h_c A} = \frac{R_c}{A} \]
+</div>
+
+<!-- 6. Radiation -->
+<div class="formula-box">
+<div class="box-label">6. Surface Radiation Resistance</div>
+\[ R_{rad} = \frac{1}{h_{rad} A} \quad \text{where} \quad h_{rad} = \varepsilon\sigma(T_s^2 + T_{surr}^2)(T_s + T_{surr}) \]
+</div>
+
+<!-- 7. Temperature Drop -->
+<div class="formula-box">
+<div class="box-label">7. Temperature Drop Across Any Thermal Resistance</div>
+\[ \Delta T = \dot{Q} \cdot R \]
+</div>
+
+<!-- 9. Critical Radius of Insulation (Brief Summary) -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">9. Critical Radius of Insulation (Brief Summary)</h3>
+
+<p>
+عند إضافة عازل حراري على جدار مستوٍ، تزداد مقاومة التوصيل دائمًا دون أي تأثير على المساحة الخارجية، وبالتالي يقل معدل انتقال الحرارة حتمًا. أما في الأجسام الأسطوانية والكروية (مثل الأنابيب والأسلاك الكهربائية)، فإن إضافة العازل تؤدي إلى تأثيرين متضادين:
+</p>
+<ul style="margin-right:20px;line-height:1.9;">
+  <li><strong>زيادة سُمْك العازل:</strong> تزيد من مقاومة التوصيل (\(R_{cond} \uparrow\)).</li>
+  <li><strong>زيادة القطر الخارجي:</strong> تزيد من المساحة السطحية المعرضة للحمل الحراري (\(A_s \uparrow\))، مما يقلل مقاومة الحمل الخارجي (\(R_{conv} \downarrow\)).</li>
+</ul>
+
+<p>
+ينتج عن هذا التنافس وجود نصف قطر حرج للعزل (<span class="term">Critical Radius of Insulation</span> — \(r_{cr}\)) يكون عنده الفقد الحراري عند قيمته القصوى:
+</p>
+
+<!-- Critical Radius Cylinder -->
+<div class="formula-box">
+<div class="box-label">Critical Radius of Insulation — Cylindrical Body</div>
+\[ r_{cr,cyl} = \frac{k_{ins}}{h} \]
+</div>
+
+<!-- Critical Radius Sphere -->
+<div class="formula-box">
+<div class="box-label">Critical Radius of Insulation — Spherical Body</div>
+\[ r_{cr,sph} = \frac{2k_{ins}}{h} \]
+</div>
+
+<!-- Flat insulation -->
+<div class="formula-box">
+<div class="box-label">Thermal Resistance for Flat Insulation</div>
+\[ R = \frac{L}{k} \]
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Engineering Takeaway: Cylinders vs. Flat Walls</div>
+<p>
+بالنسبة للعوازل المسطحة، لا يوجد نصف قطر حرج لأن المساحة السطحية ثابتة؛ فأي طبقة عازل إضافية ترفع المقاومة الحرارية فورًا. أما في الأنابيب:
+إذا كان نصف القطر الخارجي الأولي للأنبوب \(r_1 < r_{cr}\)، فإن إضافة العازل تؤدي في البداية إلى <em>زيادة</em> الفقد الحراري حتى يصل نصف القطر إلى \(r_{cr}\)، وبعدها فقط يبدأ الفقد الحراري في التراجع مع زيادة السُمْك.
+</p>
+</div>
+
+<!-- 10. Conduction Shape Factor -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">10. Conduction Shape Factor</h3>
+
+<p>
+في المسائل ثنائية وثلاثية الأبعاد (<span class="term">2-D and 3-D Steady Conduction</span>) ذات الأشكال الهندسية المعقدة بين سطحين متساويين في درجة الحرارة (\(T_1\) و \(T_2\))، لا تنطبق معادلات البعد الواحد البسيطة. في هذه الحالات، يُستخدم <strong>معامل شكل التوصيل (<span class="term">Conduction Shape Factor</span> — \(S\))</strong>:
+</p>
+
+<div class="formula-box">
+<div class="box-label">Conduction Shape Factor Formulation</div>
+\[ \dot{Q} = S k (T_1 - T_2) \]
+</div>
+
+<div class="def-box">
+<div class="box-title">📌 Shape Factor Characteristics &amp; Thermal Resistance</div>
+<ul style="margin-right:20px;line-height:1.9;">
+  <li>\(S\): معامل شكل التوصيل، وله بُعد الطول ووحدته في النظام الدولي هي المتر (\(\text{m}\)).</li>
+  <li>تكون المقاومة الحرارية للتوصيل معبرًا عنها بدلالة معامل الشكل:
+    <div class="formula-box" style="margin:10px 0;">
+    <div class="box-label">Thermal Resistance via Shape Factor</div>
+    \[ R = \frac{1}{Sk} \]
+    </div>
+  </li>
+  <li>يُستخدم هذا المفهوم في العديد من التطبيقات الهندسية العملية مثل: الأنابيب المدفونة في الأرض، والأسطوانات المتراكزة أو اللامركزية، والتوصيل الحراري عبر زوايا وحواف الأفران والجدران السميكة، والأقراص الحرارية على أوساط شبه لا نهائية. وتتوفر قيم \(S\) لمختلف الحالات الهندسية في جداول مخصصة.</li>
+</ul>
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== KEY RELATIONS SUMMARY ==================== -->
+<section class="section">
+<div class="section-header">
+<div class="section-icon">📋</div>
+<div class="section-titles">
+<h2>Key Relations Summary</h2>
+<span class="section-sub">Chapter 3 — Quick Reference</span>
+</div>
+</div>
+
+<div class="analogy-box">
+<div class="table-wrapper">
+<table class="key-table">
+<thead><tr><th>Concept</th><th>Key Relation</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td class="td-label">Fourier's Law</td><td>\(\dot{Q} = -kA\dfrac{dT}{dx}\)</td><td>Heat conduction rate</td></tr>
+<tr><td class="td-label">Plane Wall</td><td>\(\dot{Q} = kA\dfrac{T_1 - T_2}{L}\)</td><td>Steady 1-D conduction</td></tr>
+<tr><td class="td-label">Conduction Resistance</td><td>\(R_{wall} = \dfrac{L}{kA}\)</td><td>Plane wall resistance</td></tr>
+<tr><td class="td-label">Convection Resistance</td><td>\(R_{conv} = \dfrac{1}{hA_s}\)</td><td>Surface convection resistance</td></tr>
+<tr><td class="td-label">Radiation Resistance</td><td>\(R_{rad} = \dfrac{1}{h_{rad}A_s}\)</td><td>Surface radiation resistance</td></tr>
+<tr><td class="td-label">Radiation Coefficient</td><td>\(h_{rad} = \varepsilon\sigma(T_s^2 + T_{surr}^2)(T_s + T_{surr})\)</td><td>Temperatures in K!</td></tr>
+<tr><td class="td-label">Combined Coefficient</td><td>\(h_{combined} = h_{conv} + h_{rad}\)</td><td>When \(T_{surr} \approx T_\infty\)</td></tr>
+<tr><td class="td-label">Thermal Resistance Method</td><td>\(\dot{Q} = \dfrac{\Delta T}{R}\)</td><td>Core concept</td></tr>
+<tr><td class="td-label">Series Resistances</td><td>\(R_{total} = \sum R_i\)</td><td>Same \(\dot{Q}\) through each</td></tr>
+<tr><td class="td-label">Parallel Resistances</td><td>\(\dfrac{1}{R_{total}} = \sum \dfrac{1}{R_i}\)</td><td>Same \(\Delta T\) across each</td></tr>
+<tr><td class="td-label">Temperature Drop</td><td>\(\Delta T = \dot{Q} \cdot R\)</td><td>Drop ∝ resistance</td></tr>
+<tr><td class="td-label">Cylinder Resistance</td><td>\(R_{cyl} = \dfrac{\ln(r_2/r_1)}{2\pi Lk}\)</td><td>Cylindrical conduction</td></tr>
+<tr><td class="td-label">Sphere Resistance</td><td>\(R_{sph} = \dfrac{r_2 - r_1}{4\pi k\,r_1 r_2}\)</td><td>Spherical conduction</td></tr>
+<tr><td class="td-label">Critical Radius (Cylinder)</td><td>\(r_{cr} = k/h\)</td><td>\(\dot{Q}\) max at this radius</td></tr>
+<tr><td class="td-label">Critical Radius (Sphere)</td><td>\(r_{cr} = 2k/h\)</td><td>\(\dot{Q}\) max at this radius</td></tr>
+<tr><td class="td-label">Fin Effectiveness</td><td>\(\varepsilon_{fin} = \dfrac{\dot{Q}_{fin}}{hA_b(T_b - T_\infty)}\)</td><td>Benefit of adding fin</td></tr>
+<tr><td class="td-label">Long-Fin Effectiveness</td><td>\(\varepsilon = \sqrt{kp/(hA_c)}\)</td><td>Infinite fin</td></tr>
+<tr><td class="td-label">Fin Heat Transfer Ratio</td><td>\(\dot{Q}_{fin}/\dot{Q}_{long} = \tanh(mL)\)</td><td>Finite vs. infinite</td></tr>
+<tr><td class="td-label">Fin Efficiency</td><td>\(\eta_{fin} = \tanh(mL)/(mL)\)</td><td>Adiabatic tip</td></tr>
+<tr><td class="td-label">1-D Validity</td><td>\(hd/k < 0.2\)</td><td>Error &lt; 1%</td></tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Core Conceptual Chain</div>
+<p style="text-align:center;direction:ltr;">
+<strong>Temperature Difference → Thermal Resistance Network → \(\dot{Q}\) → Temperature Drops</strong>
+</p>
+<p>في <span class="term">multilayer systems</span>: \(R_{total} = R_1 + R_2 + R_3 + \cdots\)، ثم \(\dot{Q} = \Delta T / R_{total}\)، ثم لأي طبقة: \(\Delta T_i = \dot{Q} \cdot R_i\).</p>
+<p>في <span class="term">insulation</span> على <span class="term">cylinders/spheres</span>: لا يكفي القول "insulation تزيد resistance" — يجب مراعاة زيادة <span class="term">convection area</span> أيضًا. لذلك يوجد <span class="term">Critical Radius</span>.</p>
+</div>
+
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="lecture-footer" style="margin-left:auto;margin-right:auto;max-width:960px;padding-left:24px;padding-right:24px;">
+<div style="background:var(--navy);border-radius:var(--radius);padding:36px 30px;">
+<h3>Chapter 3 — Steady Heat Conduction</h3>
+<p>Thermal Resistance Networks · Cylinders &amp; Spheres · Critical Radius · Fins · Building Heat Transfer</p>
+<div class="footer-tags">
+<span class="footer-tag">Fourier's Law</span>
+<span class="footer-tag">Thermal Resistance</span>
+<span class="footer-tag">Contact Resistance</span>
+<span class="footer-tag">Composite Walls</span>
+<span class="footer-tag">Cylinders &amp; Spheres</span>
+<span class="footer-tag">Critical Radius</span>
+<span class="footer-tag">Fin Effectiveness</span>
+<span class="footer-tag">Fin Efficiency</span>
+<span class="footer-tag">Heat Sinks</span>
+<span class="footer-tag">Building Envelope</span>
+<span class="footer-tag">R-value &amp; U-factor</span>
+</div>
+</div>
+</footer>
+
+<!-- ===== CH3 PROGRESS (added) ===== -->
+<!-- ===== CLOSING PRAYER ===== -->
+<div class="closing-prayer">
+<div class="closing-prayer-card">
+<p>🤲 ولا تنسوا الصلاة على النبي صلى الله عليه وسلم، والدعاء لإخوانكم في فلسطين وغزة وفي جميع بقاع الأرض، وأن ينصر الله المسلمين المستضعفين. 🤲</p>
+</div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// Dua toggle
+(function(){
+var btn=document.getElementById('duaToggle');
+var content=document.getElementById('duaContent');
+if(!btn||!content) return;
+btn.addEventListener('click',function(){
+var expanded=btn.getAttribute('aria-expanded')==='true';
+btn.setAttribute('aria-expanded',expanded?'false':'true');
+content.style.display=expanded?'none':'block';
+});
+})();
+
+// Solution toggles
+function toggleSolution(btn){
+var answer=btn.nextElementSibling;
+if(!answer) return;
+var visible=answer.style.display==='block';
+answer.style.display=visible?'none':'block';
+btn.textContent=visible?'عرض الحل الكامل ▼':'إخفاء الحل ▲';
+}
+
+// Smooth scroll for TOC
+document.querySelectorAll('.toc-item').forEach(function(a){
+a.addEventListener('click',function(e){
+e.preventDefault();
+var target=document.querySelector(a.getAttribute('href'));
+if(target){
+target.scrollIntoView({behavior:'smooth',block:'start'});
+}
+});
+});
+
+// Eye protection toggle
+(function(){
+var KEY='eyeProtection',root=document.documentElement,btn=document.getElementById('eyeToggle');
+if(!btn) return;
+var st=btn.querySelector('.eye-st');
+function render(on){btn.setAttribute('aria-pressed',on?'true':'false');st.textContent=on?'ON':'OFF';}
+render(root.getAttribute('data-eye')==='on');
+btn.addEventListener('click',function(){
+var on=root.getAttribute('data-eye')!=='on';
+if(on){root.setAttribute('data-eye','on');}else{root.removeAttribute('data-eye');}
+render(on);
+try{localStorage.setItem(KEY,on?'on':'off');}catch(e){}
+});
+})();
+</script>
+
+<!-- ===== CH3: SOLUTIONS + TASKS (added) ===== -->
+<script>
+(function(){
+var reduce=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+/* ---------- Show / hide solution (independent per problem) ---------- */
+[].forEach.call(document.querySelectorAll('.sol-toggle'),function(btn){
+var wrap=document.getElementById(btn.getAttribute('aria-controls'));
+if(!wrap) return;
+var arrow=btn.querySelector('.sol-arrow'),label=btn.querySelector('.sol-label'),t;
+wrap.setAttribute('aria-hidden','true');
+btn.addEventListener('click',function(){
+var open=btn.getAttribute('aria-expanded')!=='true';
+btn.setAttribute('aria-expanded',open?'true':'false');
+arrow.textContent=open?'\u25B2':'\u25BC';
+label.textContent=open?'\u0625\u062E\u0641\u0627\u0621 \u0627\u0644\u062D\u0644':'\u0625\u0638\u0647\u0627\u0631 \u0627\u0644\u062D\u0644';
+wrap.setAttribute('aria-hidden',open?'false':'true');
+clearTimeout(t);
+if(open){
+wrap.classList.add('is-open');
+t=setTimeout(function(){if(wrap.classList.contains('is-open'))wrap.classList.add('is-settled');},reduce?0:520);
+}else{
+wrap.classList.remove('is-settled');
+wrap.classList.remove('is-open');
+}
+});
+});
+})();
+
+// ===== TASK COMPLETION SYSTEM =====
+(function(){
+  var STORAGE_KEY = 'ch3_tasks';
+  var TOTAL_TASKS = 13;
+  var messages = [
+    'استمر! 🔥', 'عاش! كمل كده 👏', 'أحسنت! 💪',
+    'مهمة خلصت، واحدة كمان! 🚀', 'جامد جدًا! ⭐', 'Keep going! 🔥',
+    'ممتاز! 🌟', 'يلا نكمل! 💥', 'برافو عليك! 🎯'
+  ];
+
+  // Load saved state
+  function loadState(){
+    try{
+      var s = localStorage.getItem(STORAGE_KEY);
+      return s ? JSON.parse(s) : {};
+    } catch(e){ return {}; }
+  }
+  function saveState(state){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
+  }
+
+  // Update progress bar
+  function updateProgress(state){
+    var count = Object.keys(state).filter(function(k){ return state[k]; }).length;
+    var fill = document.getElementById('progressFill');
+    var text = document.getElementById('progressText');
+    if(fill) fill.style.width = (count / TOTAL_TASKS * 100) + '%';
+    if(text) text.textContent = count + ' / ' + TOTAL_TASKS + ' Tasks';
+    return count;
+  }
+
+  // Mini confetti burst
+  function miniConfetti(x, y){
+    var canvas = document.getElementById('confettiCanvas');
+    if(!canvas){
+      canvas = document.createElement('canvas');
+      canvas.id = 'confettiCanvas';
+      document.body.appendChild(canvas);
+    }
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var ctx = canvas.getContext('2d');
+    var colors = ['#1ABC9C','#2E86C1','#F0B429','#E74C3C','#9B59B6','#FF6B6B','#48C9B0'];
+    var particles = [];
+    for(var i = 0; i < 35; i++){
+      particles.push({
+        x: x, y: y,
+        vx: (Math.random() - 0.5) * 12,
+        vy: (Math.random() - 0.7) * 12,
+        w: Math.random() * 8 + 4,
+        h: Math.random() * 6 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 15,
+        gravity: 0.3,
+        life: 1
+      });
+    }
+    var frame;
+    function animate(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      var alive = false;
+      particles.forEach(function(p){
+        if(p.life <= 0) return;
+        alive = true;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.rotation += p.rotSpeed;
+        p.life -= 0.018;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.globalAlpha = Math.max(0, p.life);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+      });
+      if(alive) frame = requestAnimationFrame(animate);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    animate();
+  }
+
+  // Big confetti for chapter completion
+  function bigConfetti(){
+    var canvas = document.getElementById('confettiCanvas');
+    if(!canvas){
+      canvas = document.createElement('canvas');
+      canvas.id = 'confettiCanvas';
+      document.body.appendChild(canvas);
+    }
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var ctx = canvas.getContext('2d');
+    var colors = ['#1ABC9C','#2E86C1','#F0B429','#E74C3C','#9B59B6','#FF6B6B','#48C9B0','#FFD700','#FF69B4'];
+    var particles = [];
+    for(var i = 0; i < 120; i++){
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: -20 - Math.random() * 200,
+        vx: (Math.random() - 0.5) * 6,
+        vy: Math.random() * 3 + 2,
+        w: Math.random() * 10 + 5,
+        h: Math.random() * 8 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 10,
+        gravity: 0.08,
+        life: 1
+      });
+    }
+    function animate(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      var alive = false;
+      particles.forEach(function(p){
+        if(p.life <= 0) return;
+        alive = true;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.rotation += p.rotSpeed;
+        p.life -= 0.006;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.globalAlpha = Math.max(0, p.life);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+      });
+      if(alive) requestAnimationFrame(animate);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    animate();
+  }
+
+  // Show motivational message
+  function showMessage(btn){
+    var old = btn.parentNode.querySelector('.task-msg');
+    if(old) old.remove();
+    var msg = document.createElement('span');
+    msg.className = 'task-msg';
+    msg.textContent = messages[Math.floor(Math.random() * messages.length)];
+    btn.parentNode.appendChild(msg);
+    setTimeout(function(){
+      msg.style.animation = 'msgFade .4s ease forwards';
+      setTimeout(function(){ msg.remove(); }, 400);
+    }, 2000);
+  }
+
+  // Init
+  var state = loadState();
+  var buttons = document.querySelectorAll('.task-check');
+  buttons.forEach(function(btn){
+    var taskId = btn.getAttribute('data-task');
+    var section = document.getElementById(taskId);
+    // Restore saved state
+    if(state[taskId]){
+      btn.classList.add('completed');
+      if(section) section.classList.add('task-done');
+    }
+    btn.addEventListener('click', function(){
+      var isCompleted = btn.classList.contains('completed');
+      if(isCompleted){
+        // Uncomplete
+        btn.classList.remove('completed');
+        if(section) section.classList.remove('task-done');
+        state[taskId] = false;
+      } else {
+        // Complete
+        btn.classList.add('completed');
+        if(section) section.classList.add('task-done');
+        state[taskId] = true;
+        // Confetti
+        var rect = btn.getBoundingClientRect();
+        miniConfetti(rect.left + rect.width/2, rect.top + rect.height/2);
+        // Message
+        showMessage(btn);
+      }
+      saveState(state);
+      var count = updateProgress(state);
+      // Chapter complete?
+      if(count >= TOTAL_TASKS){
+        var banner = document.getElementById('chapterBanner');
+        if(banner) banner.style.display = 'block';
+        setTimeout(bigConfetti, 300);
+      } else {
+        var banner = document.getElementById('chapterBanner');
+        if(banner) banner.style.display = 'none';
+      }
+    });
+  });
+  updateProgress(state);
+  // Check if already all complete on load
+  var initialCount = Object.keys(state).filter(function(k){ return state[k]; }).length;
+  if(initialCount >= TOTAL_TASKS){
+    var banner = document.getElementById('chapterBanner');
+    if(banner) banner.style.display = 'block';
+  }
+})();
+
+
+// ===== DERIVATION TOGGLES (visible by default) =====
+(function(){
+  document.querySelectorAll('.deriv-toggle').forEach(function(btn){
+    var wrap = document.getElementById(btn.getAttribute('aria-controls'));
+    if(!wrap) return;
+    var arrow = btn.querySelector('.deriv-arrow');
+    var label = btn.querySelector('.deriv-label');
+    btn.addEventListener('click', function(){
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      if(isOpen){
+        btn.setAttribute('aria-expanded','false');
+        wrap.classList.add('is-hidden');
+        if(arrow) arrow.textContent = '\u25BC';
+        if(label) label.textContent = 'Show Derivation';
+      } else {
+        btn.setAttribute('aria-expanded','true');
+        wrap.classList.remove('is-hidden');
+        if(arrow) arrow.textContent = '\u25B2';
+        if(label) label.textContent = 'Hide Derivation';
+      }
+    });
+  });
+})();
+
+// ===== TABLE REFERENCE MODAL =====
+(function(){
+  // Table metadata
+  var tables = {
+    'table-3-3':  {src:'images/table-3-3.jpg',  title:'Table 3\u20133: Efficiency of Common Fin Geometries'},
+    'table-3-4':  {src:'images/table-3-4.png',  title:'Table 3\u20134: Modified Bessel Function Values'},
+    'table-3-8':  {src:'images/table-3-8.png',  title:'Table 3\u20138: R-Values of Building and Insulating Materials'},
+    'table-3-9':  {src:'images/table-3-9.png',  title:'Table 3\u20139: Unit Thermal Resistance of Surfaces'},
+    'table-3-10': {src:'images/table-3-10.png', title:'Table 3\u201310: Emissivities and Effective Emissivities'},
+    'table-3-11': {src:'images/table-3-11.png', title:'Table 3\u201311: Thermal Resistance of Sealed Air Spaces'}
+  };
+
+  // Create modal overlay once
+  var overlay = document.createElement('div');
+  overlay.className = 'table-modal-overlay';
+  overlay.innerHTML =
+    '<div class="table-modal-content">' +
+    '<button class="table-modal-close" aria-label="Close">&times;</button>' +
+    '<div class="table-modal-title"></div>' +
+    '<img src="" alt="">' +
+    '<div class="table-modal-actions">' +
+    '<button class="table-modal-download">\u2B07 Download Image</button>' +
+    '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  var content   = overlay.querySelector('.table-modal-content');
+  var closeBtn  = overlay.querySelector('.table-modal-close');
+  var titleEl   = overlay.querySelector('.table-modal-title');
+  var imgEl     = overlay.querySelector('.table-modal-content img');
+  var dlBtn     = overlay.querySelector('.table-modal-download');
+  var currentSrc = '';
+
+  function openModal(key){
+    var t = tables[key];
+    if(!t) return;
+    titleEl.textContent = t.title;
+    imgEl.src = t.src;
+    imgEl.alt = t.title;
+    currentSrc = t.src;
+    overlay.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function closeModal(){
+    overlay.classList.remove('is-active');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('is-active')) closeModal();
+  });
+
+  // Download button
+  dlBtn.addEventListener('click', function(){
+    if(!currentSrc) return;
+    var a = document.createElement('a');
+    a.href = currentSrc;
+    a.download = currentSrc.split('/').pop();
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+
+  // Bind all table-ref-btn buttons
+  document.querySelectorAll('.table-ref-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.getAttribute('data-table');
+      if(key) openModal(key);
+    });
+  });
+})();
+
+</script>
+
+</body>
+</html>

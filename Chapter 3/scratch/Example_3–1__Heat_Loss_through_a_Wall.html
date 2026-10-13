@@ -1,0 +1,204 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–1: Heat Loss through a Wall</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 3-m-high, 5-m-wide, and 0.3-m-thick wall whose thermal conductivity is <em>k</em> = 0.9 W/m·K. On a certain day, the temperatures of the inner and the outer surfaces of the wall are measured to be 16°C and 2°C, respectively. Determine the rate of heat loss through the wall on that day.
+</div>
+<div class="fig-container fig-small">
+<img src="images/figure-3-11.png" alt="Figure 3-11: Schematic for Example 3-1">
+<div class="fig-caption">Figure 3–11: Schematic for Example 3–1</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-1"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-1"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(H = 3\;m\)</span>
+<span>\(W = 5\;m\)</span>
+<span>\(L = 0.3\;m\)</span>
+<span>\(k = 0.9\;W/m\cdot K\)</span>
+<span>\(T_1 = 16°C\)</span>
+<span>\(T_2 = 2°C\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Wall area: \(A = (3)(5) = 15\;m^2\)
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Using Eq. 3-3:
+\[ \dot{Q} = kA\frac{T_1 - T_2}{L} = (0.9)(15)\frac{(16 - 2)}{0.3} \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Using thermal resistance:
+\[ R_{wall} = \frac{L}{kA} = \frac{0.3}{(0.9)(15)} = 0.02222\;°C/W \]
+\[ \dot{Q} = \frac{\Delta T}{R_{wall}} = \frac{14}{0.02222} \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} = 630\;W \]
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 4 ==================== -->
+<section class="section" id="sec4">
+<div class="section-header">
+<div class="section-icon">🌡️</div>
+<div class="section-titles">
+<h2>Convection &amp; Radiation Resistance</h2>
+<span class="section-sub">§ 3-1 — Surface Thermal Resistances</span>
+</div>
+<button class="task-check" data-task="sec4" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">4</span></span>
+</button>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:0 0 12px;">Convection Resistance</h3>
+<p>باستخدام <span class="term">Newton's Law of Cooling</span>: \(\dot{Q}_{conv} = hA_s(T_s - T_\infty)\)، يمكن إعادة كتابتها:</p>
+
+<div class="formula-box">
+<div class="box-label">Convection Resistance — Eq. 3-7, 3-8</div>
+\[ \dot{Q}_{conv} = \frac{T_s - T_\infty}{R_{conv}} \qquad (W) \tag{3-7} \]
+\[ R_{conv} = \frac{1}{hA_s} \qquad (K/W) \tag{3-8} \]
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-4.png" alt="Figure 3-4: Convection resistance">
+<div class="fig-caption">Figure 3–4: Convection resistance at a surface</div>
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Effect of Large \(h\)</div>
+<p>إذا \(h \to \infty\) فإن \(R_{conv} \to 0\) وبالتالي \(T_s \approx T_\infty\). هذا يعني أن السطح لا يقدم تقريبًا أي مقاومة أمام <span class="term">Convection</span>. هذه الحالة يتم الاقتراب منها عمليًا عند أسطح <span class="term">Boiling</span> و<span class="term">Condensation</span>.</p>
+<p>المعادلة ليست مقتصرة على <span class="term">plane surfaces</span>؛ يمكن استخدامها لأسطح بأي شكل بشرط أن يكون \(h = \text{constant and uniform}\).</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Radiation Resistance</h3>
+<p>عندما يكون الجدار محاطًا بغاز، قد تكون تأثيرات <span class="term">Radiation</span> مهمة. لسطح بـ<span class="term">emissivity</span> \(\varepsilon\) ومساحة \(A_s\):</p>
+
+<div class="formula-box">
+<div class="box-label">Radiation Resistance — Eq. 3-9, 3-10</div>
+\[ \dot{Q}_{rad} = \varepsilon\sigma A_s(T_s^4 - T_{surr}^4) = h_{rad}A_s(T_s - T_{surr}) = \frac{T_s - T_{surr}}{R_{rad}} \tag{3-9} \]
+\[ R_{rad} = \frac{1}{h_{rad}A_s} \qquad (K/W) \tag{3-10} \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Radiation Heat-Transfer Coefficient — Eq. 3-11</div>
+\[ h_{rad} = \varepsilon\sigma(T_s^2 + T_{surr}^2)(T_s + T_{surr}) \qquad (W/m^2\cdot K) \tag{3-11} \]
+</div>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ Important</div>
+<p>عند حساب \(h_{rad}\)، يجب أن تكون \(T_s\) و\(T_{surr}\) <strong>بوحدة Kelvin</strong>. كما أن \(h_{rad}\) يعتمد بشكل كبير على درجة الحرارة، بخلاف \(h_{conv}\).</p>
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-5.png" alt="Figure 3-5: Combined convection and radiation">
+<div class="fig-caption">Figure 3–5: Combined convection and radiation at a surface</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Combined Heat-Transfer Coefficient</h3>
+<p>الـ<span class="term">Convection</span> و<span class="term">Radiation Resistances</span> تكونان <strong>parallel</strong>. عندما \(T_{surr} \approx T_\infty\):</p>
+
+<div class="formula-box">
+<div class="box-label">Combined Coefficient — Eq. 3-12</div>
+\[ h_{combined} = h_{conv} + h_{rad} \qquad (W/m^2\cdot K) \tag{3-12} \]
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 5 ==================== -->
+<section class="section" id="sec5">
+<div class="section-header">
+<div class="section-icon">🔗</div>
+<div class="section-titles">
+<h2>Thermal Resistance Network</h2>
+<span class="section-sub">§ 3-1 — Plane Wall with Convection on Both Sides</span>
+</div>
+<button class="task-check" data-task="sec5" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">5</span></span>
+</button>
+</div>
+
+<p>لـ<span class="term">Plane Wall</span> بسمك \(L\) ومساحة \(A\) ومعامل توصيل \(k\)، بين موائع عند \(T_{\infty1}\) و\(T_{\infty2}\) مع معاملات حمل \(h_1\) و\(h_2\)، حيث \(T_{\infty2} < T_{\infty1}\):</p>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-6.png" alt="Figure 3-6: Thermal resistance network for a plane wall">
+<div class="fig-caption">Figure 3–6: Thermal resistance network for a plane wall with convection on both sides</div>
+</div>
+
+<p>داخل الجدار تتغير درجة الحرارة <span class="term">linearly</span>، بينما في الموائع تقترب درجة الحرارة <span class="term">asymptotically</span> من \(T_{\infty1}\) و\(T_{\infty2}\). في <span class="term">steady conditions</span>، نفس <span class="term">heat-transfer rate</span> يمر خلال كل جزء:</p>
+
+<div class="formula-box">
+<div class="box-label">Steady-State Energy Balance — Eq. 3-13</div>
+\[ \dot{Q} = h_1A(T_{\infty1} - T_1) = kA\frac{T_1 - T_2}{L} = h_2A(T_2 - T_{\infty2}) \tag{3-13} \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Resistance Form — Eq. 3-14</div>
+\[ \dot{Q} = \frac{T_{\infty1} - T_1}{1/(h_1A)} = \frac{T_1 - T_2}{L/(kA)} = \frac{T_2 - T_{\infty2}}{1/(h_2A)} \tag{3-14} \]
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Total Thermal Resistance</h3>
+<p>بجمع <span class="term">temperature differences</span> ومقابلها <span class="term">resistances</span>:</p>
+
+<div class="formula-box">
+<div class="box-label">Total Heat Transfer — Eq. 3-15, 3-16</div>
+\[ \dot{Q} = \frac{T_{\infty1} - T_{\infty2}}{R_{total}} \qquad (W) \tag{3-15} \]
+\[ R_{total} = \frac{1}{h_1A} + \frac{L}{kA} + \frac{1}{h_2A} \qquad (K/W) \tag{3-16} \]
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-7.png" alt="Figure 3-7: Mathematical identity illustration">
+<div class="fig-caption">Figure 3–7: Mathematical identity for ratios</div>
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Temperature Drop Across Any Layer</div>
+<p>بما أن \(\dot{Q}\) ثابت في <span class="term">steady state</span>:</p>
+\[ \Delta T = \dot{Q} \cdot R \qquad (^\circ C) \tag{3-17} \]
+<p><span class="en">Temperature drop across a layer is proportional to the thermal resistance of that layer.</span> كلما زادت \(R\)، زاد الانخفاض في درجة الحرارة عبرها.</p>
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-8.png" alt="Figure 3-8: Temperature drops across layers">
+<div class="fig-caption">Figure 3–8: Temperature drops proportional to thermal resistances</div>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Overall Heat Transfer Coefficient \(U\)</h3>
+
+<div class="formula-box">
+<div class="box-label">Overall Heat Transfer Coefficient — Eq. 3-18, 3-19</div>
+\[ \dot{Q} = UA\Delta T \qquad (W) \tag{3-18} \]
+\[ UA = \frac{1}{R_{total}} \qquad (W/K) \tag{3-19} \]
+</div>
+
+<div class="def-box">
+<div class="box-title">📌 U-Factor</div>
+<p><span class="en">Overall heat-transfer coefficient = inverse of total thermal resistance per unit area.</span></p>
+<p>وحدته: \(W/m^2 \cdot K\). يُستخدم بشكل خاص في <span class="term">Heat Exchangers</span> و<span class="term">Windows</span> (يُعرف باسم <span class="term">U-factor</span>).</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Determining Surface Temperatures</h3>
+<p>لا نحتاج لمعرفة <span class="term">surface temperatures</span> مسبقًا لحساب \(\dot{Q}\). بعد حسابها:</p>
+
+<div class="formula-box">
+<div class="box-label">Finding Surface Temperature — Eq. 3-20</div>
+\[ T_1 = T_{\infty1} - \dot{Q} \cdot R_{conv,1} \tag{3-20} \]
+</div>
+
+
+
+<!-- ===== EXAMPLE 3-2 ===== -->

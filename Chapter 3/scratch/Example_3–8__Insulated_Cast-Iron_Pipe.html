@@ -1,0 +1,132 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–8: Insulated Cast-Iron Pipe</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Steam at 320°C flows through a cast-iron pipe (<em>k</em> = 80 W/m·K) with <em>D</em><sub>1</sub> = 5 cm, <em>D</em><sub>2</sub> = 5.5 cm, covered with 3-cm-thick glass wool insulation (<em>k</em> = 0.05 W/m·K). Surroundings at 5°C. Combined external <em>h</em><sub>2</sub> = 18, internal <em>h</em><sub>1</sub> = 60 W/m²·K. Determine: (1) heat loss per unit length; (2) temperature drops across pipe and insulation.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-29.png" alt="Figure 3-29: Insulated pipe">
+<div class="fig-caption">Figure 3–29: Insulated cast-iron pipe — resistance network</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-8"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-8"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 0.025\;m\)</span>
+<span>\(r_2 = 0.0275\;m\)</span>
+<span>\(r_3 = 0.0575\;m\)</span>
+<span>\(L = 1\;m\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\(A_1 = 2\pi(0.025)(1) = 0.157\;m^2\), \(A_3 = 2\pi(0.0575)(1) = 0.361\;m^2\)
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_i = \frac{1}{(60)(0.157)} = 0.106\;°C/W \qquad R_{pipe} = \frac{\ln(2.75/2.5)}{2\pi(80)} = 0.000189\;°C/W \]
+\[ R_{ins} = \frac{\ln(5.75/2.75)}{2\pi(0.05)} = 2.35\;°C/W \qquad R_o = \frac{1}{(18)(0.361)} = 0.154\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\[ R_{total} \approx 0.106 + 0.000189 + 2.35 + 0.154 \approx 2.61\;°C/W \]
+\[ \dot{Q} = \frac{320 - 5}{2.61} \approx 121\;W/m \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ \Delta T_{pipe} = (121)(0.000189) \approx 0.023°C \qquad \Delta T_{ins} = (121)(2.35) \approx 284°C \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} \approx 121\;W/m \qquad \Delta T_{pipe} \approx 0.02°C \qquad \Delta T_{ins} \approx 284°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>\(R_{pipe} \ll R_{ins}\): الأنبوب تقريبًا <span class="term">isothermal</span>. معظم الـ<span class="term">temperature drop</span> يحدث عبر <span class="term">insulation</span> التي تتحكم أساسًا في <span class="term">total thermal resistance</span> وبالتالي <span class="term">heat loss</span>.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 10 ==================== -->
+<section class="section" id="sec10">
+<div class="section-header">
+<div class="section-icon">🎯</div>
+<div class="section-titles">
+<h2>Critical Radius of Insulation</h2>
+<span class="section-sub">§ 3-5 — Opposing Effects of Insulation</span>
+</div>
+<button class="task-check" data-task="sec10" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">10</span></span>
+</button>
+</div>
+
+<p>في <span class="term">Plane Wall</span>، إضافة <span class="term">insulation</span> دائمًا تقلل <span class="term">heat transfer</span> لأن المساحة لا تتغير. لكن في <span class="term">cylinders</span> و<span class="term">spheres</span> يحدث تأثيران متعاكسان:</p>
+
+<div class="def-box">
+<div class="box-title">📌 Two Opposing Effects</div>
+<ul>
+<li><strong>Effect 1 — Conduction Resistance ↑:</strong> زيادة <span class="term">insulation thickness</span> تزيد \(R_{conduction}\) ← تميل لتقليل <span class="term">heat transfer</span>.</li>
+<li><strong>Effect 2 — Convection Area ↑:</strong> زيادة <span class="term">outer radius</span> تزيد <span class="term">surface area</span> ← تقل \(R_{convection} = 1/(hA)\) ← تميل لزيادة <span class="term">heat transfer</span>.</li>
+</ul>
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-30.png" alt="Figure 3-30: Insulated cylinder model">
+<div class="fig-caption">Figure 3–30: Physical model and resistance network for insulated cylinder</div>
+</div>
+
+<p>لأنبوب أسطواني، معدل انتقال الحرارة:</p>
+<div class="equation-scroll">
+\[ \dot{Q} = \frac{T_1 - T_\infty}{\dfrac{\ln(r_2/r_1)}{2\pi Lk} + \dfrac{1}{h(2\pi r_2 L)}} \]
+</div>
+
+<p>بوضع \(\dfrac{d\dot{Q}}{dr_2} = 0\) نحصل على <span class="term">Critical Radius</span>:</p>
+
+<div class="formula-box">
+<div class="box-label">Critical Radius — Cylinder &amp; Sphere</div>
+\[ r_{cr,\,cylinder} = \frac{k}{h} \]
+\[ r_{cr,\,sphere} = \frac{2k}{h} \]
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-31.png" alt="Figure 3-31: Heat transfer vs outer radius">
+<div class="fig-caption">Figure 3–31: \(\dot{Q}\) vs. outer radius — maximum at critical radius</div>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Behavior Around Critical Radius</div>
+<ul>
+<li>\(r_2 < r_{cr}\): زيادة <span class="term">insulation</span> تزيد \(\dot{Q}\).</li>
+<li>\(r_2 = r_{cr}\): \(\dot{Q}\) يصل إلى <strong>maximum</strong>.</li>
+<li>\(r_2 > r_{cr}\): زيادة <span class="term">insulation</span> تقلل \(\dot{Q}\).</li>
+</ul>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Practical Significance</h3>
+<p>لأقل قيم عملية لـ\(h\) في <span class="term">natural convection of gases</span> (حوالي \(5\;W/m^2\cdot K\)) ومعامل توصيل <span class="term">insulation</span> نموذجي (\(k \approx 0.05\;W/m\cdot K\)):</p>
+\[ r_{cr,max} = \frac{k}{h} = \frac{0.05}{5} \approx 0.01\;m = 1\;cm \]
+
+<div class="note-box">
+<div class="note-title">📝 Practical Conclusions</div>
+<ul>
+<li><strong>Hot-water/steam pipes:</strong> يمكن إضافة <span class="term">insulation</span> بدون قلق لأن أنصاف أقطار الأنابيب أكبر عادةً من \(r_{cr}\).</li>
+<li><strong>Electric wires:</strong> قد يكون نصف القطر أقل من \(r_{cr}\)، فإضافة <span class="term">plastic insulation</span> قد تزيد <span class="term">heat transfer</span> وتخفض درجة الحرارة — مفيد للسلامة!</li>
+</ul>
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-32.png" alt="Figure 3-32: Electric wire with insulation">
+<div class="fig-caption">Figure 3–32: Electric wire with plastic insulation — critical radius effect</div>
+</div>
+
+
+
+<!-- ===== EXAMPLE 3-9 ===== -->

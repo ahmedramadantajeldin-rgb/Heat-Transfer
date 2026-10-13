@@ -1,0 +1,110 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–2: Heat Loss through a Single-Pane Window</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 0.8-m-high and 1.5-m-wide glass window with a thickness of 8 mm and a thermal conductivity of <em>k</em> = 0.78 W/m·K. Determine the steady rate of heat transfer through this glass window and the temperature of its inner surface for a day during which the room is maintained at 20°C while the temperature of the outdoors is −10°C. Take the heat transfer coefficients on the inner and outer surfaces of the window to be <em>h</em><sub>1</sub> = 10 W/m²·K and <em>h</em><sub>2</sub> = 40 W/m²·K, which includes the effects of radiation.
+</div>
+<div class="fig-container fig-small">
+<img src="images/figure-3-12.png" alt="Figure 3-12: Schematic for Example 3-2">
+<div class="fig-caption">Figure 3–12: Schematic for Example 3–2</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-2"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-2"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A = 0.8 \times 1.5 = 1.2\;m^2\)</span>
+<span>\(L = 0.008\;m\)</span>
+<span>\(k = 0.78\;W/m\cdot K\)</span>
+<span>\(T_{\infty1} = 20°C\)</span>
+<span>\(T_{\infty2} = -10°C\)</span>
+<span>\(h_1 = 10\;W/m^2\cdot K\)</span>
+<span>\(h_2 = 40\;W/m^2\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Individual Resistances:
+\[ R_i = \frac{1}{h_1 A} = \frac{1}{(10)(1.2)} = 0.08333\;°C/W \]
+\[ R_{glass} = \frac{L}{kA} = \frac{0.008}{(0.78)(1.2)} = 0.00855\;°C/W \]
+\[ R_o = \frac{1}{h_2 A} = \frac{1}{(40)(1.2)} = 0.02083\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Total Resistance:
+\[ R_{total} = 0.08333 + 0.00855 + 0.02083 = 0.1127\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Heat-transfer rate:
+\[ \dot{Q} = \frac{20 - (-10)}{0.1127} = 266\;W \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Inner surface temperature:
+\[ T_1 = T_{\infty1} - \dot{Q}\,R_{conv,1} = 20 - (266)(0.08333) = -2.2°C \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} = 266\;W \qquad T_1 = -2.2°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>رغم أن درجة حرارة الغرفة 20°C، فإن السطح الداخلي للزجاج عند −2.2°C تقريبًا! هذا قد يسبب <span class="term">fog formation</span> أو حتى <span class="term">frost</span> عند ارتفاع <span class="term">humidity</span> داخل الغرفة.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 6 ==================== -->
+<section class="section" id="sec6">
+<div class="section-header">
+<div class="section-icon">🏗️</div>
+<div class="section-titles">
+<h2>Multilayer Plane Walls</h2>
+<span class="section-sub">§ 3-1 — Composite Wall Systems</span>
+</div>
+<button class="task-check" data-task="sec6" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">6</span></span>
+</button>
+</div>
+
+<p>في التطبيقات العملية، قد يتكون الجدار من عدة طبقات من مواد مختلفة. كل طبقة تضيف <span class="term">conduction resistance</span> جديدة <strong>in series</strong>.</p>
+
+<div class="formula-box">
+<div class="box-label">Two-Layer Composite Wall — Eq. 3-21, 3-22</div>
+\[ \dot{Q} = \frac{T_{\infty1} - T_{\infty2}}{R_{total}} \tag{3-21} \]
+\[ R_{total} = \frac{1}{h_1A} + \frac{L_1}{k_1A} + \frac{L_2}{k_2A} + \frac{1}{h_2A} \qquad (K/W) \tag{3-22} \]
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Why Series?</div>
+<p>في <span class="term">Steady State</span>، \(\dot{Q}\) ثابت، لذلك نفس معدل انتقال الحرارة يمر خلال كل طبقة وكل مقاومة حمل حراري. لذلك تكون <span class="term">resistances in series</span>، والـ<span class="term">total resistance</span> = المجموع الحسابي. لثلاث طبقات أو أكثر: أضف مقاومة توصيل واحدة لكل طبقة إضافية.</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Finding Interface Temperatures</h3>
+
+<div class="formula-box">
+<div class="box-label">Interface Temperature — Eq. 3-23, 3-24</div>
+\[ \dot{Q} = \frac{T_i - T_j}{R_{total,i-j}} \tag{3-23} \]
+\[ \dot{Q} = \frac{T_{\infty1} - T_2}{\dfrac{1}{h_1A} + \dfrac{L_1}{k_1A}} \tag{3-24} \]
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-10.png" alt="Figure 3-10: Multilayer wall temperature distribution">
+<div class="fig-caption">Figure 3–10: Temperature distribution in a multilayer wall</div>
+</div>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ Limitation</div>
+<p>الـ<span class="term">Thermal Resistance Concept</span> أداة قوية وسهلة، لكنها تعتمد على أن \(\dot{Q} = \text{constant}\). لذلك تُستخدم فقط للأنظمة ذات <span class="term">steady heat transfer</span> وبدون <span class="term">internal heat generation</span>.</p>
+</div>
+
+
+
+<!-- ===== EXAMPLE 3-3 ===== -->

@@ -1,0 +1,651 @@
+***** --.txt (912 chars) *****
+<div class="example-card">
+<div class="example-header"><h3>Example 3–13: Preventing Circuit Board Overheating</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 15 cm × 20 cm integrated circuit board is cooled by attaching 4-cm-long aluminum pin fins of square cross section (2 mm × 2 mm, <em>k</em> = 237 W/m·K). The surrounding air is at 25°C with a convection heat transfer coefficient of <em>h</em> = 20 W/m²·K. The board surface temperature must not exceed 85°C. Design a finned surface with an overall effectiveness of 3, and determine the appropriate number of fins needed.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-50.png" alt="Figure 3-50: Circuit board with pin fins">
+<div class="fig-caption">Figure 3–50: Circuit board cooled by an array of aluminum pin fins (Example 3–13).</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class=
+...
+
+==================================================
+
+***** EXAMPLE 3-8 ==.txt (0 chars) *****
+
+==================================================
+
+***** EXAMPLE3-11.txt (0 chars) *****
+
+==================================================
+
+***** EXAMPLE3-13.txt (0 chars) *****
+
+==================================================
+
+***** EXAMPLE3-8.txt (0 chars) *****
+
+==================================================
+
+***** sol-ex3-10.txt (1179 chars) *****
+id="sol-ex3-10"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(T_c \le 85°C\)</span>
+<span>\(T_\infty = 25°C\)</span>
+<span>\(R_{case-ambient} = 20\;°C/W\)</span>
+<span>\(\dot{W}_{rating} = 10\;W\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+From the thermal resistance model between the transistor case and ambient air:
+\[ \dot{Q} = \frac{T_c - T_\infty}{R_{case-ambient}} = \frac{85 - 25}{20} = \frac{60}{20} = 3\;W \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q}_{max} = 3\;W \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>يجب ألا يعمل الترانزستور عند قدرة تتجاوز 3 W في هذه الظروف لتجنب تجاوز درجة حرارة الغلاف \(85°C\)، وهي أقل بكثير من قدرته القصوى المصنفة (10 W). ولتشغيل الترانزستور عند مستويات قدرة أعلى تقترب من 10 W بأمان، يجب خفض المقاومة الحرارية بإضافة مشتت حراري (<span class="term">heat sink</span>) أو استخدام مروحة تبريد (<span class="term">cooling fan</span>) لزيادة معامل الحمل \(h\).</p>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ==
+
+==================================================
+
+***** sol-ex3-11.txt (1565 chars) *****
+id="sol-ex3-11"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(\dot{Q} = 60\;W\)</span>
+<span>\(T_c \le 90°C\)</span>
+<span>\(T_\infty = 30°C\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Calculate the maximum allowable thermal resistance:
+<br>The maximum allowable temperature difference is:
+\[ \Delta T = T_c - T_\infty = 90°C - 30°C = 60°C \]
+The required thermal resistance is:
+\[ R = \frac{\Delta T}{\dot{Q}} = \frac{60°C}{60\;W} = 1.0\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Heat sink selection:
+<br>To maintain the case temperature at or below 90°C, the selected heat sink must satisfy:
+\[ R < 1.0\;°C/W \]
+From Table 3–6 of standard commercial heat sinks:
+<br>The <strong>HS 5030</strong> heat sink provides \(R = 0.9\;°C/W\) in vertical orientation ✓.
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+<p style="direction:ltr;text-align:center;">Select <strong>HS 5030</strong> heat sink (\(R = 0.9\;°C/W\), vertical orientation)</p>
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>المشتت الحراري HS 5030 ذو المقاومة \(0.9\;°C/W\) سيحافظ على درجة حرارة الغلاف عند: \(T_c = T_\infty + \dot{Q}R = 30 + (60)(0.9) = 84°C\)، وهي أقل بـ 6 درجات مئوية من الحد الأقصى المسموح به (\(90°C\))، مما يوفر هامش أمان ممتاز وموثوقية عالية أثناء التشغيل المستمر.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ==
+
+==================================================
+
+***** sol-ex3-12.txt (2504 chars) *****
+id="sol-ex3-12"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(T_b = 200°C\)</span>
+<span>\(T_\infty = 25°C\)</span>
+<span>\(L = 20\;mm = 0.020\;m\)</span>
+<span>\(D = 5\;mm = 0.005\;m\)</span>
+<span>\(h = 50\;W/m^2\cdot K\)</span>
+<span>\(k = 240\;W/m\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Calculate the fin parameter product \(mL\):
+<br>For a parabolic pin fin with blunt tip (Table 3–3):
+\[ mL = L\sqrt{\frac{4h}{kD}} = 0.020\sqrt{\frac{4(50)}{(240)(0.005)}} = 0.020\sqrt{\frac{200}{1.20}} = 0.020 \times 12.91 = 0.2582 \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Fin surface area \(A_{fin}\):
+<br>From geometric relations for parabolic pin fins in Table 3–3:
+\[ A_{fin} = 2.106 \times 10^{-4}\;m^2 \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Calculate the fin efficiency \(\eta_{fin}\) using modified Bessel functions:
+<br>From Table 3–3 for this parabolic profile:
+\[ \eta_{fin} = \frac{3}{2(mL)} \frac{I_1\left(\frac{4}{3}mL\right)}{I_0\left(\frac{4}{3}mL\right)} \]
+The argument for the Bessel functions is:
+\[ \frac{4}{3} mL = \frac{4}{3}(0.2582) = 0.3443 \]
+From tables of modified Bessel functions:
+\[ I_0(0.3443) \approx 1.0350 \qquad I_1(0.3443) \approx 0.1716 \]
+Substituting these values:
+\[ \eta_{fin} = \frac{3}{2(0.2582)} \frac{0.1716}{1.0350} = 5.81 \times \frac{0.1716}{1.0350} = 0.963 \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Heat transfer rate from a single fin:
+\[ \dot{Q}_{fin} = \eta_{fin} h A_{fin} (T_b - T_\infty) = (0.963)(50\;W/m^2\cdot K)(2.106 \times 10^{-4}\;m^2)(200 - 25)°C = 1.77\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+... (10 more lines) ...
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Heat transfer rate from a single fin:
+\[ \dot{Q}_{fin} = \eta_{fin} h A_{fin} (T_b - T_\infty) = (0.963)(50\;W/m^2\cdot K)(2.106 \times 10^{-4}\;m^2)(200 - 25)°C = 1.77\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+Calculate the fin effectiveness \(\varepsilon_{fin}\):
+<br>The base area of the pin fin is:
+\[ A_b = \frac{\pi D^2}{4} = \frac{\pi (0.005\;m)^2}{4} = 1.9635 \times 10^{-5}\;m^2 \]
+The heat transfer from this base area without the fin:
+\[ \dot{Q}_{no\;fin} = h A_b (T_b - T_\infty) = (50)(1.9635 \times 10^{-5})(175) = 0.1718\;W \]
+Therefore:
+\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{no\;fin}} = \frac{1.77\;W}{0.1718\;W} \approx 10.3 \]
+<br>Alternatively, using Eq. 3-79:
+\[ \varepsilon_{fin} = \eta_{fin} \frac{A_{fin}}{A_b} = (0.963) \frac{2.106 \times 10^{-4}}{1.9635 \t
+...
+
+==================================================
+
+***** sol-ex3-13.txt (2504 chars) *****
+id="sol-ex3-13"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{board} = (0.15)(0.20) = 0.03\;m^2\)</span>
+<span>\(L = 0.04\;m\)</span>
+<span>\(a = 0.002\;m\) (square side)</span>
+<span>\(k = 237\;W/m\cdot K\)</span>
+<span>\(h = 20\;W/m^2\cdot K\)</span>
+<span>\(T_b = 85°C,\;T_\infty = 25°C\)</span>
+<span>\(\varepsilon_{fin,overall} = 3\) (required)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Fin parameter \(m\) and product \(mL\):
+<br>For a pin fin of square cross section (\(a \times a\)):
+\[ p = 4a = 4(0.002) = 0.008\;m, \qquad A_c = a^2 = (0.002)^2 = 4 \times 10^{-6}\;m^2 \]
+\[ m = \sqrt{\frac{hp}{kA_c}} = \sqrt{\frac{4h}{ka}} = \sqrt{\frac{4(20)}{(237)(0.002)}} = \sqrt{\frac{80}{0.474}} = 12.99\;m^{-1} \]
+\[ mL = (12.99\;m^{-1})(0.04\;m) = 0.5196 \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Individual fin efficiency (assuming adiabatic tip):
+\[ \eta_{fin} = \frac{\tanh(mL)}{mL} = \frac{\tanh(0.5196)}{0.5196} = \frac{0.4774}{0.5196} = 0.919 \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Areas per fin:
+<br>Surface area of one fin:
+\[ A_{fin} = p L = 4(0.002)(0.04) = 3.2 \times 10^{-4}\;m^2 \]
+Base area occupied by one fin:
+\[ A_b = a^2 = (0.002)^2 = 4 \times 10^{-6}\;m^2 \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Heat transfer rates without fins and with \(n\) fins:
+<br>Without fins:
+\[ \dot{Q}_{no\;fin} = h A_{board} (T_b - T_\infty) = (20)(0.03)(85 - 25) = 36\;W \]
+With \(n\) fins attached:
+\[ A_{unfin} = A_{board} - n A_b = 0.03 - 4 \times 10^{-6} n \]
+\[ \dot{Q}_{total} = h \left( A_{unfin} + \eta_{fin} A_{fin} \right) (T_b - T_\infty) \]
+... (13 more lines) ...
+\[ A_{unfin} = A_{board} - n A_b = 0.03 - 4 \times 10^{-6} n \]
+\[ \dot{Q}_{total} = h \left( A_{unfin} + \eta_{fin} A_{fin} \right) (T_b - T_\infty) \]
+\[ \dot{Q}_{total} = (20)(60)\left[ (0.03 - 4 \times 10^{-6} n) + (0.919)(3.2 \times 10^{-4} n) \right] \]
+\[ \dot{Q}_{total} = 1200\left[ 0.03 + 2.9008 \times 10^{-4} n \right] = 36 + 0.3481\,n \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+Determine the number of fins \(n\) from required \(\varepsilon_{fin,overall} = 3\):
+\[ \varepsilon_{fin,overall} = \frac{\dot{Q}_{total}}{\dot{Q}_{no\;fin}} = \frac{36 + 0.3481\,n}{36} = 3 \]
+\[ 36 + 0.3481\,n = 3 \times 36 = 108 \]
+\[ 0.3481\,n = 108 - 36 = 72 \]
+\[ n = \frac{72}{0.3481} \approx 206.8 \approx 207\;\text{fins} \]
+</div></div>
+</div>
+<div
+...
+
+==================================================
+
+***** sol-ex3-18.txt (2504 chars) *****
+id="sol-ex3-18"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(f_{ins} = 0.75\) (75% insulation area)</span>
+<span>\(f_{stud} = 0.25\) (25% stud area)</span>
+<span>\(\text{Perimeter} = 50\;\text{m}\)</span>
+<span>\(\text{Height} = 2.5\;\text{m}\)</span>
+<span>\(\text{Glazing Fraction} = 0.20\)</span>
+<span>\(T_i = 20\;{^\circ\text{C}}\)</span>
+<span>\(T_o = -4\;{^\circ\text{C}}\)</span>
+<span>\(\Delta T = 20 - (-4) = 24\;{^\circ\text{C}}\)</span>
+</div>
+</div>
+
+<div class="solution-steps">
+<h4>Solution</h4>
+
+<p>
+نلخص أولاً المقاومات الحرارية لوحدة المساحة لكل طبقة من طبقات الجدار عبر مساري انتقال الحرارة المتوازيين في الجدول التالي:
+</p>
+
+<!-- Inline Table for Example 3-18 -->
+<div class="analogy-box num-table-box">
+<div class="table-wrapper">
+<table class="num-table">
+<thead>
+<tr>
+  <th rowspan="2" style="vertical-align:middle;text-align:left;">Construction Layer / Element</th>
+  <th colspan="2" style="border-bottom:1px solid #CBD7E3;">Unit Thermal Resistance, \(R\;(\text{m}^2\cdot{^\circ\text{C}}/\text{W})\)</th>
+</tr>
+<tr>
+  <th>Between Studs (Insulation Path)</th>
+  <th>At Studs (Framing Path)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="td-label">1. Outside surface resistance (24 km/h wind)</td>
+  <td>0.030</td>
+... (50 more lines) ...
+  <td><strong>1.23</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<div class="step"><div class="step-num">1</div><div class="step-content">
+<strong>U-factor for the insulation path (between studs):</strong>
+\[ U_{ins} = \frac{1}{R_{ins}} = \frac{1}{3.05\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}} = 0.328\;\text{W}/(\text{m}^2\cdot\text{K}) \]
+</div></div>
+
+<div class="st
+...
+
+==================================================
+
+***** sol-ex3-19.txt (2504 chars) *****
+id="sol-ex3-19"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(R_{overall,old} = 2.23\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</span>
+<span>\(R_{fiberboard} = 0.23\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</span>
+<span>\(R_{foam} = 0.98\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</span>
+<span>\(A_{wall} = 100\;\text{m}^2\)</span>
+<span>\(\Delta T = 24\;{^\circ\text{C}}\)</span>
+</div>
+</div>
+
+<div class="solution-steps">
+<h4>Solution</h4>
+
+<div class="step"><div class="step-num">1</div><div class="step-content">
+<strong>Analysis of the continuous layer modification:</strong><br>
+نظرًا لأن لوح العزل الرغوي الصلب (<span class="term">Rigid foam insulation</span>) يغطي الجدار الخارجي باستمرار على كامل المساحة دون انقطاع، فإنه يُطبق بالتساوي فوق مسار العزل ومسار العوارض الخشبية على حد سواء (<span class="term">Continuous Exterior Insulation</span>).
+</div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content">
+<strong>Net increase in unit thermal resistance (\(\Delta R\)):</strong>
+\[ \Delta R = R_{foam} - R_{fiberboard} = 0.98 - 0.23 = +0.75\;\text{m}^2\cdot{^\circ\text{C}}/\text{W} \]
+</div></div>
+
+<div class="step"><div class="step-num">3</div><div class="step-content">
+<strong>New overall unit thermal resistance (\(R_{new}\)):</strong>
+\[ R_{new} = R_{overall,old} - R_{fiberboard} + R_{foam} = 2.23 - 0.23 + 0.98 = 2.98\;\text{m}^2\cdot{^\circ\text{C}}/\text{W} \]
+</div></div>
+
+<div class="step"><div class="step-num">4</div><div class="step-content">
+<strong>Percentage increase in wall R-value:</strong>
+\[ \text{Percentage increase} = \frac{R_{new} - R_{overall,old}}{R_{overall,old}} \times 100\% \]
+\[ \text{Percentage increase} = \frac{2.98 - 2.23}{2.23} \times 100\% = \frac{0.75}{2.23} \times 100\% \approx 33.6\% \approx 34\% \]
+</div></div>
+
+<div class="step"><div class="step-num">5</div><div class="step-content">
+<strong>New overall U-factor and heat loss rate:</strong>
+\[ U_{new} = \frac{1}{R_{new}} = \frac{1}{2.98\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}} \approx 0.336\;\text{W}/(\text{m}^2\cdot\text{K}) \]
+\[ \dot{Q}_{new} = U_{new} A_{wall} \Delta T = (0.336\;\text{W}/\text{m}^2\cdot\text{K})(100\;\text{m}^2)(24\;{^\circ\text{C}}) = 806.4\;\text{W} \approx 0.806\;\text{kW} \]
+... (9 more lines) ...
+</div></div>
+
+<div class="step"><div class="step-num">5</div><div class="step-content">
+<strong>New overall U-factor and heat loss rate:</strong>
+\[ U_{new} = \frac{1}{R_{new}} = \frac{1}{2.98\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}} \approx 0.336\;\text{W}/(\text{m}^2\cdot\text{K}) \]
+\[ \dot{Q}_{new} = U_{new} A_{wall} \Delta T = (0.336\;\text{W}/\text{m}^2\cdot\text{K})(100\;\text{m}^2)(24\;{^\circ\text{C}}) = 806.4\;\text{W} \approx 0.806\;\text{kW} \]
+مقدار التوفير في الفقد الحراري:
+\[ \Delta \dot{Q} = 1078 - 806.4 = 271.6\;\text{W} \quad (25.2\%\;\text{reduction}) \]
+</div></div>
+
+</div>
+
+<div class="final-answer">
+<div class="answer-label">✅
+...
+
+==================================================
+
+***** sol-ex3-5.txt (1826 chars) *****
+id="sol-ex3-5"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(L_{plate} = 0.01\;m\)</span>
+<span>\(k_{Cu} = 386\;W/m\cdot K\)</span>
+<span>\(A_c = 8 \times 10^{-4}\;m^2\)</span>
+<span>\(A = 0.01\;m^2\)</span>
+<span>\(h_c = 42{,}000\;W/m^2\cdot K\)</span>
+<span>\(h_o = 25\;W/m^2\cdot K\)</span>
+<span>\(T_{case} = 70°C,\;T_\infty = 20°C\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ R_{interface} = \frac{1}{h_c A_c} = \frac{1}{(42{,}000)(8 \times 10^{-4})} = 0.0298\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_{plate} = \frac{L}{kA} = \frac{0.01}{(386)(0.01)} = 0.0026\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\[ R_{conv} = \frac{1}{h_o A} = \frac{1}{(25)(0.01)} = 4.0\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ R_{total} = 0.0298 + 0.0026 + 4.0 = 4.0324\;°C/W \]
+\[ \dot{Q} = \frac{70 - 20}{4.0324} = 12.4\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+\[ \Delta T_{interface} = \dot{Q}\,R_{interface} = (12.4)(0.0298) = 0.37°C \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ P_{max} = 12.4\;W/\text{transistor} \qquad \Delta T_{interface} = 0.37°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>الـ<span class="term">temperature jump</span> صغير جدًا. حتى لو تم إزالة <span class="term">contact resistance</span> تمامًا، لن تنخفض درجة حرارة التشغيل إلا بأقل من 0.4°C. الـ<span class="term">convection resistance</span> هي المهيمنة.</p>
+</div>
+... (7 more lines) ...
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ P_{max} = 12.4\;W/\text{transistor} \qquad \Delta T_{interface} = 0.37°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>الـ<span class="term">temperature jump</span> صغير جدًا. حتى لو تم إزالة <span class="term">contact resistance</span> تمامًا، لن تنخفض درجة حرارة التشغيل إلا بأقل من 0.4°C. الـ<span class="term">convection resistance</span> هي المهيمنة.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+...
+
+==================================================
+
+***** sol-ex3-6.txt (2044 chars) *****
+id="sol-ex3-6"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{wall} = 15\;m^2\)</span>
+<span>\(k_{brick} = 0.72\)</span>
+<span>\(k_{plaster} = 0.22\)</span>
+<span>\(k_{foam} = 0.026\;W/m\cdot K\)</span>
+<span>Representative section: \(A = 0.25\;m^2\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<p style="direction:ltr;text-align:left;">The construction repeats every 25 cm vertically. Taking a representative section (\(A = 0.25\;m^2\)):</p>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Individual Resistances:
+\[ R_i = \frac{1}{(10)(0.25)} = 0.40\;°C/W \qquad R_1(foam) = \frac{0.03}{(0.026)(0.25)} = 4.62\;°C/W \]
+\[ R_2 = R_6(plaster,side) = \frac{0.02}{(0.22)(0.25)} = 0.36\;°C/W \]
+\[ R_3 = R_5(plaster,center) = \frac{0.16}{(0.22)(0.015)} = 48.48\;°C/W \]
+\[ R_4(brick) = \frac{0.16}{(0.72)(0.22)} = 1.01\;°C/W \qquad R_o = \frac{1}{(25)(0.25)} = 0.16\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Parallel middle section (\(R_3\), \(R_4\), \(R_5\) in parallel):
+\[ \frac{1}{R_{mid}} = \frac{1}{48.48} + \frac{1}{1.01} + \frac{1}{48.48} = 1.03\;W/°C \quad \Rightarrow \quad R_{mid} = 0.97\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Total: \(R_{total} = 0.40 + 4.62 + 0.36 + 0.97 + 0.36 + 0.16 = 6.87\;°C/W\)
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Per section: \(\dot{Q} = 30/6.87 = 4.37\;W\). Per unit area: \(17.5\;W/m^2\).
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q}_{total} = (17.5)(15) = 263\;W \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>النتيجة <span class="term">approximate</span>. الأسلوب البديل (<span class="term">adiabatic planes</span>) يعطي \(R_{total} = 6.97\;°C/W\) — قريبة جدًا. كلا الأسلوبين يعطي نتائج مقبولة لهذه الهندسة.</p>
+</div>
+... (7 more lines) ...
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q}_{total} = (17.5)(15) = 263\;W \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>النتيجة <span class="term">approximate</span>. الأسلوب البديل (<span class="term">adiabatic planes</span>) يعطي \(R_{total} = 6.97\;°C/W\) — قريبة جدًا. كلا الأسلوبين يعطي نتائج مقبولة لهذه الهندسة.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+...
+
+==================================================
+
+***** sol-ex3-7.txt (1842 chars) *****
+id="sol-ex3-7"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 1.50\;m,\;r_2 = 1.52\;m\)</span>
+<span>\(A_1 = 28.3\;m^2,\;A_2 = 29.0\;m^2\)</span>
+<span>\(T_{\infty1} = 0°C,\;T_{\infty2} = 22°C\)</span>
+<span>\(h_{rad} = 5.34\;W/m^2\cdot K\) (assuming \(T_2 \approx 5°C\))</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ R_i = \frac{1}{(80)(28.3)} = 0.000442\;°C/W \]
+\[ R_1 = \frac{1.52 - 1.50}{4\pi(15)(1.50)(1.52)} = 0.0000478\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_o = \frac{1}{(10)(29.0)} = 0.00345\;°C/W \qquad R_{rad} = \frac{1}{(5.34)(29.0)} = 0.00646\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\(R_o\) and \(R_{rad}\) are in parallel:
+\[ \frac{1}{R_{eq}} = \frac{1}{0.00345} + \frac{1}{0.00646} = 444.7 \quad \Rightarrow \quad R_{eq} = 0.00225\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ R_{total} = 0.000442 + 0.0000478 + 0.00225 = 0.00274\;°C/W \]
+\[ \dot{Q} = \frac{22 - 0}{0.00274} \approx 8029\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+Verify: \(T_2 = 22 - (8029)(0.00225) \approx 4°C\) ← close to assumed 5°C ✓
+</div></div>
+<div class="step"><div class="step-num">6</div><div class="step-content">
+In 24 h: \(Q = (8.029)(24 \times 3600) = 693{,}700\;kJ\)
+\[ m = \frac{Q}{h_{if}} = \frac{693{,}700}{333.7} \approx 2079\;kg \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} \approx 8029\;W \qquad m \approx 2079\;kg \approx 2\;\text{metric tons/day} \]
+</div>
+</div></div>
+... (4 more lines) ...
+</div></div>
+<div class="step"><div class="step-num">6</div><div class="step-content">
+In 24 h: \(Q = (8.029)(24 \times 3600) = 693{,}700\;kJ\)
+\[ m = \frac{Q}{h_{if}} = \frac{693{,}700}{333.7} \approx 2079\;kg \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} \approx 8029\;W \qquad m \approx 2079\;kg \approx 2\;\text{metric tons/day} \]
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ==
+
+==================================================
+
+***** sol-ex3-8.txt (1775 chars) *****
+id="sol-ex3-8"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 0.025\;m\)</span>
+<span>\(r_2 = 0.0275\;m\)</span>
+<span>\(r_3 = 0.0575\;m\)</span>
+<span>\(L = 1\;m\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\(A_1 = 2\pi(0.025)(1) = 0.157\;m^2\), \(A_3 = 2\pi(0.0575)(1) = 0.361\;m^2\)
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_i = \frac{1}{(60)(0.157)} = 0.106\;°C/W \qquad R_{pipe} = \frac{\ln(2.75/2.5)}{2\pi(80)} = 0.000189\;°C/W \]
+\[ R_{ins} = \frac{\ln(5.75/2.75)}{2\pi(0.05)} = 2.35\;°C/W \qquad R_o = \frac{1}{(18)(0.361)} = 0.154\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\[ R_{total} \approx 0.106 + 0.000189 + 2.35 + 0.154 \approx 2.61\;°C/W \]
+\[ \dot{Q} = \frac{320 - 5}{2.61} \approx 121\;W/m \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ \Delta T_{pipe} = (121)(0.000189) \approx 0.023°C \qquad \Delta T_{ins} = (121)(2.35) \approx 284°C \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} \approx 121\;W/m \qquad \Delta T_{pipe} \approx 0.02°C \qquad \Delta T_{ins} \approx 284°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>\(R_{pipe} \ll R_{ins}\): الأنبوب تقريبًا <span class="term">isothermal</span>. معظم الـ<span class="term">temperature drop</span> يحدث عبر <span class="term">insulation</span> التي تتحكم أساسًا في <span class="term">total thermal resistance</span> وبالتالي <span class="term">heat loss</span>.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+... (2 more lines) ...
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} \approx 121\;W/m \qquad \Delta T_{pipe} \approx 0.02°C \qquad \Delta T_{ins} \approx 284°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>\(R_{pipe} \ll R_{ins}\): الأنبوب تقريبًا <span class="term">isothermal</span>. معظم الـ<span class="term">temperature drop</span> يحدث عبر <span class="term">insulation</span> التي تتحكم أساسًا في <span class="term">total thermal resistance</span> وبالتالي <span class="term">heat loss</span>.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+...
+
+==================================================
+
+***** sol-ex3-9.txt (1724 chars) *****
+id="sol-ex3-9"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 1.5\;mm\)</span>
+<span>\(r_2 = 3.5\;mm\)</span>
+<span>\(\dot{Q} = VI = (8)(10) = 80\;W\)</span>
+<span>\(k = 0.15\;W/m\cdot K\)</span>
+<span>\(h = 12\;W/m^2\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\(A_2 = 2\pi(0.0035)(5) = 0.110\;m^2\)
+\[ R_{conv} = \frac{1}{(12)(0.110)} = 0.758\;°C/W \qquad R_{plastic} = \frac{\ln(3.5/1.5)}{2\pi(5)(0.15)} = 0.180\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_{total} = 0.758 + 0.180 = 0.938\;°C/W \]
+\[ T_1 = 30 + (80)(0.938) \approx 105°C \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Critical radius: \(r_{cr} = k/h = 0.15/12 = 12.5\;mm\). Since \(r_2 = 3.5\;mm < r_{cr}\), the wire is below critical radius.
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Doubling cover to 4 mm: \(T_1 \approx 90.6°C\). At \(r_2 = r_{cr} = 12.5\;mm\): \(T_{1,min} \approx 83°C\).
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ T_1 \approx 105°C \quad \text{(original)} \qquad T_1 \approx 90.6°C \quad \text{(doubled cover)} \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>بما أن \(r_2 < r_{cr}\)، فإن إضافة <span class="term">insulation</span> تزيد <span class="term">heat transfer</span> وتخفض درجة الحرارة — مفيد لسلامة الأسلاك الكهربائية! عند \(r_2 = r_{cr}\) تصل درجة الحرارة إلى أدنى مستوى (83°C تقريبًا).</p>
+</div>
+</div></div>
+</div>
+</div>
+
+... (3 more lines) ...
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ T_1 \approx 105°C \quad \text{(original)} \qquad T_1 \approx 90.6°C \quad \text{(doubled cover)} \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>بما أن \(r_2 < r_{cr}\)، فإن إضافة <span class="term">insulation</span> تزيد <span class="term">heat transfer</span> وتخفض درجة الحرارة — مفيد لسلامة الأسلاك الكهربائية! عند \(r_2 = r_{cr}\) تصل درجة الحرارة إلى أدنى مستوى (83°C تقريبًا).</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+...
+
+==================================================
+

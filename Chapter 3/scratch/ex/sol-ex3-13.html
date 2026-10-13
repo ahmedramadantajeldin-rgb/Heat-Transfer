@@ -1,0 +1,36 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–13: Preventing Circuit Board Overheating</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A 15 cm × 20 cm integrated circuit board is cooled by attaching 4-cm-long aluminum pin fins of square cross section (2 mm × 2 mm, <em>k</em> = 237 W/m·K). The surrounding air is at 25°C with a convection heat transfer coefficient of <em>h</em> = 20 W/m²·K. The board surface temperature must not exceed 85°C. Design a finned surface with an overall effectiveness of 3, and determine the appropriate number of fins needed.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-50.png" alt="Figure 3-50: Circuit board with pin fins">
+<div class="fig-caption">Figure 3–50: Circuit board cooled by an array of aluminum pin fins (Example 3–13).</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-13"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-13"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{board} = (0.15)(0.20) = 0.03\;m^2\)</span>
+<span>\(L = 0.04\;m\)</span>
+<span>\(a = 0.002\;m\) (square side)</span>
+<span>\(k = 237\;W/m\cdot K\)</span>
+<span>\(h = 20\;W/m^2\cdot K\)</span>
+<span>\(T_b = 85°C,\;T_\infty = 25°C\)</span>
+<span>\(\varepsilon_{fin,overall} = 3\) (required)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Fin parameter \(m\) and product \(mL\):
+<br>For a pin fin of square cross section (\(a \times a\)):
+\[ p = 4a = 4(0.002) = 0.008\;m, \qquad A_c = a^2 = (0.002)^2 = 4 \times 10^{-6}\;m^2 \]
+\[ m = \sqrt{\frac{hp}{kA_c}} = \sqrt{\frac{4h}{ka}} = \sqrt{\frac{4(20)}{(237)(0.002)}} = \sqrt{\frac{80}{0.474}} = 12.99\;m^{-1} \]
+\[ mL = (12.99\;m^{-1})(0.04\;m) = 0.5196 \]
+</div></div>
+<div class="step"><div class="step-num">2</div>

@@ -1,0 +1,47 @@
+id="sol-ex3-5"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(L_{plate} = 0.01\;m\)</span>
+<span>\(k_{Cu} = 386\;W/m\cdot K\)</span>
+<span>\(A_c = 8 \times 10^{-4}\;m^2\)</span>
+<span>\(A = 0.01\;m^2\)</span>
+<span>\(h_c = 42{,}000\;W/m^2\cdot K\)</span>
+<span>\(h_o = 25\;W/m^2\cdot K\)</span>
+<span>\(T_{case} = 70°C,\;T_\infty = 20°C\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ R_{interface} = \frac{1}{h_c A_c} = \frac{1}{(42{,}000)(8 \times 10^{-4})} = 0.0298\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_{plate} = \frac{L}{kA} = \frac{0.01}{(386)(0.01)} = 0.0026\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\[ R_{conv} = \frac{1}{h_o A} = \frac{1}{(25)(0.01)} = 4.0\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ R_{total} = 0.0298 + 0.0026 + 4.0 = 4.0324\;°C/W \]
+\[ \dot{Q} = \frac{70 - 20}{4.0324} = 12.4\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+\[ \Delta T_{interface} = \dot{Q}\,R_{interface} = (12.4)(0.0298) = 0.37°C \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ P_{max} = 12.4\;W/\text{transistor} \qquad \Delta T_{interface} = 0.37°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>الـ<span class="term">temperature jump</span> صغير جدًا. حتى لو تم إزالة <span class="term">contact resistance</span> تمامًا، لن تنخفض درجة حرارة التشغيل إلا بأقل من 0.4°C. الـ<span class="term">convection resistance</span> هي المهيمنة.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+...

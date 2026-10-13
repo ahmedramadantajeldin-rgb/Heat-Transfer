@@ -1,0 +1,50 @@
+id="sol-ex3-12"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(T_b = 200°C\)</span>
+<span>\(T_\infty = 25°C\)</span>
+<span>\(L = 20\;mm = 0.020\;m\)</span>
+<span>\(D = 5\;mm = 0.005\;m\)</span>
+<span>\(h = 50\;W/m^2\cdot K\)</span>
+<span>\(k = 240\;W/m\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Calculate the fin parameter product \(mL\):
+<br>For a parabolic pin fin with blunt tip (Table 3–3):
+\[ mL = L\sqrt{\frac{4h}{kD}} = 0.020\sqrt{\frac{4(50)}{(240)(0.005)}} = 0.020\sqrt{\frac{200}{1.20}} = 0.020 \times 12.91 = 0.2582 \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Fin surface area \(A_{fin}\):
+<br>From geometric relations for parabolic pin fins in Table 3–3:
+\[ A_{fin} = 2.106 \times 10^{-4}\;m^2 \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Calculate the fin efficiency \(\eta_{fin}\) using modified Bessel functions:
+<br>From Table 3–3 for this parabolic profile:
+\[ \eta_{fin} = \frac{3}{2(mL)} \frac{I_1\left(\frac{4}{3}mL\right)}{I_0\left(\frac{4}{3}mL\right)} \]
+The argument for the Bessel functions is:
+\[ \frac{4}{3} mL = \frac{4}{3}(0.2582) = 0.3443 \]
+From tables of modified Bessel functions:
+\[ I_0(0.3443) \approx 1.0350 \qquad I_1(0.3443) \approx 0.1716 \]
+Substituting these values:
+\[ \eta_{fin} = \frac{3}{2(0.2582)} \frac{0.1716}{1.0350} = 5.81 \times \frac{0.1716}{1.0350} = 0.963 \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Heat transfer rate from a single fin:
+\[ \dot{Q}_{fin} = \eta_{fin} h A_{fin} (T_b - T_\infty) = (0.963)(50\;W/m^2\cdot K)(2.106 \times 10^{-4}\;m^2)(200 - 25)°C = 1.77\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+Calculate the fin effectiveness \(\varepsilon_{fin}\):
+<br>The base area of the pin fin is:
+\[ A_b = \frac{\pi D^2}{4} = \frac{\pi (0.005\;m)^2}{4} = 1.9635 \times 10^{-5}\;m^2 \]
+The heat transfer from this base area without the fin:
+\[ \dot{Q}_{no\;fin} = h A_b (T_b - T_\infty) = (50)(1.9635 \times 10^{-5})(175) = 0.1718\;W \]
+Therefore:
+\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{no\;fin}} = \frac{1.77\;W}{0.1718\;W} \approx 10.3 \]
+<br>Alternatively, using Eq. 3-79:
+\[ \varepsilon_{fin} = \eta_{fin} \frac{A_{fin}}{A_b} = (0.963) \frac{2.106 \times 10^{-4}}{1.9635 \t
+...

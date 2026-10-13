@@ -1,0 +1,49 @@
+id="sol-ex3-19"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(R_{overall,old} = 2.23\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</span>
+<span>\(R_{fiberboard} = 0.23\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</span>
+<span>\(R_{foam} = 0.98\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}\)</span>
+<span>\(A_{wall} = 100\;\text{m}^2\)</span>
+<span>\(\Delta T = 24\;{^\circ\text{C}}\)</span>
+</div>
+</div>
+
+<div class="solution-steps">
+<h4>Solution</h4>
+
+<div class="step"><div class="step-num">1</div><div class="step-content">
+<strong>Analysis of the continuous layer modification:</strong><br>
+نظرًا لأن لوح العزل الرغوي الصلب (<span class="term">Rigid foam insulation</span>) يغطي الجدار الخارجي باستمرار على كامل المساحة دون انقطاع، فإنه يُطبق بالتساوي فوق مسار العزل ومسار العوارض الخشبية على حد سواء (<span class="term">Continuous Exterior Insulation</span>).
+</div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content">
+<strong>Net increase in unit thermal resistance (\(\Delta R\)):</strong>
+\[ \Delta R = R_{foam} - R_{fiberboard} = 0.98 - 0.23 = +0.75\;\text{m}^2\cdot{^\circ\text{C}}/\text{W} \]
+</div></div>
+
+<div class="step"><div class="step-num">3</div><div class="step-content">
+<strong>New overall unit thermal resistance (\(R_{new}\)):</strong>
+\[ R_{new} = R_{overall,old} - R_{fiberboard} + R_{foam} = 2.23 - 0.23 + 0.98 = 2.98\;\text{m}^2\cdot{^\circ\text{C}}/\text{W} \]
+</div></div>
+
+<div class="step"><div class="step-num">4</div><div class="step-content">
+<strong>Percentage increase in wall R-value:</strong>
+\[ \text{Percentage increase} = \frac{R_{new} - R_{overall,old}}{R_{overall,old}} \times 100\% \]
+\[ \text{Percentage increase} = \frac{2.98 - 2.23}{2.23} \times 100\% = \frac{0.75}{2.23} \times 100\% \approx 33.6\% \approx 34\% \]
+</div></div>
+
+<div class="step"><div class="step-num">5</div><div class="step-content">
+<strong>New overall U-factor and heat loss rate:</strong>
+\[ U_{new} = \frac{1}{R_{new}} = \frac{1}{2.98\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}} \approx 0.336\;\text{W}/(\text{m}^2\cdot\text{K}) \]
+\[ \dot{Q}_{new} = U_{new} A_{wall} \Delta T = (0.336\;\text{W}/\text{m}^2\cdot\text{K})(100\;\text{m}^2)(24\;{^\circ\text{C}}) = 806.4\;\text{W} \approx 0.806\;\text{kW} \]
+مقدار التوفير في الفقد الحراري:
+\[ \Delta \dot{Q} = 1078 - 806.4 = 271.6\;\text{W} \quad (25.2\%\;\text{reduction}) \]
+</div></div>
+
+</div>
+
+<div class="final-answer">
+<div class="answer-label">✅
+...

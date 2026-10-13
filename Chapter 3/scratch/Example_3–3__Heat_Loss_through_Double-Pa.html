@@ -1,0 +1,165 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–3: Heat Loss through Double-Pane Windows</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+Consider a 0.8-m-high and 1.5-m-wide double-pane window consisting of two 4-mm-thick layers of glass (<em>k</em> = 0.78 W/m·K) separated by a 10-mm-wide stagnant air space (<em>k</em> = 0.026 W/m·K). Determine the steady rate of heat transfer through this double-pane window and the temperature of its inner surface for the same conditions as Example 3-2.
+</div>
+<div class="fig-container fig-small">
+<img src="images/figure-3-13.png" alt="Figure 3-13: Schematic for Example 3-3">
+<div class="fig-caption">Figure 3–13: Schematic for Example 3–3</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-3"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-3"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A = 1.2\;m^2\)</span>
+<span>\(L_1 = L_3 = 0.004\;m\)</span>
+<span>\(L_2 = 0.01\;m\)</span>
+<span>\(k_{glass} = 0.78\;W/m\cdot K\)</span>
+<span>\(k_{air} = 0.026\;W/m\cdot K\)</span>
+<span>\(h_1 = 10,\;h_2 = 40\;W/m^2\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Individual Resistances:
+\[ R_i = 0.08333\;°C/W \quad R_o = 0.02083\;°C/W \]
+\[ R_{glass} = \frac{0.004}{(0.78)(1.2)} = 0.00427\;°C/W \quad (\text{each layer}) \]
+\[ R_{air} = \frac{0.01}{(0.026)(1.2)} = 0.3205\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Total Resistance:
+\[ R_{total} = 0.08333 + 0.00427 + 0.3205 + 0.00427 + 0.02083 = 0.4332\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\(\dot{Q} = 30/0.4332 = 69.2\;W\) — approximately <strong>one-fourth</strong> of single-pane!
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\(T_1 = 20 - (69.2)(0.08333) = 14.2°C\)
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} = 69.2\;W \qquad T_1 = 14.2°C \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>مقارنةً بـ<span class="term">single-pane window</span>: \(T_1\) ارتفعت من −2.2°C إلى 14.2°C. الـ<span class="term">stagnant air layer</span> تمتلك مقاومة حرارية كبيرة (\(R_{air}\) هي المهيمنة). النوافذ المزدوجة تقلل <span class="term">fogging</span>، وفقدان الحرارة شتاءً، واكتساب الحرارة صيفًا، وبالتالي تقلل تكاليف التكييف.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 7 ==================== -->
+<section class="section" id="sec7">
+<div class="section-header">
+<div class="section-icon">🔬</div>
+<div class="section-titles">
+<h2>Thermal Contact Resistance</h2>
+<span class="section-sub">§ 3-2 — Imperfect Contact Between Solids</span>
+</div>
+<button class="task-check" data-task="sec7" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">7</span></span>
+</button>
+</div>
+
+<p>في تحليل <span class="term">multilayer solids</span>، افترضنا وجود <span class="term">perfect contact</span> بين الطبقات. لكن في الواقع، حتى الأسطح التي تبدو ملساء تكون <span class="term">microscopically rough</span> وتحتوي على <span class="term">peaks</span> و<span class="term">valleys</span>.</p>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-18.png" alt="Figure 3-18: Microscopic view of contact interface">
+<div class="fig-caption">Figure 3–14/15: Microscopic view of contact interface — peaks provide solid contact, valleys contain air gaps</div>
+</div>
+
+<p>عند ضغط سطحين معًا:</p>
+<ul>
+<li>الـ<span class="term">peaks</span> تعمل كـ<span class="term">solid-to-solid contact</span>.</li>
+<li>الـ<span class="term">valleys</span> تحتوي غالبًا على <span class="term">air gaps</span>.</li>
+<li>لأن <span class="term">thermal conductivity of air</span> منخفضة، تعمل هذه الفجوات كـ<span class="term">insulation</span>.</li>
+</ul>
+
+<div class="def-box">
+<div class="box-title">📌 Thermal Contact Resistance</div>
+<p><span class="en">Thermal contact resistance \(R_c\) is the thermal resistance at the interface between two solid surfaces due to imperfect contact, defined per unit interface area.</span></p>
+<p>قيمتها تُحدد <span class="term">experimentally</span>، مع وجود <span class="term">scatter</span> ملحوظ في البيانات.</p>
+</div>
+
+<div class="formula-box">
+<div class="box-label">Contact Conductance &amp; Resistance — Eq. 3-25 to 3-28</div>
+\[ \dot{Q} = \dot{Q}_{contact} + \dot{Q}_{gap} \tag{3-25} \]
+\[ \dot{Q} = h_c A \Delta T_{interface} \tag{3-26} \]
+\[ h_c = \frac{\dot{Q}/A}{\Delta T_{interface}} \qquad (W/m^2\cdot K) \tag{3-27} \]
+\[ R_c = \frac{1}{h_c} = \frac{\Delta T_{interface}}{\dot{Q}/A} \qquad (m^2\cdot K/W) \tag{3-28} \]
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Typical Values</div>
+<p>\(R_c = 0.000005\) إلى \(0.0005 \; m^2 \cdot K/W\) &nbsp;←→&nbsp; \(h_c = 2{,}000\) إلى \(200{,}000 \; W/m^2 \cdot K\)</p>
+<p>العوامل المؤثرة: <span class="term">surface roughness</span>، <span class="term">material properties</span>، <span class="term">interface temperature</span>، <span class="term">interface pressure</span>، ونوع <span class="term">fluid</span> المحصور.</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">When is \(R_c\) Significant?</h3>
+<p>نقارنها مع <span class="term">thermal resistance</span> للطبقة:</p>
+<ul>
+<li><strong>1 cm insulation:</strong> \(R = L/k = 0.01/0.04 = 0.25 \; m^2 \cdot K/W\) ← مقاومة الطبقة كبيرة جدًا ← \(R_c\) يمكن إهمالها.</li>
+<li><strong>1 cm copper:</strong> \(R = L/k = 0.01/386 = 0.000026 \; m^2 \cdot K/W\) ← مقاومة الطبقة صغيرة ← \(R_c\) قد تكون <strong>dominant</strong>.</li>
+</ul>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Reducing \(R_c\)</h3>
+<ol>
+<li><strong><span class="term">Thermal Grease</span></strong> (مثل silicone oil) بين السطحين — خاصة عند تركيب electronic components على heat sinks.</li>
+<li><strong>استبدال الهواء</strong> بغاز أفضل توصيلًا مثل <span class="term">helium</span> أو <span class="term">hydrogen</span>.</li>
+<li><strong><span class="term">Soft Metallic Foil</span></strong> (tin, silver, copper, nickel, aluminum) — يقلل \(R_c\) بعامل يصل إلى 7.</li>
+</ol>
+
+<div class="analogy-box num-table-box">
+<div class="table-wrapper">
+<table class="num-table nt-fluid">
+<thead><tr><th colspan="2">Table 3–1: Thermal Contact Conductance (Aluminum, 10 μm roughness, 1 atm)</th></tr>
+<tr><th>Fluid at Interface</th><th>\(h_c\) (W/m²·K)</th></tr></thead>
+<tbody>
+<tr><td class="td-label">Air</td><td>3,640</td></tr>
+<tr><td class="td-label">Helium</td><td>9,520</td></tr>
+<tr><td class="td-label">Hydrogen</td><td>13,900</td></tr>
+<tr><td class="td-label">Silicone oil</td><td>19,000</td></tr>
+<tr><td class="td-label">Glycerin</td><td>37,700</td></tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<div class="analogy-box num-table-box">
+<div class="table-wrapper">
+<table class="num-table nt-metal">
+<thead><tr><th colspan="4">Table 3–2: Thermal Contact Conductance of Metal Surfaces</th></tr>
+<tr><th>Material Pair / Condition</th><th>Roughness (μm)</th><th>Pressure (MPa)</th><th>\(h_c\) (W/m²·K)</th></tr></thead>
+<tbody>
+<tr><td class="td-label">416 SS, ground</td><td>2.54</td><td>0.17–2.5</td><td>3,800</td></tr>
+<tr><td class="td-label">304 SS, ground</td><td>1.14</td><td>4–7</td><td>1,900</td></tr>
+<tr><td class="td-label">Aluminum, ground</td><td>2.54</td><td>1.2–2.5</td><td>11,400</td></tr>
+<tr><td class="td-label">Copper, ground</td><td>1.27</td><td>1.2–20</td><td>143,000</td></tr>
+<tr><td class="td-label">Copper, milled</td><td>3.81</td><td>1–5</td><td>55,500</td></tr>
+<tr><td class="td-label">Steel–Aluminum, ground</td><td>1.4–2.0</td><td>15–35</td><td>59,000</td></tr>
+<tr><td class="td-label">Aluminum–Copper, ground</td><td>1.17–1.4</td><td>15</td><td>56,000</td></tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Trend</div>
+<p>\(h_c\) يكون أعلى (و\(R_c\) أقل) عند: <strong>soft metals + smooth surfaces + high pressure</strong>.</p>
+</div>
+
+
+
+<!-- ===== EXAMPLE 3-4 ===== -->

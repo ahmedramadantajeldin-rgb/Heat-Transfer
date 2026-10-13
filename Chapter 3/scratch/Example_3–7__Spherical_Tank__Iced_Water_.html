@@ -1,0 +1,57 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–7: Spherical Tank (Iced Water)</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+A spherical tank (internal diameter 3 m, 2-cm-thick stainless steel, <em>k</em> = 15 W/m·K) contains iced water at 0°C in a room at 22°C. The outer surface is black. Given <em>h</em><sub>1</sub> = 80, <em>h</em><sub>2</sub> = 10 W/m²·K. Determine: (1) rate of heat transfer to the iced water; (2) amount of ice melted during 24 h.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-28.png" alt="Figure 3-28: Spherical tank">
+<div class="fig-caption">Figure 3–28: Spherical tank with resistance network</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-7"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-7"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 1.50\;m,\;r_2 = 1.52\;m\)</span>
+<span>\(A_1 = 28.3\;m^2,\;A_2 = 29.0\;m^2\)</span>
+<span>\(T_{\infty1} = 0°C,\;T_{\infty2} = 22°C\)</span>
+<span>\(h_{rad} = 5.34\;W/m^2\cdot K\) (assuming \(T_2 \approx 5°C\))</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\[ R_i = \frac{1}{(80)(28.3)} = 0.000442\;°C/W \]
+\[ R_1 = \frac{1.52 - 1.50}{4\pi(15)(1.50)(1.52)} = 0.0000478\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_o = \frac{1}{(10)(29.0)} = 0.00345\;°C/W \qquad R_{rad} = \frac{1}{(5.34)(29.0)} = 0.00646\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+\(R_o\) and \(R_{rad}\) are in parallel:
+\[ \frac{1}{R_{eq}} = \frac{1}{0.00345} + \frac{1}{0.00646} = 444.7 \quad \Rightarrow \quad R_{eq} = 0.00225\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+\[ R_{total} = 0.000442 + 0.0000478 + 0.00225 = 0.00274\;°C/W \]
+\[ \dot{Q} = \frac{22 - 0}{0.00274} \approx 8029\;W \]
+</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content">
+Verify: \(T_2 = 22 - (8029)(0.00225) \approx 4°C\) ← close to assumed 5°C ✓
+</div></div>
+<div class="step"><div class="step-num">6</div><div class="step-content">
+In 24 h: \(Q = (8.029)(24 \times 3600) = 693{,}700\;kJ\)
+\[ m = \frac{Q}{h_{if}} = \frac{693{,}700}{333.7} \approx 2079\;kg \]
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q} \approx 8029\;W \qquad m \approx 2079\;kg \approx 2\;\text{metric tons/day} \]
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ===== EXAMPLE 3-8 ===== -->

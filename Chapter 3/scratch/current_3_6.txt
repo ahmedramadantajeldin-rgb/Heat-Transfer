@@ -1,0 +1,47 @@
+id="sol-ex3-6"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(A_{wall} = 15\;m^2\)</span>
+<span>\(k_{brick} = 0.72\)</span>
+<span>\(k_{plaster} = 0.22\)</span>
+<span>\(k_{foam} = 0.026\;W/m\cdot K\)</span>
+<span>Representative section: \(A = 0.25\;m^2\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<p style="direction:ltr;text-align:left;">The construction repeats every 25 cm vertically. Taking a representative section (\(A = 0.25\;m^2\)):</p>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+Individual Resistances:
+\[ R_i = \frac{1}{(10)(0.25)} = 0.40\;°C/W \qquad R_1(foam) = \frac{0.03}{(0.026)(0.25)} = 4.62\;°C/W \]
+\[ R_2 = R_6(plaster,side) = \frac{0.02}{(0.22)(0.25)} = 0.36\;°C/W \]
+\[ R_3 = R_5(plaster,center) = \frac{0.16}{(0.22)(0.015)} = 48.48\;°C/W \]
+\[ R_4(brick) = \frac{0.16}{(0.72)(0.22)} = 1.01\;°C/W \qquad R_o = \frac{1}{(25)(0.25)} = 0.16\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+Parallel middle section (\(R_3\), \(R_4\), \(R_5\) in parallel):
+\[ \frac{1}{R_{mid}} = \frac{1}{48.48} + \frac{1}{1.01} + \frac{1}{48.48} = 1.03\;W/°C \quad \Rightarrow \quad R_{mid} = 0.97\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Total: \(R_{total} = 0.40 + 4.62 + 0.36 + 0.97 + 0.36 + 0.16 = 6.87\;°C/W\)
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Per section: \(\dot{Q} = 30/6.87 = 4.37\;W\). Per unit area: \(17.5\;W/m^2\).
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ \dot{Q}_{total} = (17.5)(15) = 263\;W \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>النتيجة <span class="term">approximate</span>. الأسلوب البديل (<span class="term">adiabatic planes</span>) يعطي \(R_{total} = 6.97\;°C/W\) — قريبة جدًا. كلا الأسلوبين يعطي نتائج مقبولة لهذه الهندسة.</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+...

@@ -1,0 +1,1239 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–9: Electric Wire with Plastic Insulation</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+An electric wire (diameter 3 mm, length 5 m) is covered with a 2-mm-thick plastic layer (<em>k</em> = 0.15 W/m·K). Current <em>I</em> = 10 A, voltage drop <em>V</em> = 8 V. Ambient at 30°C, <em>h</em> = 12 W/m²·K. Determine: (1) the interface temperature; (2) the effect of doubling the cover thickness.
+</div>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-32.png" alt="Figure 3-32: Schematic for Example 3-9">
+<div class="fig-caption">Figure 3–32: Schematic for Example 3–9</div>
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-9"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-9"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(r_1 = 1.5\;mm\)</span>
+<span>\(r_2 = 3.5\;mm\)</span>
+<span>\(\dot{Q} = VI = (8)(10) = 80\;W\)</span>
+<span>\(k = 0.15\;W/m\cdot K\)</span>
+<span>\(h = 12\;W/m^2\cdot K\)</span>
+</div>
+</div>
+<div class="solution-steps">
+<h4>Solution</h4>
+<div class="step"><div class="step-num">1</div><div class="step-content">
+\(A_2 = 2\pi(0.0035)(5) = 0.110\;m^2\)
+\[ R_{conv} = \frac{1}{(12)(0.110)} = 0.758\;°C/W \qquad R_{plastic} = \frac{\ln(3.5/1.5)}{2\pi(5)(0.15)} = 0.180\;°C/W \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+\[ R_{total} = 0.758 + 0.180 = 0.938\;°C/W \]
+\[ T_1 = 30 + (80)(0.938) \approx 105°C \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Critical radius: \(r_{cr} = k/h = 0.15/12 = 12.5\;mm\). Since \(r_2 = 3.5\;mm < r_{cr}\), the wire is below critical radius.
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Doubling cover to 4 mm: \(T_1 \approx 90.6°C\). At \(r_2 = r_{cr} = 12.5\;mm\): \(T_{1,min} \approx 83°C\).
+</div></div>
+</div>
+<div class="final-answer">
+<div class="answer-label">✅ Final Answer</div>
+\[ T_1 \approx 105°C \quad \text{(original)} \qquad T_1 \approx 90.6°C \quad \text{(doubled cover)} \]
+</div>
+<div class="discussion-box">
+<h4>💬 Discussion</h4>
+<p>بما أن \(r_2 < r_{cr}\)، فإن إضافة <span class="term">insulation</span> تزيد <span class="term">heat transfer</span> وتخفض درجة الحرارة — مفيد لسلامة الأسلاك الكهربائية! عند \(r_2 = r_{cr}\) تصل درجة الحرارة إلى أدنى مستوى (83°C تقريبًا).</p>
+</div>
+</div></div>
+</div>
+</div>
+
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 11 ==================== -->
+<section class="section" id="sec11">
+<div class="section-header">
+<div class="section-icon">🪶</div>
+<div class="section-titles">
+<h2>Extended Surfaces — Fins</h2>
+<span class="section-sub">§ 3-6 — Fin Equation, Temperature Distribution &amp; Efficiency</span>
+</div>
+<button class="task-check" data-task="sec11" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">11</span></span>
+</button>
+</div>
+
+<!-- ==================== 1. PHYSICAL CONCEPT OF FINS ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Physical Concept of Extended Surfaces (Fins)</h3>
+
+<p>في العديد من التطبيقات الهندسية، نحتاج إلى زيادة معدل التخلص من الحرارة من سطح معين إلى مائع محيط به (مثل تبريد المعالجات الإلكترونية، محركات السيارات، محولات الطاقة، وأنابيب المبادلات الحرارية). بالرجوع إلى قانون نيوتن للتبريد (<span class="term">Newton's law of cooling</span>):</p>
+
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{conv} = h A_s (T_s - T_\infty) \]
+</div>
+
+<p>نلاحظ أن زيادة انتقال الحرارة بالحمل \(\dot{Q}_{conv}\) يمكن أن تتحقق بثلاث طرق رئيسية:</p>
+<ul>
+<li><strong>زيادة معامل الحمل الحراري (\(h\)):</strong> يتطلب تركيب مضخات أو مراوح أكبر (<span class="term">forced convection</span>)، مما يعني تكلفة إضافية، استهلاكًا مستمرًا للطاقة الكهربائية، وضوضاء، فضلاً عن وجود حدود فيزيائية لسرعة تدفق المائع.</li>
+<li><strong>زيادة فرق درجات الحرارة (\(T_s - T_\infty\)):</strong> هذا الفرق غالبًا ما يكون ثابتًا ومحددًا بطبيعة المنظومة وظروف التشغيل وحدود تحمل المواد للحرارة.</li>
+<li><strong>زيادة مساحة السطح المعرضة للحمل (\(A_s\)):</strong> الحل العملي والأكثر انتشارًا واقتصاديًا، ويتم ذلك بإضافة نتوءات وامتدادات معدنية صلبة تُعرف بـ <span class="term">extended surfaces</span> أو <span class="term">fins</span> (الزعانف).</li>
+</ul>
+
+<div class="def-box">
+<div class="box-title">📌 Extended Surfaces — Fins</div>
+<p><span class="en">A fin is a solid extension attached to a primary surface to enhance the rate of heat transfer to or from the environment by increasing the effective convective surface area.</span></p>
+<p>الـ <span class="term">fin</span> هو امتداد صلب يُضاف إلى سطح بهدف زيادة معدل انتقال الحرارة. تنتقل الحرارة من السطح الساخن إلى داخل الـ <span class="term">fin</span> عن طريق التوصيل الحراري (<span class="term">Conduction</span>)، ثم تنتقل من سطح الـ <span class="term">fin</span> الخارجي إلى الوسط المحيط عن طريق الحمل الحراري (<span class="term">Convection</span>) والإشعاع (<span class="term">Radiation</span>).</p>
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-41.png" alt="Figure 3-41: Enhanced heat transfer from a surface using fins">
+<div class="fig-caption">Figure 3–41: Enhanced heat transfer from a surface by attaching extended surfaces (fins)</div>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Physical Insight: Temperature Drop Along the Fin</div>
+<p>على خلاف السطح الأساسي المتساوي في درجة الحرارة، <strong>فإن درجة حرارة الـ <span class="term">fin</span> ليست ثابتة على طوله</strong>؛ بل تنخفض تدريجيًا باستمرار كلما ابتعدنا عن القاعدة (<span class="term">base</span>) باتجاه الطرف (<span class="term">tip</span>) نتيجة الفقد المتواصل للحرارة بالحمل على امتداد السطح الخارجي. لذلك، فإن انتقال الحرارة بالتوصيل داخل الـ <span class="term">fin</span> يرتبط مباشرة بالحمل الحراري من سطحه.</p>
+</div>
+
+<p>تتفاعل آليتان أساسيتان لانتقال الحرارة في آن واحد داخل الزعنفة وعلى سطحها:</p>
+<ol>
+<li><strong>التوصيل الطولي (<span class="term">Conduction</span>):</strong> يخضع لقانون فورييه (<span class="term">Fourier's law</span>) داخل مادة الزعنفة في اتجاه المحور \(x\):
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_x = -k A_c \frac{dT}{dx} \]
+</div>
+حيث \(A_c\) هي مساحة المقطع العرضي (<span class="term">cross-sectional area</span>)، و\(k\) هو معامل التوصيل الحراري لمادة الزعنفة.</li>
+<li><strong>الحمل الجانبي (<span class="term">Convection</span>):</strong> يخضع لقانون نيوتن للتبريد من السطح المحيطي:
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{conv} = h A_s [T(x) - T_\infty] \]
+</div>
+ولأن درجة الحرارة \(T(x)\) تتغير مع المسافة \(x\)، فإننا لا نستطيع استخدام قيمة ثابتة لدرجة الحرارة، بل يجب اشتقاق دالة التوزيع \(T(x)\) بدقة لتحديد معدل انتقال الحرارة الإجمالي.</li>
+</ol>
+
+<!-- ==================== 2. DERIVATION OF THE GENERAL FIN EQUATION ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Derivation of the General Fin Equation</h3>
+
+<p>لاشتقاق المعادلة التفاضلية الحاكمة لتوزيع درجات الحرارة على طول زعنفة ذات مقطع عرضي منتظم (\(A_c = \text{const}\)) ومحيط منتظم (\(p = \text{const}\))، نأخذ عنصرًا تفاضليًا بحجم صلب محصور بين الموضعين \(x\) و \(x + dx\).</p>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-38.png" alt="Figure 3-38: Differential element of a fin showing conduction and convection">
+<div class="fig-caption">Figure 3–38: Differential element of a fin of uniform cross section showing axial conduction and lateral convection</div>
+</div>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-fin-eq"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-fin-eq"><div class="deriv-inner">
+
+<div class="note-box">
+<div class="note-title">📝 Derivation Assumptions</div>
+<ul>
+<li><strong>Steady-state conditions:</strong> درجات الحرارة لا تتغير مع الزمن (\(\partial T / \partial t = 0\)).</li>
+<li><strong>One-dimensional conduction:</strong> انتقال الحرارة بالتوصيل أحادي البعد في اتجاه المحور \(x\). نظرًا لأن الزعنفة رفيعة، فإن التغير في درجة الحرارة عبر سمك المقطع العرضي مهمل مقارنة بالتغير على طول الزعنفة، أي \(T = T(x)\).</li>
+<li><strong>Constant thermal conductivity (\(k\)):</strong> مادة الزعنفة متجانسة وخواصها الحرارية ثابتة ومستقلة عن درجة الحرارة.</li>
+<li><strong>Uniform convection coefficient (\(h\)):</strong> معامل الحمل الحراري منتظم وثابت على كامل السطح الخارجي للزعنفة.</li>
+<li><strong>Negligible radiation:</strong> الفقد بالإشعاع مهمل، أو تم دمجه ضمن معامل حمل فعال \(h\).</li>
+<li><strong>No heat generation:</strong> لا يوجد توليد حراري داخلي داخل مادة الزعنفة (\(\dot{e}_{gen} = 0\)).</li>
+</ul>
+</div>
+
+<p><strong>الخطوة 1: ميزان الطاقة على العنصر التفاضلي (<span class="term">Energy Balance</span>)</strong></p>
+<p>في حالة الاستقرار (<span class="term">steady state</span>)، يجب أن يتساوى معدل الطاقة الداخلة مع معدل الطاقة الخارجة من العنصر:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{E}_{in} - \dot{E}_{out} = 0 \]
+</div>
+<p>يدخل العنصر حرارة بالتوصيل عند الموضع \(x\) بمعدل \(\dot{Q}_x\)، ويخرج منه حرارة بالتوصيل عند الموضع \(x+dx\) بمعدل \(\dot{Q}_{x+dx}\)، كما يُفقد منه جزء بالحمل الحراري عبر السطح الجانبي \(d\dot{Q}_{conv}\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_x - \dot{Q}_{x+dx} - d\dot{Q}_{conv} = 0 \tag{1} \]
+</div>
+<p>أو بصيغة مكافئة:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_x = \dot{Q}_{x+dx} + d\dot{Q}_{conv} \]
+</div>
+
+<p><strong>الخطوة 2: فك مفكوك تايلور (<span class="term">Taylor Series Expansion</span>)</strong></p>
+<p>نعبر عن معدل التوصيل الخارج \(\dot{Q}_{x+dx}\) بدلالة \(\dot{Q}_x\) ومشتقته الأولى باستخدام مفكوك تايلور مع إهمال الحدود ذات الرتب العليا:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{x+dx} = \dot{Q}_x + \frac{d\dot{Q}_x}{dx}\,dx \]
+</div>
+<p>بالتعويض في معادلة ميزان الطاقة (1):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_x - \left(\dot{Q}_x + \frac{d\dot{Q}_x}{dx}\,dx\right) - d\dot{Q}_{conv} = 0 \]
+</div>
+<p>وبالتبسيط واختصار \(\dot{Q}_x\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ -\frac{d\dot{Q}_x}{dx}\,dx = d\dot{Q}_{conv} \tag{2} \]
+</div>
+<p>أو بصورة مكافئة:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{d\dot{Q}_x}{dx}\,dx + d\dot{Q}_{conv} = 0 \]
+</div>
+
+<p><strong>الخطوة 3: التعويض بقانون فورييه للتوصيل (<span class="term">Fourier's Law</span>)</strong></p>
+<p>معدل انتقال الحرارة بالتوصيل عند الموضع \(x\) يعطى بقانون فورييه:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_x = -k A_c \frac{dT}{dx} \]
+</div>
+<p>باشتقاق هذا التعبير بالنسبة لـ \(x\) مع ثبات \(k\) و \(A_c\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{d\dot{Q}_x}{dx} = \frac{d}{dx}\left(-k A_c \frac{dT}{dx}\right) = -k A_c \frac{d^2T}{dx^2} \]
+</div>
+<p>وبالضرب في \(dx\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{d\dot{Q}_x}{dx}\,dx = -k A_c \frac{d^2T}{dx^2}\,dx \tag{3} \]
+</div>
+
+<p><strong>الخطوة 4: حساب الفقد الحراري بالحمل (<span class="term">Convection Heat Loss</span>)</strong></p>
+<p>المساحة السطحية الجانبية للعنصر التفاضلي \(dA_s\) تساوي محيط المقطع \(p\) مضروبًا في الطول التفاضلي \(dx\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ dA_s = p\,dx \]
+</div>
+<p>وباستخدام قانون نيوتن للتبريد:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ d\dot{Q}_{conv} = h\,dA_s [T(x) - T_\infty] = h p [T(x) - T_\infty]\,dx \tag{4} \]
+</div>
+
+<p><strong>الخطوة 5: دمج المعادلات والوصول للمعادلة العامة</strong></p>
+<p>نعوض المعادلتين (3) و (4) في معادلة ميزان الطاقة (2):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ -\left(-k A_c \frac{d^2T}{dx^2}\,dx\right) = h p [T(x) - T_\infty]\,dx \]
+</div>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ k A_c \frac{d^2T}{dx^2}\,dx - h p [T(x) - T_\infty]\,dx = 0 \]
+</div>
+<p>بقسمة جميع أطراف المعادلة على الكمية \(k A_c\,dx\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{d^2T}{dx^2} - \frac{hp}{kA_c}(T - T_\infty) = 0 \tag{5} \]
+</div>
+
+<p><strong>الخطوة 6: إدخال درجة الحرارة الزائدة (<span class="term">Excess Temperature</span> \(\theta\))</strong></p>
+<p>لتسهيل الحل الرياضي للمعادلة التفاضلية، نعرف متغيرًا جديدًا يسمى <strong>درجة الحرارة الزائدة</strong> بالنسبة لدرجة حرارة الوسط المحيط:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(x) \equiv T(x) - T_\infty \]
+</div>
+<p>ولأن درجة حرارة الوسط المحيط \(T_\infty\) ثابتة، فإن مشتقات \(\theta\) تطابق مشتقات \(T\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{d\theta}{dx} = \frac{dT}{dx}, \qquad \frac{d^2\theta}{dx^2} = \frac{d^2T}{dx^2} \]
+</div>
+
+<p><strong>الخطوة 7: تعريف معامل الزعنفة (<span class="term">Fin Parameter</span> \(m\))</strong></p>
+<p>نعرف الثابت \(m^2\) بالصيغة:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ m^2 \equiv \frac{hp}{kA_c} \implies m = \sqrt{\frac{hp}{kA_c}} \quad [\text{m}^{-1}] \]
+</div>
+<p>وبالتعويض بـ \(\theta\) و \(m^2\) في المعادلة (5)، نحصل على الصيغة القياسية النهائية للمعادلة الحاكمة للـ <span class="term">fin</span>:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{d^2\theta}{dx^2} - m^2\theta = 0 \]
+</div>
+
+</div></div>
+
+<div class="formula-box">
+<div class="box-label">General Fin Equation — Uniform Cross Section</div>
+\[ \frac{d^2\theta}{dx^2} - m^2\theta = 0 \qquad \text{where} \quad \theta(x) = T(x) - T_\infty \quad \text{and} \quad m = \sqrt{\frac{hp}{kA_c}} \]
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Physical Meaning of the Fin Parameter \(m\)</div>
+<p>المعامل \(m\) له وحدة قياس هي مقلوب الطول (\(\text{m}^{-1}\)). فيزيائيًا، يمثل \(m\) نسبة تأثير الحمل الحراري على السطح المحيطي للزعنفة إلى التوصيل الحراري عبر مساحة مقطعها:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ m^2 = \frac{hp}{kA_c} \sim \frac{\text{Convection conductance at perimeter}}{\text{Conduction conductance along cross section}} \]
+</div>
+<ul>
+<li><strong>قيمة \(m\) كبيرة:</strong> تعني أن الحمل الحراري قوي جدًا أو أن التوصيل ضعيف، فتنخفض درجة حرارة الزعنفة بشدة وبسرعة بالقرب من قاعدتها، ويبقى معظم طولها باردًا وقليل الفاعلية.</li>
+<li><strong>قيمة \(m\) صغيرة:</strong> تعني أن التوصيل الحراري ممتاز أو أن الحمل الخارجي ضعيف، فتنتشر الحرارة بسهولة على طول الزعنفة ويكون انخفاض درجة الحرارة تدريجيًا وبطيئًا.</li>
+</ul>
+</div>
+
+<!-- ==================== 3. GENERAL SOLUTION AND BOUNDARY CONDITIONS ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">General Solution and Boundary Conditions</h3>
+
+<p>المعادلة الحاكمة \(\frac{d^2\theta}{dx^2} - m^2\theta = 0\) هي معادلة تفاضلية خطية متجانسة من الدرجة الثانية ذات معاملات ثابتة (<span class="term">linear, homogeneous, second-order ODE with constant coefficients</span>).</p>
+
+<p>لحل هذه المعادلة، نفرض حلاً على الصورة الأسية \(\theta(x) = e^{rx}\). بالتعويض في المعادلة نحصل على المعادلة المميزة (<span class="term">characteristic equation</span>):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ r^2 - m^2 = 0 \implies r = \pm m \]
+</div>
+<p>وبما أن المعادلة لها جذران حقيقيان متمايزان (\(+m\) و \(-m\))، فإن الحل العام يُكتب بالصيغة الأسية:</p>
+
+<div class="formula-box">
+<div class="box-label">General Solution — Exponential Form — Eq. 3-58</div>
+\[ \theta(x) = C_1 e^{mx} + C_2 e^{-mx} \tag{3-58} \]
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Equivalent Hyperbolic Form</div>
+<p>يمكن التعبير عن الحل العام بدلالة الدوال الزائدية (<span class="term">hyperbolic functions</span>) بصيغة مكافئة تمامًا:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(x) = C_3 \cosh(mx) + C_4 \sinh(mx) \]
+</div>
+<p>حيث \(\cosh(u) = \frac{e^u + e^{-u}}{2}\) و \(\sinh(u) = \frac{e^u - e^{-u}}{2}\). تُفضل الصيغة الزائدية غالبًا عند التعامل مع الزعانف ذات الأطوال المحدودة.</p>
+</div>
+
+<p>لتحديد الثابتين \(C_1\) و \(C_2\)، نحتاج إلى شرطين حديين (<span class="term">two boundary conditions</span>):</p>
+<ol>
+<li><strong>الشرط الحدي عند القاعدة (<span class="term">Base Boundary Condition</span> at \(x = 0\)):</strong>
+درجة حرارة قاعدة الزعنفة مساوية لدرجة حرارة السطح المتصلة به \(T_b\):
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(0) = \theta_b = T_b - T_\infty \tag{3-59} \]
+</div>
+وهذا الشرط ثابت ومشترك في كافة الحالات الهندسية.</li>
+<li><strong>الشرط الحدي عند الطرف (<span class="term">Tip Boundary Condition</span> at \(x = L\)):</strong>
+يعتمد هذا الشرط على الظروف الفيزيائية لطرف الزعنفة، وهناك أربع حالات هندسية شهيرة ندرس كلاً منها بالتفصيل.</li>
+</ol>
+
+<!-- ==================== 4. CASE 1: INFINITELY LONG FIN ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Case 1: Infinitely Long Fin (\(L \to \infty\))</h3>
+
+<p>في هذه الحالة الافتراضية، تكون الزعنفة طويلة جدًا بحيث تفقد كامل طاقتها الحرارية للوسط المحيط قبل أن تصل إلى طرفها البعيد. بالتالي تنخفض درجة حرارة الزعنفة تدريجيًا حتى تصل عند الطرف البعيد إلى درجة حرارة الوسط المحيط \(T_\infty\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ T(L) \to T_\infty \quad \text{as } L \to \infty \implies \theta(L) \to 0 \]
+</div>
+
+<p>بتطبيق هذا الشرط على الحل العام \(\theta(x) = C_1 e^{mx} + C_2 e^{-mx}\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \lim_{x \to \infty} \theta(x) = \lim_{x \to \infty} \left(C_1 e^{mx} + C_2 e^{-mx}\right) = 0 \]
+</div>
+<p>بما أن \(e^{mx} \to \infty\) عندما \(x \to \infty\)، فإن الحد \(C_1 e^{mx}\) سيؤدي إلى انحراف الحل للمالانهاية، وهو أمر غير فيزيائي. لكي تظل \(\theta(x)\) متناهية وتؤول إلى الصفر، يجب بالضرورة أن يكون الثابت الأول معدومًا:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_1 = 0 \implies \theta(x) = C_2 e^{-mx} \]
+</div>
+<p>بتطبيق الشرط الحدي عند القاعدة \(x = 0\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(0) = C_2 e^0 = C_2 = \theta_b = T_b - T_\infty \]
+</div>
+<p>وبالتالي نحصل على توزيع درجات الحرارة للزعنفة اللانهائية:</p>
+
+<div class="formula-box">
+<div class="box-label">Temperature Distribution — Infinitely Long Fin — Eq. 3-60</div>
+\[ \frac{T(x) - T_\infty}{T_b - T_\infty} = e^{-mx} = e^{-x\sqrt{\frac{hp}{kA_c}}} \tag{3-60} \]
+</div>
+
+<p>وهذا يوضح أن درجة الحرارة تتناقص بصورة أسية (<span class="term">exponential decay</span>) كلما ابتعدنا عن قاعدة الزعنفة.</p>
+
+<p><strong>اشتقاق معدل انتقال الحرارة (\(\dot{Q}_{long}\)):</strong> يمكن حساب معدل انتقال الحرارة بطريقتين متكافئتين فيزيائيًا ورياضيًا:</p>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-qlong"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-qlong"><div class="deriv-inner">
+
+<p><strong>الطريقة الأولى: التوصيل عند قاعدة الزعنفة (<span class="term">Conduction at Base</span>)</strong></p>
+<p>الحرارة الكلية التي تدخل الزعنفة تعبر قاعدتها عند \(x = 0\) بالتوصيل الحراري طبقًا لقانون فورييه:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{long} = -k A_c \left.\frac{dT}{dx}\right|_{x=0} = -k A_c \left.\frac{d\theta}{dx}\right|_{x=0} \]
+</div>
+<p>من معادلة توزيع درجات الحرارة \(\theta(x) = \theta_b e^{-mx}\)، نشتق بالنسبة لـ \(x\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{d\theta}{dx} = \frac{d}{dx}\left[\theta_b e^{-mx}\right] = -m \theta_b e^{-mx} = -m(T_b - T_\infty)e^{-mx} \]
+</div>
+<p>عند القاعدة \(x = 0\) حيث \(e^0 = 1\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \left.\frac{d\theta}{dx}\right|_{x=0} = -m(T_b - T_\infty) \]
+</div>
+<p>نعوض هذا الانحدار في قانون فورييه:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{long} = -k A_c \left[-m(T_b - T_\infty)\right] = k A_c m (T_b - T_\infty) \]
+</div>
+<p>وبالتعويض عن \(m = \sqrt{\frac{hp}{kA_c}}\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{long} = k A_c \sqrt{\frac{hp}{kA_c}}(T_b - T_\infty) = \sqrt{(k A_c)^2 \frac{hp}{kA_c}}(T_b - T_\infty) = \sqrt{hpkA_c}(T_b - T_\infty) \tag{3-61} \]
+</div>
+
+<p><strong>الطريقة الثانية: تكامل الحمل الحراري على كامل سطح الزعنفة (<span class="term">Convection from Fin Surface</span>)</strong></p>
+<p>في حالة الاستقرار، كل الحرارة الداخلة للقاعدة تُطرد بالحمل من سطح الزعنفة. بتكامل قانون نيوتن على كامل السطح من \(x = 0\) إلى \(x = \infty\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{fin} = \int_{A_{fin}} h [T(x) - T_\infty]\,dA_s = \int_0^\infty h \theta(x)\,(p\,dx) \tag{3-62} \]
+</div>
+<p>نعوض بـ \(\theta(x) = \theta_b e^{-mx}\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{fin} = hp \theta_b \int_0^\infty e^{-mx}\,dx = hp(T_b - T_\infty)\left[\frac{-e^{-mx}}{m}\right]_0^\infty \]
+</div>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{fin} = hp(T_b - T_\infty)\left(0 - \left(-\frac{1}{m}\right)\right) = \frac{hp}{m}(T_b - T_\infty) \]
+</div>
+<p>وبما أن \(\frac{hp}{m} = \frac{hp}{\sqrt{hp/(kA_c)}} = \sqrt{\frac{(hp)^2}{hp/(kA_c)}} = \sqrt{hpkA_c}\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{fin} = \sqrt{hpkA_c}(T_b - T_\infty) \]
+</div>
+<p>نحصل بدقة على النتيجة ذاتها المتوصل إليها من خلال قانون التوصيل عند القاعدة.</p>
+
+</div></div>
+
+<div class="formula-box">
+<div class="box-label">Heat Transfer Rate — Infinitely Long Fin — Eq. 3-61</div>
+\[ \dot{Q}_{long} = \sqrt{hpkA_c}(T_b - T_\infty) \tag{3-61} \]
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-39.png" alt="Figure 3-39: Energy balance on fin">
+<div class="fig-caption">Figure 3–39: Under steady conditions, heat conducted into the fin at its base equals total heat convected from the fin surface</div>
+</div>
+
+<!-- ==================== 5. CASE 2: ADIABATIC FIN TIP ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Case 2: Adiabatic Fin Tip (Negligible Heat Loss from Tip)</h3>
+
+<p>في التطبيقات الهندسية العملية، تكون مساحة طرف الزعنفة \(A_c\) بالغة الصغر مقارنة بالمساحة السطحية الجانبية الإجمالية \(A_{fin} = pL\) (أقل من 1% إلى 2% عادة). لذا فإن الفقد الحراري من الطرف يكون مهملاً جدًا، ويمكن معاملة الطرف كسطح معزول حراريًا (<span class="term">adiabatic tip</span>)، أو قد يكون الطرف معزولاً بمادة عازلة بالفعل.</p>
+
+<p>الشرط الحدي لطرف معزول عند \(x = L\) يعني انعدام تدفق الحرارة بالتوصيل عند تلك النقطة:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \left.\dot{Q}_{tip} = -kA_c \frac{d\theta}{dx}\right|_{x=L} = 0 \implies \left.\frac{d\theta}{dx}\right|_{x=L} = 0 \tag{3-63} \]
+</div>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ Common Misconception: Zero Gradient vs Ambient Temperature</div>
+<p>الشرط \(\left.\frac{d\theta}{dx}\right|_{x=L} = 0\) يعني أن <strong>انحدار درجة الحرارة</strong> (<span class="term">temperature gradient</span>) يساوي صفرًا عند الطرف. هذا <strong>لا يعني إطلاقًا</strong> أن درجة حرارة الطرف وصلت لدرجة حرارة الوسط المحيط (\(T(L) \ne T_\infty\))؛ بل تظل دائمًا \(T(L) > T_\infty\) لأن الزعنفة محدودة الطول.</p>
+</div>
+
+<p><strong>اشتقاق معادلة توزيع درجات الحرارة (<span class="term">Temperature Distribution</span>):</strong></p>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-adiabatic-temp"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-adiabatic-temp"><div class="deriv-inner">
+
+<p>نبدأ من الحل العام لمعادلة الزعنفة:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(x) = C_1 e^{mx} + C_2 e^{-mx} \]
+</div>
+<p>مشتقة هذا الحل هي:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{d\theta}{dx} = m C_1 e^{mx} - m C_2 e^{-mx} \]
+</div>
+
+<p><strong>تطبيق الشرط الأول عند القاعدة (\(x = 0\)):</strong></p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(0) = C_1 e^0 + C_2 e^0 = C_1 + C_2 = \theta_b \implies C_1 = \theta_b - C_2 \tag{1} \]
+</div>
+
+<p><strong>تطبيق الشرط الثاني عند الطرف المعزول (\(x = L\)):</strong></p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \left.\frac{d\theta}{dx}\right|_{x=L} = m C_1 e^{mL} - m C_2 e^{-mL} = 0 \]
+</div>
+<p>بقسمة الطرفين على \(m \ne 0\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_1 e^{mL} = C_2 e^{-mL} \implies C_1 = C_2 e^{-2mL} \tag{2} \]
+</div>
+
+<p><strong>إيجاد الثوابت \(C_1\) و \(C_2\):</strong></p>
+<p>نعوض المعادلة (2) في المعادلة (1):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_2 e^{-2mL} + C_2 = \theta_b \implies C_2 (1 + e^{-2mL}) = \theta_b \]
+</div>
+<p>بضرب البسط والمقام في \(e^{mL}\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_2 = \frac{\theta_b}{1 + e^{-2mL}} = \frac{\theta_b e^{mL}}{e^{mL} + e^{-mL}} \]
+</div>
+<p>وبالتعويض بقيمة \(C_2\) في المعادلة (2) لإيجاد \(C_1\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_1 = C_2 e^{-2mL} = \left(\frac{\theta_b e^{mL}}{e^{mL} + e^{-mL}}\right) e^{-2mL} = \frac{\theta_b e^{-mL}}{e^{mL} + e^{-mL}} \]
+</div>
+
+<p><strong>التعويض في الحل العام:</strong></p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(x) = \left(\frac{\theta_b e^{-mL}}{e^{mL} + e^{-mL}}\right) e^{mx} + \left(\frac{\theta_b e^{mL}}{e^{mL} + e^{-mL}}\right) e^{-mx} \]
+</div>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(x) = \theta_b \left[\frac{e^{-mL} e^{mx} + e^{mL} e^{-mx}}{e^{mL} + e^{-mL}}\right] = \theta_b \left[\frac{e^{m(x-L)} + e^{-m(x-L)}}{e^{mL} + e^{-mL}}\right] \]
+</div>
+<p>نلاحظ أن البسط هو \(e^{m(L-x)} + e^{-m(L-x)}\). وبالاستعانة بتعريف جيب التمام الزائدي (\(\cosh\)):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \cosh[m(L-x)] = \frac{e^{m(L-x)} + e^{-m(L-x)}}{2}, \qquad \cosh(mL) = \frac{e^{mL} + e^{-mL}}{2} \]
+</div>
+<p>بقسمة البسط والمقام على 2، نحصل مباشرة على المعادلة القياسية:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{\theta(x)}{\theta_b} = \frac{T(x) - T_\infty}{T_b - T_\infty} = \frac{\cosh[m(L-x)]}{\cosh(mL)} \tag{3-64} \]
+</div>
+
+</div></div>
+
+<div class="formula-box">
+<div class="box-label">Temperature Distribution — Adiabatic Tip — Eq. 3-64</div>
+\[ \frac{T(x) - T_\infty}{T_b - T_\infty} = \frac{\cosh[m(L-x)]}{\cosh(mL)} \tag{3-64} \]
+</div>
+
+<p><strong>اشتقاق معدل انتقال الحرارة (\(\dot{Q}_{adiabatic}\)):</strong></p>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-adiabatic-q"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-adiabatic-q"><div class="deriv-inner">
+
+<p>نحسب معدل انتقال الحرارة من التوصيل عند قاعدة الزعنفة \(x = 0\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{adiabatic} = -k A_c \left.\frac{dT}{dx}\right|_{x=0} = -k A_c \left.\frac{d\theta}{dx}\right|_{x=0} \]
+</div>
+<p>من معادلة التوزيع \(\theta(x) = \theta_b \frac{\cosh[m(L-x)]}{\cosh(mL)}\)، نشتق بالنسبة لـ \(x\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{d\theta}{dx} = \frac{\theta_b}{\cosh(mL)} \frac{d}{dx}\{\cosh[m(L-x)]\} \]
+</div>
+<p>مشتقة \(\cosh(u)\) هي \(\sinh(u) \cdot \frac{du}{dx}\). هنا \(u = m(L-x)\) فتكون مشتقتها بالنسبة لـ \(x\) هي \(-m\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{d\theta}{dx} = \frac{\theta_b}{\cosh(mL)} \left[-m \sinh[m(L-x)]\right] = -\frac{m \theta_b \sinh[m(L-x)]}{\cosh(mL)} \]
+</div>
+<p>نعوض عند القاعدة \(x = 0\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \left.\frac{d\theta}{dx}\right|_{x=0} = -\frac{m \theta_b \sinh(mL)}{\cosh(mL)} = -m \theta_b \tanh(mL) \]
+</div>
+<p>بالتعويض في قانون فورييه:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{adiabatic} = -k A_c \left[-m (T_b - T_\infty) \tanh(mL)\right] = k A_c m (T_b - T_\infty) \tanh(mL) \]
+</div>
+<p>وبما أن \(k A_c m = \sqrt{hpkA_c}\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{adiabatic} = \sqrt{hpkA_c}(T_b - T_\infty)\tanh(mL) \tag{3-65} \]
+</div>
+
+</div></div>
+
+<div class="formula-box">
+<div class="box-label">Heat Transfer Rate — Adiabatic Tip — Eq. 3-65</div>
+\[ \dot{Q}_{adiabatic} = \sqrt{hpkA_c}(T_b - T_\infty)\tanh(mL) \tag{3-65} \]
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Comparison: Adiabatic Tip vs. Infinitely Long Fin</div>
+<p>بمقارنة معادلتي انتقال الحرارة للزعنفتين:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{adiabatic} = \dot{Q}_{long}\tanh(mL) \]
+</div>
+<p>تتميز دالة \(\tanh(mL)\) بأن قيمتها تزداد تدريجيًا وتقترب بسرعة من الواحد الصحيح مع زيادة \(mL\):</p>
+<ul>
+<li>عند \(mL = 1\): تكون \(\tanh(1) \approx 0.762\) (تنقل الزعنفة 76.2% من أقصى ما يمكن للزعنفة اللانهائية).</li>
+<li>عند \(mL = 2\): تكون \(\tanh(2) \approx 0.964\) (تنقل 96.4%).</li>
+<li>عند \(mL = 3\): تكون \(\tanh(3) \approx 0.995\) (تنقل 99.5%).</li>
+<li>عند \(mL > 3\): تكون \(\tanh(mL) \approx 1.0\)، مما يعني أن الزعنفة ذات الطرف المعزول تنقل عمليًا نفس كمية الحرارة التي تنقلها زعنفة لانهائية الطول! وبالتالي فإن زيادة الطول بعد \(mL \approx 3\) تمثل هدرًا خالصًا للمعدن والتكلفة دون فائدة حرارية تذكر.</li>
+</ul>
+</div>
+
+<!-- ==================== 6. CASE 3: SPECIFIED FIN TIP TEMPERATURE ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Case 3: Specified Fin Tip Temperature</h3>
+
+<p>في بعض التطبيقات الصناعية والمخبرية، تكون درجة حرارة طرف الزعنفة مثبتة عند قيمة معلومة \(T_L\) (على سبيل المثال عند توصيل طرف الزعنفة بسطح آخر معروف درجة حرارته، أو قياسها بمزدوجة حرارية <span class="term">thermocouple</span>).</p>
+
+<p>الشرطان الحديان في هذه الحالة هما:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(0) = \theta_b = T_b - T_\infty, \qquad \theta(L) = \theta_L = T_L - T_\infty \tag{3-66} \]
+</div>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-specified-temp"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-specified-temp"><div class="deriv-inner">
+
+<p>نبدأ من الحل العام لمعادلة الزعنفة:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(x) = C_1 e^{mx} + C_2 e^{-mx} \]
+</div>
+
+<p><strong>تطبيق الشرط الحدي الأول عند القاعدة (\(x = 0\)):</strong></p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(0) = C_1 + C_2 = \theta_b \implies C_2 = \theta_b - C_1 \tag{1} \]
+</div>
+
+<p><strong>تطبيق الشرط الحدي الثاني عند الطرف (\(x = L\)):</strong></p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(L) = C_1 e^{mL} + C_2 e^{-mL} = \theta_L \tag{2} \]
+</div>
+
+<p><strong>حل المعادلتين لإيجاد الثوابت:</strong></p>
+<p>نعوض المعادلة (1) في المعادلة (2):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_1 e^{mL} + (\theta_b - C_1)e^{-mL} = \theta_L \]
+</div>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_1 (e^{mL} - e^{-mL}) + \theta_b e^{-mL} = \theta_L \]
+</div>
+<p>نستحضر تعريف دالة الجيب الزائدي: \(e^{mL} - e^{-mL} = 2\sinh(mL)\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ 2 C_1 \sinh(mL) = \theta_L - \theta_b e^{-mL} \implies C_1 = \frac{\theta_L - \theta_b e^{-mL}}{2\sinh(mL)} \]
+</div>
+<p>ثم نوجد الثابت \(C_2\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_2 = \theta_b - C_1 = \theta_b - \frac{\theta_L - \theta_b e^{-mL}}{2\sinh(mL)} = \frac{2\theta_b \sinh(mL) - \theta_L + \theta_b e^{-mL}}{2\sinh(mL)} \]
+</div>
+<p>وبما أن \(2\sinh(mL) = e^{mL} - e^{-mL}\)، فإن:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ 2\theta_b \sinh(mL) + \theta_b e^{-mL} = \theta_b(e^{mL} - e^{-mL}) + \theta_b e^{-mL} = \theta_b e^{mL} \]
+</div>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_2 = \frac{\theta_b e^{mL} - \theta_L}{2\sinh(mL)} \]
+</div>
+
+<p><strong>إعادة تركيب دالة التوزيع \(\theta(x)\):</strong></p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(x) = \left[\frac{\theta_L - \theta_b e^{-mL}}{2\sinh(mL)}\right]e^{mx} + \left[\frac{\theta_b e^{mL} - \theta_L}{2\sinh(mL)}\right]e^{-mx} \]
+</div>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(x) = \frac{\theta_L(e^{mx} - e^{-mx}) + \theta_b\left(e^{m(L-x)} - e^{-m(L-x)}\right)}{2\sinh(mL)} \]
+</div>
+<p>بالاستعانة بالمتطابقتين \(e^{mx} - e^{-mx} = 2\sinh(mx)\) و \(e^{m(L-x)} - e^{-m(L-x)} = 2\sinh[m(L-x)]\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \theta(x) = \frac{\theta_L \sinh(mx) + \theta_b \sinh[m(L-x)]}{\sinh(mL)} \]
+</div>
+<p>بقسمة الطرفين على \(\theta_b = T_b - T_\infty\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{T(x) - T_\infty}{T_b - T_\infty} = \frac{\left(\frac{T_L - T_\infty}{T_b - T_\infty}\right)\sinh(mx) + \sinh[m(L-x)]}{\sinh(mL)} \tag{3-67} \]
+</div>
+
+<p><strong>اشتقاق معدل انتقال الحرارة:</strong></p>
+<p>نشتق معادلة \(\theta(x)\) بالنسبة لـ \(x\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{d\theta}{dx} = \frac{\theta_L m \cosh(mx) - \theta_b m \cosh[m(L-x)]}{\sinh(mL)} \]
+</div>
+<p>عند القاعدة \(x = 0\) حيث \(\cosh(0) = 1\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \left.\frac{d\theta}{dx}\right|_{x=0} = \frac{\theta_L m - \theta_b m \cosh(mL)}{\sinh(mL)} = -m\theta_b \left[\frac{\cosh(mL) - \theta_L/\theta_b}{\sinh(mL)}\right] \]
+</div>
+<p>بالتعويض في قانون فورييه \(\dot{Q} = -kA_c \left.\frac{d\theta}{dx}\right|_{x=0}\) مع استبدال \(kA_c m = \sqrt{hpkA_c}\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q} = \sqrt{hpkA_c}(T_b - T_\infty)\frac{\cosh(mL) - \frac{T_L - T_\infty}{T_b - T_\infty}}{\sinh(mL)} \tag{3-68} \]
+</div>
+
+</div></div>
+
+<div class="formula-box">
+<div class="box-label">Temperature Distribution — Specified Tip Temp — Eq. 3-67</div>
+<div class="equation-scroll">
+\[ \frac{T(x) - T_\infty}{T_b - T_\infty} = \frac{\left(\frac{T_L - T_\infty}{T_b - T_\infty}\right)\sinh(mx) + \sinh[m(L-x)]}{\sinh(mL)} \tag{3-67} \]
+</div>
+</div>
+
+<div class="formula-box">
+<div class="box-label">Heat Transfer Rate — Specified Tip Temp — Eq. 3-68</div>
+<div class="equation-scroll">
+\[ \dot{Q} = \sqrt{hpkA_c}(T_b - T_\infty)\frac{\cosh(mL) - \frac{T_L - T_\infty}{T_b - T_\infty}}{\sinh(mL)} \tag{3-68} \]
+</div>
+</div>
+
+<!-- ==================== 7. CASE 4: CONVECTION FROM FIN TIP ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Case 4: Convection from Fin Tip (Realistic Tip)</h3>
+
+<p>في الحالة الفيزيائية الأكثر واقعية، لا يكون طرف الزعنفة معزولاً ولا تكون الزعنفة لانهائية الطول؛ بل يكون الطرف مكشوفًا للوسط المحيط بمساحة مقطع \(A_c\) ويفقد حرارة بالحمل الحراري بمعامل حمل \(h\). ميزان الطاقة عند الطرف يتطلب أن الحرارة الواصلة للطرف بالتوصيل تساوي الحرارة المغادرة له بالحمل:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ -kA_c \left.\frac{dT}{dx}\right|_{x=L} = h A_c [T(L) - T_\infty] \implies \left.-k\frac{d\theta}{dx}\right|_{x=L} = h\theta(L) \tag{3-69} \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Temperature Distribution — Convection from Tip — Eq. 3-70</div>
+<div class="equation-scroll">
+\[ \frac{T(x) - T_\infty}{T_b - T_\infty} = \frac{\cosh[m(L-x)] + \frac{h}{mk}\sinh[m(L-x)]}{\cosh(mL) + \frac{h}{mk}\sinh(mL)} \tag{3-70} \]
+</div>
+</div>
+
+<div class="formula-box">
+<div class="box-label">Heat Transfer Rate — Convection from Tip — Eq. 3-71</div>
+<div class="equation-scroll">
+\[ \dot{Q} = \sqrt{hpkA_c}(T_b - T_\infty)\frac{\sinh(mL) + \frac{h}{mk}\cosh(mL)}{\cosh(mL) + \frac{h}{mk}\sinh(mL)} \tag{3-71} \]
+</div>
+</div>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-convection-tip"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-convection-tip"><div class="deriv-inner">
+
+<p><strong>خطوات الاشتقاق الكاملة:</strong></p>
+<p>نبدأ من الحل العام \(\theta(x) = C_1 e^{mx} + C_2 e^{-mx}\).</p>
+<p>الشرط الأول عند القاعدة \(x = 0\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_1 + C_2 = \theta_b \implies C_2 = \theta_b - C_1 \tag{1} \]
+</div>
+<p>الشرط الثاني عند الطرف \(x = L\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ -k \left(m C_1 e^{mL} - m C_2 e^{-mL}\right) = h \left(C_1 e^{mL} + C_2 e^{-mL}\right) \]
+</div>
+<p>بقسمة الطرفين على \(mk\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ -(C_1 e^{mL} - C_2 e^{-mL}) = \frac{h}{mk} (C_1 e^{mL} + C_2 e^{-mL}) \]
+</div>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ -C_1 e^{mL} + C_2 e^{-mL} = \frac{h}{mk} C_1 e^{mL} + \frac{h}{mk} C_2 e^{-mL} \]
+</div>
+<p>بتجميع حدود \(C_1\) وحدود \(C_2\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_2 e^{-mL}\left(1 - \frac{h}{mk}\right) = C_1 e^{mL}\left(1 + \frac{h}{mk}\right) \]
+</div>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ C_1 = C_2 e^{-2mL}\left[\frac{1 - h/(mk)}{1 + h/(mk)}\right] \tag{2} \]
+</div>
+<p>بالتعويض في المعادلة (1) وحل الثوابت \(C_1\) و \(C_2\)، ثم تحويل التعبيرات الأسية إلى دوال زائدية \(\cosh\) و \(\sinh\)، نصل إلى توزيع درجات الحرارة في المعادلة (3-70):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \frac{\theta(x)}{\theta_b} = \frac{\cosh[m(L-x)] + \frac{h}{mk}\sinh[m(L-x)]}{\cosh(mL) + \frac{h}{mk}\sinh(mL)} \]
+</div>
+<p>باشتقاق \(\theta(x)\) وتقييم المشتقة عند \(x = 0\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \left.\frac{d\theta}{dx}\right|_{x=0} = -m\theta_b \left[\frac{\sinh(mL) + \frac{h}{mk}\cosh(mL)}{\cosh(mL) + \frac{h}{mk}\sinh(mL)}\right] \]
+</div>
+<p>وبالتعويض في قانون فورييه \(\dot{Q} = -kA_c \left.\frac{d\theta}{dx}\right|_{x=0}\) ينتج التعبير الدقيق لمعدل انتقال الحرارة في المعادلة (3-71).</p>
+
+</div></div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Corrected Fin Length Approximation (\(L_c\))</h3>
+
+<p>تُعد المعادلتان (3-70) و (3-71) طويلتين ومعقدتين نسبيًا في الحسابات الهندسية السريعة. لمعالجة ذلك عمليًا، ابتكر المهندسون حلاً بارعًا يتمثل في <strong>طول الزعنفة المصحح (<span class="term">Corrected Fin Length</span> \(L_c\))</strong>.</p>
+
+<p><strong>الفكرة الفيزيائية:</strong> نستبدل الزعنفة الحقيقية المعرضة للحمل عند الطرف بزعنفة افتراضية ذات <strong>طرف معزول (<span class="term">adiabatic tip</span>)</strong>، ولكن بطول أطول قليلاً بمقدار \(\Delta L\). نختار \(\Delta L\) بحيث تكون مساحة المحيط الإضافية مساوية تمامًا لمساحة مقطع الطرف المفقود منها الحرارة:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ p\,\Delta L = A_c \implies \Delta L = \frac{A_c}{p} \]
+</div>
+<p>وبالتالي يكون الطول المصحح:</p>
+
+<div class="formula-box">
+<div class="box-label">Corrected Fin Length — Eq. 3-72</div>
+\[ L_c = L + \frac{A_c}{p} \tag{3-72} \]
+</div>
+
+<p>للأشكال الهندسية الشائعة:</p>
+<ul>
+<li><strong>الزعنفة المستطيلة (<span class="term">Rectangular fin</span>):</strong> إذا كان العرض \(w\) أكبر بكثير من السمك \(t\) (\(w \gg t\))، فإن \(p \approx 2w\) و \(A_c = wt\):
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \Delta L = \frac{wt}{2w} = \frac{t}{2} \implies L_c = L + \frac{t}{2} \]
+</div>
+</li>
+<li><strong>الزعنفة الدائرية / الأسطوانية (<span class="term">Cylindrical pin fin</span>):</strong> لقطر \(D\)، يكون \(p = \pi D\) و \(A_c = \frac{\pi D^2}{4}\):
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \Delta L = \frac{\pi D^2/4}{\pi D} = \frac{D}{4} \implies L_c = L + \frac{D}{4} \]
+</div>
+</li>
+</ul>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-40.png" alt="Figure 3-40: Corrected fin length concept">
+<div class="fig-caption">Figure 3–40: Corrected fin length <em>L<sub>c</sub></em> accounts for tip convection by adding equivalent length <em>A<sub>c</sub>/p</em> to an adiabatic fin</div>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Accuracy of the Corrected Length Method</div>
+<p>تقريب الطول المصحح ممتاز للغاية وعملي جدًا؛ حيث يعطي نتائج تتطابق مع الحل الدقيق المعقد بنسبة خطأ <strong>أقل من 1%</strong> متى ما كان \(mL \ge 1\). بعد حساب \(L_c\)، نستخدم ببساطة معادلات الطرف المعزول الأسهل بكثير:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q} \approx \sqrt{hpkA_c}(T_b - T_\infty)\tanh(mL_c) \]
+</div>
+</div>
+
+<!-- ==================== 8. FIN EFFICIENCY ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Fin Efficiency</h3>
+
+<p>في الواقع، تنخفض درجة حرارة الزعنفة كلما ابتعدنا عن القاعدة، مما يعني أن مساحة سطح الزعنفة لا تنقل الحرارة بالتساوي؛ فالأجزاء القريبة من الطرف تفقد حرارة أقل بسبب انخفاض فرق درجات الحرارة بينها وبين المائع. لو كانت مادة الزعنفة موصلاً فائقًا ومثاليًا للحرارة (\(k \to \infty\))، لظلت الزعنفة بأكملها عند درجة حرارة القاعدة \(T_b\)، ولكان معدل انتقال الحرارة عند قيمته القصوى المطلقة:</p>
+
+<div class="formula-box">
+<div class="box-label">Maximum Ideal Fin Heat Transfer — Eq. 3-73</div>
+\[ \dot{Q}_{fin,max} = h A_{fin}(T_b - T_\infty) \tag{3-73} \]
+</div>
+
+<div class="def-box">
+<div class="box-title">📌 Fin Efficiency Definition</div>
+<p><span class="en">Fin efficiency is the ratio of the actual heat transfer rate from the fin to the ideal maximum heat transfer rate that would occur if the entire fin surface were maintained at the base temperature:</span></p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \eta_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{fin,max}} = \frac{\dot{Q}_{fin}}{h A_{fin}(T_b - T_\infty)} \tag{3-74} \]
+</div>
+<p>كفاءة الزعنفة \(\eta_{fin}\) هي النسبة بين معدل انتقال الحرارة الفعلي من الزعنفة إلى أقصى معدل انتقال حرارة ممكن إذا كانت كامل الزعنفة عند درجة حرارة القاعدة.</p>
+</div>
+
+<p>وبمعرفة كفاءة الزعنفة، يمكن حساب معدل انتقال الحرارة الفعلي منها مباشرة:</p>
+
+<div class="formula-box">
+<div class="box-label">Actual Fin Heat Transfer — Eq. 3-75</div>
+\[ \dot{Q}_{fin} = \eta_{fin} h A_{fin}(T_b - T_\infty) \tag{3-75} \]
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-42.png" alt="Figure 3-42: Fin efficiency concept">
+<div class="fig-caption">Figure 3–42: Fin efficiency concept — ideal constant temperature distribution at <em>T<sub>b</sub></em> versus actual decaying temperature distribution</div>
+</div>
+
+<p><strong>اشتقاق كفاءة الزعنفة اللانهائية (\(\eta_{long}\)):</strong></p>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-eta-long"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-eta-long"><div class="deriv-inner">
+
+<p>معدل انتقال الحرارة الفعلي للزعنفة اللانهائية هو \(\dot{Q}_{long} = \sqrt{hpkA_c}(T_b - T_\infty)\).</p>
+<p>ومعدل انتقال الحرارة الأقصى النظري لزعنفة طولها \(L\) ومساحة سطحها \(A_{fin} = pL\) هو:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{fin,max} = h (pL)(T_b - T_\infty) \]
+</div>
+<p>بالتعويض في تعريف الكفاءة:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \eta_{long} = \frac{\sqrt{hpkA_c}(T_b - T_\infty)}{hpL(T_b - T_\infty)} = \frac{\sqrt{hpkA_c}}{hpL} = \frac{1}{L}\sqrt{\frac{hpkA_c}{(hp)^2}} = \frac{1}{L}\sqrt{\frac{kA_c}{hp}} \]
+</div>
+<p>وبما أن \(m = \sqrt{\frac{hp}{kA_c}}\)، فإن مقلوبه هو \(\frac{1}{m} = \sqrt{\frac{kA_c}{hp}}\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \eta_{long} = \frac{1}{L} \cdot \frac{1}{m} = \frac{1}{mL} \tag{3-76} \]
+</div>
+
+</div></div>
+
+<div class="formula-box">
+<div class="box-label">Efficiency of an Infinitely Long Fin — Eq. 3-76</div>
+\[ \eta_{long} = \frac{1}{mL} \tag{3-76} \]
+</div>
+
+<p><strong>اشتقاق كفاءة الزعنفة ذات الطرف المعزول (\(\eta_{adiabatic}\)):</strong></p>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-eta-adiabatic"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-eta-adiabatic"><div class="deriv-inner">
+
+<p>الحرارة الفعلية المنتقلة من الزعنفة ذات الطرف المعزول هي:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{adiabatic} = \sqrt{hpkA_c}(T_b - T_\infty)\tanh(mL) \]
+</div>
+<p>والحرارة القصوى النظرية لنفس المساحة \(A_{fin} = pL\) هي:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \dot{Q}_{fin,max} = h (pL)(T_b - T_\infty) \]
+</div>
+<p>بالتعويض في تعريف الكفاءة:</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \eta_{adiabatic} = \frac{\sqrt{hpkA_c}(T_b - T_\infty)\tanh(mL)}{hpL(T_b - T_\infty)} = \left(\frac{\sqrt{hpkA_c}}{hpL}\right)\tanh(mL) \]
+</div>
+<p>وباستخدام \(\frac{\sqrt{hpkA_c}}{hpL} = \frac{1}{mL}\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \eta_{adiabatic} = \frac{\tanh(mL)}{mL} \tag{3-77} \]
+</div>
+
+</div></div>
+
+<div class="formula-box">
+<div class="box-label">Efficiency of Adiabatic Tip Fin — Eq. 3-77</div>
+\[ \eta_{adiabatic} = \frac{\tanh(mL)}{mL} \tag{3-77} \]
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Tip Convection Using Corrected Length</div>
+<p>عند وجود حمل حراري من الطرف (<span class="term">convection tip</span>)، نستخدم نفس علاقة الطرف المعزول مع استبدال \(L\) بـ \(L_c\):</p>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ \eta_{fin} \approx \frac{\tanh(mL_c)}{mL_c} \]
+</div>
+<p>وتُحسب المساحة السطحية للزعنفة أيضًا بالاعتماد على الطول المصحح \(L_c\): \(A_{fin} = pL_c\).</p>
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Efficiency of Common Fin Geometries</h3>
+
+<p>تختلف معادلات حساب \(m\) والمساحة السطحية \(A_{fin}\) باختلاف الشكل الهندسي للزعنفة:</p>
+<ul>
+<li><strong>الزعنفة المستطيلة المستقيمة (<span class="term">Straight rectangular fin</span>):</strong>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ m = \sqrt{\frac{2h}{kt}}, \qquad L_c = L + \frac{t}{2}, \qquad A_{fin} \approx 2wL_c \]
+</div>
+</li>
+<li><strong>الزعنفة الدائرية / الدبوسية (<span class="term">Pin fin — circular cross section</span>):</strong>
+<div class="equation-scroll" style="direction:ltr; text-align:left;">
+\[ m = \sqrt{\frac{4h}{kD}}, \qquad L_c = L + \frac{D}{4}, \qquad A_{fin} \approx \pi D L_c \]
+</div>
+</li>
+</ul>
+
+<p>المعلومات التفصيلية ومعادلات الأشكال الهندسية المختلفة للزعانف (المثلثة، والبارابولية، والزعانف الدائرية المحيطية حول الأنابيب) موجودة في <button type="button" class="table-ref-btn" data-table="table-3-3">Table 3–3 <span class="table-ref-icon">📋</span></button>.</p>
+
+<div class="fig-container fig-medium">
+<img src="images/table-3-3.jpg" alt="Table 3-3: Efficiency of common fin geometries">
+<div class="fig-caption">Table 3–3: Efficiency and surface area relations for common fin geometries</div>
+</div>
+
+<p>للأشكال الأكثر تعقيدًا مثل الزعانف الحلقية والبارابولية، يتضمن حل الكفاءة دوال بسل المعدلة (<span class="term">Modified Bessel Functions</span> \(I_0, I_1\)). المعلومات التفصيلية وقيم هذه الدوال موجودة في <button type="button" class="table-ref-btn" data-table="table-3-4">Table 3–4 <span class="table-ref-icon">📋</span></button>.</p>
+
+<div class="fig-container fig-medium">
+<img src="images/table-3-4.png" alt="Table 3-4: Modified Bessel function values">
+<div class="fig-caption">Table 3–4: Numerical values of modified Bessel functions of the first and second kinds of orders 0 and 1</div>
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Engineering Design Considerations for Fins</div>
+<ol>
+<li><strong>طول الزعنفة وكفاءتها:</strong> زيادة طول الزعنفة تزيد المساحة السطحية \(A_{fin}\) ولكنها تقلل من كفاءتها \(\eta_{fin}\)، لأن الزيادة في الطول تكون عند درجات حرارة منخفضة قريبة من حرارة الوسط المحيط، مما يجعل العائد الحراري لكل وحدة طول إضافية ضئيلاً.</li>
+<li><strong>الحد الاقتصادي للكفاءة:</strong> الزعانف ذات الكفاءة الأقل من 60% (\(\eta_{fin} < 0.60\)) لا يمكن تبريرها اقتصاديًا، حيث يمثل الجزء البعيد هدرًا في المعدن والوزن دون مردود حراري مكافئ.</li>
+<li><strong>الكفاءة التشغيلية المعتادة:</strong> تعمل معظم الزعانف الهندسية المصممة بكفاءة عالية في النطاق فوق 90% (\(\eta_{fin} > 0.90\)).</li>
+<li><strong>الشكل الهندسي الأمثل:</strong> الزعانف ذات المقاطع المتناقصة كالزعانف المثلثة (<span class="term">triangular</span>) والبارابولية (<span class="term">parabolic</span>) تحقق نفس معدل انتقال الحرارة بكتلة معدنية أقل بكثير من الزعانف المستطيلة ذات السمك الثابت، مما يجعلها الخيار الأفضل في تطبيقات الطيران والفضاء حيث يُعد الوزن عاملاً حاسمًا.</li>
+</ol>
+</div>
+
+<!-- ==================== 9. FINAL COMPARISON TABLE ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Summary Comparison of Fin Tip Boundary Conditions</h3>
+
+<p>يلخص الجدول التالي الحالات الأربع للشرط الحدي عند طرف الزعنفة وتوزيع درجات الحرارة ومعدل انتقال الحرارة لكل حالة:</p>
+
+<div class="analogy-box num-table-box">
+<div class="table-wrapper">
+<table class="num-table">
+<thead>
+<tr>
+  <th style="text-align:right;">Fin Tip Condition<br><span style="font-weight:normal;font-size:0.85em;">حالة الطرف</span></th>
+  <th>Tip Boundary Condition (\(x = L\))<br><span style="font-weight:normal;font-size:0.85em;">الشرط الحدي</span></th>
+  <th>Temperature Distribution \(\frac{T(x)-T_\infty}{T_b-T_\infty}\)<br><span style="font-weight:normal;font-size:0.85em;">توزيع درجات الحرارة</span></th>
+  <th>Heat Transfer Rate \(\dot{Q}_{fin}\)<br><span style="font-weight:normal;font-size:0.85em;">معدل انتقال الحرارة</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="td-label"><strong>Case 1: Infinitely Long Fin</strong><br>زعنفة لانهائية الطول</td>
+  <td>\(\theta(L) \to 0 \quad \text{as } L \to \infty\)</td>
+  <td>\(e^{-mx}\)</td>
+  <td>\(\sqrt{hpkA_c}(T_b - T_\infty)\)</td>
+</tr>
+<tr>
+  <td class="td-label"><strong>Case 2: Adiabatic Tip</strong><br>طرف معزول (إهمال الفقد من الطرف)</td>
+  <td>\(\left.\dfrac{d\theta}{dx}\right|_{x=L} = 0\)</td>
+  <td>\(\dfrac{\cosh[m(L-x)]}{\cosh(mL)}\)</td>
+  <td>\(\sqrt{hpkA_c}(T_b - T_\infty)\tanh(mL)\)</td>
+</tr>
+<tr>
+  <td class="td-label"><strong>Case 3: Specified Temperature</strong><br>درجة حرارة طرف محددة \(T_L\)</td>
+  <td>\(\theta(L) = \theta_L = T_L - T_\infty\)</td>
+  <td>\(\dfrac{\left(\dfrac{\theta_L}{\theta_b}\right)\sinh(mx) + \sinh[m(L-x)]}{\sinh(mL)}\)</td>
+  <td>\(\sqrt{hpkA_c}(T_b - T_\infty)\dfrac{\cosh(mL) - \theta_L/\theta_b}{\sinh(mL)}\)</td>
+</tr>
+<tr>
+  <td class="td-label"><strong>Case 4: Convection from Tip</strong><br>حمل حراري من الطرف</td>
+  <td>\(-k\left.\dfrac{d\theta}{dx}\right|_{x=L} = h\theta(L)\)</td>
+  <td>\(\dfrac{\cosh[m(L-x)] + \frac{h}{mk}\sinh[m(L-x)]}{\cosh(mL) + \frac{h}{mk}\sinh(mL)}\)</td>
+  <td>\(\sqrt{hpkA_c}(T_b - T_\infty)\dfrac{\sinh(mL) + \frac{h}{mk}\cosh(mL)}{\cosh(mL) + \frac{h}{mk}\sinh(mL)}\)</td>
+</tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<!-- ==================== 10. KEY EQUATIONS FOR REVISION ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Key Equations for Quick Revision</h3>
+
+<div class="formula-box">
+<div class="box-label">Fin Parameter</div>
+\[ m = \sqrt{\frac{hp}{kA_c}} \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Heat Transfer Rate — Infinitely Long Fin</div>
+\[ \dot{Q}_{long} = \sqrt{hpkA_c}(T_b - T_\infty) \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Heat Transfer Rate — Adiabatic Tip Fin</div>
+\[ \dot{Q}_{adiabatic} = \sqrt{hpkA_c}(T_b - T_\infty)\tanh(mL) \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Corrected Fin Length</div>
+\[ L_c = L + \frac{A_c}{p} \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Fin Efficiency Definition</div>
+\[ \eta_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{fin,max}} = \frac{\dot{Q}_{fin}}{h A_{fin}(T_b - T_\infty)} \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Fin Efficiency — Adiabatic Tip</div>
+\[ \eta_{adiabatic} = \frac{\tanh(mL)}{mL} \]
+</div>
+
+</section>
+<hr class="section-divider">
+
+<!-- ==================== SECTION 12 ==================== -->
+<section class="section" id="sec12">
+<div class="section-header">
+<div class="section-icon">📏</div>
+<div class="section-titles">
+<h2>Fin Effectiveness, Performance &amp; Design</h2>
+<span class="section-sub">§ 3-6 — Fin Effectiveness, Proper Length, Heat Sinks</span>
+</div>
+<button class="task-check" data-task="sec12" aria-label="Mark as completed" title="أكمل المهمة">
+  <svg class="check-svg" viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path class="check-path" d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="task-label">Task <span class="task-num">12</span></span>
+</button>
+</div>
+
+<p>عند إضافة زعانف (<span class="term">fins</span>) إلى سطح ما لتعزيز انتقال الحرارة، فإن الزعنفة بحد ذاتها تمثل مقاومة حرارية إضافية بالتوصيل (<span class="term">conduction resistance</span>) مقارنة بالقاعدة الأصلية. لذا، فإن إضافة الزعانف لا تضمن دائمًا زيادة في معدل انتقال الحرارة! لتقييم الأداء الحقيقي للزعنفة وتحديد ما إذا كان استخدامها مبررًا من الناحية الهندسية والاقتصادية، نستخدم مقياسًا أساسيًا يُعرف بـ <strong>فعالية الزعنفة (<span class="term">Fin Effectiveness</span>)</strong>.</p>
+
+<!-- ==================== 1. FIN EFFECTIVENESS DEFINITION ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Fin Effectiveness — Definition and Derivation</h3>
+
+<div class="def-box">
+<div class="box-title">📌 Fin Effectiveness</div>
+<p><span class="en">Fin effectiveness is defined as the ratio of the heat transfer rate from the fin to the heat transfer rate that would occur from the same base area without the fin:</span></p>
+\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{no\;fin}} = \frac{\dot{Q}_{fin}}{h A_b (T_b - T_\infty)} \tag{3-78} \]
+</div>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-45.png" alt="Figure 3-45: Fin effectiveness concept illustration">
+<div class="fig-caption">Figure 3–45: The fin effectiveness \(\varepsilon_{fin}\) is a measure of the heat transfer enhancement provided by the fin.</div>
+</div>
+
+<p>حيث تمثل \(A_b\) مساحة مقطع قاعدة الزعنفة (<span class="term">base cross-sectional area</span>)، و\(T_b\) درجة حرارة القاعدة، و\(T_\infty\) درجة حرارة المائع المحيط، و\(h\) معامل انتقال الحرارة بالحمل على السطح الأصلي. ومعدل انتقال الحرارة من القاعدة بدون وجود الزعنفة هو:</p>
+
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{no\;fin} = h A_b (T_b - T_\infty) \]
+</div>
+
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Physical Significance of Fin Effectiveness</h3>
+<p>تعطي قيمة الفعالية \(\varepsilon_{fin}\) دلالة فيزيائية وهندسية واضحة لأداء الزعنفة:</p>
+
+<ul>
+<li><strong>\(\varepsilon_{fin} = 1\):</strong> وجود الزعنفة لا يغير معدل انتقال الحرارة على الإطلاق؛ فالسطح المغطى بقاعدة الزعنفة كان سينقل نفس كمية الحرارة مباشرة بالحمل الحراري إلى المائع (<span class="term">no improvement</span>).</li>
+<li><strong>\(\varepsilon_{fin} < 1\):</strong> الزعنفة تعمل كعازل حراري (<span class="term">fin acts as an insulator</span>) وتقلل انتقال الحرارة بدلاً من زيادته! يحدث هذا عندما تُصنع الزعنفة من مادة ذات موصلية حرارية منخفضة جدًا (\(k\) صغير)، فتكون مقاومتها بالتوصيل أكبر من أي فائدة لزيادة المساحة السطحية.</li>
+<li><strong>\(\varepsilon_{fin} > 1\):</strong> الزعنفة تعزز انتقال الحرارة (<span class="term">fin enhances heat transfer</span>)، وهو الهدف الهندسي المطلوب من تركيبها.</li>
+</ul>
+
+<div class="insight-box">
+<div class="insight-title">💡 Practical and Economic Justification</div>
+<p>في التطبيقات الهندسية العملية، لا يكفي مجرد تحقيق \(\varepsilon_{fin} > 1\)، بل يُشترط أن تكون الفعالية <strong>مرتفعة بدرجة كافية</strong> (عادة \(\varepsilon_{fin} \ge 2\) كحد أدنى، وتصل في تصميمات كثيرة إلى 5 أو 10 أو أكثر) لتبرير تكلفة تصنيع وتركيب الزعانف، والوزن الإضافي للمنظومة، ومقاومة سريان المائع الناتجة عنها.</p>
+</div>
+
+<!-- ==================== 2. RELATIONSHIP BETWEEN EFFICIENCY AND EFFECTIVENESS ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Relationship Between Efficiency and Effectiveness</h3>
+
+<p>ترتبط كفاءة الزعنفة (\(\eta_{fin}\)) بفعاليتها (\(\varepsilon_{fin}\)) ارتباطًا وثيقًا، ولكن لكل منهما معنى فيزيائي مختلف: فالكفاءة تقارن أداء الزعنفة الفعلي بأقصى أداء مثالي لنفس الزعنفة عند ثبوت درجة حرارتها عند \(T_b\)، بينما الفعالية تقارن أداء الزعنفة الفعلي بالسطح الأملس بدون زعنفة.</p>
+
+<div class="formula-box">
+<div class="box-label">Efficiency–Effectiveness Relation — Eq. 3-79</div>
+\[ \varepsilon_{fin} = \eta_{fin} \frac{A_{fin}}{A_b} \tag{3-79} \]
+</div>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-eta-eps"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-eta-eps"><div class="deriv-inner">
+<div class="solution-steps">
+<div class="step"><div class="step-num">1</div><div class="step-content">
+From the definition of fin efficiency \(\eta_{fin}\), the actual heat transfer rate from the fin is:
+\[ \dot{Q}_{fin} = \eta_{fin} \dot{Q}_{fin,max} = \eta_{fin} h A_{fin} (T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+The heat transfer rate that would occur from the base area without the fin is:
+\[ \dot{Q}_{no\;fin} = h A_b (T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Substitute both expressions into the definition of fin effectiveness (Eq. 3-78):
+\[ \varepsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{no\;fin}} = \frac{\eta_{fin} h A_{fin} (T_b - T_\infty)}{h A_b (T_b - T_\infty)} \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Canceling \(h(T_b - T_\infty)\) from both numerator and denominator yields:
+\[ \varepsilon_{fin} = \eta_{fin} \frac{A_{fin}}{A_b} \tag{3-79} \]
+</div></div>
+</div>
+</div></div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Efficiency vs. Effectiveness Interplay</div>
+<p>توضح Eq. 3-79 أن فعالية الزعنفة تعتمد على عاملين رئيسيين: كفاءتها (\(\eta_{fin}\))، ونسبة المساحة السطحية للزعنفة إلى مساحة قاعدتها (\(A_{fin}/A_b\)). ولذلك، <strong>انخفاض كفاءة الزعنفة لا يعني بالضرورة أنها غير فعالة!</strong> فعلى سبيل المثال، قد تكون كفاءة الزعنفة منخفضة نسبيًا مثل \(\eta_{fin} = 0.5\)، لكن نسبة المساحة كبيرة جدًا مثل \(A_{fin}/A_b = 30\)، فتكون الفعالية الناتجة \(\varepsilon_{fin} = 0.5 \times 30 = 15\)، وهو تعزيز هائل لانتقال الحرارة بمقدار 15 ضعفًا.</p>
+</div>
+
+<!-- ==================== 3. EFFECTIVENESS OF A LONG FIN ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Effectiveness of a Sufficiently Long Fin</h3>
+
+<p>في حالة الزعنفة الطويلة جدًا ذات المقطع المنتظم (\(A_b = A_c\))، تنخفض درجة الحرارة تدريجيًا حتى تصل إلى \(T_\infty\) عند طرف الزعنفة. باشتقاق نسبة انتقال الحرارة نحصل على علاقة تعبر عن الفعالية بدلالة الخواص الهندسية والفيزيائية للزعنفة:</p>
+
+<div class="formula-box">
+<div class="box-label">Effectiveness of an Infinitely Long Fin — Eq. 3-80</div>
+\[ \varepsilon_{long\;fin} = \sqrt{\frac{k p}{h A_c}} \tag{3-80} \]
+</div>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-eps-long"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-eps-long"><div class="deriv-inner">
+<div class="solution-steps">
+<div class="step"><div class="step-num">1</div><div class="step-content">
+The heat transfer rate from an infinitely long fin with uniform cross section is:
+\[ \dot{Q}_{long\;fin} = \sqrt{h p k A_c}\,(T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+The heat transfer from the bare base area in the absence of the fin (noting that \(A_b = A_c\)) is:
+\[ \dot{Q}_{no\;fin} = h A_b (T_b - T_\infty) = h A_c (T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Dividing \(\dot{Q}_{long\;fin}\) by \(\dot{Q}_{no\;fin}\) to find the effectiveness:
+\[ \varepsilon_{long\;fin} = \frac{\dot{Q}_{long\;fin}}{\dot{Q}_{no\;fin}} = \frac{\sqrt{h p k A_c}\,(T_b - T_\infty)}{h A_c (T_b - T_\infty)} = \frac{\sqrt{h p k A_c}}{h A_c} \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Entering the denominator inside the square root:
+\[ \varepsilon_{long\;fin} = \sqrt{\frac{h p k A_c}{(h A_c)^2}} = \sqrt{\frac{h p k A_c}{h^2 A_c^2}} = \sqrt{\frac{k p}{h A_c}} \tag{3-80} \]
+</div></div>
+</div>
+</div></div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Design Conclusions from Eq. 3-80</div>
+<p>تقدم المعادلة (3-80) ثلاثة مبادئ هندسية جوهرية لتصميم واختيار الزعانف:</p>
+<ol>
+<li><strong>الموصلية الحرارية العالية للمادة (<span class="term">High \(k\)</span>):</strong> تتناسب الفعالية طرديًا مع \(\sqrt{k}\). لذلك تُصنع الزعانف من معادن ذات موصلية عالية كالنحاس (<span class="term">Copper</span>) والألمنيوم (<span class="term">Aluminum</span>) والحديد. ويُعد <strong>الألمنيوم</strong> الخيار الأكثر شيوعًا وتفضيلاً في الصناعة بفضل خفة وزنه، وانخفاض تكلفته، ومقاومته الممتازة للتآكل، وسهولة تشكيله.</li>
+<li><strong>نسبة محيط إلى مساحة مقطع عالية (<span class="term">High \(p/A_c\)</span>):</strong> تتناسب الفعالية طرديًا مع \(\sqrt{p/A_c}\). لذا يفضل استخدام زعانف نحيفة ورقيقة، مثل الصفائح الرقيقة (<span class="term">thin plate fins</span>) أو الزعانف الإبرية الرفيعة (<span class="term">slender pin fins</span>).</li>
+<li><strong>معامل انتقال الحرارة بالحمل المنخفض (<span class="term">Low \(h\)</span>):</strong> تتناسب الفعالية عكسيًا مع \(\sqrt{h}\)؛ أي أن الزعانف تكون أكثر فائدة وجدوى هندسية عندما يكون \(h\) صغيرًا! وينتج عن ذلك:
+  <ul>
+  <li>تكون الزعانف أكثر فاعلية عند التبريد بواسطة الغازات (<span class="term">gases</span>) مقارنة بالسوائل (<span class="term">liquids</span>)، لأن معامل الحمل للغازات أقل بكثير.</li>
+  <li>تكون الزعانف أكثر فاعلية في الحمل الحر الطبيعي (<span class="term">natural convection</span>) مقارنة بالحمل القسري (<span class="term">forced convection</span>).</li>
+  <li>في مشعات السيارات (<span class="term">car radiators</span>)، تُثبت الزعانف على الجانب المعرض للهواء (حيث \(h\) منخفض)، بينما لا توجد حاجة لوضع زعانف داخل أنابيب سائل التبريد (حيث \(h\) مرتفع جدًا).</li>
+  </ul>
+</li>
+</ol>
+</div>
+
+<!-- ==================== 4. HEAT TRANSFER FROM A FINNED SURFACE ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Heat Transfer from a Finned Surface</h3>
+
+<p>في التطبيقات العملية، لا تُستخدم زعنفة واحدة منفردة، بل يتم تزويد السطح بمصفوفة كاملة من الزعانف (<span class="term">array of fins</span>). ينقسم السطح الكلي المعرض للمائع حينئذٍ إلى قسمين:</p>
+
+<ul>
+<li><strong>مساحة أسطح الزعانف (<span class="term">Fin surface area, \(A_{fin}\)</span>):</strong> المساحة السطحية الكلية لجميع الزعانف الملحقة بالسطح. إذا كان هناك \(n\) زعنفة متماثلة، فالمساحة تكون \(A_{fin} = n \cdot A_{one\;fin}\).</li>
+<li><strong>المساحة غير المزخرفة من القاعدة (<span class="term">Unfinned prime area, \(A_{unfin}\)</span>):</strong> المساحة المكشوفة المتبقية من سطح القاعدة بين الزعانف المعرضة مباشرة للمائع. وتُحسب بطرح مساحة القواعد التي تشغلها الزعانف من مساحة السطح الأصلية:
+\[ A_{unfin} = A_{no\;fin} - n A_b \]</li>
+<li><strong>المساحة الأصلية بدون زعانف (<span class="term">Prime area without fins, \(A_{no\;fin}\)</span>):</strong> المساحة السطحية الكلية لجدار القاعدة الأملس قبل تركيب أي زعانف عليه.</li>
+</ul>
+
+<div class="fig-container fig-medium">
+<img src="images/figure-3-46.png" alt="Figure 3-46: Heat transfer from a finned surface">
+<div class="fig-caption">Figure 3–46: Various surface areas associated with a finned surface — fins plus unfinned prime surface area.</div>
+</div>
+
+<p>معدل انتقال الحرارة الكلي من السطح المزعنف هو مجموع الحرارة المنتقلة من المساحة المكشوفة غير المزعنفة والحرارة المنتقلة من جميع الزعانف:</p>
+
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{total,fin} = \dot{Q}_{unfin} + \dot{Q}_{fin} \]
+</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{unfin} = h A_{unfin} (T_b - T_\infty) \]
+</div>
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{fin} = \eta_{fin} h A_{fin} (T_b - T_\infty) \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Total Heat Transfer from a Finned Surface — Eq. 3-81</div>
+\[ \dot{Q}_{total,fin} = h \left( A_{unfin} + \eta_{fin} A_{fin} \right) (T_b - T_\infty) \tag{3-81} \]
+</div>
+
+<!-- ==================== 5. OVERALL FIN EFFECTIVENESS ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Overall Fin Effectiveness</h3>
+
+<p>تُعرّف <strong>الفعالية الإجمالية للسطح المزعنف (<span class="term">Overall fin effectiveness, \(\varepsilon_{fin,overall}\)</span>)</strong> بأنها النسبة بين معدل انتقال الحرارة الكلي من السطح بعد تركيب الزعانف إلى معدل انتقال الحرارة من نفس السطح الأملس بدون زعانف:</p>
+
+<div class="equation-scroll" style="direction:ltr;">
+\[ \varepsilon_{fin,overall} = \frac{\dot{Q}_{total,fin}}{\dot{Q}_{total,no\;fin}} \]
+</div>
+
+<div class="formula-box">
+<div class="box-label">Overall Fin Effectiveness — Eq. 3-82</div>
+\[ \varepsilon_{fin,overall} = \frac{A_{unfin} + \eta_{fin} A_{fin}}{A_{no\;fin}} \tag{3-82} \]
+</div>
+
+<div class="deriv-toggle-row"><button type="button" class="deriv-toggle" aria-expanded="true" aria-controls="deriv-eps-overall"><span class="deriv-arrow" aria-hidden="true">▲</span><span class="deriv-label">Hide Derivation</span></button></div>
+<div class="deriv-wrap" id="deriv-eps-overall"><div class="deriv-inner">
+<div class="solution-steps">
+<div class="step"><div class="step-num">1</div><div class="step-content">
+From Eq. 3-81, the total heat transfer rate from the finned surface is:
+\[ \dot{Q}_{total,fin} = h \left( A_{unfin} + \eta_{fin} A_{fin} \right) (T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content">
+The heat transfer rate from the entire base area without any fins is:
+\[ \dot{Q}_{total,no\;fin} = h A_{no\;fin} (T_b - T_\infty) \]
+</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content">
+Dividing \(\dot{Q}_{total,fin}\) by \(\dot{Q}_{total,no\;fin}\):
+\[ \varepsilon_{fin,overall} = \frac{h \left( A_{unfin} + \eta_{fin} A_{fin} \right) (T_b - T_\infty)}{h A_{no\;fin} (T_b - T_\infty)} \]
+</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content">
+Canceling the common term \(h (T_b - T_\infty)\) yields:
+\[ \varepsilon_{fin,overall} = \frac{A_{unfin} + \eta_{fin} A_{fin}}{A_{no\;fin}} \tag{3-82} \]
+</div></div>
+</div>
+</div></div>
+
+<div class="note-box">
+<div class="note-title">📝 Factors Influencing Overall Effectiveness</div>
+<p>تعتمد الفعالية الإجمالية على عاملين أساسيين:</p>
+<ul>
+<li><strong>كثافة الزعانف (<span class="term">Fin density</span>):</strong> عدد الزعانف في وحدة المساحة أو الطول. زيادة عدد الزعانف تزيد المساحة السطحية الكلية \(A_{fin}\).</li>
+<li><strong>كفاءة الزعنفة الفردية (\(\eta_{fin}\)):</strong> التي تعتمد على هندسة الزعنفة وطولها ومادتها.</li>
+</ul>
+<p>لكن يجب الحذر من تقريب الزعانف أكثر من اللازم، لأن المسافات شديدة الضيق قد تؤدي لتداخل الطبقات الجدارية وإعاقة حركة المائع، مما يؤدي لانخفاض حاد في \(h\).</p>
+</div>
+
+<!-- ==================== 6. PROPER LENGTH OF A FIN ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Proper Length of a Fin</h3>
+
+<p>تنخفض درجة الحرارة على طول الزعنفة انخفاضًا أسيًا (<span class="term">exponential decay</span>) وتقترب تدريجيًا من درجة حرارة المائع المحيط \(T_\infty\). بعد مسافة معينة من القاعدة، يصبح فرق درجات الحرارة \((T - T_\infty)\) ضئيلًا للغاية، مما يعني أن الجزء البعيد الإضافي من الزعنفة يكاد لا يساهم بأي قدر ملموس في تبديد الحرارة.</p>
+
+<div class="fig-container fig-small">
+<img src="images/figure-3-47.png" alt="Figure 3-47: Temperature distribution along a fin">
+<div class="fig-caption">Figure 3–47: Temperature distribution along a fin — exponential decay of temperature with distance from the base.</div>
+</div>
+
+<p>تُعطى النسبة بين معدل انتقال الحرارة لزعنفة حقيقية ذات طول محدد \(L\) (مع فرض طرف معزول) إلى معدل انتقال الحرارة لزعنفة لانهائية الطول بنفس المقطع بالعلاقة:</p>
+
+<div class="formula-box">
+<div class="box-label">Finite vs. Infinite Fin Heat Transfer Ratio — Eq. 3-83</div>
+\[ \frac{\dot{Q}_{fin}}{\dot{Q}_{long\;fin}} = \tanh(mL) \tag{3-83} \]
+</div>
+
+<p>يبين الجدول التالي قيم الدالة الزائدية \(\tanh(mL)\) ونسبة الأداء المحقق مقارنة بالحد الأقصى النظري (\(\dot{Q}_{long\;fin}\)):</p>
+
+<div class="analogy-box num-table-box">
+<div class="table-wrapper">
+<table class="num-table">
+<thead>
+<tr>
+<th>\(mL\)</th>
+<th>\(\tanh(mL)\)</th>
+<th>% of Maximum Heat Transfer</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>0.1</td><td>0.100</td><td>10.0%</td></tr>
+<tr><td>0.5</td><td>0.462</td><td>46.2%</td></tr>
+<tr><td>1.0</td><td>0.762</td><td>76.2%</td></tr>
+<tr><td>1.5</td><td>0.905</td><td>90.5%</td></tr>
+<tr><td>2.0</td><td>0.964</td><td>96.4%</td></tr>
+<tr><td>2.5</td><td>0.987</td><td>98.7%</td></tr>
+<tr><td>3.0</td><td>0.995</td><td>99.5%</td></tr>
+<tr><td>5.0</td><td>1.000</td><td>100.0%</td></tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<div class="note-box">
+<div class="note-title">📝 Practical Guidelines for Fin Length</div>
+<ul>
+<li><strong>\(mL \approx 1\):</strong> الزعنفة تنقل 76.2% من أقصى انتقال حرارة ممكن. يُعد هذا الاختيار هو <strong>الحل العملي الأمثل (<span class="term">good practical choice</span>)</strong>، حيث يحقق تسوية وتوازنًا ممتازين بين الأداء الحراري، والتكلفة، والوزن والمساحة المستغلة.</li>
+<li><strong>\(mL \approx 2.5\):</strong> الزعنفة تنقل 98.7% من الحد الأقصى. لاحظ أن تقليل طول الزعنفة إلى النصف (من \(mL = 5\) إلى \(mL = 2.5\)) يوفر 50% من مادة الزعنفة وتكلفتها ووزنها مع التنازل عن 1% فقط من قدرة التبريد!</li>
+<li><strong>\(mL \ge 5\):</strong> تتصرف الزعنفة عمليًا كزعنفة لانهائية الطول (<span class="term">practically infinite fin</span>) حيث \(\tanh(5) \approx 1\). أي زيادة في الطول تتجاوز \(L = 5/m\) لا تضيف أي فائدة حرارية تذكر.</li>
+</ul>
+</div>
+
+<div class="warning-box">
+<div class="warn-title">⚠️ Hazards and Drawbacks of Extra-Long Fins</div>
+<p>الزعانف الطويلة جدًا لا تؤدي فقط إلى هدر غير مبرر في المواد (<span class="term">material waste</span>) وزيادة الوزن والتكلفة، بل قد تعيق حركة المائع الطبيعية بين الزعانف المتقاربة (<span class="term">suppress fluid motion</span>)، مما يؤدي إلى خفض معامل الحمل \(h\) وتدهور انتقال الحرارة بدلاً من تحسينه.</p>
+</div>
+
+<!-- ==================== 7. ONE-DIMENSIONAL VALIDITY ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">One-Dimensional Heat Transfer Validity</h3>
+
+<p>اعتمدت جميع التحليلات الرياضية السابقة على فرضية أن انتقال الحرارة يتم في اتجاه واحد فقط على طول الزعنفة (\(x\))، مع إهمال التغير في درجة الحرارة عبر سُمك الزعنفة أو قطرها. يكون هذا التحليل أحادي البعد (<span class="term">1-D approximation</span>) دقيقًا للغاية والخطأ فيه أقل من 1% عندما يتحقق المعيار التالي:</p>
+
+<div class="formula-box">
+<div class="box-label">1-D Approximation Validity Criterion</div>
+\[ \frac{h d}{k} < 0.2 \]
+</div>
+
+<p>حيث يمثل \(d\) البُعد المميز لسُمك الزعنفة (<span class="term">characteristic thickness</span>):</p>
+<ul>
+<li>\(d = t\) (السُمك) في الزعانف المستطيلة واللوحية (<span class="term">rectangular fins</span>).</li>
+<li>\(d = D\) (القطر) في الزعانف الدائرية والأسطوانية (<span class="term">cylindrical pin fins</span>).</li>
+</ul>
+<p>هذا المعيار مشابه لعدد بيوت (<span class="term">Biot number</span>)، وهو يتحقق عمليًا في جميع الزعانف المعدنية الرقيقة المصنوعة من مواد عالية الموصلية كالنحاس والألمنيوم.</p>
+
+<!-- ==================== 8. HEAT SINKS AND THERMAL RESISTANCE ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Heat Sinks and Thermal Resistance</h3>
+
+<p>المشتتات الحرارية (<span class="term">Heat Sinks</span>) هي أسطح مزعنفة متخصصة مصممة ومجهزة لتبريد المكونات الإلكترونية الدقيقة مثل المعالجات الرقمية وترانزستورات القدرة (<span class="term">power transistors</span>). يُعبر المصنعون والمهندسون عن أداء المشتت بدلالة <strong>المقاومة الحرارية (<span class="term">Thermal Resistance</span>)</strong> بين قاعدة المشتت والوسط المحيط:</p>
+
+<div class="formula-box">
+<div class="box-label">Heat Sink Thermal Resistance — Eq. 3-84</div>
+\[ R = \frac{T_b - T_\infty}{\dot{Q}_{fin}} = \frac{1}{\eta_{fin} h A_{fin}} \tag{3-84} \]
+</div>
+
+<p>وبمعرفة المقاومة الحرارية للمشتت، يُحسب معدل تبديد الحرارة ببساطة من قانون أوم الحراري:</p>
+
+<div class="equation-scroll" style="direction:ltr;">
+\[ \dot{Q}_{fin} = \frac{T_b - T_\infty}{R} \]
+</div>
+
+<div class="insight-box">
+<div class="insight-title">💡 Thermal Resistance as a Performance Metric</div>
+<p>كلما كانت المقاومة الحرارية للمشتت \(R\) أصغر، كان أداؤه التبريدي أفضل وأعلى. فالمشتت ذو المقاومة الحرارية المنخفضة يسمح بتبديد قدرة حرارية أكبر عند نفس فرق درجات الحرارة، أو يحافظ على درجة حرارة المكون الإلكتروني منخفضة وآمنة عند نفس معدل توليد الحرارة.</p>
+</div>
+
+<!-- ==================== 9. EXAMPLES ==================== -->
+<h3 style="color:var(--navy);font-family:'Playfair Display',serif;margin:24px 0 12px;">Worked Examples</h3>
+
+<!-- ===== EXAMPLE 3-12 ===== -->

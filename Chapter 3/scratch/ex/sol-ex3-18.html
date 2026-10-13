@@ -1,0 +1,97 @@
+<div class="example-card">
+<div class="example-header"><h3>Example 3–18: The R-Value of a Wood Frame Wall</h3></div>
+<div class="example-body">
+<div class="problem-statement">
+The overall unit thermal resistance (R-value) and the overall heat transfer coefficient (U-factor) of a wood frame wall of a house are to be determined. The wall construction consists of 13-mm-thick wood siding, 13-mm-thick fiberboard sheathing, a 90-mm-thick cavity filled with fiberglass insulation between 38-mm &times; 90-mm wood studs spaced 400 mm on centers, and 13-mm-thick gypsum wallboard on the interior. The insulation path accounts for 75 percent of the wall area, and the stud path accounts for the remaining 25 percent. The house has a perimeter of 50 m and a height of 2.5 m, with glazing (windows and doors) accounting for 20 percent of the total gross wall area. Taking the indoor design temperature to be 20&deg;C and the outdoor winter design temperature to be &minus;4&deg;C (wind speed 24 km/h), calculate the overall R-value, U-factor, and the rate of heat loss through the opaque walls.
+</div>
+
+<div class="sol-toggle-row"><button type="button" class="sol-toggle" aria-expanded="false" aria-controls="sol-ex3-18"><span class="sol-arrow" aria-hidden="true">▼</span><span class="sol-label">إظهار الحل</span></button></div>
+<div class="sol-wrap" id="sol-ex3-18"><div class="sol-inner">
+<div class="given-section">
+<h4>Given</h4>
+<div class="given-grid">
+<span>\(f_{ins} = 0.75\) (75% insulation area)</span>
+<span>\(f_{stud} = 0.25\) (25% stud area)</span>
+<span>\(\text{Perimeter} = 50\;\text{m}\)</span>
+<span>\(\text{Height} = 2.5\;\text{m}\)</span>
+<span>\(\text{Glazing Fraction} = 0.20\)</span>
+<span>\(T_i = 20\;{^\circ\text{C}}\)</span>
+<span>\(T_o = -4\;{^\circ\text{C}}\)</span>
+<span>\(\Delta T = 20 - (-4) = 24\;{^\circ\text{C}}\)</span>
+</div>
+</div>
+
+<div class="solution-steps">
+<h4>Solution</h4>
+
+<p>
+نلخص أولاً المقاومات الحرارية لوحدة المساحة لكل طبقة من طبقات الجدار عبر مساري انتقال الحرارة المتوازيين في الجدول التالي:
+</p>
+
+<!-- Inline Table for Example 3-18 -->
+<div class="analogy-box num-table-box">
+<div class="table-wrapper">
+<table class="num-table">
+<thead>
+<tr>
+  <th rowspan="2" style="vertical-align:middle;text-align:left;">Construction Layer / Element</th>
+  <th colspan="2" style="border-bottom:1px solid #CBD7E3;">Unit Thermal Resistance, \(R\;(\text{m}^2\cdot{^\circ\text{C}}/\text{W})\)</th>
+</tr>
+<tr>
+  <th>Between Studs (Insulation Path)</th>
+  <th>At Studs (Framing Path)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="td-label">1. Outside surface resistance (24 km/h wind)</td>
+  <td>0.030</td>
+  <td>0.030</td>
+</tr>
+<tr>
+  <td class="td-label">2. Wood siding, 13 mm</td>
+  <td>0.14</td>
+  <td>0.14</td>
+</tr>
+<tr>
+  <td class="td-label">3. Fiberboard sheathing, 13 mm</td>
+  <td>0.23</td>
+  <td>0.23</td>
+</tr>
+<tr>
+  <td class="td-label">4. Fiberglass insulation, 90 mm</td>
+  <td>2.45</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="td-label">5. Wood stud, 38 mm &times; 90 mm</td>
+  <td>—</td>
+  <td>0.63</td>
+</tr>
+<tr>
+  <td class="td-label">6. Gypsum wallboard, 13 mm</td>
+  <td>0.079</td>
+  <td>0.079</td>
+</tr>
+<tr>
+  <td class="td-label">7. Inside surface resistance (still air)</td>
+  <td>0.12</td>
+  <td>0.12</td>
+</tr>
+<tr style="font-weight:700;">
+  <td class="td-label"><strong>Total Unit Thermal Resistance (\(R\))</strong></td>
+  <td><strong>3.05</strong></td>
+  <td><strong>1.23</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="scroll-hint">← اسحب لرؤية المزيد →</div>
+</div>
+</div>
+
+<div class="step"><div class="step-num">1</div><div class="step-content">
+<strong>U-factor for the insulation path (between studs):</strong>
+\[ U_{ins} = \frac{1}{R_{ins}} = \frac{1}{3.05\;\text{m}^2\cdot{^\circ\text{C}}/\text{W}} = 0.328\;\text{W}/(\text{m}^2\cdot\text{K}) \]
+</div></div>
+
+<div class="step"><div class="step-num">2</div>
