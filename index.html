@@ -64,7 +64,7 @@
 
     <div class="hero-inner">
       <div class="hub-nav">
-        <a class="hub-link" href="https://ahmedramadantajeldin-rgb.github.io/MechLibrary/" title="Back to MechHub">
+        <a class="hub-link" href="#" onclick="goBackToMechHub(event)" title="Back to MechHub">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           <span>← Back to MechHub</span>
         </a>
@@ -111,5 +111,26 @@
   <script src="assets/js/chapters.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/heat-field.js"></script>
+
+<script>
+/* ── MechHub back-navigation helper ──────────────────────────────────────────
+ * Called by every "Back to MechHub" link.
+ * Strategy:
+ *   1. If there is a prior history entry in this tab, go back (the user came
+ *      from MechHub via same-tab navigation — no new entry is added).
+ *   2. Otherwise navigate with location.replace() so MechHub replaces this
+ *      page in history rather than stacking a new entry on top.
+ * This prevents duplicate hub pages accumulating on mobile and in the PWA.
+ */
+function goBackToMechHub(e) {
+  if (e) e.preventDefault();
+  var HUB = "https://ahmedramadantajeldin-rgb.github.io/MechLibrary/";
+  if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    window.location.replace(HUB);
+  }
+}
+</script>
 </body>
 </html>
