@@ -11,6 +11,41 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/index.css">
+  <style>
+    .hub-nav {
+      margin-bottom: 24px;
+    }
+    .hub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: .5rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid rgba(251, 243, 236, .25);
+      background: rgba(26, 20, 17, .55);
+      backdrop-filter: blur(8px);
+      color: var(--on-dark-soft);
+      text-decoration: none;
+      font: 600 .86rem/1.2 var(--font-ui);
+      letter-spacing: .3px;
+      transition: all .2s var(--ease);
+    }
+    .hub-link:hover {
+      border-color: var(--amber-400);
+      background: rgba(248, 180, 49, .15);
+      color: var(--amber-400);
+      transform: translateY(-1px);
+    }
+    .hub-link svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      transition: transform .2s var(--ease);
+    }
+    .hub-link:hover svg {
+      transform: translateX(-3px);
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#chapters">Skip to chapters</a>
@@ -28,6 +63,12 @@
     </svg>
 
     <div class="hero-inner">
+      <div class="hub-nav">
+        <a class="hub-link" href="https://ahmedramadantajeldin-rgb.github.io/MechLibrary/" title="Back to MechHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>← Back to MechHub</span>
+        </a>
+      </div>
       <h1>Heat Transfer</h1>
       <p class="hero-lead">Course notes on how thermal energy moves, built around conduction, convection, and radiation.</p>
       <p class="hero-note">Chapters are published as they are completed.</p>
