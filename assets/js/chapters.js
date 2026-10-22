@@ -55,5 +55,22 @@ window.CHAPTERS = [
       'Heat sinks'
     ],
     sections: 14
+  },
+  {
+    number: 6,
+    status: 'available',
+    href: 'Chapter 6/chapter6.html',
+    title: 'Fundamentals of Convection',
+    description:
+      'Convection mechanisms, boundary layers, turbulent transport, the differential convection equations, the Blasius flat-plate solution, and similarity.',
+    topics: [
+      'Newton\u2019s law of cooling',
+      'Nusselt number',
+      'Velocity and thermal boundary layers',
+      'Turbulent flow',
+      'Blasius solution',
+      'Reynolds and Prandtl numbers'
+    ],
+    sections: 18
   }
 ];
